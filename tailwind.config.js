@@ -15,6 +15,9 @@ export default {
       fontFamily: {
         'grotesk': ['Space Grotesk', 'sans-serif'],
       },
+      spacing: {
+        'section': '5rem',
+      },
     },
   },
   plugins: [],
