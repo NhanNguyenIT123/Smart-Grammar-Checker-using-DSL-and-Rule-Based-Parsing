@@ -7,14 +7,14 @@ export default function Navigation() {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "32px 48px",
-        backgroundColor: "#F3F3F3",
+        padding: "32px 100px 0px 100px",
+        backgroundColor: "#FFFFFF",
       }}
     >
       <div
         style={{
-          fontSize: "1.25 rem",
-          fontWeight: "400",
+          fontSize: "1.5 rem",
+          fontWeight: "600",
           color: "#000000",
           border: "2px solid black",
           boxShadow: "inset 0 0 0 2px white, 0 4px 4px rgba(0, 0, 0, 0.25)",
@@ -26,21 +26,21 @@ export default function Navigation() {
       <div
         style={{
           display: "flex",
-          gap: "20px",
+          gap: "30px",
           alignItems: "center",
         }}
       >
         <div
           style={{
             display: "flex",
-            gap: "20px",
+            gap: "30px",
             alignItems: "center",
           }}
         >
           <a
             href="#"
             style={{
-              fontSize: "1 rem",
+              fontSize: "1.25 rem",
               color: "#000000",
               textDecoration: "none",
               fontWeight: "200",
@@ -53,7 +53,7 @@ export default function Navigation() {
           <a
             href="#"
             style={{
-              fontSize: "1 rem",
+              fontSize: "1.25 rem",
               color: "#000000",
               textDecoration: "none",
               fontWeight: "200",
@@ -75,21 +75,22 @@ export default function Navigation() {
           <Button
             variant="outline"
             style={{
-              border: "2px solid #000000",
+              border: "1px solid #000000",
               color: "#000000",
               padding: "8px 32px",
-              fontSize: "1rem",
-              borderRadius: "8px",
+              fontSize: "1.25 rem",
+              borderRadius: "14px",
               fontWeight: "200",
-              backgroundColor: "#F3F3F3",
+              backgroundColor: "#FFFFFF",
               cursor: "pointer",
+              height: "50px",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = "#000000";
-              e.currentTarget.style.color = "#F3F3F3";
+              e.currentTarget.style.color = "#FFFFFF";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "#F3F3F3";
+              e.currentTarget.style.backgroundColor = "#FFFFFF";
               e.currentTarget.style.color = "#000000";
             }}
           >
@@ -98,21 +99,22 @@ export default function Navigation() {
           <Button
             variant="outline"
             style={{
-              border: "2px solid #000000",
+              border: "1px solid #000000",
               color: "#000000",
               padding: "8px 32px",
-              fontSize: "1rem",
-              borderRadius: "8px",
+              fontSize: "1.25 rem",
+              borderRadius: "14px",
               fontWeight: "200",
-              backgroundColor: "#F3F3F3",
+              backgroundColor: "#FFFFFF",
               cursor: "pointer",
+              height: "50px",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = "#000000";
-              e.currentTarget.style.color = "#F3F3F3";
+              e.currentTarget.style.color = "#FFFFFF";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "#F3F3F3";
+              e.currentTarget.style.backgroundColor = "#FFFFFF";
               e.currentTarget.style.color = "#000000";
             }}
           >
