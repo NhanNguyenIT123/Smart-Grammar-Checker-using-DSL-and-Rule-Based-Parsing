@@ -68,3 +68,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* FIX SHADCN TABS ACTIVE */
+[data-state="active"] {
+  background-color: #191A23 !important;
+  color: white !important;
+}
