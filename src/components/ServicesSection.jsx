@@ -175,6 +175,8 @@ export default function ServicesSection() {
                     height: "auto",
                     maxHeight: "85%",
                     objectFit: "contain",
+                    pointerEvents: "none",
+                    userSelect: "none",
                   }}
                   alt=""
                 />
@@ -245,23 +247,25 @@ export default function ServicesSection() {
             <div
               style={{
                 position: "absolute",
-                right: "40px", 
+                right: "40px",
                 top: "50%",
-                transform: "translateY(-50%)", 
+                transform: "translateY(-50%)",
                 width: "45%",
                 display: "flex",
                 justifyContent: "center",
-                zIndex: 2, 
+                zIndex: 2,
               }}
             >
               <img
                 src={StandoutIllu}
                 style={{
                   width: "400px",
-                  maxWidth: "none", 
+                  maxWidth: "none",
                   height: "auto",
                   objectFit: "contain",
                   display: "block",
+                  pointerEvents: "none",
+                  userSelect: "none",
                 }}
                 alt="Stand out illustration"
               />

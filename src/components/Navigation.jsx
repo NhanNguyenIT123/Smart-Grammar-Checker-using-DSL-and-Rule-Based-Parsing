@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-export default function Navigation() {
+export default function Navigation({ hideLinks = false }) {
   return (
     <nav
       style={{
@@ -23,13 +23,7 @@ export default function Navigation() {
         Grammar Checker
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          gap: "30px",
-          alignItems: "center",
-        }}
-      >
+      {!hideLinks && (
         <div
           style={{
             display: "flex",
@@ -37,91 +31,103 @@ export default function Navigation() {
             alignItems: "center",
           }}
         >
-          <a
-            href="#"
+          <div
             style={{
-              fontSize: "1.25 rem",
-              color: "#000000",
-              textDecoration: "none",
-              fontWeight: "200",
+              display: "flex",
+              gap: "30px",
+              alignItems: "center",
             }}
-            onMouseEnter={(e) => (e.target.style.textDecoration = "underline")}
-            onMouseLeave={(e) => (e.target.style.textDecoration = "none")}
           >
-            About us
-          </a>
-          <a
-            href="#"
-            style={{
-              fontSize: "1.25 rem",
-              color: "#000000",
-              textDecoration: "none",
-              fontWeight: "200",
-            }}
-            onMouseEnter={(e) => (e.target.style.textDecoration = "underline")}
-            onMouseLeave={(e) => (e.target.style.textDecoration = "none")}
-          >
-            Services
-          </a>
-        </div>
+            <a
+              href="#"
+              style={{
+                fontSize: "1.25 rem",
+                color: "#000000",
+                textDecoration: "none",
+                fontWeight: "200",
+              }}
+              onMouseEnter={(e) =>
+                (e.target.style.textDecoration = "underline")
+              }
+              onMouseLeave={(e) => (e.target.style.textDecoration = "none")}
+            >
+              About us
+            </a>
+            <a
+              href="#"
+              style={{
+                fontSize: "1.25 rem",
+                color: "#000000",
+                textDecoration: "none",
+                fontWeight: "200",
+              }}
+              onMouseEnter={(e) =>
+                (e.target.style.textDecoration = "underline")
+              }
+              onMouseLeave={(e) => (e.target.style.textDecoration = "none")}
+            >
+              Services
+            </a>
+          </div>
 
-        <div
-          style={{
-            display: "flex",
-            gap: "16px",
-            alignItems: "center",
-          }}
-        >
-          <Button
-            variant="outline"
+          <div
             style={{
-              border: "1px solid #000000",
-              color: "#000000",
-              padding: "8px 32px",
-              fontSize: "1.25 rem",
-              borderRadius: "14px",
-              fontWeight: "200",
-              backgroundColor: "#FFFFFF",
-              cursor: "pointer",
-              height: "50px",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#000000";
-              e.currentTarget.style.color = "#FFFFFF";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "#FFFFFF";
-              e.currentTarget.style.color = "#000000";
+              display: "flex",
+              gap: "16px",
+              alignItems: "center",
             }}
           >
-            Login
-          </Button>
-          <Button
-            variant="outline"
-            style={{
-              border: "1px solid #000000",
-              color: "#000000",
-              padding: "8px 32px",
-              fontSize: "1.25 rem",
-              borderRadius: "14px",
-              fontWeight: "200",
-              backgroundColor: "#FFFFFF",
-              cursor: "pointer",
-              height: "50px",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#000000";
-              e.currentTarget.style.color = "#FFFFFF";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "#FFFFFF";
-              e.currentTarget.style.color = "#000000";
-            }}
-          >
-            Sign up
-          </Button>
+            <Button
+              variant="outline"
+              style={{
+                border: "1px solid #000000",
+                color: "#000000",
+                padding: "8px 32px",
+                fontSize: "1.25 rem",
+                borderRadius: "14px",
+                fontWeight: "200",
+                backgroundColor: "#FFFFFF",
+                cursor: "pointer",
+                height: "50px",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#000000";
+                e.currentTarget.style.color = "#FFFFFF";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#FFFFFF";
+                e.currentTarget.style.color = "#000000";
+              }}
+            >
+              Login
+            </Button>
+            <Button
+              variant="outline"
+              style={{
+                border: "1px solid #000000",
+                color: "#000000",
+                padding: "8px 32px",
+                fontSize: "1.25 rem",
+                borderRadius: "14px",
+                fontWeight: "200",
+                backgroundColor: "#FFFFFF",
+                cursor: "pointer",
+                height: "50px",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#000000";
+                e.currentTarget.style.color = "#FFFFFF";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#FFFFFF";
+                e.currentTarget.style.color = "#000000";
+              }}
+            >
+              Sign up
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 }
