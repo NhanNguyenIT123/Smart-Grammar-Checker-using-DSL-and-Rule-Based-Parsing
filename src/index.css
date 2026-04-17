@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+.hero-star {
+  display: block;
+  width: 125%;
+  animation: float 3.5s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.hero-star:hover {
+  transform: translateY(-20px) scale(1.25);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.25rem;
+  }
+  
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* FIX SHADCN TABS ACTIVE */
+[data-state="active"] {
+  background-color: #191A23 !important;
+  color: white !important;
+}
