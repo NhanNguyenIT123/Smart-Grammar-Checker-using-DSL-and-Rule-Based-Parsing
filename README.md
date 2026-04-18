@@ -1,155 +1,106 @@
-# Smart Grammar Checker using DSL and Rule-Based Parsing
+# Smart Grammar Checker
+### A Domain-Specific Language (DSL) powered engine for rule-based English grammar analysis and correction.
 
-GrammarDSL is a rule-based English grammar checker with a custom command language.
-The current app includes:
+Smart Grammar Checker is a modern linguistic analysis system that combines a custom Domain-Specific Language (DSL) with rule-based heuristics to provide precise, transparent, and personalized English grammar validation.
 
-- a React + Vite frontend
-- a local Python backend
-- login with demo SQLite-backed user profiles
-- personalized `history` and `revision plan` commands
+## Problem Statement
+Learning and writing English can be challenging due to complex grammatical rules, particularly **Tense Consistency** across multiple clauses and **Subject-Verb Agreement**. Traditional grammar checkers often lack transparency regarding *why* a specific error was flagged.
 
-## Important Folder Note
+This system addresses these challenges by:
+- **DSL Interaction**: Enabling users to interact with the engine using natural commands like `check grammar`, `explain`, and `history`.
+- **Transparent Heuristics**: Every detected error includes a specific Rule ID and detailed linguistic explanation.
+- **Contextual Tense Propagation**: Automatically identifies the "timeline" of a paragraph to suggest consistent tense corrections across all related clauses.
+- **Interactive Correction**: Provides an intuitive review interface that shows the exact origin of every suggestion.
 
-Run the frontend from the **project root**, not from `frontend/` and not from `src/`.
+## 🛠 Technology Stack
+- **Backend**: Python 3.11+, FastAPI (REST API), SQLite (User Profiles & History)
+- **Frontend**: React 18, Vite, Tailwind CSS, Vanilla CSS (Premium UI Aesthetics)
+- **Parsing**: Custom Regex-based Lexer & Parser for DSL interpretation
+- **Data Engine**: Heuristic-based Grammar Engine with specialized Verb & Synonym modules
 
-Correct working directory:
+## Architecture
+The system follows a session-based, stateful architecture, routing data from DSL commands to deep linguistic analysis engines:
 
-```powershell
-cd C:\GITHUB\Smart-Grammar-Checker-using-DSL-and-Rule-Based-Parsing
+```mermaid
+graph TD
+    Client[React Frontend] -->|DSL Command / POST| API[FastAPI Server]
+    API -->|Command Routing| Service[Command Service]
+    
+    subgraph "Logic Layer"
+        Service -->|Input| Interpreter[DSL Interpreter]
+        Interpreter -->|Paragraph| Engine[Grammar Engine]
+        Engine -->|Rules| Rulepack[Rule-based Heuristics]
+        Engine -->|Analysis| Results[Result Builder]
+    end
+
+    subgraph "Knowledge Layer"
+        Rulepack -->|Conjugation| Verbs[Verb Engine]
+        Rulepack -->|Lookup| Lexicon[CEFR/WordNet Lexicon]
+        Rulepack -->|History| DB[(SQLite History)]
+    end
+
+    Results -->|Structured JSON| Client
 ```
 
-The `frontend/` folder in this repo is an old leftover folder and does **not** contain the active `package.json`, so `npm run dev` will fail there.
+## DSL Syntax & Commands
+The system supports a rich DSL command set for interacting with the grammar engine:
 
-## Requirements
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| `check grammar <text>` | Analyzes grammar, spelling, and collocations. | `check grammar i goes to school.` |
+| `explain grammar <text>` | Deep dive into tense structure and paragraph timeline. | `explain grammar she is working.` |
+| `history` | View the history of executed DSL commands. | `history` |
+| `revision plan` | Generates a personalized study plan based on frequent errors. | `revision plan` |
+| `verb <word>` | Look up complete verb conjugation tables. | `verb study` |
+| `synonym <word>` | Find academic and contextual synonyms. | `synonym happy` |
 
-- Node.js 20+ recommended
-- Python 3.11+ recommended
+## Data Model (API)
+### Request Format
+```json
+{
+  "command": "check grammar However, I goes to the library every day."
+}
+```
 
-## Frontend: Run in Development
+### Expected Response Snippet
+```json
+{
+  "status": "success",
+  "data": {
+    "original_text": "However, I goes to the library every day.",
+    "corrected_text": "However, I go to the library every day.",
+    "grammar_issues": [
+      {
+        "category": "Agreement",
+        "message": "The subject 'I' should use 'do' instead of third-person forms.",
+        "evidence": "goes",
+        "suggestion": "go",
+        "rule_id": "RULE-SUBJECT-VERB"
+      }
+    ],
+    "sentence_count": 1
+  }
+}
+```
 
-From the project root:
+## Installation & Running
 
-```powershell
+### Frontend (Project Root)
+```bash
 npm install
 npm run dev
 ```
+The User Interface will be available at: `http://localhost:5173/grammar`
 
-Vite will usually start at:
-
-```text
-http://localhost:5173
-```
-
-The main app route is:
-
-```text
-http://localhost:5173/grammar
-```
-
-## Frontend: Production Build
-
-From the project root:
-
-```powershell
-npm run build
-npm run preview
-```
-
-Note:
-
-- Do **not** paste README bullet markers like `- npm run preview` into Command Prompt.
-- Only run the command itself: `npm run preview`
-
-## Backend: Start the Local Server
-
-Install backend dependencies once:
-
-```powershell
+### Backend (Backend Directory)
+```bash
+# Install dependencies
 python -m pip install -e backend
-```
 
-Then start the backend from the project root:
-
-```powershell
+# Start the server
 python backend/run.py serve --host 127.0.0.1 --port 8000
 ```
+The API server will be listening at: `http://127.0.0.1:8000`
 
-When it starts successfully, the backend listens at:
 
-```text
-http://127.0.0.1:8000
-```
 
-## Full Local Run
-
-Open two terminals.
-
-Terminal 1:
-
-```powershell
-cd C:\GITHUB\Smart-Grammar-Checker-using-DSL-and-Rule-Based-Parsing
-python backend/run.py serve --host 127.0.0.1 --port 8000
-```
-
-Terminal 2:
-
-```powershell
-cd C:\GITHUB\Smart-Grammar-Checker-using-DSL-and-Rule-Based-Parsing
-npm run dev
-```
-
-Then open:
-
-```text
-http://localhost:5173/grammar
-```
-
-## Demo Login Accounts
-
-Use any of these accounts on the login page:
-
-- `alice / alice123`
-- `brian / brian123`
-- `clara / clara123`
-
-## Main DSL Commands
-
-- `check grammar <paragraph>`
-- `explain grammar <paragraph>`
-- `history`
-- `revision plan`
-- `reset history`
-- `spell <word>`
-- `verb <word>`
-- `synonym <word>`
-- `help`
-
-## Quick Troubleshooting
-
-### `npm run dev` says `package.json` not found
-
-You are almost certainly inside the wrong folder.
-Go back to the project root first:
-
-```powershell
-cd C:\GITHUB\Smart-Grammar-Checker-using-DSL-and-Rule-Based-Parsing
-```
-
-### `'-' is not recognized as an internal or external command`
-
-That means you pasted a README bullet line into the terminal.
-Example of a wrong paste:
-
-```text
-- npm run preview
-```
-
-Correct command:
-
-```powershell
-npm run preview
-```
-
-### Frontend opens but commands fail
-
-Make sure the backend is running on port `8000` before using the `/grammar` page.
