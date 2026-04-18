@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import HomePage from "@/pages/HomePage";
-import AuthPage from "@/pages/AuthPage";
-import GrammarChecker from "./pages/GrammarChecker";
+import AuthPortal from "@/pages/AuthPortal";
+import GrammarWorkspace from "@/pages/GrammarWorkspace";
 
 function App() {
   return (
@@ -11,11 +11,11 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
 
-          <Route path="/login" element={<AuthPage />} />
-          <Route path="/register" element={<AuthPage />} />
-          <Route path="/forgot-password" element={<AuthPage />} />
+          <Route path="/login" element={<AuthPortal />} />
+          <Route path="/register" element={<AuthPortal />} />
+          <Route path="/forgot-password" element={<AuthPortal />} />
 
-          <Route path="/grammar" element={<GrammarChecker />} />
+          <Route path="/grammar" element={<GrammarWorkspace />} />
         </Routes>
       </BrowserRouter>
     </>
