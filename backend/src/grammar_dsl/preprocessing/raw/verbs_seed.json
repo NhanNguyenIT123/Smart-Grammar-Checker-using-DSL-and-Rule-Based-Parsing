@@ -1,0 +1,601 @@
+{
+  "irregular_verbs": {
+    "be": [
+      "be",
+      "was",
+      "been"
+    ],
+    "become": [
+      "become",
+      "became",
+      "become"
+    ],
+    "begin": [
+      "begin",
+      "began",
+      "begun"
+    ],
+    "break": [
+      "break",
+      "broke",
+      "broken"
+    ],
+    "bring": [
+      "bring",
+      "brought",
+      "brought"
+    ],
+    "build": [
+      "build",
+      "built",
+      "built"
+    ],
+    "buy": [
+      "buy",
+      "bought",
+      "bought"
+    ],
+    "catch": [
+      "catch",
+      "caught",
+      "caught"
+    ],
+    "choose": [
+      "choose",
+      "chose",
+      "chosen"
+    ],
+    "come": [
+      "come",
+      "came",
+      "come"
+    ],
+    "cost": [
+      "cost",
+      "cost",
+      "cost"
+    ],
+    "cut": [
+      "cut",
+      "cut",
+      "cut"
+    ],
+    "do": [
+      "do",
+      "did",
+      "done"
+    ],
+    "draw": [
+      "draw",
+      "drew",
+      "drawn"
+    ],
+    "drink": [
+      "drink",
+      "drank",
+      "drunk"
+    ],
+    "drive": [
+      "drive",
+      "drove",
+      "driven"
+    ],
+    "eat": [
+      "eat",
+      "ate",
+      "eaten"
+    ],
+    "fall": [
+      "fall",
+      "fell",
+      "fallen"
+    ],
+    "feel": [
+      "feel",
+      "felt",
+      "felt"
+    ],
+    "fight": [
+      "fight",
+      "fought",
+      "fought"
+    ],
+    "find": [
+      "find",
+      "found",
+      "found"
+    ],
+    "fly": [
+      "fly",
+      "flew",
+      "flown"
+    ],
+    "forget": [
+      "forget",
+      "forgot",
+      "forgotten"
+    ],
+    "forgive": [
+      "forgive",
+      "forgave",
+      "forgiven"
+    ],
+    "get": [
+      "get",
+      "got",
+      "gotten"
+    ],
+    "give": [
+      "give",
+      "gave",
+      "given"
+    ],
+    "go": [
+      "go",
+      "went",
+      "gone"
+    ],
+    "grow": [
+      "grow",
+      "grew",
+      "grown"
+    ],
+    "have": [
+      "have",
+      "had",
+      "had"
+    ],
+    "hear": [
+      "hear",
+      "heard",
+      "heard"
+    ],
+    "hide": [
+      "hide",
+      "hid",
+      "hidden"
+    ],
+    "hold": [
+      "hold",
+      "held",
+      "held"
+    ],
+    "keep": [
+      "keep",
+      "kept",
+      "kept"
+    ],
+    "know": [
+      "know",
+      "knew",
+      "known"
+    ],
+    "lead": [
+      "lead",
+      "led",
+      "led"
+    ],
+    "let": [
+      "let",
+      "let",
+      "let"
+    ],
+    "leave": [
+      "leave",
+      "left",
+      "left"
+    ],
+    "lose": [
+      "lose",
+      "lost",
+      "lost"
+    ],
+    "make": [
+      "make",
+      "made",
+      "made"
+    ],
+    "mean": [
+      "mean",
+      "meant",
+      "meant"
+    ],
+    "meet": [
+      "meet",
+      "met",
+      "met"
+    ],
+    "pay": [
+      "pay",
+      "paid",
+      "paid"
+    ],
+    "put": [
+      "put",
+      "put",
+      "put"
+    ],
+    "read": [
+      "read",
+      "read",
+      "read"
+    ],
+    "ride": [
+      "ride",
+      "rode",
+      "ridden"
+    ],
+    "ring": [
+      "ring",
+      "rang",
+      "rung"
+    ],
+    "run": [
+      "run",
+      "ran",
+      "run"
+    ],
+    "say": [
+      "say",
+      "said",
+      "said"
+    ],
+    "see": [
+      "see",
+      "saw",
+      "seen"
+    ],
+    "sell": [
+      "sell",
+      "sold",
+      "sold"
+    ],
+    "send": [
+      "send",
+      "sent",
+      "sent"
+    ],
+    "set": [
+      "set",
+      "set",
+      "set"
+    ],
+    "shake": [
+      "shake",
+      "shook",
+      "shaken"
+    ],
+    "shine": [
+      "shine",
+      "shone",
+      "shone"
+    ],
+    "shoot": [
+      "shoot",
+      "shot",
+      "shot"
+    ],
+    "show": [
+      "show",
+      "showed",
+      "shown"
+    ],
+    "shut": [
+      "shut",
+      "shut",
+      "shut"
+    ],
+    "sing": [
+      "sing",
+      "sang",
+      "sung"
+    ],
+    "sit": [
+      "sit",
+      "sat",
+      "sat"
+    ],
+    "sleep": [
+      "sleep",
+      "slept",
+      "slept"
+    ],
+    "speak": [
+      "speak",
+      "spoke",
+      "spoken"
+    ],
+    "spend": [
+      "spend",
+      "spent",
+      "spent"
+    ],
+    "stand": [
+      "stand",
+      "stood",
+      "stood"
+    ],
+    "steal": [
+      "steal",
+      "stole",
+      "stolen"
+    ],
+    "swim": [
+      "swim",
+      "swam",
+      "swum"
+    ],
+    "take": [
+      "take",
+      "took",
+      "taken"
+    ],
+    "teach": [
+      "teach",
+      "taught",
+      "taught"
+    ],
+    "tell": [
+      "tell",
+      "told",
+      "told"
+    ],
+    "think": [
+      "think",
+      "thought",
+      "thought"
+    ],
+    "throw": [
+      "throw",
+      "threw",
+      "thrown"
+    ],
+    "understand": [
+      "understand",
+      "understood",
+      "understood"
+    ],
+    "wake": [
+      "wake",
+      "woke",
+      "woken"
+    ],
+    "wear": [
+      "wear",
+      "wore",
+      "worn"
+    ],
+    "win": [
+      "win",
+      "won",
+      "won"
+    ],
+    "write": [
+      "write",
+      "wrote",
+      "written"
+    ]
+  },
+  "regular_verbs": [
+    "accept",
+    "achieve",
+    "act",
+    "add",
+    "address",
+    "admire",
+    "admit",
+    "advise",
+    "affect",
+    "afford",
+    "agree",
+    "aim",
+    "allow",
+    "answer",
+    "appear",
+    "apply",
+    "argue",
+    "arrive",
+    "ask",
+    "attach",
+    "attack",
+    "avoid",
+    "bake",
+    "balance",
+    "behave",
+    "believe",
+    "belong",
+    "borrow",
+    "calculate",
+    "call",
+    "cancel",
+    "care",
+    "carry",
+    "celebrate",
+    "change",
+    "charge",
+    "chase",
+    "check",
+    "clean",
+    "climb",
+    "close",
+    "collect",
+    "compare",
+    "compete",
+    "complain",
+    "complete",
+    "confirm",
+    "connect",
+    "consider",
+    "continue",
+    "control",
+    "cook",
+    "copy",
+    "count",
+    "cover",
+    "create",
+    "cross",
+    "dance",
+    "decide",
+    "decorate",
+    "defend",
+    "deliver",
+    "depend",
+    "describe",
+    "design",
+    "destroy",
+    "develop",
+    "discriminate",
+    "discover",
+    "discuss",
+    "divide",
+    "double",
+    "download",
+    "dream",
+    "dress",
+    "drop",
+    "edit",
+    "educate",
+    "encourage",
+    "enjoy",
+    "enter",
+    "escape",
+    "examine",
+    "exchange",
+    "exercise",
+    "exist",
+    "expand",
+    "explain",
+    "explore",
+    "face",
+    "fail",
+    "fill",
+    "finish",
+    "follow",
+    "force",
+    "form",
+    "gain",
+    "generate",
+    "guess",
+    "guide",
+    "happen",
+    "hate",
+    "help",
+    "hope",
+    "identify",
+    "ignore",
+    "imagine",
+    "improve",
+    "include",
+    "increase",
+    "influence",
+    "inform",
+    "introduce",
+    "invite",
+    "join",
+    "jump",
+    "kick",
+    "kiss",
+    "knock",
+    "label",
+    "land",
+    "last",
+    "laugh",
+    "learn",
+    "like",
+    "list",
+    "listen",
+    "live",
+    "love",
+    "manage",
+    "mark",
+    "matter",
+    "measure",
+    "mention",
+    "move",
+    "name",
+    "need",
+    "notice",
+    "obey",
+    "offer",
+    "open",
+    "order",
+    "organize",
+    "pack",
+    "paint",
+    "pass",
+    "perform",
+    "phone",
+    "place",
+    "plan",
+    "play",
+    "practice",
+    "prefer",
+    "prepare",
+    "present",
+    "print",
+    "produce",
+    "promise",
+    "protect",
+    "provide",
+    "publish",
+    "pull",
+    "push",
+    "raise",
+    "reach",
+    "realize",
+    "receive",
+    "recognize",
+    "record",
+    "reduce",
+    "refer",
+    "relax",
+    "remember",
+    "repeat",
+    "replace",
+    "reply",
+    "report",
+    "request",
+    "rescue",
+    "return",
+    "review",
+    "roll",
+    "save",
+    "search",
+    "select",
+    "share",
+    "shout",
+    "smile",
+    "solve",
+    "start",
+    "stay",
+    "stop",
+    "study",
+    "support",
+    "surprise",
+    "talk",
+    "test",
+    "thank",
+    "touch",
+    "train",
+    "travel",
+    "treat",
+    "try",
+    "turn",
+    "use",
+    "visit",
+    "wait",
+    "walk",
+    "want",
+    "watch",
+    "welcome",
+    "wish",
+    "wonder",
+    "work",
+    "worry"
+  ],
+  "doubling_exceptions": [
+    "admit",
+    "prefer",
+    "refer"
+  ]
+}
