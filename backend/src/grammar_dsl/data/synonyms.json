@@ -1,0 +1,2293 @@
+{
+  "absorb": [
+    "learn",
+    "study",
+    "explore",
+    "master"
+  ],
+  "account": [
+    "document",
+    "report",
+    "summary"
+  ],
+  "accurate": [
+    "correct",
+    "exact",
+    "precise"
+  ],
+  "acquire": [
+    "buy",
+    "purchase",
+    "obtain",
+    "get"
+  ],
+  "active": [
+    "present",
+    "current",
+    "ongoing",
+    "immediate"
+  ],
+  "affluent": [
+    "rich",
+    "wealthy",
+    "prosperous",
+    "well-off"
+  ],
+  "aid": [
+    "help",
+    "assist",
+    "guide",
+    "support"
+  ],
+  "aim": [
+    "goal",
+    "objective",
+    "target"
+  ],
+  "ambiguous": [
+    "confusing",
+    "unclear",
+    "messy",
+    "mixed"
+  ],
+  "analyze": [
+    "evaluate",
+    "examine",
+    "inspect"
+  ],
+  "angry": [
+    "mad",
+    "furious",
+    "annoyed",
+    "irritated"
+  ],
+  "annoyed": [
+    "angry",
+    "mad",
+    "furious",
+    "irritated"
+  ],
+  "answer": [
+    "remedy",
+    "resolution",
+    "solution"
+  ],
+  "apply": [
+    "use",
+    "employ",
+    "utilize",
+    "operate"
+  ],
+  "appraisal": [
+    "assessment",
+    "evaluation",
+    "review"
+  ],
+  "approval": [
+    "confirmation",
+    "validation",
+    "verification"
+  ],
+  "assessment": [
+    "appraisal",
+    "evaluation",
+    "review"
+  ],
+  "assignment": [
+    "project",
+    "build",
+    "system",
+    "implementation"
+  ],
+  "assist": [
+    "back",
+    "help",
+    "support"
+  ],
+  "assume": [
+    "think",
+    "consider",
+    "believe",
+    "suppose"
+  ],
+  "attend": [
+    "listen",
+    "hear",
+    "notice",
+    "focus"
+  ],
+  "attentive": [
+    "careful",
+    "cautious",
+    "meticulous"
+  ],
+  "attractive": [
+    "beautiful",
+    "lovely",
+    "pretty",
+    "stunning"
+  ],
+  "author": [
+    "write",
+    "compose",
+    "draft",
+    "record"
+  ],
+  "awful": [
+    "bad",
+    "poor",
+    "weak",
+    "terrible"
+  ],
+  "awkward": [
+    "ugly",
+    "unattractive",
+    "plain",
+    "rough"
+  ],
+  "back": [
+    "assist",
+    "help",
+    "support"
+  ],
+  "background": [
+    "context",
+    "setting",
+    "situation"
+  ],
+  "bad": [
+    "poor",
+    "weak",
+    "awful",
+    "terrible"
+  ],
+  "base": [
+    "framework",
+    "platform",
+    "system"
+  ],
+  "beautiful": [
+    "attractive",
+    "lovely",
+    "pretty",
+    "stunning"
+  ],
+  "begin": [
+    "start",
+    "launch",
+    "open",
+    "initiate"
+  ],
+  "beginner": [
+    "learner",
+    "novice",
+    "starter"
+  ],
+  "believe": [
+    "think",
+    "consider",
+    "suppose",
+    "assume"
+  ],
+  "big": [
+    "large",
+    "huge",
+    "vast",
+    "enormous"
+  ],
+  "block": [
+    "paragraph",
+    "passage",
+    "section"
+  ],
+  "blunder": [
+    "error",
+    "fault",
+    "mistake"
+  ],
+  "briefing": [
+    "presentation",
+    "speech",
+    "talk"
+  ],
+  "bright": [
+    "smart",
+    "intelligent",
+    "clever",
+    "sharp"
+  ],
+  "broke": [
+    "poor",
+    "needy",
+    "struggling",
+    "underfunded"
+  ],
+  "bug": [
+    "error",
+    "mistake",
+    "fault",
+    "problem"
+  ],
+  "build": [
+    "project",
+    "assignment",
+    "system",
+    "implementation"
+  ],
+  "buy": [
+    "purchase",
+    "acquire",
+    "obtain",
+    "get"
+  ],
+  "calm": [
+    "quiet",
+    "peaceful",
+    "relaxed",
+    "steady"
+  ],
+  "candidate": [
+    "student",
+    "learner",
+    "pupil",
+    "trainee"
+  ],
+  "capability": [
+    "feature",
+    "function",
+    "option"
+  ],
+  "care": [
+    "professionalism",
+    "discipline",
+    "quality",
+    "polish"
+  ],
+  "career": [
+    "job",
+    "work",
+    "role",
+    "position"
+  ],
+  "careful": [
+    "attentive",
+    "cautious",
+    "meticulous"
+  ],
+  "cautious": [
+    "attentive",
+    "careful",
+    "meticulous"
+  ],
+  "challenge": [
+    "problem",
+    "issue",
+    "difficulty",
+    "obstacle"
+  ],
+  "challenging": [
+    "hard",
+    "difficult",
+    "tough",
+    "demanding"
+  ],
+  "chat": [
+    "speak",
+    "talk",
+    "communicate",
+    "discuss"
+  ],
+  "check": [
+    "inspect",
+    "review",
+    "verify",
+    "examine"
+  ],
+  "cheerful": [
+    "happy",
+    "glad",
+    "pleased",
+    "delighted"
+  ],
+  "clean": [
+    "tidy",
+    "organized",
+    "neat",
+    "orderly"
+  ],
+  "clear": [
+    "plain",
+    "readable",
+    "direct",
+    "understandable"
+  ],
+  "clever": [
+    "smart",
+    "intelligent",
+    "bright",
+    "sharp"
+  ],
+  "coach": [
+    "teach",
+    "instruct",
+    "train",
+    "guide"
+  ],
+  "collaborate": [
+    "cooperate",
+    "coordinate",
+    "partner"
+  ],
+  "collection": [
+    "corpus",
+    "dataset",
+    "records"
+  ],
+  "comment": [
+    "evaluation",
+    "feedback",
+    "response"
+  ],
+  "communicate": [
+    "convey",
+    "express",
+    "share"
+  ],
+  "compact": [
+    "small",
+    "tiny",
+    "little",
+    "mini"
+  ],
+  "complete": [
+    "finish",
+    "end",
+    "wrap",
+    "finalize"
+  ],
+  "complex": [
+    "complicated",
+    "intricate",
+    "sophisticated"
+  ],
+  "complicated": [
+    "complex",
+    "intricate",
+    "sophisticated"
+  ],
+  "component": [
+    "module",
+    "section",
+    "unit"
+  ],
+  "compose": [
+    "write",
+    "draft",
+    "record",
+    "author"
+  ],
+  "concept": [
+    "idea",
+    "thought",
+    "notion",
+    "plan"
+  ],
+  "conference": [
+    "convention",
+    "forum",
+    "meeting"
+  ],
+  "confirmation": [
+    "approval",
+    "validation",
+    "verification"
+  ],
+  "confusing": [
+    "unclear",
+    "messy",
+    "ambiguous",
+    "mixed"
+  ],
+  "consider": [
+    "think",
+    "believe",
+    "suppose",
+    "assume"
+  ],
+  "constraint": [
+    "rule",
+    "policy",
+    "guideline",
+    "principle"
+  ],
+  "construct": [
+    "build",
+    "create",
+    "develop",
+    "produce"
+  ],
+  "context": [
+    "background",
+    "setting",
+    "situation"
+  ],
+  "contextual": [
+    "interpretive",
+    "meaningful",
+    "semantic"
+  ],
+  "convention": [
+    "conference",
+    "forum",
+    "meeting"
+  ],
+  "convey": [
+    "communicate",
+    "express",
+    "share"
+  ],
+  "cooperate": [
+    "collaborate",
+    "coordinate",
+    "partner"
+  ],
+  "coordinate": [
+    "collaborate",
+    "cooperate",
+    "partner"
+  ],
+  "coordinator": [
+    "facilitator",
+    "manager",
+    "organizer"
+  ],
+  "corpus": [
+    "collection",
+    "dataset",
+    "records"
+  ],
+  "correct": [
+    "accurate",
+    "exact",
+    "precise"
+  ],
+  "correction": [
+    "editing",
+    "revision",
+    "update"
+  ],
+  "create": [
+    "build",
+    "develop",
+    "produce",
+    "construct"
+  ],
+  "critical": [
+    "important",
+    "essential",
+    "significant",
+    "key"
+  ],
+  "current": [
+    "present",
+    "ongoing",
+    "active",
+    "immediate"
+  ],
+  "cutoff": [
+    "deadline",
+    "limit",
+    "schedule"
+  ],
+  "dataset": [
+    "collection",
+    "corpus",
+    "records"
+  ],
+  "deadline": [
+    "cutoff",
+    "limit",
+    "schedule"
+  ],
+  "delighted": [
+    "happy",
+    "glad",
+    "pleased",
+    "cheerful"
+  ],
+  "demand": [
+    "need",
+    "require",
+    "want",
+    "lack"
+  ],
+  "demanding": [
+    "hard",
+    "difficult",
+    "challenging",
+    "tough"
+  ],
+  "demo": [
+    "example",
+    "sample",
+    "illustration",
+    "instance"
+  ],
+  "demonstrate": [
+    "show",
+    "display",
+    "present",
+    "reveal"
+  ],
+  "dependable": [
+    "reliable",
+    "steady",
+    "trustworthy"
+  ],
+  "description": [
+    "detail",
+    "requirement",
+    "specification"
+  ],
+  "detail": [
+    "description",
+    "requirement",
+    "specification"
+  ],
+  "detect": [
+    "find",
+    "discover",
+    "locate",
+    "spot"
+  ],
+  "develop": [
+    "build",
+    "create",
+    "produce",
+    "construct"
+  ],
+  "difficult": [
+    "hard",
+    "challenging",
+    "tough",
+    "demanding"
+  ],
+  "difficulty": [
+    "problem",
+    "issue",
+    "challenge",
+    "obstacle"
+  ],
+  "digest": [
+    "outline",
+    "overview",
+    "summary"
+  ],
+  "direct": [
+    "clear",
+    "plain",
+    "readable",
+    "understandable"
+  ],
+  "discipline": [
+    "professionalism",
+    "care",
+    "quality",
+    "polish"
+  ],
+  "disciplined": [
+    "professional",
+    "polished",
+    "structured",
+    "formal"
+  ],
+  "discover": [
+    "find",
+    "locate",
+    "spot",
+    "detect"
+  ],
+  "discuss": [
+    "speak",
+    "talk",
+    "chat",
+    "communicate"
+  ],
+  "display": [
+    "interface",
+    "panel",
+    "screen"
+  ],
+  "document": [
+    "account",
+    "report",
+    "summary"
+  ],
+  "down": [
+    "sad",
+    "unhappy",
+    "upset",
+    "miserable"
+  ],
+  "draft": [
+    "manuscript",
+    "outline",
+    "version"
+  ],
+  "earlier": [
+    "past",
+    "previous",
+    "former",
+    "prior"
+  ],
+  "easy": [
+    "simple",
+    "straightforward",
+    "clear",
+    "manageable"
+  ],
+  "editing": [
+    "correction",
+    "revision",
+    "update"
+  ],
+  "educator": [
+    "teacher",
+    "instructor",
+    "mentor",
+    "trainer"
+  ],
+  "effect": [
+    "result",
+    "output",
+    "outcome",
+    "response"
+  ],
+  "employ": [
+    "use",
+    "apply",
+    "utilize",
+    "operate"
+  ],
+  "end": [
+    "finish",
+    "complete",
+    "wrap",
+    "finalize"
+  ],
+  "enhance": [
+    "improve",
+    "refine",
+    "upgrade"
+  ],
+  "enormous": [
+    "big",
+    "large",
+    "huge",
+    "vast"
+  ],
+  "error": [
+    "blunder",
+    "fault",
+    "mistake"
+  ],
+  "essential": [
+    "important",
+    "critical",
+    "significant",
+    "key"
+  ],
+  "evaluate": [
+    "analyze",
+    "examine",
+    "inspect"
+  ],
+  "evaluation": [
+    "appraisal",
+    "assessment",
+    "review"
+  ],
+  "evidence": [
+    "indication",
+    "proof",
+    "support"
+  ],
+  "exact": [
+    "accurate",
+    "correct",
+    "precise"
+  ],
+  "examine": [
+    "analyze",
+    "evaluate",
+    "inspect"
+  ],
+  "example": [
+    "sample",
+    "illustration",
+    "demo",
+    "instance"
+  ],
+  "excellent": [
+    "good",
+    "solid",
+    "reliable",
+    "strong"
+  ],
+  "explore": [
+    "learn",
+    "study",
+    "master",
+    "absorb"
+  ],
+  "express": [
+    "communicate",
+    "convey",
+    "share"
+  ],
+  "facilitator": [
+    "coordinator",
+    "manager",
+    "organizer"
+  ],
+  "fast": [
+    "quick",
+    "rapid",
+    "swift",
+    "speedy"
+  ],
+  "fault": [
+    "blunder",
+    "error",
+    "mistake"
+  ],
+  "feature": [
+    "capability",
+    "function",
+    "option"
+  ],
+  "feedback": [
+    "comment",
+    "evaluation",
+    "response"
+  ],
+  "finalize": [
+    "finish",
+    "complete",
+    "end",
+    "wrap"
+  ],
+  "find": [
+    "discover",
+    "locate",
+    "spot",
+    "detect"
+  ],
+  "finish": [
+    "complete",
+    "end",
+    "wrap",
+    "finalize"
+  ],
+  "focus": [
+    "listen",
+    "hear",
+    "attend",
+    "notice"
+  ],
+  "form": [
+    "grammar",
+    "syntax",
+    "structure",
+    "usage"
+  ],
+  "formal": [
+    "professional",
+    "polished",
+    "structured",
+    "disciplined"
+  ],
+  "former": [
+    "past",
+    "previous",
+    "earlier",
+    "prior"
+  ],
+  "forthcoming": [
+    "future",
+    "upcoming",
+    "next",
+    "later"
+  ],
+  "forum": [
+    "conference",
+    "convention",
+    "meeting"
+  ],
+  "framework": [
+    "platform",
+    "structure",
+    "system"
+  ],
+  "function": [
+    "capability",
+    "feature",
+    "option"
+  ],
+  "furious": [
+    "angry",
+    "mad",
+    "annoyed",
+    "irritated"
+  ],
+  "future": [
+    "upcoming",
+    "next",
+    "later",
+    "forthcoming"
+  ],
+  "get": [
+    "buy",
+    "purchase",
+    "acquire",
+    "obtain"
+  ],
+  "glad": [
+    "happy",
+    "pleased",
+    "delighted",
+    "cheerful"
+  ],
+  "goal": [
+    "aim",
+    "objective",
+    "target"
+  ],
+  "good": [
+    "excellent",
+    "solid",
+    "reliable",
+    "strong"
+  ],
+  "gradual": [
+    "slow",
+    "steady",
+    "sluggish",
+    "unhurried"
+  ],
+  "grammar": [
+    "structure",
+    "syntax",
+    "usage"
+  ],
+  "guide": [
+    "teach",
+    "instruct",
+    "train",
+    "coach"
+  ],
+  "guideline": [
+    "rule",
+    "policy",
+    "constraint",
+    "principle"
+  ],
+  "happy": [
+    "glad",
+    "pleased",
+    "delighted",
+    "cheerful"
+  ],
+  "hard": [
+    "difficult",
+    "challenging",
+    "tough",
+    "demanding"
+  ],
+  "hear": [
+    "listen",
+    "attend",
+    "notice",
+    "focus"
+  ],
+  "help": [
+    "assist",
+    "back",
+    "support"
+  ],
+  "helpful": [
+    "practical",
+    "useful",
+    "valuable"
+  ],
+  "huge": [
+    "big",
+    "large",
+    "vast",
+    "enormous"
+  ],
+  "idea": [
+    "concept",
+    "thought",
+    "notion",
+    "plan"
+  ],
+  "illustration": [
+    "example",
+    "sample",
+    "demo",
+    "instance"
+  ],
+  "immediate": [
+    "present",
+    "current",
+    "ongoing",
+    "active"
+  ],
+  "implementation": [
+    "project",
+    "assignment",
+    "build",
+    "system"
+  ],
+  "important": [
+    "essential",
+    "critical",
+    "significant",
+    "key"
+  ],
+  "improve": [
+    "enhance",
+    "refine",
+    "upgrade"
+  ],
+  "indication": [
+    "evidence",
+    "proof",
+    "support"
+  ],
+  "initiate": [
+    "start",
+    "begin",
+    "launch",
+    "open"
+  ],
+  "inquiry": [
+    "investigation",
+    "research",
+    "study"
+  ],
+  "inspect": [
+    "analyze",
+    "evaluate",
+    "examine"
+  ],
+  "instance": [
+    "example",
+    "sample",
+    "illustration",
+    "demo"
+  ],
+  "instruct": [
+    "teach",
+    "train",
+    "coach",
+    "guide"
+  ],
+  "instructor": [
+    "teacher",
+    "educator",
+    "mentor",
+    "trainer"
+  ],
+  "intelligent": [
+    "smart",
+    "clever",
+    "bright",
+    "sharp"
+  ],
+  "interface": [
+    "display",
+    "panel",
+    "screen"
+  ],
+  "interpretive": [
+    "contextual",
+    "meaningful",
+    "semantic"
+  ],
+  "intricate": [
+    "complex",
+    "complicated",
+    "sophisticated"
+  ],
+  "investigation": [
+    "inquiry",
+    "research",
+    "study"
+  ],
+  "irritated": [
+    "angry",
+    "mad",
+    "furious",
+    "annoyed"
+  ],
+  "issue": [
+    "problem",
+    "difficulty",
+    "challenge",
+    "obstacle"
+  ],
+  "job": [
+    "work",
+    "role",
+    "position",
+    "career"
+  ],
+  "key": [
+    "important",
+    "essential",
+    "critical",
+    "significant"
+  ],
+  "lack": [
+    "need",
+    "require",
+    "want",
+    "demand"
+  ],
+  "large": [
+    "big",
+    "huge",
+    "vast",
+    "enormous"
+  ],
+  "later": [
+    "future",
+    "upcoming",
+    "next",
+    "forthcoming"
+  ],
+  "launch": [
+    "start",
+    "begin",
+    "open",
+    "initiate"
+  ],
+  "learn": [
+    "study",
+    "explore",
+    "master",
+    "absorb"
+  ],
+  "learner": [
+    "beginner",
+    "novice",
+    "starter"
+  ],
+  "lettering": [
+    "spelling",
+    "orthography",
+    "writing",
+    "wording"
+  ],
+  "limit": [
+    "cutoff",
+    "deadline",
+    "schedule"
+  ],
+  "listen": [
+    "hear",
+    "attend",
+    "notice",
+    "focus"
+  ],
+  "little": [
+    "small",
+    "compact",
+    "tiny",
+    "mini"
+  ],
+  "locate": [
+    "find",
+    "discover",
+    "spot",
+    "detect"
+  ],
+  "log": [
+    "record",
+    "trace",
+    "trail"
+  ],
+  "logical": [
+    "semantic",
+    "meaningful",
+    "contextual",
+    "interpretive"
+  ],
+  "look": [
+    "watch",
+    "observe",
+    "view",
+    "notice"
+  ],
+  "lovely": [
+    "beautiful",
+    "attractive",
+    "pretty",
+    "stunning"
+  ],
+  "mad": [
+    "angry",
+    "furious",
+    "annoyed",
+    "irritated"
+  ],
+  "manageable": [
+    "easy",
+    "simple",
+    "straightforward",
+    "clear"
+  ],
+  "manager": [
+    "coordinator",
+    "facilitator",
+    "organizer"
+  ],
+  "manuscript": [
+    "draft",
+    "outline",
+    "version"
+  ],
+  "master": [
+    "learn",
+    "study",
+    "explore",
+    "absorb"
+  ],
+  "meaningful": [
+    "contextual",
+    "interpretive",
+    "semantic"
+  ],
+  "meeting": [
+    "conference",
+    "convention",
+    "forum"
+  ],
+  "mention": [
+    "say",
+    "tell",
+    "state",
+    "express"
+  ],
+  "mentor": [
+    "teacher",
+    "instructor",
+    "educator",
+    "trainer"
+  ],
+  "messy": [
+    "confusing",
+    "unclear",
+    "ambiguous",
+    "mixed"
+  ],
+  "meticulous": [
+    "attentive",
+    "careful",
+    "cautious"
+  ],
+  "mini": [
+    "small",
+    "compact",
+    "tiny",
+    "little"
+  ],
+  "miserable": [
+    "sad",
+    "unhappy",
+    "upset",
+    "down"
+  ],
+  "mistake": [
+    "blunder",
+    "error",
+    "fault"
+  ],
+  "mixed": [
+    "confusing",
+    "unclear",
+    "messy",
+    "ambiguous"
+  ],
+  "module": [
+    "component",
+    "section",
+    "unit"
+  ],
+  "neat": [
+    "clean",
+    "tidy",
+    "organized",
+    "orderly"
+  ],
+  "need": [
+    "require",
+    "want",
+    "lack",
+    "demand"
+  ],
+  "needy": [
+    "poor",
+    "broke",
+    "struggling",
+    "underfunded"
+  ],
+  "next": [
+    "future",
+    "upcoming",
+    "later",
+    "forthcoming"
+  ],
+  "notice": [
+    "listen",
+    "hear",
+    "attend",
+    "focus"
+  ],
+  "notion": [
+    "idea",
+    "concept",
+    "thought",
+    "plan"
+  ],
+  "novice": [
+    "beginner",
+    "learner",
+    "starter"
+  ],
+  "objective": [
+    "aim",
+    "goal",
+    "target"
+  ],
+  "observe": [
+    "look",
+    "watch",
+    "view",
+    "notice"
+  ],
+  "obstacle": [
+    "problem",
+    "issue",
+    "difficulty",
+    "challenge"
+  ],
+  "obtain": [
+    "buy",
+    "purchase",
+    "acquire",
+    "get"
+  ],
+  "ongoing": [
+    "present",
+    "current",
+    "active",
+    "immediate"
+  ],
+  "open": [
+    "start",
+    "begin",
+    "launch",
+    "initiate"
+  ],
+  "operate": [
+    "use",
+    "apply",
+    "employ",
+    "utilize"
+  ],
+  "option": [
+    "capability",
+    "feature",
+    "function"
+  ],
+  "order": [
+    "schedule",
+    "sequence",
+    "timeline"
+  ],
+  "orderly": [
+    "clean",
+    "tidy",
+    "organized",
+    "neat"
+  ],
+  "organized": [
+    "clean",
+    "tidy",
+    "neat",
+    "orderly"
+  ],
+  "organizer": [
+    "coordinator",
+    "facilitator",
+    "manager"
+  ],
+  "orthography": [
+    "spelling",
+    "writing",
+    "lettering",
+    "wording"
+  ],
+  "outcome": [
+    "result",
+    "output",
+    "response",
+    "effect"
+  ],
+  "outline": [
+    "digest",
+    "overview",
+    "summary"
+  ],
+  "output": [
+    "result",
+    "outcome",
+    "response",
+    "effect"
+  ],
+  "overview": [
+    "digest",
+    "outline",
+    "summary"
+  ],
+  "page": [
+    "portal",
+    "site",
+    "website"
+  ],
+  "panel": [
+    "display",
+    "interface",
+    "screen"
+  ],
+  "paragraph": [
+    "block",
+    "passage",
+    "section"
+  ],
+  "partner": [
+    "collaborate",
+    "cooperate",
+    "coordinate"
+  ],
+  "passage": [
+    "block",
+    "paragraph",
+    "section"
+  ],
+  "past": [
+    "previous",
+    "earlier",
+    "former",
+    "prior"
+  ],
+  "peaceful": [
+    "calm",
+    "quiet",
+    "relaxed",
+    "steady"
+  ],
+  "pipeline": [
+    "process",
+    "sequence",
+    "workflow"
+  ],
+  "plain": [
+    "clear",
+    "readable",
+    "direct",
+    "understandable"
+  ],
+  "plan": [
+    "idea",
+    "concept",
+    "thought",
+    "notion"
+  ],
+  "platform": [
+    "framework",
+    "structure",
+    "system"
+  ],
+  "pleased": [
+    "happy",
+    "glad",
+    "delighted",
+    "cheerful"
+  ],
+  "policy": [
+    "rule",
+    "constraint",
+    "guideline",
+    "principle"
+  ],
+  "polish": [
+    "professionalism",
+    "discipline",
+    "care",
+    "quality"
+  ],
+  "polished": [
+    "professional",
+    "structured",
+    "disciplined",
+    "formal"
+  ],
+  "poor": [
+    "needy",
+    "broke",
+    "struggling",
+    "underfunded"
+  ],
+  "portal": [
+    "page",
+    "site",
+    "website"
+  ],
+  "position": [
+    "job",
+    "work",
+    "role",
+    "career"
+  ],
+  "practical": [
+    "helpful",
+    "useful",
+    "valuable"
+  ],
+  "precise": [
+    "accurate",
+    "correct",
+    "exact"
+  ],
+  "present": [
+    "current",
+    "ongoing",
+    "active",
+    "immediate"
+  ],
+  "presentation": [
+    "briefing",
+    "speech",
+    "talk"
+  ],
+  "pretty": [
+    "beautiful",
+    "attractive",
+    "lovely",
+    "stunning"
+  ],
+  "previous": [
+    "past",
+    "earlier",
+    "former",
+    "prior"
+  ],
+  "principle": [
+    "rule",
+    "policy",
+    "constraint",
+    "guideline"
+  ],
+  "prior": [
+    "past",
+    "previous",
+    "earlier",
+    "former"
+  ],
+  "problem": [
+    "error",
+    "mistake",
+    "fault",
+    "bug"
+  ],
+  "process": [
+    "pipeline",
+    "sequence",
+    "workflow"
+  ],
+  "produce": [
+    "build",
+    "create",
+    "develop",
+    "construct"
+  ],
+  "professional": [
+    "polished",
+    "structured",
+    "disciplined",
+    "formal"
+  ],
+  "professionalism": [
+    "discipline",
+    "care",
+    "quality",
+    "polish"
+  ],
+  "project": [
+    "assignment",
+    "build",
+    "system",
+    "implementation"
+  ],
+  "proof": [
+    "evidence",
+    "indication",
+    "support"
+  ],
+  "prosperous": [
+    "rich",
+    "wealthy",
+    "affluent",
+    "well-off"
+  ],
+  "pupil": [
+    "student",
+    "learner",
+    "trainee",
+    "candidate"
+  ],
+  "purchase": [
+    "buy",
+    "acquire",
+    "obtain",
+    "get"
+  ],
+  "quality": [
+    "professionalism",
+    "discipline",
+    "care",
+    "polish"
+  ],
+  "quick": [
+    "fast",
+    "rapid",
+    "swift",
+    "speedy"
+  ],
+  "quiet": [
+    "calm",
+    "peaceful",
+    "relaxed",
+    "steady"
+  ],
+  "rapid": [
+    "quick",
+    "fast",
+    "swift",
+    "speedy"
+  ],
+  "read": [
+    "scan",
+    "review",
+    "study",
+    "inspect"
+  ],
+  "readable": [
+    "clear",
+    "plain",
+    "direct",
+    "understandable"
+  ],
+  "record": [
+    "log",
+    "trace",
+    "trail"
+  ],
+  "records": [
+    "collection",
+    "corpus",
+    "dataset"
+  ],
+  "refine": [
+    "enhance",
+    "improve",
+    "upgrade"
+  ],
+  "relaxed": [
+    "calm",
+    "quiet",
+    "peaceful",
+    "steady"
+  ],
+  "reliable": [
+    "dependable",
+    "steady",
+    "trustworthy"
+  ],
+  "remedy": [
+    "answer",
+    "resolution",
+    "solution"
+  ],
+  "reply": [
+    "answer",
+    "response",
+    "solution",
+    "result"
+  ],
+  "report": [
+    "account",
+    "document",
+    "summary"
+  ],
+  "require": [
+    "need",
+    "want",
+    "lack",
+    "demand"
+  ],
+  "requirement": [
+    "description",
+    "detail",
+    "specification"
+  ],
+  "research": [
+    "inquiry",
+    "investigation",
+    "study"
+  ],
+  "resolution": [
+    "answer",
+    "remedy",
+    "solution"
+  ],
+  "response": [
+    "comment",
+    "evaluation",
+    "feedback"
+  ],
+  "result": [
+    "output",
+    "outcome",
+    "response",
+    "effect"
+  ],
+  "reveal": [
+    "show",
+    "display",
+    "present",
+    "demonstrate"
+  ],
+  "review": [
+    "appraisal",
+    "assessment",
+    "evaluation"
+  ],
+  "revision": [
+    "correction",
+    "editing",
+    "update"
+  ],
+  "rich": [
+    "wealthy",
+    "prosperous",
+    "affluent",
+    "well-off"
+  ],
+  "role": [
+    "job",
+    "work",
+    "position",
+    "career"
+  ],
+  "rough": [
+    "ugly",
+    "unattractive",
+    "plain",
+    "awkward"
+  ],
+  "rule": [
+    "policy",
+    "constraint",
+    "guideline",
+    "principle"
+  ],
+  "sad": [
+    "unhappy",
+    "upset",
+    "down",
+    "miserable"
+  ],
+  "sample": [
+    "example",
+    "illustration",
+    "demo",
+    "instance"
+  ],
+  "say": [
+    "tell",
+    "state",
+    "mention",
+    "express"
+  ],
+  "scan": [
+    "read",
+    "review",
+    "study",
+    "inspect"
+  ],
+  "schedule": [
+    "order",
+    "sequence",
+    "timeline"
+  ],
+  "screen": [
+    "display",
+    "interface",
+    "panel"
+  ],
+  "section": [
+    "component",
+    "module",
+    "unit"
+  ],
+  "semantic": [
+    "contextual",
+    "interpretive",
+    "meaningful"
+  ],
+  "sequence": [
+    "pipeline",
+    "process",
+    "workflow"
+  ],
+  "setting": [
+    "background",
+    "context",
+    "situation"
+  ],
+  "share": [
+    "communicate",
+    "convey",
+    "express"
+  ],
+  "sharp": [
+    "smart",
+    "intelligent",
+    "clever",
+    "bright"
+  ],
+  "show": [
+    "display",
+    "present",
+    "reveal",
+    "demonstrate"
+  ],
+  "significant": [
+    "important",
+    "essential",
+    "critical",
+    "key"
+  ],
+  "simple": [
+    "easy",
+    "straightforward",
+    "clear",
+    "manageable"
+  ],
+  "site": [
+    "page",
+    "portal",
+    "website"
+  ],
+  "situation": [
+    "background",
+    "context",
+    "setting"
+  ],
+  "slow": [
+    "gradual",
+    "steady",
+    "sluggish",
+    "unhurried"
+  ],
+  "sluggish": [
+    "slow",
+    "gradual",
+    "steady",
+    "unhurried"
+  ],
+  "small": [
+    "compact",
+    "tiny",
+    "little",
+    "mini"
+  ],
+  "smart": [
+    "intelligent",
+    "clever",
+    "bright",
+    "sharp"
+  ],
+  "solid": [
+    "good",
+    "excellent",
+    "reliable",
+    "strong"
+  ],
+  "solution": [
+    "answer",
+    "remedy",
+    "resolution"
+  ],
+  "sophisticated": [
+    "complex",
+    "complicated",
+    "intricate"
+  ],
+  "speak": [
+    "talk",
+    "chat",
+    "communicate",
+    "discuss"
+  ],
+  "specification": [
+    "description",
+    "detail",
+    "requirement"
+  ],
+  "speech": [
+    "briefing",
+    "presentation",
+    "talk"
+  ],
+  "speedy": [
+    "quick",
+    "fast",
+    "rapid",
+    "swift"
+  ],
+  "spelling": [
+    "orthography",
+    "writing",
+    "lettering",
+    "wording"
+  ],
+  "spot": [
+    "find",
+    "discover",
+    "locate",
+    "detect"
+  ],
+  "start": [
+    "begin",
+    "launch",
+    "open",
+    "initiate"
+  ],
+  "starter": [
+    "beginner",
+    "learner",
+    "novice"
+  ],
+  "state": [
+    "say",
+    "tell",
+    "mention",
+    "express"
+  ],
+  "steady": [
+    "dependable",
+    "reliable",
+    "trustworthy"
+  ],
+  "straightforward": [
+    "easy",
+    "simple",
+    "clear",
+    "manageable"
+  ],
+  "strengthen": [
+    "improve",
+    "enhance",
+    "refine",
+    "upgrade"
+  ],
+  "strong": [
+    "good",
+    "excellent",
+    "solid",
+    "reliable"
+  ],
+  "structure": [
+    "framework",
+    "platform",
+    "system"
+  ],
+  "structured": [
+    "professional",
+    "polished",
+    "disciplined",
+    "formal"
+  ],
+  "struggling": [
+    "poor",
+    "needy",
+    "broke",
+    "underfunded"
+  ],
+  "student": [
+    "learner",
+    "pupil",
+    "trainee",
+    "candidate"
+  ],
+  "study": [
+    "inquiry",
+    "investigation",
+    "research"
+  ],
+  "stunning": [
+    "beautiful",
+    "attractive",
+    "lovely",
+    "pretty"
+  ],
+  "summary": [
+    "digest",
+    "outline",
+    "overview"
+  ],
+  "support": [
+    "assist",
+    "back",
+    "help"
+  ],
+  "suppose": [
+    "think",
+    "consider",
+    "believe",
+    "assume"
+  ],
+  "swift": [
+    "quick",
+    "fast",
+    "rapid",
+    "speedy"
+  ],
+  "syntax": [
+    "grammar",
+    "structure",
+    "usage"
+  ],
+  "system": [
+    "framework",
+    "platform",
+    "structure"
+  ],
+  "talk": [
+    "briefing",
+    "presentation",
+    "speech"
+  ],
+  "target": [
+    "aim",
+    "goal",
+    "objective"
+  ],
+  "teach": [
+    "instruct",
+    "train",
+    "coach",
+    "guide"
+  ],
+  "teacher": [
+    "instructor",
+    "educator",
+    "mentor",
+    "trainer"
+  ],
+  "tell": [
+    "say",
+    "state",
+    "mention",
+    "express"
+  ],
+  "terrible": [
+    "bad",
+    "poor",
+    "weak",
+    "awful"
+  ],
+  "think": [
+    "consider",
+    "believe",
+    "suppose",
+    "assume"
+  ],
+  "thought": [
+    "idea",
+    "concept",
+    "notion",
+    "plan"
+  ],
+  "tidy": [
+    "clean",
+    "organized",
+    "neat",
+    "orderly"
+  ],
+  "timeline": [
+    "order",
+    "schedule",
+    "sequence"
+  ],
+  "tiny": [
+    "small",
+    "compact",
+    "little",
+    "mini"
+  ],
+  "tough": [
+    "hard",
+    "difficult",
+    "challenging",
+    "demanding"
+  ],
+  "trace": [
+    "log",
+    "record",
+    "trail"
+  ],
+  "trail": [
+    "log",
+    "record",
+    "trace"
+  ],
+  "train": [
+    "teach",
+    "instruct",
+    "coach",
+    "guide"
+  ],
+  "trainee": [
+    "student",
+    "learner",
+    "pupil",
+    "candidate"
+  ],
+  "trainer": [
+    "teacher",
+    "instructor",
+    "educator",
+    "mentor"
+  ],
+  "trustworthy": [
+    "dependable",
+    "reliable",
+    "steady"
+  ],
+  "ugly": [
+    "unattractive",
+    "plain",
+    "awkward",
+    "rough"
+  ],
+  "unattractive": [
+    "ugly",
+    "plain",
+    "awkward",
+    "rough"
+  ],
+  "unclear": [
+    "confusing",
+    "messy",
+    "ambiguous",
+    "mixed"
+  ],
+  "underfunded": [
+    "poor",
+    "needy",
+    "broke",
+    "struggling"
+  ],
+  "understandable": [
+    "clear",
+    "plain",
+    "readable",
+    "direct"
+  ],
+  "unhappy": [
+    "sad",
+    "upset",
+    "down",
+    "miserable"
+  ],
+  "unhurried": [
+    "slow",
+    "gradual",
+    "steady",
+    "sluggish"
+  ],
+  "unit": [
+    "component",
+    "module",
+    "section"
+  ],
+  "upcoming": [
+    "future",
+    "next",
+    "later",
+    "forthcoming"
+  ],
+  "update": [
+    "correction",
+    "editing",
+    "revision"
+  ],
+  "upgrade": [
+    "enhance",
+    "improve",
+    "refine"
+  ],
+  "upset": [
+    "sad",
+    "unhappy",
+    "down",
+    "miserable"
+  ],
+  "usage": [
+    "grammar",
+    "structure",
+    "syntax"
+  ],
+  "use": [
+    "apply",
+    "employ",
+    "utilize",
+    "operate"
+  ],
+  "useful": [
+    "helpful",
+    "practical",
+    "valuable"
+  ],
+  "utilize": [
+    "use",
+    "apply",
+    "employ",
+    "operate"
+  ],
+  "validation": [
+    "approval",
+    "confirmation",
+    "verification"
+  ],
+  "valuable": [
+    "helpful",
+    "practical",
+    "useful"
+  ],
+  "vast": [
+    "big",
+    "large",
+    "huge",
+    "enormous"
+  ],
+  "verification": [
+    "approval",
+    "confirmation",
+    "validation"
+  ],
+  "verify": [
+    "check",
+    "inspect",
+    "review",
+    "examine"
+  ],
+  "version": [
+    "draft",
+    "manuscript",
+    "outline"
+  ],
+  "view": [
+    "look",
+    "watch",
+    "observe",
+    "notice"
+  ],
+  "want": [
+    "need",
+    "require",
+    "lack",
+    "demand"
+  ],
+  "watch": [
+    "look",
+    "observe",
+    "view",
+    "notice"
+  ],
+  "weak": [
+    "bad",
+    "poor",
+    "awful",
+    "terrible"
+  ],
+  "wealthy": [
+    "rich",
+    "prosperous",
+    "affluent",
+    "well-off"
+  ],
+  "website": [
+    "page",
+    "portal",
+    "site"
+  ],
+  "well-off": [
+    "rich",
+    "wealthy",
+    "prosperous",
+    "affluent"
+  ],
+  "wording": [
+    "spelling",
+    "orthography",
+    "writing",
+    "lettering"
+  ],
+  "work": [
+    "job",
+    "role",
+    "position",
+    "career"
+  ],
+  "workflow": [
+    "pipeline",
+    "process",
+    "sequence"
+  ],
+  "wrap": [
+    "finish",
+    "complete",
+    "end",
+    "finalize"
+  ],
+  "write": [
+    "compose",
+    "draft",
+    "record",
+    "author"
+  ],
+  "writing": [
+    "spelling",
+    "orthography",
+    "lettering",
+    "wording"
+  ]
+}

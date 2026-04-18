@@ -1,0 +1,374 @@
+{
+  "time_expressions": {
+    "present_simple": ["every day", "usually", "often", "always", "sometimes", "on mondays"],
+    "present_continuous": ["now", "right now", "at the moment", "currently"],
+    "present_perfect": ["already", "just", "yet", "recently", "so far"],
+    "present_perfect_continuous": ["since yesterday", "for", "since", "all day"],
+    "past_simple": ["yesterday", "last night", "last week", "ago", "in 2020"],
+    "past_continuous": ["while", "at that moment"],
+    "past_perfect": ["before", "by the time"],
+    "past_perfect_continuous": ["for two hours before", "since morning before"],
+    "future_simple": ["tomorrow", "next week", "soon", "later"],
+    "future_continuous": ["this time tomorrow", "at 8 pm tomorrow"],
+    "future_perfect": ["by tomorrow", "by next week"],
+    "future_perfect_continuous": ["for two hours by tomorrow", "for months by next year"]
+  },
+  "prepositions": {
+    "depend": ["on"],
+    "discriminate": ["against"],
+    "interested": ["in"],
+    "good": ["at"],
+    "listen": ["to"],
+    "arrive": ["at", "in"],
+    "different": ["from"],
+    "afraid": ["of"],
+    "capable": ["of"]
+  },
+  "linking_words": {
+    "comma_after": ["however", "therefore", "meanwhile"],
+    "subordinators": ["although", "because"]
+  },
+  "subjects": {
+    "singular_third": ["he", "she", "it"],
+    "plural": ["we", "they"],
+    "second_person": ["you"],
+    "first_person": ["i"]
+  },
+  "semantic_patterns": {
+    "unlikely_phrases": [
+      {
+        "phrase": "character school",
+        "message": "The phrase \"character school\" is grammatically possible, but it sounds semantically unclear in everyday English.",
+        "suggestion": "Use a clearer noun phrase or remove the unusual modifier."
+      },
+      {
+        "phrase": "make homework",
+        "message": "The common collocation is \"do homework\", not \"make homework\".",
+        "suggestion": "Use \"do homework\" instead.",
+        "replacement": "do homework"
+      },
+      {
+        "phrase": "do a mistake",
+        "message": "The common collocation is \"make a mistake\", not \"do a mistake\".",
+        "suggestion": "Use \"make a mistake\" instead.",
+        "replacement": "make a mistake"
+      },
+      {
+        "phrase": "strong rain",
+        "message": "English usually says \"heavy rain\", not \"strong rain\".",
+        "suggestion": "Use \"heavy rain\" instead.",
+        "replacement": "heavy rain"
+      },
+      {
+        "phrase": "big rain",
+        "message": "English usually says \"heavy rain\", not \"big rain\".",
+        "suggestion": "Use \"heavy rain\" instead.",
+        "replacement": "heavy rain"
+      },
+      {
+        "phrase": "eat water",
+        "message": "\"eat water\" sounds semantically odd. English usually uses \"drink water\".",
+        "suggestion": "Use \"drink water\" instead.",
+        "replacement": "drink water"
+      },
+      {
+        "phrase": "drink bread",
+        "message": "\"drink bread\" sounds semantically odd. English usually uses \"eat bread\".",
+        "suggestion": "Use \"eat bread\" instead.",
+        "replacement": "eat bread"
+      },
+      {
+        "phrase": "hidden encourage",
+        "message": "After \"by\", this phrase needs a more natural adverb/verb form. English would more naturally say \"covertly encouraging\".",
+        "suggestion": "Use \"covertly encouraging\" instead.",
+        "replacement": "covertly encouraging"
+      },
+      {
+        "phrase": "children's bully",
+        "message": "\"bully\" names a person, but this context needs the action noun \"bullying\".",
+        "suggestion": "Use \"children’s bullying\" instead.",
+        "replacement": "children’s bullying"
+      },
+      {
+        "phrase": "unquestionable content",
+        "message": "\"unquestionable\" sounds positive here. A more natural critical adjective is \"objectionable\" or \"inappropriate\".",
+        "suggestion": "Use \"objectionable content\" instead.",
+        "replacement": "objectionable content"
+      },
+      {
+        "phrase": "effect on",
+        "message": "\"effect\" is usually a noun here. The sentence needs the verb \"affect\".",
+        "suggestion": "Use \"affect\" instead.",
+        "replacement": "affect"
+      },
+      {
+        "phrase": "designed on the wall",
+        "message": "\"designed on the wall\" sounds unnatural for posters. English more naturally says \"put up on the wall\".",
+        "suggestion": "Use \"put up on the wall\" instead.",
+        "replacement": "put up on the wall"
+      },
+      {
+        "phrase": "less appeal",
+        "message": "After \"make\", English more naturally uses the adjective form \"less appealing\".",
+        "suggestion": "Use \"less appealing\" instead.",
+        "replacement": "less appealing"
+      },
+      {
+        "phrase": "lose the traditional appeal",
+        "message": "\"lose the traditional appeal\" sounds awkward here. A more natural verb is \"reduce\".",
+        "suggestion": "Use \"reduce the traditional appeal\" instead.",
+        "replacement": "reduce the traditional appeal"
+      },
+      {
+        "phrase": "visiting their country",
+        "message": "\"their country\" is unclear because the paragraph is talking about the city. The destination should stay consistent.",
+        "suggestion": "Use \"visiting the city\" instead.",
+        "replacement": "visiting the city"
+      },
+      {
+        "phrase": "these objectionable content",
+        "message": "\"content\" is usually uncountable in this context, so it should pair with a singular determiner.",
+        "suggestion": "Use \"this objectionable content\" instead.",
+        "replacement": "this objectionable content"
+      }
+    ],
+    "verb_destination_expectations": {
+      "go_to": {
+        "trigger": ["go", "to"],
+        "allowed_destinations": [
+          "airport",
+          "bank",
+          "beach",
+          "bed",
+          "cafe",
+          "campus",
+          "church",
+          "city",
+          "class",
+          "college",
+          "company",
+          "doctor",
+          "factory",
+          "farm",
+          "gym",
+          "home",
+          "hospital",
+          "hotel",
+          "house",
+          "lecture",
+          "library",
+          "market",
+          "meeting",
+          "museum",
+          "office",
+          "park",
+          "party",
+          "restaurant",
+          "school",
+          "shop",
+          "station",
+          "store",
+          "supermarket",
+          "theater",
+          "town",
+          "university",
+          "village",
+          "work"
+        ],
+        "skip_words": ["a", "an", "the", "my", "your", "his", "her", "our", "their", "this", "that"],
+        "message": "\"go to\" usually points to a destination or place, but \"{object}\" does not look like one here.",
+        "suggestion": "Use a place noun after \"go to\", such as \"school\", \"work\", or \"the park\"."
+      }
+    },
+    "verb_object_expectations": {
+      "eat": {
+        "trigger": ["eat"],
+        "allowed_objects": ["apple", "banana", "bread", "breakfast", "burger", "cake", "cheese", "chicken", "chocolate", "cookie", "dinner", "egg", "fish", "food", "fruit", "lunch", "meal", "meat", "pizza", "rice", "salad", "sandwich", "snack", "soup", "steak", "vegetable"],
+        "skip_words": ["a", "an", "the", "my", "your", "his", "her", "our", "their", "this", "that", "these", "those", "some", "any"],
+        "message": "\"eat\" usually takes food nouns, but \"{object}\" sounds odd here.",
+        "suggestion": "Use a food noun after \"eat\", or switch to a verb that matches the object."
+      },
+      "drink": {
+        "trigger": ["drink"],
+        "allowed_objects": ["coffee", "cola", "drink", "juice", "milk", "tea", "water", "wine"],
+        "skip_words": ["a", "an", "the", "my", "your", "his", "her", "our", "their", "this", "that", "these", "those", "some", "any"],
+        "message": "\"drink\" usually takes liquids or beverages, but \"{object}\" sounds odd here.",
+        "suggestion": "Use a beverage noun after \"drink\", or switch to a verb that matches the object."
+      },
+      "read": {
+        "trigger": ["read"],
+        "allowed_objects": ["article", "book", "chapter", "email", "essay", "journal", "letter", "magazine", "message", "newspaper", "novel", "page", "paper", "poem", "report", "story", "text"],
+        "skip_words": ["a", "an", "the", "my", "your", "his", "her", "our", "their", "this", "that", "these", "those"],
+        "message": "\"read\" usually takes text or document nouns, but \"{object}\" sounds odd here.",
+        "suggestion": "Use a reading-related object after \"read\", or switch to another verb."
+      },
+      "watch": {
+        "trigger": ["watch"],
+        "allowed_objects": ["film", "game", "match", "movie", "program", "screen", "series", "show", "television", "tv", "video"],
+        "skip_words": ["a", "an", "the", "my", "your", "his", "her", "our", "their", "this", "that", "these", "those"],
+        "message": "\"watch\" usually takes something visual, but \"{object}\" sounds odd here.",
+        "suggestion": "Use a visual object after \"watch\", or switch to another verb."
+      },
+      "wear": {
+        "trigger": ["wear"],
+        "allowed_objects": ["coat", "dress", "glasses", "hat", "jacket", "jeans", "shirt", "shoes", "skirt", "suit", "sweater", "tie", "trousers", "uniform", "watch"],
+        "skip_words": ["a", "an", "the", "my", "your", "his", "her", "our", "their", "this", "that", "these", "those"],
+        "message": "\"wear\" usually takes clothes or accessories, but \"{object}\" sounds odd here.",
+        "suggestion": "Use a clothing-related object after \"wear\", or switch to another verb."
+      },
+      "drive": {
+        "trigger": ["drive"],
+        "allowed_objects": ["bus", "car", "motorbike", "taxi", "truck", "van", "vehicle"],
+        "skip_words": ["a", "an", "the", "my", "your", "his", "her", "our", "their", "this", "that", "these", "those"],
+        "message": "\"drive\" usually takes a vehicle, but \"{object}\" sounds odd here.",
+        "suggestion": "Use a vehicle noun after \"drive\", or switch to another verb."
+      },
+      "ride": {
+        "trigger": ["ride"],
+        "allowed_objects": ["bike", "bicycle", "bus", "camel", "horse", "motorbike", "motorcycle", "scooter", "train"],
+        "skip_words": ["a", "an", "the", "my", "your", "his", "her", "our", "their", "this", "that", "these", "those"],
+        "message": "\"ride\" usually takes an animal or rideable vehicle, but \"{object}\" sounds odd here.",
+        "suggestion": "Use a rideable object after \"ride\", or switch to another verb."
+      }
+    },
+    "head_noun_modifiers": {
+      "school": {
+        "flagged_modifiers": [
+          "banana",
+          "character",
+          "stone"
+        ],
+        "message": "The phrase \"{modifier} school\" sounds unusual in this context.",
+        "suggestion": "Use a common school type such as \"high school\" or just \"school\"."
+      },
+      "rain": {
+        "allowed_modifiers": [
+          "heavy",
+          "light",
+          "steady",
+          "torrential"
+        ],
+        "message": "The phrase \"{modifier} rain\" sounds unusual in this context.",
+        "suggestion": "Use a common collocation such as \"heavy rain\" or \"light rain\"."
+      }
+    }
+  },
+  "uncountable_nouns": [
+    "advice",
+    "behaviour",
+    "behavior",
+    "content",
+    "equipment",
+    "evidence",
+    "furniture",
+    "homework",
+    "information",
+    "knowledge",
+    "luggage",
+    "news",
+    "progress",
+    "research",
+    "traffic"
+  ],
+  "determiners": ["a", "an", "the", "this", "that", "these", "those", "my", "your", "their"],
+  "preposition_words": ["on", "in", "at", "to", "from", "of", "for", "with", "by", "about"],
+  "auxiliaries": [
+    "am",
+    "is",
+    "are",
+    "was",
+    "were",
+    "be",
+    "been",
+    "being",
+    "have",
+    "has",
+    "had",
+    "do",
+    "does",
+    "did"
+  ],
+  "modals": ["will", "would", "can", "could", "should", "may", "might", "must"],
+  "coverage_matrix": [
+    {
+      "id": "egi-01-03",
+      "label": "be verbs and basic sentence patterns",
+      "units": "Units 1-3",
+      "support_level": "core",
+      "capabilities": ["am/is/are", "was/were", "basic subject agreement"],
+      "categories": ["Agreement", "Tense"]
+    },
+    {
+      "id": "egi-04-09",
+      "label": "present tenses and present-time habits",
+      "units": "Units 4-9",
+      "support_level": "core",
+      "capabilities": ["present simple", "present continuous", "habit adverbs"],
+      "categories": ["Tense", "Agreement"]
+    },
+    {
+      "id": "egi-10-21",
+      "label": "have, past forms, and perfect aspect",
+      "units": "Units 10-21",
+      "support_level": "partial",
+      "capabilities": ["have/has", "past simple", "past continuous", "present perfect"],
+      "categories": ["Tense", "Agreement"]
+    },
+    {
+      "id": "egi-24",
+      "label": "verb endings and third-person singular agreement",
+      "units": "Unit 24",
+      "support_level": "core",
+      "capabilities": ["-s / -es forms", "do/does", "have/has"],
+      "categories": ["Agreement"]
+    },
+    {
+      "id": "egi-27-31",
+      "label": "future forms and time expressions",
+      "units": "Units 27-31",
+      "support_level": "partial",
+      "capabilities": ["will", "future time markers", "future aspect patterns"],
+      "categories": ["Tense"]
+    },
+    {
+      "id": "egi-92-95",
+      "label": "word order and basic clause structure",
+      "units": "Units 92-95",
+      "support_level": "heuristic",
+      "capabilities": ["basic SVO heuristics", "sentence completeness"],
+      "categories": ["SVO"]
+    },
+    {
+      "id": "egi-96-106",
+      "label": "prepositions and verb-adjective combinations",
+      "units": "Units 96-106",
+      "support_level": "partial",
+      "capabilities": ["verb + preposition", "adjective + preposition"],
+      "categories": ["Preposition"]
+    },
+    {
+      "id": "egi-109-111",
+      "label": "linking words and sentence connectors",
+      "units": "Units 109-111",
+      "support_level": "partial",
+      "capabilities": ["however/therefore punctuation", "connector awareness"],
+      "categories": ["Linking Word"]
+    },
+    {
+      "id": "egi-dict",
+      "label": "dictionary-driven spelling layer",
+      "units": "Project extension",
+      "support_level": "core",
+      "capabilities": ["Levenshtein suggestion", "command typo recovery", "word spelling"],
+      "categories": ["Spelling", "Command"]
+    },
+    {
+      "id": "project-semantic",
+      "label": "semantic plausibility heuristics",
+      "units": "Project extension",
+      "support_level": "heuristic",
+      "capabilities": ["odd collocation warnings", "noun-phrase plausibility checks", "verb-object plausibility", "semantic phrase replacements"],
+      "categories": ["Semantic"]
+    }
+  ]
+}

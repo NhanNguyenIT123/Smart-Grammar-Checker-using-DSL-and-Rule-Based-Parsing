@@ -1,0 +1,113 @@
+{
+  "pipeline_version": "2.1.0",
+  "compiled_at": "2026-04-17T14:47:17.498380+00:00",
+  "preprocessing_steps": [
+    "load raw lexical packs from preprocessing/raw",
+    "normalize rule specs and deduplicate tokens",
+    "expand irregular and regular verb paradigms",
+    "compile synonym graph and semantic classes",
+    "build phrase index for time markers and collocations",
+    "merge external common-word lexicon into dictionary",
+    "emit compiled knowledge base and pipeline report"
+  ],
+  "sources": [
+    {
+      "id": "src-grammar-rulepack",
+      "type": "rulepack",
+      "origin": "project-curated",
+      "description": "Time expressions, grammar rules, semantic heuristics, and coverage matrix."
+    },
+    {
+      "id": "src-irregular-verbs",
+      "type": "lexicon",
+      "origin": "project-curated",
+      "description": "Curated irregular verb paradigms used by the tense and lookup engines."
+    },
+    {
+      "id": "src-regular-verbs",
+      "type": "lexicon",
+      "origin": "project-curated",
+      "description": "Core regular-verb seed list expanded during preprocessing."
+    },
+    {
+      "id": "src-synonym-groups",
+      "type": "lexicon",
+      "origin": "project-curated",
+      "description": "Synonym clusters normalized into a bidirectional lookup graph."
+    },
+    {
+      "id": "src-semantic-classes",
+      "type": "semantic",
+      "origin": "project-curated",
+      "description": "Semantic noun classes used to validate destinations, objects, and collocations."
+    },
+    {
+      "id": "src-common-wordfreq",
+      "type": "corpus",
+      "origin": "wordfreq-if-available",
+      "description": "Top English words merged into the runtime spelling dictionary during compilation."
+    },
+    {
+      "id": "src-scowl-imported",
+      "type": "lexicon",
+      "origin": "scowl",
+      "description": "Imported SCOWL word list snapshot normalized for spelling and dictionary enrichment.",
+      "license": "See upstream SCOWL/wordlist license and README in the vendor drop.",
+      "source_files": [
+        "scowl_starter.txt"
+      ],
+      "record_count": 183
+    },
+    {
+      "id": "src-open-english-wordnet-imported",
+      "type": "lexicon",
+      "origin": "open-english-wordnet",
+      "description": "Imported synonym and semantic-class candidates normalized from an Open English WordNet export.",
+      "license": "Check the downloaded OEWN package metadata before redistribution.",
+      "source_files": [
+        "oewn_starter.json"
+      ],
+      "record_count": 42
+    },
+    {
+      "id": "src-cambridge-cefr-imported",
+      "type": "lexicon",
+      "origin": "cambridge-cefr",
+      "description": "Imported learner-vocabulary lists normalized from Cambridge CEFR-aligned materials.",
+      "license": "Keep the original Cambridge files in the vendor drop and review license terms before redistribution.",
+      "source_files": [
+        "cambridge_a2_b1_starter.json"
+      ],
+      "record_count": 102
+    },
+    {
+      "id": "src-collocation-imported",
+      "type": "rulepack",
+      "origin": "collocation-export",
+      "description": "Imported collocation corrections normalized into semantic warning rules.",
+      "license": "Review the upstream corpus or collocation source terms before redistributing raw exports.",
+      "source_files": [
+        "collocations_starter.csv"
+      ],
+      "record_count": 166
+    }
+  ],
+  "artifacts": [
+    "knowledge_base.json",
+    "phrase_index.json",
+    "pipeline_report.json",
+    "source_manifest.json"
+  ],
+  "knowledge_stats": {
+    "verb_entries": 290,
+    "synonym_entries": 408,
+    "dictionary_entries": 11951,
+    "grammar_rules": 229,
+    "semantic_classes": 15,
+    "phrase_index_entries": 229,
+    "coverage_entries": 10,
+    "cefr_entries": 102,
+    "imported_sources": 4,
+    "imported_collocation_rules": 166
+  }
+}
