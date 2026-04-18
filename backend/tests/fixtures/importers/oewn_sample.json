@@ -1,0 +1,14 @@
+{
+  "entries": [
+    {
+      "lemma": "smart",
+      "synonyms": ["intelligent", "clever", "bright"],
+      "semantic_class": "people"
+    },
+    {
+      "lemma": "car",
+      "synonyms": ["automobile", "vehicle"],
+      "semantic_class": "vehicles"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "name": "present_simple",
+    "command": "check grammar I work every day.",
+    "expected_detected": "present_simple",
+    "expected_spelling_count": 0,
+    "expected_grammar_count": 0
+  },
+  {
+    "name": "present_continuous",
+    "command": "check grammar I am working now.",
+    "expected_detected": "present_continuous",
+    "expected_spelling_count": 0,
+    "expected_grammar_count": 0
+  },
+  {
+    "name": "present_perfect",
+    "command": "check grammar I have worked already.",
+    "expected_detected": "present_perfect",
+    "expected_spelling_count": 0,
+    "expected_grammar_count": 0
+  },
+  {
+    "name": "present_perfect_continuous",
+    "command": "check grammar I have been working since yesterday.",
+    "expected_detected": "present_perfect_continuous",
+    "expected_spelling_count": 0,
+    "expected_grammar_count": 0
+  },
+  {
+    "name": "past_simple",
+    "command": "check grammar I worked yesterday.",
+    "expected_detected": "past_simple",
+    "expected_spelling_count": 0,
+    "expected_grammar_count": 0
+  },
+  {
+    "name": "past_continuous",
+    "command": "check grammar I was working at that moment.",
+    "expected_detected": "past_continuous",
+    "expected_spelling_count": 0,
+    "expected_grammar_count": 0
+  },
+  {
+    "name": "past_perfect",
+    "command": "check grammar I had worked before school.",
+    "expected_detected": "past_perfect",
+    "expected_spelling_count": 0,
+    "expected_grammar_count": 0
+  },
+  {
+    "name": "past_perfect_continuous",
+    "command": "check grammar I had been working for two hours before school.",
+    "expected_detected": "past_perfect_continuous",
+    "expected_spelling_count": 0,
+    "expected_grammar_count": 0
+  },
+  {
+    "name": "future_simple",
+    "command": "check grammar I will work tomorrow.",
+    "expected_detected": "future_simple",
+    "expected_spelling_count": 0,
+    "expected_grammar_count": 0
+  },
+  {
+    "name": "future_continuous",
+    "command": "check grammar I will be working this time tomorrow.",
+    "expected_detected": "future_continuous",
+    "expected_spelling_count": 0,
+    "expected_grammar_count": 0
+  },
+  {
+    "name": "future_perfect",
+    "command": "check grammar I will have worked by tomorrow.",
+    "expected_detected": "future_perfect",
+    "expected_spelling_count": 0,
+    "expected_grammar_count": 0
+  },
+  {
+    "name": "future_perfect_continuous",
+    "command": "check grammar I will have been working for two hours by tomorrow.",
+    "expected_detected": "future_perfect_continuous",
+    "expected_spelling_count": 0,
+    "expected_grammar_count": 0
+  }
+]

@@ -1,0 +1,7 @@
+# minimal SCOWL-style sample
+apple
+banana
+Teacher
+school
+invalid-word-1
+can't

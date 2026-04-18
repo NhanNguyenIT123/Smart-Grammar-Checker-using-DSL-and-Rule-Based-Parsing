@@ -1,0 +1,274 @@
+[
+  {
+    "name": "mixed_demo_paragraph",
+    "command": "check grammar However I go to chracter school yesterday. He go to school every day. I depend in my teacher. I have been working since yesterday. I will have been working on the demo for two hours by tomorrow.",
+    "expected_sentence_count": 5,
+    "expected_spelling": ["character"],
+    "expected_grammar_categories": ["Tense", "Agreement", "Linking Word", "Preposition"],
+    "expected_semantic_categories": ["Semantic"],
+    "expected_corrected_contains": [
+      "However, I went to character school yesterday.",
+      "He goes to school every day.",
+      "I depend on my teacher.",
+      "I will have been working on the demo for two hours by tomorrow."
+    ],
+    "expected_detected": [
+      "past_simple",
+      "present_simple",
+      "present_perfect_continuous",
+      "future_perfect_continuous"
+    ]
+  },
+  {
+    "name": "semantic_rewrite_stress_paragraph",
+    "command": "check grammar I make homework every day, and I do a mistake in my report. During the storm, we saw strong rain outside the window, but my brother still said it was big rain. At lunch, I eat water and drink bread after class.",
+    "expected_sentence_count": 3,
+    "expected_spelling": [],
+    "expected_grammar_categories": [],
+    "expected_semantic_categories": ["Semantic"],
+    "expected_corrected_contains": [
+      "I do homework every day, and I make a mistake in my report.",
+      "we saw heavy rain outside the window",
+      "I drink water and eat bread after class."
+    ],
+    "expected_detected": [
+      "present_simple",
+      "past_simple"
+    ]
+  },
+  {
+    "name": "clean_full_tense_paragraph",
+    "command": "check grammar However, I go to school every day. I am working on the GrammarDSL project now. I have worked on the parser already. I had worked on smaller exercises before university. Next week I will work on the final report. This time tomorrow I will be working on the demo slides. By tomorrow I will have worked on the interface. I will have been working on the frontend for two hours by tomorrow.",
+    "expected_sentence_count": 8,
+    "expected_spelling": [],
+    "expected_grammar_categories": [],
+    "expected_semantic_categories": [],
+    "expected_corrected_contains": [
+      "However, I go to school every day.",
+      "I will have been working on the frontend for two hours by tomorrow."
+    ],
+    "expected_detected": [
+      "present_simple",
+      "present_continuous",
+      "present_perfect",
+      "past_perfect",
+      "future_simple",
+      "future_continuous",
+      "future_perfect",
+      "future_perfect_continuous"
+    ]
+  },
+  {
+    "name": "tense_conflict_timeline_paragraph",
+    "command": "check grammar Every day I worked in the office. Now I work on the parser. Last night I am testing the API. Tomorrow I worked on the slides. By tomorrow I will work on the interface.",
+    "expected_sentence_count": 5,
+    "expected_spelling": [],
+    "expected_grammar_categories": ["Tense"],
+    "expected_semantic_categories": [],
+    "expected_corrected_contains": [
+      "Every day I work in the office.",
+      "Now I am working on the parser.",
+      "Last night I tested the API.",
+      "Tomorrow I will work on the slides.",
+      "By tomorrow I will have worked on the interface."
+    ],
+    "expected_detected": [
+      "present_simple",
+      "present_continuous",
+      "past_simple",
+      "future_simple",
+      "future_perfect"
+    ]
+  },
+  {
+    "name": "clean_semantic_collocation_paragraph",
+    "command": "check grammar I do homework every day. During the storm, we saw heavy rain outside the window. At lunch, I drink water and eat bread after class. In the evening, I watch a movie and read a book. My father drives a car to work, and my sister rides a bicycle to school.",
+    "expected_sentence_count": 5,
+    "expected_spelling": [],
+    "expected_grammar_categories": [],
+    "expected_semantic_categories": [],
+    "expected_corrected_contains": [
+      "I do homework every day.",
+      "I drink water and eat bread after class.",
+      "My father drives a car to work, and my sister rides a bicycle to school."
+    ],
+    "expected_detected": [
+      "present_simple",
+      "past_simple"
+    ]
+  },
+  {
+    "name": "clause_propagation_mixed_semantic_paragraph",
+    "command": "check grammar Yesterday I do a decision quickly because I make research for my school project, and my sister says the truth during her presentation while my brother makes attention in class.",
+    "expected_sentence_count": 1,
+    "expected_spelling": [],
+    "expected_grammar_categories": ["Tense"],
+    "expected_semantic_categories": ["Semantic"],
+    "expected_corrected_contains": [
+      "Yesterday I made a decision quickly because I did research for my school project, and my sister told the truth during her presentation while my brother paid attention in class."
+    ],
+    "expected_detected": [
+      "past_simple",
+      "present_simple"
+    ]
+  },
+  {
+    "name": "all_twelve_tenses_showcase_paragraph",
+    "command": "check grammar However, I go to the library every day and I listen to my teacher carefully. Meanwhile, I am working on the grammar report now. I have finished the introduction already. I have been studying since morning. Yesterday I prepared the slides for the demo. At that moment, my friend was testing the parser. Before lunch, we had completed the syntax rules. By the time the class started, we had been working for two hours before the presentation. Tomorrow we will present the project to the teacher. This time tomorrow we will be discussing the feedback in the lab. By tomorrow we will have submitted the final report. We will have been working on the platform for two hours by tomorrow.",
+    "expected_sentence_count": 12,
+    "expected_spelling": [],
+    "expected_grammar_categories": [],
+    "expected_semantic_categories": [],
+    "expected_corrected_contains": [
+      "However, I go to the library every day and I listen to my teacher carefully.",
+      "Meanwhile, I am working on the grammar report now.",
+      "We will have been working on the platform for two hours by tomorrow."
+    ],
+    "expected_detected": [
+      "present_simple",
+      "present_continuous",
+      "present_perfect",
+      "present_perfect_continuous",
+      "past_simple",
+      "past_continuous",
+      "past_perfect",
+      "past_perfect_continuous",
+      "future_simple",
+      "future_continuous",
+      "future_perfect",
+      "future_perfect_continuous"
+    ]
+  },
+  {
+    "name": "full_feature_error_marathon_paragraph",
+    "command": "check grammar However I go to chracter school yesterday, and my teacher says the truth about the project. Every day he depend in a clear plan. Now he work on the report. I make a question quickly and make homework at night. By tomorrow we worked on the interface. This time tomorrow we work on the slides. During the storm, there was big traffic near the station, so I eat water and drink bread after class. Meanwhile I generte a summary for the workshop.",
+    "expected_sentence_count": 8,
+    "expected_spelling": ["character", "generate"],
+    "expected_grammar_categories": ["Tense", "Agreement", "Linking Word", "Preposition"],
+    "expected_semantic_categories": ["Semantic"],
+    "expected_corrected_contains": [
+      "However, I went to character school yesterday, and my teacher told the truth about the project.",
+      "Every day he depends on a clear plan.",
+      "Now he is working on the report.",
+      "I ask a question quickly and do homework at night.",
+      "By tomorrow we will have worked on the interface.",
+      "This time tomorrow we will be working on the slides.",
+      "there was heavy traffic near the station, so I drink water and eat bread after class.",
+      "Meanwhile, I generate a summary for the workshop."
+    ],
+    "expected_detected": [
+      "past_simple",
+      "present_simple",
+      "present_continuous",
+      "future_perfect",
+      "future_continuous"
+    ]
+  },
+  {
+    "name": "preposition_linking_clean_pipeline_paragraph",
+    "command": "check grammar However, we arrive at the station early and listen to the speaker carefully. Because the weather is cold, my sister is wearing a jacket now. We have already prepared the report for the workshop, and we have been working on the slides since morning. Before lunch, the manager had booked a table at the restaurant. Tomorrow we will travel to the conference. This time tomorrow we will be talking about the results in the meeting room. By tomorrow we will have completed the final presentation. We will have been working on the platform for months by next year.",
+    "expected_sentence_count": 8,
+    "expected_spelling": [],
+    "expected_grammar_categories": [],
+    "expected_semantic_categories": [],
+    "expected_corrected_contains": [
+      "However, we arrive at the station early and listen to the speaker carefully.",
+      "Because the weather is cold, my sister is wearing a jacket now.",
+      "We will have been working on the platform for months by next year."
+    ],
+    "expected_detected": [
+      "present_simple",
+      "present_continuous",
+      "present_perfect",
+      "present_perfect_continuous",
+      "past_perfect",
+      "future_simple",
+      "future_continuous",
+      "future_perfect",
+      "future_perfect_continuous"
+    ]
+  },
+  {
+    "name": "imported_collocation_marathon_paragraph",
+    "command": "check grammar Yesterday we do a report after we make research for the workshop, and our manager says the truth while the team makes attention to every suggestion. After the session, I do a summary, make advice to the new members, and say feedback during the discussion.",
+    "expected_sentence_count": 2,
+    "expected_spelling": [],
+    "expected_grammar_categories": ["Tense"],
+    "expected_semantic_categories": ["Semantic"],
+    "expected_corrected_contains": [
+      "Yesterday we wrote a report after we did research for the workshop, and our manager told the truth while the team paid attention to every suggestion.",
+      "After the session, I write a summary, give advice to the new members, and give feedback during the discussion."
+    ],
+    "expected_detected": [
+      "past_simple",
+      "present_simple"
+    ]
+  },
+  {
+    "name": "discourse_error_chain_paragraph",
+    "command": "check grammar However I go to the station yesterday, and because my friend depend in a map, we arrive to the classroom late. Meanwhile I make a conversation with the speaker and say a suggestion about the platform. Now she prepare the presentation. By tomorrow she finished the report. This time tomorrow we discuss the feedback in the meeting room, and during the storm there was large rain outside, so I eat water before dinner.",
+    "expected_sentence_count": 5,
+    "expected_spelling": [],
+    "expected_grammar_categories": ["Tense", "Agreement", "Linking Word", "Preposition"],
+    "expected_semantic_categories": ["Semantic"],
+    "expected_corrected_contains": [
+      "However, I went to the station yesterday",
+      "Meanwhile, I have a conversation with the speaker and make a suggestion about the platform.",
+      "Now she is preparing the presentation.",
+      "By tomorrow she will have finished the report.",
+      "This time tomorrow we will be discussing the feedback in the meeting room, and during the storm there was heavy rain outside, so I drink water before dinner."
+    ],
+    "expected_detected": [
+      "past_simple",
+      "present_simple",
+      "present_continuous",
+      "future_perfect",
+      "future_continuous"
+    ]
+  },
+  {
+    "name": "clean_imported_showcase_paragraph",
+    "command": "check grammar However, we arrive at the station early and listen to the speaker carefully. I am preparing the presentation now, and I have already finished the summary for the manager. We have been working on the platform since morning. Yesterday we discussed the interface in the classroom. Before lunch the lecturer had reviewed the module. Tomorrow we will present the report to the audience. This time tomorrow we will be answering questions during the discussion. By next week we will have completed the workflow, and we will have been working on the system for months by next year.",
+    "expected_sentence_count": 8,
+    "expected_spelling": [],
+    "expected_grammar_categories": [],
+    "expected_semantic_categories": [],
+    "expected_corrected_contains": [
+      "However, we arrive at the station early and listen to the speaker carefully.",
+      "I am preparing the presentation now, and I have already finished the summary for the manager.",
+      "By next week we will have completed the workflow, and we will have been working on the system for months by next year."
+    ],
+    "expected_detected": [
+      "present_simple",
+      "present_continuous",
+      "present_perfect",
+      "present_perfect_continuous",
+      "past_simple",
+      "past_perfect",
+      "future_simple",
+      "future_continuous",
+      "future_perfect",
+      "future_perfect_continuous"
+    ]
+  },
+  {
+    "name": "semantic_import_intensive_paragraph",
+    "command": "check grammar Yesterday the coordinator do a report after we make research for the conference, and he says a recommendation while I make a summary for the audience. After lunch, we say a complaint about the delay, make an explanation for the new participant, and say a response during the discussion. By tomorrow we wrote the draft. This time tomorrow we work on the evaluation in the meeting room.",
+    "expected_sentence_count": 4,
+    "expected_spelling": [],
+    "expected_grammar_categories": ["Tense"],
+    "expected_semantic_categories": ["Semantic"],
+    "expected_corrected_contains": [
+      "Yesterday the coordinator wrote a report after we did research for the conference, and he made a recommendation while I wrote a summary for the audience.",
+      "After lunch, we make a complaint about the delay, give an explanation for the new participant, and give a response during the discussion.",
+      "By tomorrow we will have written the draft.",
+      "This time tomorrow we will be working on the evaluation in the meeting room."
+    ],
+    "expected_detected": [
+      "past_simple",
+      "future_perfect",
+      "future_continuous",
+      "present_simple"
+    ]
+  }
+]
