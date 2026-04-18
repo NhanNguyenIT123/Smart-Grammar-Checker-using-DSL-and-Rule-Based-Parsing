@@ -1,0 +1,38 @@
+[
+  {
+    "id": "vendor-scowl",
+    "folder": "scowl",
+    "role": "spelling dictionary enrichment",
+    "expected_formats": ["txt"],
+    "import_command": "python backend/run.py import-scowl --input <path>",
+    "license_check_required": true,
+    "notes": "Use SCOWL snapshots as raw word-list inputs, then normalize them into imported packs."
+  },
+  {
+    "id": "vendor-oewn",
+    "folder": "oewn",
+    "role": "synonym and semantic-class candidates",
+    "expected_formats": ["json", "csv", "tsv"],
+    "import_command": "python backend/run.py import-oewn --input <path>",
+    "license_check_required": true,
+    "notes": "Use OEWN exports to seed synonym groups and semantic classes before curation."
+  },
+  {
+    "id": "vendor-cambridge-cefr",
+    "folder": "cambridge_cefr",
+    "role": "CEFR learner-vocabulary prioritization",
+    "expected_formats": ["json", "csv", "tsv", "txt"],
+    "import_command": "python backend/run.py import-cefr --input <path> --level A2",
+    "license_check_required": true,
+    "notes": "Keep the original list export in vendor storage and only ship normalized subsets when allowed."
+  },
+  {
+    "id": "vendor-collocations",
+    "folder": "collocations",
+    "role": "semantic collocation rule import",
+    "expected_formats": ["json", "csv", "tsv", "txt"],
+    "import_command": "python backend/run.py import-collocations --input <path>",
+    "license_check_required": true,
+    "notes": "Prefer curated exports from learner-facing corpus tools or manual collocation sheets."
+  }
+]

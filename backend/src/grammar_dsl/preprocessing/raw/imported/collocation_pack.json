@@ -1,0 +1,1275 @@
+{
+  "metadata": {
+    "id": "src-collocation-imported",
+    "type": "rulepack",
+    "origin": "collocation-export",
+    "description": "Imported collocation corrections normalized into semantic warning rules.",
+    "license": "Review the upstream corpus or collocation source terms before redistributing raw exports.",
+    "source_files": [
+      "collocations_starter.csv"
+    ],
+    "record_count": 166
+  },
+  "unlikely_phrases": [
+    {
+      "phrase": "make homework",
+      "message": "The common collocation is \"do homework\", not \"make homework\".",
+      "suggestion": "Use \"do homework\" instead.",
+      "replacement": "do homework",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes homework",
+      "message": "The common collocation is \"does homework\", not \"makes homework\".",
+      "suggestion": "Use \"does homework\" instead.",
+      "replacement": "does homework",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a decision",
+      "message": "The collocation \"do a decision\" sounds unusual here. English more commonly uses \"make a decision\".",
+      "suggestion": "Use \"make a decision\" instead.",
+      "replacement": "make a decision",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a decision",
+      "message": "The collocation \"does a decision\" sounds unusual here. English more commonly uses \"makes a decision\".",
+      "suggestion": "Use \"makes a decision\" instead.",
+      "replacement": "makes a decision",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make research",
+      "message": "The collocation \"make research\" sounds unusual here. English more commonly uses \"do research\".",
+      "suggestion": "Use \"do research\" instead.",
+      "replacement": "do research",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes research",
+      "message": "The collocation \"makes research\" sounds unusual here. English more commonly uses \"does research\".",
+      "suggestion": "Use \"does research\" instead.",
+      "replacement": "does research",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do progress",
+      "message": "The collocation \"do progress\" sounds unusual here. English more commonly uses \"make progress\".",
+      "suggestion": "Use \"make progress\" instead.",
+      "replacement": "make progress",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does progress",
+      "message": "The collocation \"does progress\" sounds unusual here. English more commonly uses \"makes progress\".",
+      "suggestion": "Use \"makes progress\" instead.",
+      "replacement": "makes progress",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do an effort",
+      "message": "The collocation \"do an effort\" sounds unusual here. English more commonly uses \"make an effort\".",
+      "suggestion": "Use \"make an effort\" instead.",
+      "replacement": "make an effort",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does an effort",
+      "message": "The collocation \"does an effort\" sounds unusual here. English more commonly uses \"makes an effort\".",
+      "suggestion": "Use \"makes an effort\" instead.",
+      "replacement": "makes an effort",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a plan",
+      "message": "The collocation \"do a plan\" sounds unusual here. English more commonly uses \"make a plan\".",
+      "suggestion": "Use \"make a plan\" instead.",
+      "replacement": "make a plan",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a plan",
+      "message": "The collocation \"does a plan\" sounds unusual here. English more commonly uses \"makes a plan\".",
+      "suggestion": "Use \"makes a plan\" instead.",
+      "replacement": "makes a plan",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a complaint",
+      "message": "The collocation \"do a complaint\" sounds unusual here. English more commonly uses \"make a complaint\".",
+      "suggestion": "Use \"make a complaint\" instead.",
+      "replacement": "make a complaint",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a complaint",
+      "message": "The collocation \"does a complaint\" sounds unusual here. English more commonly uses \"makes a complaint\".",
+      "suggestion": "Use \"makes a complaint\" instead.",
+      "replacement": "makes a complaint",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a promise",
+      "message": "The collocation \"do a promise\" sounds unusual here. English more commonly uses \"make a promise\".",
+      "suggestion": "Use \"make a promise\" instead.",
+      "replacement": "make a promise",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a promise",
+      "message": "The collocation \"does a promise\" sounds unusual here. English more commonly uses \"makes a promise\".",
+      "suggestion": "Use \"makes a promise\" instead.",
+      "replacement": "makes a promise",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a choice",
+      "message": "The collocation \"do a choice\" sounds unusual here. English more commonly uses \"make a choice\".",
+      "suggestion": "Use \"make a choice\" instead.",
+      "replacement": "make a choice",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a choice",
+      "message": "The collocation \"does a choice\" sounds unusual here. English more commonly uses \"makes a choice\".",
+      "suggestion": "Use \"makes a choice\" instead.",
+      "replacement": "makes a choice",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a reservation",
+      "message": "The collocation \"do a reservation\" sounds unusual here. English more commonly uses \"make a reservation\".",
+      "suggestion": "Use \"make a reservation\" instead.",
+      "replacement": "make a reservation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a reservation",
+      "message": "The collocation \"does a reservation\" sounds unusual here. English more commonly uses \"makes a reservation\".",
+      "suggestion": "Use \"makes a reservation\" instead.",
+      "replacement": "makes a reservation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do an appointment",
+      "message": "The collocation \"do an appointment\" sounds unusual here. English more commonly uses \"make an appointment\".",
+      "suggestion": "Use \"make an appointment\" instead.",
+      "replacement": "make an appointment",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does an appointment",
+      "message": "The collocation \"does an appointment\" sounds unusual here. English more commonly uses \"makes an appointment\".",
+      "suggestion": "Use \"makes an appointment\" instead.",
+      "replacement": "makes an appointment",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a payment",
+      "message": "The collocation \"do a payment\" sounds unusual here. English more commonly uses \"make a payment\".",
+      "suggestion": "Use \"make a payment\" instead.",
+      "replacement": "make a payment",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a payment",
+      "message": "The collocation \"does a payment\" sounds unusual here. English more commonly uses \"makes a payment\".",
+      "suggestion": "Use \"makes a payment\" instead.",
+      "replacement": "makes a payment",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do an improvement",
+      "message": "The collocation \"do an improvement\" sounds unusual here. English more commonly uses \"make an improvement\".",
+      "suggestion": "Use \"make an improvement\" instead.",
+      "replacement": "make an improvement",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does an improvement",
+      "message": "The collocation \"does an improvement\" sounds unusual here. English more commonly uses \"makes an improvement\".",
+      "suggestion": "Use \"makes an improvement\" instead.",
+      "replacement": "makes an improvement",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do an apology",
+      "message": "The collocation \"do an apology\" sounds unusual here. English more commonly uses \"make an apology\".",
+      "suggestion": "Use \"make an apology\" instead.",
+      "replacement": "make an apology",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does an apology",
+      "message": "The collocation \"does an apology\" sounds unusual here. English more commonly uses \"makes an apology\".",
+      "suggestion": "Use \"makes an apology\" instead.",
+      "replacement": "makes an apology",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a phone call",
+      "message": "The collocation \"do a phone call\" sounds unusual here. English more commonly uses \"make a phone call\".",
+      "suggestion": "Use \"make a phone call\" instead.",
+      "replacement": "make a phone call",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a phone call",
+      "message": "The collocation \"does a phone call\" sounds unusual here. English more commonly uses \"makes a phone call\".",
+      "suggestion": "Use \"makes a phone call\" instead.",
+      "replacement": "makes a phone call",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a difference",
+      "message": "The collocation \"do a difference\" sounds unusual here. English more commonly uses \"make a difference\".",
+      "suggestion": "Use \"make a difference\" instead.",
+      "replacement": "make a difference",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a difference",
+      "message": "The collocation \"does a difference\" sounds unusual here. English more commonly uses \"makes a difference\".",
+      "suggestion": "Use \"makes a difference\" instead.",
+      "replacement": "makes a difference",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make business",
+      "message": "The collocation \"make business\" sounds unusual here. English more commonly uses \"do business\".",
+      "suggestion": "Use \"do business\" instead.",
+      "replacement": "do business",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes business",
+      "message": "The collocation \"makes business\" sounds unusual here. English more commonly uses \"does business\".",
+      "suggestion": "Use \"does business\" instead.",
+      "replacement": "does business",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do breakfast",
+      "message": "The collocation \"do breakfast\" sounds unusual here. English more commonly uses \"have breakfast\".",
+      "suggestion": "Use \"have breakfast\" instead.",
+      "replacement": "have breakfast",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does breakfast",
+      "message": "The collocation \"does breakfast\" sounds unusual here. English more commonly uses \"has breakfast\".",
+      "suggestion": "Use \"has breakfast\" instead.",
+      "replacement": "has breakfast",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do lunch",
+      "message": "The collocation \"do lunch\" sounds unusual here. English more commonly uses \"have lunch\".",
+      "suggestion": "Use \"have lunch\" instead.",
+      "replacement": "have lunch",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does lunch",
+      "message": "The collocation \"does lunch\" sounds unusual here. English more commonly uses \"has lunch\".",
+      "suggestion": "Use \"has lunch\" instead.",
+      "replacement": "has lunch",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do dinner",
+      "message": "The collocation \"do dinner\" sounds unusual here. English more commonly uses \"have dinner\".",
+      "suggestion": "Use \"have dinner\" instead.",
+      "replacement": "have dinner",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does dinner",
+      "message": "The collocation \"does dinner\" sounds unusual here. English more commonly uses \"has dinner\".",
+      "suggestion": "Use \"has dinner\" instead.",
+      "replacement": "has dinner",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make breakfast",
+      "message": "The collocation \"make breakfast\" sounds unusual here. English more commonly uses \"have breakfast\".",
+      "suggestion": "Use \"have breakfast\" instead.",
+      "replacement": "have breakfast",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes breakfast",
+      "message": "The collocation \"makes breakfast\" sounds unusual here. English more commonly uses \"has breakfast\".",
+      "suggestion": "Use \"has breakfast\" instead.",
+      "replacement": "has breakfast",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make lunch",
+      "message": "The collocation \"make lunch\" sounds unusual here. English more commonly uses \"have lunch\".",
+      "suggestion": "Use \"have lunch\" instead.",
+      "replacement": "have lunch",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes lunch",
+      "message": "The collocation \"makes lunch\" sounds unusual here. English more commonly uses \"has lunch\".",
+      "suggestion": "Use \"has lunch\" instead.",
+      "replacement": "has lunch",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make dinner",
+      "message": "The collocation \"make dinner\" sounds unusual here. English more commonly uses \"have dinner\".",
+      "suggestion": "Use \"have dinner\" instead.",
+      "replacement": "have dinner",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes dinner",
+      "message": "The collocation \"makes dinner\" sounds unusual here. English more commonly uses \"has dinner\".",
+      "suggestion": "Use \"has dinner\" instead.",
+      "replacement": "has dinner",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make fun",
+      "message": "The collocation \"make fun\" sounds unusual here. English more commonly uses \"have fun\".",
+      "suggestion": "Use \"have fun\" instead.",
+      "replacement": "have fun",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes fun",
+      "message": "The collocation \"makes fun\" sounds unusual here. English more commonly uses \"has fun\".",
+      "suggestion": "Use \"has fun\" instead.",
+      "replacement": "has fun",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do fun",
+      "message": "The collocation \"do fun\" sounds unusual here. English more commonly uses \"have fun\".",
+      "suggestion": "Use \"have fun\" instead.",
+      "replacement": "have fun",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does fun",
+      "message": "The collocation \"does fun\" sounds unusual here. English more commonly uses \"has fun\".",
+      "suggestion": "Use \"has fun\" instead.",
+      "replacement": "has fun",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a shower",
+      "message": "The collocation \"do a shower\" sounds unusual here. English more commonly uses \"take a shower\".",
+      "suggestion": "Use \"take a shower\" instead.",
+      "replacement": "take a shower",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a shower",
+      "message": "The collocation \"does a shower\" sounds unusual here. English more commonly uses \"takes a shower\".",
+      "suggestion": "Use \"takes a shower\" instead.",
+      "replacement": "takes a shower",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make a shower",
+      "message": "The collocation \"make a shower\" sounds unusual here. English more commonly uses \"take a shower\".",
+      "suggestion": "Use \"take a shower\" instead.",
+      "replacement": "take a shower",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes a shower",
+      "message": "The collocation \"makes a shower\" sounds unusual here. English more commonly uses \"takes a shower\".",
+      "suggestion": "Use \"takes a shower\" instead.",
+      "replacement": "takes a shower",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a break",
+      "message": "The collocation \"do a break\" sounds unusual here. English more commonly uses \"take a break\".",
+      "suggestion": "Use \"take a break\" instead.",
+      "replacement": "take a break",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a break",
+      "message": "The collocation \"does a break\" sounds unusual here. English more commonly uses \"takes a break\".",
+      "suggestion": "Use \"takes a break\" instead.",
+      "replacement": "takes a break",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make a photo",
+      "message": "The collocation \"make a photo\" sounds unusual here. English more commonly uses \"take a photo\".",
+      "suggestion": "Use \"take a photo\" instead.",
+      "replacement": "take a photo",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes a photo",
+      "message": "The collocation \"makes a photo\" sounds unusual here. English more commonly uses \"takes a photo\".",
+      "suggestion": "Use \"takes a photo\" instead.",
+      "replacement": "takes a photo",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a photo",
+      "message": "The collocation \"do a photo\" sounds unusual here. English more commonly uses \"take a photo\".",
+      "suggestion": "Use \"take a photo\" instead.",
+      "replacement": "take a photo",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a photo",
+      "message": "The collocation \"does a photo\" sounds unusual here. English more commonly uses \"takes a photo\".",
+      "suggestion": "Use \"takes a photo\" instead.",
+      "replacement": "takes a photo",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make a picture",
+      "message": "The collocation \"make a picture\" sounds unusual here. English more commonly uses \"take a picture\".",
+      "suggestion": "Use \"take a picture\" instead.",
+      "replacement": "take a picture",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes a picture",
+      "message": "The collocation \"makes a picture\" sounds unusual here. English more commonly uses \"takes a picture\".",
+      "suggestion": "Use \"takes a picture\" instead.",
+      "replacement": "takes a picture",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a test",
+      "message": "The collocation \"do a test\" sounds unusual here. English more commonly uses \"take a test\".",
+      "suggestion": "Use \"take a test\" instead.",
+      "replacement": "take a test",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a test",
+      "message": "The collocation \"does a test\" sounds unusual here. English more commonly uses \"takes a test\".",
+      "suggestion": "Use \"takes a test\" instead.",
+      "replacement": "takes a test",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make an exam",
+      "message": "The collocation \"make an exam\" sounds unusual here. English more commonly uses \"take an exam\".",
+      "suggestion": "Use \"take an exam\" instead.",
+      "replacement": "take an exam",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes an exam",
+      "message": "The collocation \"makes an exam\" sounds unusual here. English more commonly uses \"takes an exam\".",
+      "suggestion": "Use \"takes an exam\" instead.",
+      "replacement": "takes an exam",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do an exam",
+      "message": "The collocation \"do an exam\" sounds unusual here. English more commonly uses \"take an exam\".",
+      "suggestion": "Use \"take an exam\" instead.",
+      "replacement": "take an exam",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does an exam",
+      "message": "The collocation \"does an exam\" sounds unusual here. English more commonly uses \"takes an exam\".",
+      "suggestion": "Use \"takes an exam\" instead.",
+      "replacement": "takes an exam",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do notes",
+      "message": "The collocation \"do notes\" sounds unusual here. English more commonly uses \"take notes\".",
+      "suggestion": "Use \"take notes\" instead.",
+      "replacement": "take notes",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does notes",
+      "message": "The collocation \"does notes\" sounds unusual here. English more commonly uses \"takes notes\".",
+      "suggestion": "Use \"takes notes\" instead.",
+      "replacement": "takes notes",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do friends",
+      "message": "The collocation \"do friends\" sounds unusual here. English more commonly uses \"make friends\".",
+      "suggestion": "Use \"make friends\" instead.",
+      "replacement": "make friends",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does friends",
+      "message": "The collocation \"does friends\" sounds unusual here. English more commonly uses \"makes friends\".",
+      "suggestion": "Use \"makes friends\" instead.",
+      "replacement": "makes friends",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "say a joke",
+      "message": "The collocation \"say a joke\" sounds unusual here. English more commonly uses \"tell a joke\".",
+      "suggestion": "Use \"tell a joke\" instead.",
+      "replacement": "tell a joke",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "says a joke",
+      "message": "The collocation \"says a joke\" sounds unusual here. English more commonly uses \"tells a joke\".",
+      "suggestion": "Use \"tells a joke\" instead.",
+      "replacement": "tells a joke",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "say the truth",
+      "message": "The collocation \"say the truth\" sounds unusual here. English more commonly uses \"tell the truth\".",
+      "suggestion": "Use \"tell the truth\" instead.",
+      "replacement": "tell the truth",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "says the truth",
+      "message": "The collocation \"says the truth\" sounds unusual here. English more commonly uses \"tells the truth\".",
+      "suggestion": "Use \"tells the truth\" instead.",
+      "replacement": "tells the truth",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "say a lie",
+      "message": "The collocation \"say a lie\" sounds unusual here. English more commonly uses \"tell a lie\".",
+      "suggestion": "Use \"tell a lie\" instead.",
+      "replacement": "tell a lie",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "says a lie",
+      "message": "The collocation \"says a lie\" sounds unusual here. English more commonly uses \"tells a lie\".",
+      "suggestion": "Use \"tells a lie\" instead.",
+      "replacement": "tells a lie",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "say a story",
+      "message": "The collocation \"say a story\" sounds unusual here. English more commonly uses \"tell a story\".",
+      "suggestion": "Use \"tell a story\" instead.",
+      "replacement": "tell a story",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "says a story",
+      "message": "The collocation \"says a story\" sounds unusual here. English more commonly uses \"tells a story\".",
+      "suggestion": "Use \"tells a story\" instead.",
+      "replacement": "tells a story",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make housework",
+      "message": "The collocation \"make housework\" sounds unusual here. English more commonly uses \"do housework\".",
+      "suggestion": "Use \"do housework\" instead.",
+      "replacement": "do housework",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes housework",
+      "message": "The collocation \"makes housework\" sounds unusual here. English more commonly uses \"does housework\".",
+      "suggestion": "Use \"does housework\" instead.",
+      "replacement": "does housework",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make the dishes",
+      "message": "The collocation \"make the dishes\" sounds unusual here. English more commonly uses \"do the dishes\".",
+      "suggestion": "Use \"do the dishes\" instead.",
+      "replacement": "do the dishes",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes the dishes",
+      "message": "The collocation \"makes the dishes\" sounds unusual here. English more commonly uses \"does the dishes\".",
+      "suggestion": "Use \"does the dishes\" instead.",
+      "replacement": "does the dishes",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make laundry",
+      "message": "The collocation \"make laundry\" sounds unusual here. English more commonly uses \"do the laundry\".",
+      "suggestion": "Use \"do the laundry\" instead.",
+      "replacement": "do the laundry",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes laundry",
+      "message": "The collocation \"makes laundry\" sounds unusual here. English more commonly uses \"does the laundry\".",
+      "suggestion": "Use \"does the laundry\" instead.",
+      "replacement": "does the laundry",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do the bed",
+      "message": "The collocation \"do the bed\" sounds unusual here. English more commonly uses \"make the bed\".",
+      "suggestion": "Use \"make the bed\" instead.",
+      "replacement": "make the bed",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does the bed",
+      "message": "The collocation \"does the bed\" sounds unusual here. English more commonly uses \"makes the bed\".",
+      "suggestion": "Use \"makes the bed\" instead.",
+      "replacement": "makes the bed",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "give attention",
+      "message": "The collocation \"give attention\" sounds unusual here. English more commonly uses \"pay attention\".",
+      "suggestion": "Use \"pay attention\" instead.",
+      "replacement": "pay attention",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "gives attention",
+      "message": "The collocation \"gives attention\" sounds unusual here. English more commonly uses \"pays attention\".",
+      "suggestion": "Use \"pays attention\" instead.",
+      "replacement": "pays attention",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make attention",
+      "message": "The collocation \"make attention\" sounds unusual here. English more commonly uses \"pay attention\".",
+      "suggestion": "Use \"pay attention\" instead.",
+      "replacement": "pay attention",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes attention",
+      "message": "The collocation \"makes attention\" sounds unusual here. English more commonly uses \"pays attention\".",
+      "suggestion": "Use \"pays attention\" instead.",
+      "replacement": "pays attention",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "give a visit",
+      "message": "The collocation \"give a visit\" sounds unusual here. English more commonly uses \"pay a visit\".",
+      "suggestion": "Use \"pay a visit\" instead.",
+      "replacement": "pay a visit",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "gives a visit",
+      "message": "The collocation \"gives a visit\" sounds unusual here. English more commonly uses \"pays a visit\".",
+      "suggestion": "Use \"pays a visit\" instead.",
+      "replacement": "pays a visit",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a visit",
+      "message": "The collocation \"do a visit\" sounds unusual here. English more commonly uses \"pay a visit\".",
+      "suggestion": "Use \"pay a visit\" instead.",
+      "replacement": "pay a visit",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a visit",
+      "message": "The collocation \"does a visit\" sounds unusual here. English more commonly uses \"pays a visit\".",
+      "suggestion": "Use \"pays a visit\" instead.",
+      "replacement": "pays a visit",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a conversation",
+      "message": "The collocation \"do a conversation\" sounds unusual here. English more commonly uses \"have a conversation\".",
+      "suggestion": "Use \"have a conversation\" instead.",
+      "replacement": "have a conversation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a conversation",
+      "message": "The collocation \"does a conversation\" sounds unusual here. English more commonly uses \"has a conversation\".",
+      "suggestion": "Use \"has a conversation\" instead.",
+      "replacement": "has a conversation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make a conversation",
+      "message": "The collocation \"make a conversation\" sounds unusual here. English more commonly uses \"have a conversation\".",
+      "suggestion": "Use \"have a conversation\" instead.",
+      "replacement": "have a conversation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes a conversation",
+      "message": "The collocation \"makes a conversation\" sounds unusual here. English more commonly uses \"has a conversation\".",
+      "suggestion": "Use \"has a conversation\" instead.",
+      "replacement": "has a conversation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a party",
+      "message": "The collocation \"do a party\" sounds unusual here. English more commonly uses \"have a party\".",
+      "suggestion": "Use \"have a party\" instead.",
+      "replacement": "have a party",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a party",
+      "message": "The collocation \"does a party\" sounds unusual here. English more commonly uses \"has a party\".",
+      "suggestion": "Use \"has a party\" instead.",
+      "replacement": "has a party",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make a party",
+      "message": "The collocation \"make a party\" sounds unusual here. English more commonly uses \"have a party\".",
+      "suggestion": "Use \"have a party\" instead.",
+      "replacement": "have a party",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes a party",
+      "message": "The collocation \"makes a party\" sounds unusual here. English more commonly uses \"has a party\".",
+      "suggestion": "Use \"has a party\" instead.",
+      "replacement": "has a party",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a rest",
+      "message": "The collocation \"do a rest\" sounds unusual here. English more commonly uses \"have a rest\".",
+      "suggestion": "Use \"have a rest\" instead.",
+      "replacement": "have a rest",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a rest",
+      "message": "The collocation \"does a rest\" sounds unusual here. English more commonly uses \"has a rest\".",
+      "suggestion": "Use \"has a rest\" instead.",
+      "replacement": "has a rest",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make a rest",
+      "message": "The collocation \"make a rest\" sounds unusual here. English more commonly uses \"have a rest\".",
+      "suggestion": "Use \"have a rest\" instead.",
+      "replacement": "have a rest",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes a rest",
+      "message": "The collocation \"makes a rest\" sounds unusual here. English more commonly uses \"has a rest\".",
+      "suggestion": "Use \"has a rest\" instead.",
+      "replacement": "has a rest",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do noise",
+      "message": "The collocation \"do noise\" sounds unusual here. English more commonly uses \"make noise\".",
+      "suggestion": "Use \"make noise\" instead.",
+      "replacement": "make noise",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does noise",
+      "message": "The collocation \"does noise\" sounds unusual here. English more commonly uses \"makes noise\".",
+      "suggestion": "Use \"makes noise\" instead.",
+      "replacement": "makes noise",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a speech",
+      "message": "The collocation \"do a speech\" sounds unusual here. English more commonly uses \"give a speech\".",
+      "suggestion": "Use \"give a speech\" instead.",
+      "replacement": "give a speech",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a speech",
+      "message": "The collocation \"does a speech\" sounds unusual here. English more commonly uses \"gives a speech\".",
+      "suggestion": "Use \"gives a speech\" instead.",
+      "replacement": "gives a speech",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a presentation",
+      "message": "The collocation \"do a presentation\" sounds unusual here. English more commonly uses \"give a presentation\".",
+      "suggestion": "Use \"give a presentation\" instead.",
+      "replacement": "give a presentation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a presentation",
+      "message": "The collocation \"does a presentation\" sounds unusual here. English more commonly uses \"gives a presentation\".",
+      "suggestion": "Use \"gives a presentation\" instead.",
+      "replacement": "gives a presentation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a suggestion",
+      "message": "The collocation \"do a suggestion\" sounds unusual here. English more commonly uses \"make a suggestion\".",
+      "suggestion": "Use \"make a suggestion\" instead.",
+      "replacement": "make a suggestion",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a suggestion",
+      "message": "The collocation \"does a suggestion\" sounds unusual here. English more commonly uses \"makes a suggestion\".",
+      "suggestion": "Use \"makes a suggestion\" instead.",
+      "replacement": "makes a suggestion",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make a question",
+      "message": "The collocation \"make a question\" sounds unusual here. English more commonly uses \"ask a question\".",
+      "suggestion": "Use \"ask a question\" instead.",
+      "replacement": "ask a question",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "say a question",
+      "message": "The collocation \"say a question\" sounds unusual here. English more commonly uses \"ask a question\".",
+      "suggestion": "Use \"ask a question\" instead.",
+      "replacement": "ask a question",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a report",
+      "message": "The collocation \"do a report\" sounds unusual here. English more commonly uses \"write a report\".",
+      "suggestion": "Use \"write a report\" instead.",
+      "replacement": "write a report",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a summary",
+      "message": "The collocation \"do a summary\" sounds unusual here. English more commonly uses \"write a summary\".",
+      "suggestion": "Use \"write a summary\" instead.",
+      "replacement": "write a summary",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a discussion",
+      "message": "The collocation \"do a discussion\" sounds unusual here. English more commonly uses \"have a discussion\".",
+      "suggestion": "Use \"have a discussion\" instead.",
+      "replacement": "have a discussion",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a discussion",
+      "message": "The collocation \"does a discussion\" sounds unusual here. English more commonly uses \"has a discussion\".",
+      "suggestion": "Use \"has a discussion\" instead.",
+      "replacement": "has a discussion",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a recommendation",
+      "message": "The collocation \"do a recommendation\" sounds unusual here. English more commonly uses \"make a recommendation\".",
+      "suggestion": "Use \"make a recommendation\" instead.",
+      "replacement": "make a recommendation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a recommendation",
+      "message": "The collocation \"does a recommendation\" sounds unusual here. English more commonly uses \"makes a recommendation\".",
+      "suggestion": "Use \"makes a recommendation\" instead.",
+      "replacement": "makes a recommendation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "say advice",
+      "message": "The collocation \"say advice\" sounds unusual here. English more commonly uses \"give advice\".",
+      "suggestion": "Use \"give advice\" instead.",
+      "replacement": "give advice",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "says advice",
+      "message": "The collocation \"says advice\" sounds unusual here. English more commonly uses \"gives advice\".",
+      "suggestion": "Use \"gives advice\" instead.",
+      "replacement": "gives advice",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make advice",
+      "message": "The collocation \"make advice\" sounds unusual here. English more commonly uses \"give advice\".",
+      "suggestion": "Use \"give advice\" instead.",
+      "replacement": "give advice",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes advice",
+      "message": "The collocation \"makes advice\" sounds unusual here. English more commonly uses \"gives advice\".",
+      "suggestion": "Use \"gives advice\" instead.",
+      "replacement": "gives advice",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "say feedback",
+      "message": "The collocation \"say feedback\" sounds unusual here. English more commonly uses \"give feedback\".",
+      "suggestion": "Use \"give feedback\" instead.",
+      "replacement": "give feedback",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "says feedback",
+      "message": "The collocation \"says feedback\" sounds unusual here. English more commonly uses \"gives feedback\".",
+      "suggestion": "Use \"gives feedback\" instead.",
+      "replacement": "gives feedback",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make feedback",
+      "message": "The collocation \"make feedback\" sounds unusual here. English more commonly uses \"give feedback\".",
+      "suggestion": "Use \"give feedback\" instead.",
+      "replacement": "give feedback",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes feedback",
+      "message": "The collocation \"makes feedback\" sounds unusual here. English more commonly uses \"gives feedback\".",
+      "suggestion": "Use \"gives feedback\" instead.",
+      "replacement": "gives feedback",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "say a speech",
+      "message": "The collocation \"say a speech\" sounds unusual here. English more commonly uses \"give a speech\".",
+      "suggestion": "Use \"give a speech\" instead.",
+      "replacement": "give a speech",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "says a speech",
+      "message": "The collocation \"says a speech\" sounds unusual here. English more commonly uses \"gives a speech\".",
+      "suggestion": "Use \"gives a speech\" instead.",
+      "replacement": "gives a speech",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make a speech",
+      "message": "The collocation \"make a speech\" sounds unusual here. English more commonly uses \"give a speech\".",
+      "suggestion": "Use \"give a speech\" instead.",
+      "replacement": "give a speech",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes a speech",
+      "message": "The collocation \"makes a speech\" sounds unusual here. English more commonly uses \"gives a speech\".",
+      "suggestion": "Use \"gives a speech\" instead.",
+      "replacement": "gives a speech",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "say a presentation",
+      "message": "The collocation \"say a presentation\" sounds unusual here. English more commonly uses \"give a presentation\".",
+      "suggestion": "Use \"give a presentation\" instead.",
+      "replacement": "give a presentation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "says a presentation",
+      "message": "The collocation \"says a presentation\" sounds unusual here. English more commonly uses \"gives a presentation\".",
+      "suggestion": "Use \"gives a presentation\" instead.",
+      "replacement": "gives a presentation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "say a suggestion",
+      "message": "The collocation \"say a suggestion\" sounds unusual here. English more commonly uses \"make a suggestion\".",
+      "suggestion": "Use \"make a suggestion\" instead.",
+      "replacement": "make a suggestion",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "says a suggestion",
+      "message": "The collocation \"says a suggestion\" sounds unusual here. English more commonly uses \"makes a suggestion\".",
+      "suggestion": "Use \"makes a suggestion\" instead.",
+      "replacement": "makes a suggestion",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "say an opinion",
+      "message": "The collocation \"say an opinion\" sounds unusual here. English more commonly uses \"give an opinion\".",
+      "suggestion": "Use \"give an opinion\" instead.",
+      "replacement": "give an opinion",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "says an opinion",
+      "message": "The collocation \"says an opinion\" sounds unusual here. English more commonly uses \"gives an opinion\".",
+      "suggestion": "Use \"gives an opinion\" instead.",
+      "replacement": "gives an opinion",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a project",
+      "message": "The collocation \"do a project\" sounds unusual here. English more commonly uses \"work on a project\".",
+      "suggestion": "Use \"work on a project\" instead.",
+      "replacement": "work on a project",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "does a project",
+      "message": "The collocation \"does a project\" sounds unusual here. English more commonly uses \"works on a project\".",
+      "suggestion": "Use \"works on a project\" instead.",
+      "replacement": "works on a project",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "say a recommendation",
+      "message": "The collocation \"say a recommendation\" sounds unusual here. English more commonly uses \"make a recommendation\".",
+      "suggestion": "Use \"make a recommendation\" instead.",
+      "replacement": "make a recommendation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "says a recommendation",
+      "message": "The collocation \"says a recommendation\" sounds unusual here. English more commonly uses \"makes a recommendation\".",
+      "suggestion": "Use \"makes a recommendation\" instead.",
+      "replacement": "makes a recommendation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "say a complaint",
+      "message": "The collocation \"say a complaint\" sounds unusual here. English more commonly uses \"make a complaint\".",
+      "suggestion": "Use \"make a complaint\" instead.",
+      "replacement": "make a complaint",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "says a complaint",
+      "message": "The collocation \"says a complaint\" sounds unusual here. English more commonly uses \"makes a complaint\".",
+      "suggestion": "Use \"makes a complaint\" instead.",
+      "replacement": "makes a complaint",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make a summary",
+      "message": "The collocation \"make a summary\" sounds unusual here. English more commonly uses \"write a summary\".",
+      "suggestion": "Use \"write a summary\" instead.",
+      "replacement": "write a summary",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make an analysis",
+      "message": "The collocation \"make an analysis\" sounds unusual here. English more commonly uses \"do an analysis\".",
+      "suggestion": "Use \"do an analysis\" instead.",
+      "replacement": "do an analysis",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes an analysis",
+      "message": "The collocation \"makes an analysis\" sounds unusual here. English more commonly uses \"does an analysis\".",
+      "suggestion": "Use \"does an analysis\" instead.",
+      "replacement": "does an analysis",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "say a conclusion",
+      "message": "The collocation \"say a conclusion\" sounds unusual here. English more commonly uses \"draw a conclusion\".",
+      "suggestion": "Use \"draw a conclusion\" instead.",
+      "replacement": "draw a conclusion",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make a conclusion",
+      "message": "The collocation \"make a conclusion\" sounds unusual here. English more commonly uses \"draw a conclusion\".",
+      "suggestion": "Use \"draw a conclusion\" instead.",
+      "replacement": "draw a conclusion",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "say an explanation",
+      "message": "The collocation \"say an explanation\" sounds unusual here. English more commonly uses \"give an explanation\".",
+      "suggestion": "Use \"give an explanation\" instead.",
+      "replacement": "give an explanation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "says an explanation",
+      "message": "The collocation \"says an explanation\" sounds unusual here. English more commonly uses \"gives an explanation\".",
+      "suggestion": "Use \"gives an explanation\" instead.",
+      "replacement": "gives an explanation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "make an explanation",
+      "message": "The collocation \"make an explanation\" sounds unusual here. English more commonly uses \"give an explanation\".",
+      "suggestion": "Use \"give an explanation\" instead.",
+      "replacement": "give an explanation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "makes an explanation",
+      "message": "The collocation \"makes an explanation\" sounds unusual here. English more commonly uses \"gives an explanation\".",
+      "suggestion": "Use \"gives an explanation\" instead.",
+      "replacement": "gives an explanation",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "do a revision",
+      "message": "The collocation \"do a revision\" sounds unusual here. English more commonly uses \"revise\".",
+      "suggestion": "Use \"revise\" instead.",
+      "replacement": "revise",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "say a response",
+      "message": "The collocation \"say a response\" sounds unusual here. English more commonly uses \"give a response\".",
+      "suggestion": "Use \"give a response\" instead.",
+      "replacement": "give a response",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "says a response",
+      "message": "The collocation \"says a response\" sounds unusual here. English more commonly uses \"gives a response\".",
+      "suggestion": "Use \"gives a response\" instead.",
+      "replacement": "gives a response",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "powerful rain",
+      "message": "The collocation \"powerful rain\" sounds unusual here. English more commonly uses \"heavy rain\".",
+      "suggestion": "Use \"heavy rain\" instead.",
+      "replacement": "heavy rain",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "high rain",
+      "message": "The collocation \"high rain\" sounds unusual here. English more commonly uses \"heavy rain\".",
+      "suggestion": "Use \"heavy rain\" instead.",
+      "replacement": "heavy rain",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "large rain",
+      "message": "The collocation \"large rain\" sounds unusual here. English more commonly uses \"heavy rain\".",
+      "suggestion": "Use \"heavy rain\" instead.",
+      "replacement": "heavy rain",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "big traffic",
+      "message": "The collocation \"big traffic\" sounds unusual here. English more commonly uses \"heavy traffic\".",
+      "suggestion": "Use \"heavy traffic\" instead.",
+      "replacement": "heavy traffic",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "strong traffic",
+      "message": "The collocation \"strong traffic\" sounds unusual here. English more commonly uses \"heavy traffic\".",
+      "suggestion": "Use \"heavy traffic\" instead.",
+      "replacement": "heavy traffic",
+      "source_label": "starter-collocation"
+    },
+    {
+      "phrase": "hard rain",
+      "message": "The collocation \"hard rain\" sounds unusual here. English more commonly uses \"heavy rain\".",
+      "suggestion": "Use \"heavy rain\" instead.",
+      "replacement": "heavy rain",
+      "source_label": "starter-collocation"
+    }
+  ],
+  "dictionary_words": [
+    "a",
+    "advice",
+    "an",
+    "analysis",
+    "apology",
+    "appointment",
+    "ask",
+    "attention",
+    "bed",
+    "big",
+    "break",
+    "breakfast",
+    "business",
+    "call",
+    "choice",
+    "complaint",
+    "conclusion",
+    "conversation",
+    "decision",
+    "difference",
+    "dinner",
+    "discussion",
+    "dishes",
+    "do",
+    "does",
+    "draw",
+    "effort",
+    "exam",
+    "explanation",
+    "feedback",
+    "friends",
+    "fun",
+    "give",
+    "gives",
+    "hard",
+    "has",
+    "have",
+    "heavy",
+    "high",
+    "homework",
+    "housework",
+    "improvement",
+    "joke",
+    "large",
+    "laundry",
+    "lie",
+    "lunch",
+    "make",
+    "makes",
+    "noise",
+    "notes",
+    "on",
+    "opinion",
+    "party",
+    "pay",
+    "payment",
+    "pays",
+    "phone",
+    "photo",
+    "picture",
+    "plan",
+    "powerful",
+    "presentation",
+    "progress",
+    "project",
+    "promise",
+    "question",
+    "rain",
+    "recommendation",
+    "report",
+    "research",
+    "reservation",
+    "response",
+    "rest",
+    "revise",
+    "revision",
+    "say",
+    "says",
+    "shower",
+    "speech",
+    "story",
+    "strong",
+    "suggestion",
+    "summary",
+    "take",
+    "takes",
+    "tell",
+    "tells",
+    "test",
+    "the",
+    "traffic",
+    "truth",
+    "visit",
+    "work",
+    "works",
+    "write"
+  ]
+}

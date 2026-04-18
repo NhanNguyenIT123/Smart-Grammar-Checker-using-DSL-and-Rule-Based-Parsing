@@ -1,0 +1,38 @@
+[
+  {
+    "id": "src-grammar-rulepack",
+    "type": "rulepack",
+    "origin": "project-curated",
+    "description": "Time expressions, grammar rules, semantic heuristics, and coverage matrix."
+  },
+  {
+    "id": "src-irregular-verbs",
+    "type": "lexicon",
+    "origin": "project-curated",
+    "description": "Curated irregular verb paradigms used by the tense and lookup engines."
+  },
+  {
+    "id": "src-regular-verbs",
+    "type": "lexicon",
+    "origin": "project-curated",
+    "description": "Core regular-verb seed list expanded during preprocessing."
+  },
+  {
+    "id": "src-synonym-groups",
+    "type": "lexicon",
+    "origin": "project-curated",
+    "description": "Synonym clusters normalized into a bidirectional lookup graph."
+  },
+  {
+    "id": "src-semantic-classes",
+    "type": "semantic",
+    "origin": "project-curated",
+    "description": "Semantic noun classes used to validate destinations, objects, and collocations."
+  },
+  {
+    "id": "src-common-wordfreq",
+    "type": "corpus",
+    "origin": "wordfreq-if-available",
+    "description": "Top English words merged into the runtime spelling dictionary during compilation."
+  }
+]
