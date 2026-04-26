@@ -1,13 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Bot,
-  CheckCircle2,
-  ClipboardList,
-  HelpCircle,
-  RotateCcw,
-  SendHorizontal,
-} from "lucide-react";
+import { HelpCircle, SendHorizontal } from "lucide-react";
 import checkerbg from "@/assets/mainpage/mainpagebg.svg";
 import WorkspaceNavbar from "@/components/WorkspaceNavbar";
 import ResultTemplates from "@/components/grammar/ResultTemplates";
@@ -18,31 +11,23 @@ import {
   logoutCurrentUser,
 } from "@/lib/api";
 
-const MODE_CONFIG = {
-  check: {
-    label: "Check",
-    helper: "Use Check to see the paragraph, the flagged parts, and a corrected rewrite.",
-    defaultInput: "check grammar I go to chracter yesterday.",
-  },
-  explain: {
-    label: "Explain",
-    helper: "Use Explain to inspect the strongest reasons, rewrites, and tense signals behind the result.",
-    defaultInput:
-      "explain grammar Yesterday the coordinator do a report after we make research for the conference.",
-  },
-  coverage: {
-    label: "Coverage",
-    helper: "Use Coverage to inspect commands, rule support, and the compiled knowledge pipeline.",
-    defaultInput: "help",
-  },
-};
+const DEFAULT_COMMAND = "help";
 
+function formatPanelTitle(command) {
+  if (!command) {
+    return "Command Output";
+  }
+
+  return String(command)
+    .split(/\s+/)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
 
 export default function GrammarWorkspace() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(loadStoredUser());
-  const [activeMode, setActiveMode] = useState("check");
-  const [input, setInput] = useState(MODE_CONFIG.check.defaultInput);
+  const [input, setInput] = useState(DEFAULT_COMMAND);
   const [submittedInput, setSubmittedInput] = useState("");
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -68,28 +53,29 @@ export default function GrammarWorkspace() {
     restore();
   }, [navigate]);
 
-  useEffect(() => {
-    setInput(MODE_CONFIG[activeMode].defaultInput);
-    setResult(null);
-    setSubmittedInput("");
-    setBanner("");
-  }, [activeMode]);
-
   const quickMetrics = useMemo(() => {
     if (!result?.data) {
       return [
         { label: "Commands", value: "9" },
-        { label: "Templates", value: "3" },
-        { label: "Mode", value: MODE_CONFIG[activeMode].label },
+        { label: "Pipeline", value: "ANTLR + Rules" },
+        { label: "Start Here", value: "help" },
       ];
     }
 
     const data = result.data;
-    if (result.command === "check grammar" || result.command === "explain") {
+    if (result.command === "check grammar") {
       return [
         { label: "Sentences", value: data.sentence_count || 0 },
         { label: "Grammar", value: data.grammar_errors?.length || 0 },
         { label: "Semantic", value: data.semantic_warnings?.length || 0 },
+      ];
+    }
+
+    if (result.command === "show tokens") {
+      return [
+        { label: "Tokens", value: data.token_count || 0 },
+        { label: "Parsable", value: data.parsable ? "Yes" : "No" },
+        { label: "Command", value: data.command_type || "Lexer only" },
       ];
     }
 
@@ -109,12 +95,21 @@ export default function GrammarWorkspace() {
       ];
     }
 
+    if (result.command === "help") {
+      const stats = data.pipeline_summary?.knowledge_stats || {};
+      return [
+        { label: "Commands", value: data.commands?.length || 0 },
+        { label: "Imported Packs", value: stats.imported_sources || 0 },
+        { label: "Rules", value: stats.phrase_index_entries || 0 },
+      ];
+    }
+
     return [
       { label: "Status", value: result.success ? "Ready" : "Invalid" },
       { label: "Command", value: result.command || "Unknown" },
-      { label: "Mode", value: MODE_CONFIG[activeMode].label },
+      { label: "Mode", value: "Workspace" },
     ];
-  }, [activeMode, result]);
+  }, [result]);
 
   const runCommand = async (value) => {
     if (!currentUser?.id) {
@@ -144,7 +139,10 @@ export default function GrammarWorkspace() {
       await logoutCurrentUser(currentUser.id);
     }
     setCurrentUser(null);
+    setInput(DEFAULT_COMMAND);
+    setSubmittedInput("");
     setResult(null);
+    setBanner("");
     navigate("/login", { replace: true });
   };
 
@@ -163,22 +161,41 @@ export default function GrammarWorkspace() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            zIndex: -1
+            zIndex: -1,
           }}
         />
         <section className="workspace-shell">
           <div className="workspace-shell__left">
             <div className="input-panel">
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.75rem" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "flex-start",
+                  marginBottom: "1.75rem",
+                }}
+              >
                 <div>
                   <p className="master-box__eyebrow">Workspace</p>
-                  <h1 style={{ fontSize: "clamp(2rem, 3vw, 3.2rem)", lineHeight: 1, marginBottom: "0.55rem" }}>DSL Input</h1>
-                  <p style={{ color: "rgba(25, 26, 35, 0.72)", maxWidth: "44rem", lineHeight: 1.6 }}>{MODE_CONFIG[activeMode].helper}</p>
+                  <h1
+                    style={{
+                      fontSize: "clamp(2rem, 3vw, 3.2rem)",
+                      lineHeight: 1,
+                      marginBottom: "0.55rem",
+                    }}
+                  >
+                    DSL Input
+                  </h1>
+                  <p style={{ color: "rgba(25, 26, 35, 0.72)", maxWidth: "44rem", lineHeight: 1.6 }}>
+                    Start with <code>help</code> to inspect the supported commands, then move into{" "}
+                    <code>show tokens</code>, <code>check grammar</code>, <code>history</code>, or{" "}
+                    <code>revision plan</code>.
+                  </p>
                 </div>
 
-                <button 
-                  type="button" 
-                  onClick={() => runCommand(input)} 
+                <button
+                  type="button"
+                  onClick={() => runCommand(input)}
                   disabled={loading}
                   className="hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_0px_#191A23]"
                   style={{
@@ -195,15 +212,13 @@ export default function GrammarWorkspace() {
                     display: "flex",
                     alignItems: "center",
                     gap: "8px",
-                    height: "fit-content"
+                    height: "fit-content",
                   }}
                 >
                   <SendHorizontal size={16} />
                   {loading ? "Running..." : "Run Command"}
                 </button>
               </div>
-
-
 
               <textarea
                 value={input}
@@ -213,14 +228,15 @@ export default function GrammarWorkspace() {
               />
 
               {banner ? <div className="auth-banner auth-banner--error">{banner}</div> : null}
-
             </div>
           </div>
 
           <div className="workspace-shell__right">
             <div className="response-header" style={{ backgroundColor: "#B9FF66" }}>
               <div>
-                <h2 style={{ fontSize: "2rem", color: "#191A23", marginBottom: 0 }}>{MODE_CONFIG[activeMode].label}</h2>
+                <h2 style={{ fontSize: "2rem", color: "#191A23", marginBottom: 0 }}>
+                  {formatPanelTitle(result?.command)}
+                </h2>
               </div>
 
               <div className="response-header__metrics">
