@@ -26,17 +26,12 @@ function MasterBox({ title, subtitle, children, className = "" }) {
   );
 }
 
-function tokenizePhrase(value) {
-  return String(value || "")
-    .toLowerCase()
-    .split(/[^a-z0-9']+/i)
-    .map((token) => token.trim())
-    .filter(Boolean);
-}
+
 
 function buildRegexHighlight(text, phrases) {
-  const candidates = [...new Set(phrases.map((item) => String(item || "").trim()).filter(Boolean))]
-    .sort((left, right) => right.length - left.length);
+  const candidates = [...new Set(phrases.map((item) => String(item || "").trim()).filter(Boolean))].sort(
+    (left, right) => right.length - left.length
+  );
 
   if (!candidates.length) {
     return [{ text, tone: "plain" }];
@@ -44,20 +39,54 @@ function buildRegexHighlight(text, phrases) {
 
   const pattern = new RegExp(
     `(${candidates
-      .map((candidate) => candidate.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+      .map((candidate) => {
+        const escaped = candidate.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const startBoundary = /^\w/.test(candidate) ? "\\b" : "";
+        const endBoundary = /\w$/.test(candidate) ? "\\b" : "";
+        return `${startBoundary}${escaped}${endBoundary}`;
+      })
       .join("|")})`,
     "gi"
   );
 
-  return text.split(pattern).filter(Boolean).map((part) => {
-    const lowered = part.toLowerCase();
-    const matched = candidates.find((candidate) => candidate.toLowerCase() === lowered);
-    if (!matched) {
-      return { text: part, tone: "plain" };
-    }
+  return text
+    .split(pattern)
+    .filter(Boolean)
+    .map((part) => {
+      const lowered = part.toLowerCase();
+      const matched = candidates.find((candidate) => candidate.toLowerCase() === lowered);
+      if (!matched) {
+        return { text: part, tone: "plain" };
+      }
 
-    return { text: part, tone: "accent" };
-  });
+      return { text: part, tone: "accent" };
+    });
+}
+
+function escapeRegExp(value) {
+  return String(value || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function replaceTokenOnce(text, token, replacement) {
+  if (!text || !token || !replacement) {
+    return text;
+  }
+
+  const pattern = new RegExp(`\\b${escapeRegExp(token)}\\b`, "i");
+  return text.replace(pattern, replacement);
+}
+
+function buildSpellingCommandSuggestions(result, issue, submittedInput) {
+  const originalParagraph =
+    result?.data?.original_text || String(submittedInput || "").replace(/^check\s+grammar\s+/i, "").trim();
+  const alternatives = issue?.alternatives?.length ? issue.alternatives : [issue?.suggestion].filter(Boolean);
+
+  return alternatives
+    .map((candidate) => {
+      const updatedParagraph = replaceTokenOnce(originalParagraph, issue?.token, candidate);
+      return updatedParagraph && updatedParagraph !== originalParagraph ? `check grammar ${updatedParagraph}` : null;
+    })
+    .filter(Boolean);
 }
 
 function HighlightedParagraph({ text, phrases, tone }) {
@@ -91,20 +120,20 @@ function MetricCard({ label, value, icon: Icon, active = false, onClick }) {
   );
 }
 
-function ReviewWorkflowBox({ result, isExplain }) {
+function ReviewWorkflowBox({ result, submittedInput, onApplySuggestion }) {
   const data = result?.data || {};
   const [showAllRewrites, setShowAllRewrites] = useState(false);
 
   const originalPhrases = [
     ...(data.spelling_issues || []).map((issue) => issue.token),
-    ...(data.grammar_errors || []).flatMap((issue) => tokenizePhrase(issue.evidence || issue.message)),
-    ...(data.semantic_warnings || []).flatMap((issue) => tokenizePhrase(issue.evidence || issue.message)),
-  ];
+    ...(data.grammar_errors || []).map((issue) => issue.evidence || issue.token),
+    ...(data.semantic_warnings || []).map((issue) => issue.evidence || issue.token),
+  ].filter(Boolean);
 
   const correctedPhrases = [
-    ...(data.corrections || []).flatMap((entry) => tokenizePhrase(entry.corrected)),
-    ...(data.grammar_errors || []).flatMap((issue) => tokenizePhrase(issue.suggestion)),
-  ];
+    ...(data.corrections || []).map((entry) => entry.corrected),
+    ...(data.grammar_errors || []).map((issue) => issue.suggestion),
+  ].filter(Boolean);
 
   const topReasons = [
     ...(data.grammar_errors || []).slice(0, 4).map((issue) => ({
@@ -142,11 +171,7 @@ function ReviewWorkflowBox({ result, isExplain }) {
 
           {hasIssues ? (
             <>
-              <HighlightedParagraph
-                text={data.original_text || ""}
-                phrases={originalPhrases}
-                tone="issue"
-              />
+              <HighlightedParagraph text={data.original_text || ""} phrases={originalPhrases} tone="issue" />
               <div className="review-legend">
                 <span className="legend-chip legend-chip--issue">Red = issue to review</span>
                 <span className="legend-chip legend-chip--semantic">Amber = semantic warning</span>
@@ -158,6 +183,23 @@ function ReviewWorkflowBox({ result, isExplain }) {
                     <strong>
                       {issue.token} <ArrowRight size={14} /> {issue.suggestion}
                     </strong>
+                    {issue.alternatives?.length ? (
+                      <div className="chip-row" style={{ marginTop: "0.75rem" }}>
+                        {buildSpellingCommandSuggestions(result, issue, submittedInput).map((command) => {
+                          const candidate = command.replace(/^check\s+grammar\s+/i, "");
+                          return (
+                            <button
+                              type="button"
+                              key={command}
+                              className="lookup-chip lookup-chip--soft"
+                              onClick={() => onApplySuggestion?.(command)}
+                            >
+                              Try: {candidate}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    ) : null}
                   </article>
                 ))}
                 {(data.grammar_errors || []).map((issue, index) => (
@@ -243,29 +285,10 @@ function ReviewWorkflowBox({ result, isExplain }) {
                   className="show-more-button"
                   onClick={() => setShowAllRewrites((current) => !current)}
                 >
-                  {showAllRewrites
-                    ? "Show fewer rewrites"
-                    : `+ ${rewrites.length - 6} more rewrite(s)`}
+                  {showAllRewrites ? "Show fewer rewrites" : `+ ${rewrites.length - 6} more rewrite(s)`}
                 </button>
               ) : null}
             </div>
-
-            {isExplain ? (
-              <div className="details-section">
-                <h4>Detected Signals</h4>
-                <ul className="stack-list">
-                  {(data.detected_tenses || []).length ? (
-                    data.detected_tenses.map((signal, index) => (
-                      <li key={`${signal.name}-${signal.evidence}-${index}`} className="stack-list__item">
-                        {signal.evidence} <ArrowRight size={14} /> {signal.name.replaceAll("_", " ")}
-                      </li>
-                    ))
-                  ) : (
-                    <li className="stack-list__item">No tense signal was recorded.</li>
-                  )}
-                </ul>
-              </div>
-            ) : null}
           </div>
         </details>
       </div>
@@ -279,16 +302,18 @@ function UtilityLookupBox({ result, submittedInput, onApplySuggestion }) {
   const lookupWord = submittedInput.split(/\s+/).slice(1).join(" ") || "Lookup";
 
   return (
-    <MasterBox
-      title={`Lookup · ${lookupWord}`}
-    >
+    <MasterBox title={`Lookup | ${lookupWord}`}>
       <div className="utility-box">
         {command === "verb" ? (
           <div className="verb-grid">
-            {["v1", "v2", "v3"].map((key, index) => (
-              <article key={key} className="verb-cell">
-                <span>{["V1", "V2", "V3"][index]}</span>
-                <strong>{data[key] || data.forms?.[index] || "—"}</strong>
+            {[
+              { label: "V1", value: data.forms?.base || data.v1 || "—" },
+              { label: "V2", value: data.forms?.past || data.v2 || "—" },
+              { label: "V3", value: data.forms?.participle || data.v3 || "—" },
+            ].map((entry) => (
+              <article key={entry.label} className="verb-cell">
+                <span>{entry.label}</span>
+                <strong>{entry.value}</strong>
               </article>
             ))}
           </div>
@@ -332,6 +357,48 @@ function UtilityLookupBox({ result, submittedInput, onApplySuggestion }) {
   );
 }
 
+function TokenInspectorBox({ result, submittedInput }) {
+  const data = result?.data || {};
+  const tokens = data.tokens || [];
+
+  return (
+    <MasterBox
+      title="Lexer / Parser Inspector"
+      subtitle="ANTLR token stream for the DSL snippet you asked to inspect."
+    >
+      <div className="dashboard-list">
+        <article className="dashboard-list__item">
+          <div className="dashboard-list__heading">
+            <h3>Inspected snippet</h3>
+            <span>{data.parsable ? "Parses successfully" : "Lexer-only preview"}</span>
+          </div>
+          <div className="bad-input-box" style={{ marginTop: "0.5rem", padding: "0.5rem 0.8rem" }}>
+            <code>{data.source_text || submittedInput.replace(/^show\s+tokens\s+/i, "")}</code>
+          </div>
+          {data.command_type ? <p style={{ marginTop: "0.75rem" }}>Parsed node: {data.command_type}</p> : null}
+          {data.parse_error ? <p style={{ marginTop: "0.75rem" }}>Parse note: {data.parse_error}</p> : null}
+        </article>
+
+        {tokens.map((token) => (
+          <article key={`${token.index}-${token.type}-${token.column}`} className="dashboard-list__item">
+            <div className="dashboard-list__heading">
+              <h3>
+                {token.index}. {token.type}
+              </h3>
+              <span>
+                line {token.line}, col {token.column}
+              </span>
+            </div>
+            <div className="bad-input-box" style={{ marginTop: "0.5rem", padding: "0.5rem 0.8rem" }}>
+              <code>{token.lexeme}</code>
+            </div>
+          </article>
+        ))}
+      </div>
+    </MasterBox>
+  );
+}
+
 function DashboardBox({ result, submittedInput, onApplySuggestion }) {
   const data = result?.data || {};
   const [filterKey, setFilterKey] = useState("overview");
@@ -355,9 +422,24 @@ function DashboardBox({ result, submittedInput, onApplySuggestion }) {
     });
   } else if (result.command === "revision plan") {
     const summary = data.summary || {};
-    metrics.push({ key: "submissions", label: "Checked Runs", value: summary.reviewed_submissions || 0, icon: ClipboardMetric });
-    metrics.push({ key: "issues", label: "Tracked Issues", value: summary.tracked_issues || 0, icon: Layers3 });
-    metrics.push({ key: "focus", label: "Main Focus", value: summary.main_focus || "Balanced", icon: Lightbulb });
+    metrics.push({
+      key: "submissions",
+      label: "Checked Runs",
+      value: summary.reviewed_submissions || 0,
+      icon: ClipboardMetric,
+    });
+    metrics.push({
+      key: "issues",
+      label: "Tracked Issues",
+      value: summary.tracked_issues || 0,
+      icon: Layers3,
+    });
+    metrics.push({
+      key: "focus",
+      label: "Main Focus",
+      value: summary.main_focus || "Balanced",
+      icon: Lightbulb,
+    });
 
     (data.recurring_patterns || []).forEach((pattern) => {
       listItems.push({
@@ -387,6 +469,7 @@ function DashboardBox({ result, submittedInput, onApplySuggestion }) {
         detail: entry.command,
         meta: entry.created_at ? new Date(entry.created_at).toLocaleString() : "",
         action: entry.command,
+        examples: entry.message && entry.command_name === "invalid" ? [entry.message] : [],
       });
     });
   } else if (result.command === "help" || filterKey !== "overview") {
@@ -398,7 +481,7 @@ function DashboardBox({ result, submittedInput, onApplySuggestion }) {
     if (filterKey === "rules") {
       (data.coverage_matrix || []).forEach((entry) => {
         listItems.push({
-          title: `${entry.units} · ${entry.label}`,
+          title: `${entry.units} | ${entry.label}`,
           detail: `${entry.support_level} support`,
           examples: entry.capabilities || [],
         });
@@ -422,9 +505,7 @@ function DashboardBox({ result, submittedInput, onApplySuggestion }) {
   const visibleItems = listItems.slice(0, visibleCount);
 
   return (
-    <MasterBox
-      title={isError ? "Unknown Command" : "Dashboard / Analytics"}
-    >
+    <MasterBox title={isError ? "Unknown Command" : "Dashboard / Analytics"}>
       {isError ? (
         <div className="suggestion-card">
           <div className="suggestion-card__icon">
@@ -484,8 +565,8 @@ function DashboardBox({ result, submittedInput, onApplySuggestion }) {
       <div className="dashboard-list">
         {visibleItems.length ? (
           visibleItems.map((item, index) => (
-            <article 
-              key={`${item.title}-${index}`} 
+            <article
+              key={`${item.title}-${index}`}
               className={`dashboard-list__item ${item.action ? "cursor-pointer hover:border-black hover:shadow-sm" : ""}`}
               onClick={() => item.action && onApplySuggestion?.(item.action)}
               title={item.action ? "Click to run this command again" : undefined}
@@ -533,10 +614,11 @@ export default function ResultTemplates({ result, submittedInput, onApplySuggest
   if (!result) {
     return (
       <MasterBox>
-        <div className="clean-state" style={{ minHeight: "400px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <p style={{ color: "rgba(25, 26, 35, 0.6)", fontSize: "1.2rem" }}>
-            Run a command to see the output here.
-          </p>
+        <div
+          className="clean-state"
+          style={{ minHeight: "400px", display: "flex", alignItems: "center", justifyContent: "center" }}
+        >
+          <p style={{ color: "rgba(25, 26, 35, 0.6)", fontSize: "1.2rem" }}>Run a command to see the output here.</p>
         </div>
       </MasterBox>
     );
@@ -544,25 +626,17 @@ export default function ResultTemplates({ result, submittedInput, onApplySuggest
 
   const command = String(result.command || "").toLowerCase();
 
-  if (command === "check grammar" || command === "explain") {
-    return <ReviewWorkflowBox result={result} isExplain={command === "explain"} />;
+  if (command === "check grammar") {
+    return <ReviewWorkflowBox result={result} submittedInput={submittedInput} onApplySuggestion={onApplySuggestion} />;
+  }
+
+  if (command === "show tokens") {
+    return <TokenInspectorBox result={result} submittedInput={submittedInput} />;
   }
 
   if (["spell", "verb", "synonym"].includes(command)) {
-    return (
-      <UtilityLookupBox
-        result={result}
-        submittedInput={submittedInput}
-        onApplySuggestion={onApplySuggestion}
-      />
-    );
+    return <UtilityLookupBox result={result} submittedInput={submittedInput} onApplySuggestion={onApplySuggestion} />;
   }
 
-  return (
-    <DashboardBox
-      result={result}
-      submittedInput={submittedInput}
-      onApplySuggestion={onApplySuggestion}
-    />
-  );
+  return <DashboardBox result={result} submittedInput={submittedInput} onApplySuggestion={onApplySuggestion} />;
 }

@@ -11,6 +11,7 @@ from grammar_dsl.dsl.ast import (
     HelpCommand,
     ResetHistoryCommand,
     RevisionPlanCommand,
+    ShowTokensCommand,
     SpellLookupCommand,
     SynonymLookupCommand,
     VerbLookupCommand,
@@ -34,7 +35,11 @@ class CommandService:
         self.suggestion_engine = SuggestionEngine()
         self.verb_engine = VerbEngine(repository.verbs)
         self.synonym_engine = SynonymEngine(repository.synonyms)
-        self.spelling_checker = SpellingChecker(repository.dictionary_words, self.suggestion_engine)
+        self.spelling_checker = SpellingChecker(
+            repository.dictionary_words,
+            self.suggestion_engine,
+            self.verb_engine,
+        )
         self.grammar_checker = GrammarChecker(repository, self.spelling_checker, self.verb_engine)
         self.profile_store = profile_store or UserProfileStore()
         self.revision_planner = RevisionPlanner(self.profile_store)
@@ -56,7 +61,9 @@ class CommandService:
             command = self.parser.parse(text)
         except DSLParseError:
             suggestions = self.suggestion_engine.suggest_command_inputs(text)
-            message = "Command not recognized"
+            message = "Command not recognized."
+            if suggestions:
+                message = "Command not recognized. Did you mean: " + " | ".join(suggestions)
             response = CommandResponse(
                 success=False,
                 command="invalid",
@@ -80,6 +87,22 @@ class CommandService:
                 "check grammar",
                 message,
                 self._with_pipeline_context(asdict(analysis)),
+            )
+            self._record_response(resolved_user_id, text, response)
+            return response
+
+        if isinstance(command, ShowTokensCommand):
+            inspection = self.parser.inspect(command.source_text)
+            parse_note = (
+                f' The inspected snippet also parses as {inspection["command_type"]}.'
+                if inspection["parsable"]
+                else " The inspected snippet does not match a full GrammarDSL command yet."
+            )
+            response = CommandResponse(
+                success=True,
+                command="show tokens",
+                message=f'Lexed {inspection["token_count"]} token(s) from the requested DSL input.{parse_note}',
+                data=inspection,
             )
             self._record_response(resolved_user_id, text, response)
             return response
@@ -177,7 +200,7 @@ class CommandService:
             ranked = self.suggestion_engine.ranked_suggestions(normalized, self.repository.dictionary_words, threshold=2, limit=3)
             message = f'"{normalized}" is potentially misspelled.'
             if ranked:
-                message = f'Did you mean "{ranked[0][0]}"?'
+                message = f'Did you mean: {" | ".join(suggestion[0] for suggestion in ranked)}?'
 
             response = CommandResponse(
                 success=True,
@@ -231,6 +254,10 @@ class CommandService:
                         {
                             "usage": "check grammar <paragraph>",
                             "description": "Run grammar, spelling, and semantic heuristics, then return a corrected version of the paragraph."
+                        },
+                        {
+                            "usage": "show tokens <command>",
+                            "description": "Inspect the ANTLR lexer output for a DSL command and confirm whether the snippet parses successfully."
                         },
                         {
                             "usage": "revision plan",
@@ -356,7 +383,7 @@ class CommandService:
                 "message": f'Possible spelling issue: {item.get("token")} -> {item.get("suggestion")}',
                 "evidence": item.get("token"),
                 "suggestion": item.get("suggestion"),
-                "replacement": item.get("suggestion"),
+                "replacement": ",".join(item.get("alternatives", [])),
             }
             for item in spelling_issues
         ]
