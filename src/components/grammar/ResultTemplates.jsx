@@ -352,6 +352,24 @@ function UtilityLookupBox({ result, submittedInput, onApplySuggestion }) {
             )}
           </div>
         ) : null}
+
+        {!result.success && result.suggestions?.length > 0 && (
+          <div className="spell-box" style={{ marginTop: "1rem", paddingTop: "1rem", borderTop: "1px dashed rgba(25, 26, 35, 0.1)" }}>
+            <p className="utility-helper">Did you mean one of these?</p>
+            <div className="chip-row">
+              {result.suggestions.map((suggestion) => (
+                <button
+                  key={suggestion}
+                  type="button"
+                  className="lookup-chip lookup-chip--button"
+                  onClick={() => onApplySuggestion?.(suggestion)}
+                >
+                  {suggestion}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </MasterBox>
   );
@@ -469,7 +487,7 @@ function DashboardBox({ result, submittedInput, onApplySuggestion }) {
         detail: entry.command,
         meta: entry.created_at ? new Date(entry.created_at).toLocaleString() : "",
         action: entry.command,
-        examples: entry.message && entry.command_name === "invalid" ? [entry.message] : [],
+        examples: entry.message && (entry.command_name === "invalid" || !entry.success) ? [entry.message] : [],
       });
     });
   } else if (result.command === "help" || filterKey !== "overview") {

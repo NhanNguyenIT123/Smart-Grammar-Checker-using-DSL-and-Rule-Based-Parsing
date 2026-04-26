@@ -158,10 +158,14 @@ class CommandService:
             forms = self.verb_engine.lookup(command.word)
             if forms is None:
                 ranked = self.suggestion_engine.ranked_suggestions(command.word, self.repository.verbs.keys(), threshold=2, limit=3)
+                message = f'No verb entry found for "{command.word}".'
+                if ranked:
+                    message = f'No verb entry found for "{command.word}". Did you mean: {" | ".join(suggestion[0] for suggestion in ranked)}?'
+
                 response = CommandResponse(
                     success=False,
                     command="verb",
-                    message=f'No verb entry found for "{command.word}".',
+                    message=message,
                     data={},
                     suggestions=[f"verb {suggestion[0]}" for suggestion in ranked],
                 )
@@ -221,10 +225,14 @@ class CommandService:
             synonyms = self.synonym_engine.lookup(command.word)
             if synonyms is None:
                 ranked = self.suggestion_engine.ranked_suggestions(command.word, self.repository.synonyms.keys(), threshold=2, limit=3)
+                message = f'No synonym entry found for "{command.word}".'
+                if ranked:
+                    message = f'No synonym entry found for "{command.word}". Did you mean: {" | ".join(suggestion[0] for suggestion in ranked)}?'
+
                 response = CommandResponse(
                     success=False,
                     command="synonym",
-                    message=f'No synonym entry found for "{command.word}".',
+                    message=message,
                     data={},
                     suggestions=[f"synonym {suggestion[0]}" for suggestion in ranked],
                 )
