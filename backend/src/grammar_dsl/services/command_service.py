@@ -61,9 +61,10 @@ class CommandService:
             command = self.parser.parse(text)
         except DSLParseError:
             suggestions = self.suggestion_engine.suggest_command_inputs(text)
-            message = "Command not recognized."
             if suggestions:
-                message = "Command not recognized. Did you mean: " + " | ".join(suggestions)
+                message = f"Command not recognized. Did you mean: {' | '.join(suggestions)}?"
+            else:
+                message = "Command not recognized. Type 'help' to see the list of supported GrammarDSL commands."
             response = CommandResponse(
                 success=False,
                 command="invalid",

@@ -438,6 +438,14 @@ function DashboardBox({ result, submittedInput, onApplySuggestion }) {
       title: "Friendly Guidance",
       detail: result?.message || "The command could not be parsed.",
     });
+
+    if (!result?.suggestions?.length) {
+      listItems.push({
+        title: "Pro-Tip",
+        detail: "If you're unsure of the syntax, type 'help' to see a full list of available commands and examples.",
+        action: "help",
+      });
+    }
   } else if (result.command === "revision plan") {
     const summary = data.summary || {};
     metrics.push({
