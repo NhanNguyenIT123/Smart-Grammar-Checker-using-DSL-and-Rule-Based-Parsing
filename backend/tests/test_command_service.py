@@ -39,6 +39,7 @@ class CommandServiceTests(unittest.TestCase):
         self.assertGreaterEqual(response.data["pipeline_summary"]["knowledge_stats"]["imported_collocation_rules"], 160)
         usages = [item["usage"] for item in response.data["commands"]]
         self.assertFalse(any("why" in usage for usage in usages))
+        self.assertIn("show tokens <command>", usages)
         self.assertIn("revision plan", usages)
         self.assertIn("history", usages)
         self.assertIn("reset history", usages)
@@ -109,6 +110,13 @@ class CommandServiceTests(unittest.TestCase):
         self.assertTrue(any(item["category"] == "Agreement" for item in response.data["grammar_errors"]))
         self.assertIn("Physics is difficult for some students.", response.data["corrected_text"])
 
+    def test_negation_and_object_pronoun_case_are_handled_together(self) -> None:
+        response = self.service.execute("check grammar I dont love she.")
+        self.assertTrue(response.success)
+        self.assertFalse(any(item.get("suggestion") == "loves" for item in response.data["grammar_errors"]))
+        self.assertTrue(any(item["category"] == "Pronoun" for item in response.data["grammar_errors"]))
+        self.assertIn("I don't love her.", response.data["corrected_text"])
+
     def test_semantic_warning_for_odd_but_spelled_phrase(self) -> None:
         response = self.service.execute("check grammar However I go to chracter school yesterday.")
         self.assertTrue(response.success)
@@ -166,6 +174,11 @@ class CommandServiceTests(unittest.TestCase):
         self.assertFalse(response.success)
         self.assertIn("revision plan", response.suggestions)
 
+    def test_show_tokens_suggestion_repairs_missing_plural_suffix(self) -> None:
+        response = self.service.execute("show token check grammar i dont love he.")
+        self.assertFalse(response.success)
+        self.assertIn("show tokens check grammar i dont love he.", response.suggestions)
+
     def test_reset_history_command_clears_the_current_users_profile(self) -> None:
         service, db_path = self.create_isolated_service()
         try:
@@ -188,14 +201,33 @@ class CommandServiceTests(unittest.TestCase):
             if db_path.exists():
                 db_path.unlink()
 
-    def test_explain_command_returns_rule_trace_and_coverage(self) -> None:
-        response = self.service.execute("explain grammar He go to school every day.")
+    def test_show_tokens_command_returns_antlr_lexer_output(self) -> None:
+        response = self.service.execute("show tokens check grammar He go to school every day.")
         self.assertTrue(response.success)
-        self.assertEqual(response.command, "explain")
-        self.assertGreater(len(response.data["rule_trace"]), 0)
-        self.assertGreater(len(response.data["matched_coverage"]), 0)
-        self.assertIn("pipeline_summary", response.data)
-        self.assertGreaterEqual(response.data["pipeline_summary"]["knowledge_stats"]["imported_sources"], 4)
+        self.assertEqual(response.command, "show tokens")
+        self.assertGreater(response.data["token_count"], 0)
+        self.assertTrue(response.data["parsable"])
+        self.assertEqual(response.data["command_type"], "GrammarCheckCommand")
+        self.assertEqual(response.data["tokens"][0]["type"], "CHECK")
+
+    def test_show_tokens_splits_trailing_punctuation_into_separate_tokens(self) -> None:
+        response = self.service.execute("show tokens check grammar token is narrow.")
+        self.assertTrue(response.success)
+        self.assertEqual(response.data["tokens"][-2]["type"], "WORD")
+        self.assertEqual(response.data["tokens"][-2]["lexeme"], "narrow")
+        self.assertEqual(response.data["tokens"][-1]["type"], "PERIOD")
+        self.assertEqual(response.data["tokens"][-1]["lexeme"], ".")
+
+    def test_show_tokens_runs_are_now_saved_in_history(self) -> None:
+        service, db_path = self.create_isolated_service()
+        try:
+            service.execute("show tokens check grammar token is narrow.", user_id="user-tokens")
+            response = service.execute("history", user_id="user-tokens")
+            self.assertEqual(response.data["total_commands"], 1)
+            self.assertEqual(response.data["entries"][0]["command_name"], "show tokens")
+        finally:
+            if db_path.exists():
+                db_path.unlink()
 
     def test_check_command_carries_pipeline_context_for_ui(self) -> None:
         response = self.service.execute("check grammar I make homework every day.")
@@ -311,6 +343,13 @@ class CommandServiceTests(unittest.TestCase):
         finally:
             if db_path.exists():
                 db_path.unlink()
+
+    def test_contextual_spelling_prefers_like_over_lake_and_returns_alternatives(self) -> None:
+        response = self.service.execute("check grammar I lke her.")
+        self.assertTrue(response.success)
+        self.assertEqual(response.data["spelling_issues"][0]["suggestion"], "like")
+        self.assertIn("like", response.data["spelling_issues"][0]["alternatives"])
+        self.assertNotEqual(response.data["corrected_text"], "I lake her.")
 
 
 if __name__ == "__main__":

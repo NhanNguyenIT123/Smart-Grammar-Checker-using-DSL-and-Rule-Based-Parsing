@@ -76,6 +76,46 @@ SINGULAR_DETERMINERS = {"a", "an", "this", "that"}
 PLURAL_DETERMINERS = {"these", "those"}
 INVERTED_OPENERS = {"here", "neither", "nor", "there"}
 WH_WORDS = {"what", "where", "when", "why", "how", "who", "whom", "whose", "which"}
+NEGATED_AUXILIARY_MAP = {
+    "aren't": "are",
+    "arent": "are",
+    "can't": "can",
+    "cant": "can",
+    "couldn't": "could",
+    "couldnt": "could",
+    "didn't": "did",
+    "didnt": "did",
+    "doesn't": "does",
+    "doesnt": "does",
+    "don't": "do",
+    "dont": "do",
+    "hadn't": "had",
+    "hadnt": "had",
+    "hasn't": "has",
+    "hasnt": "has",
+    "haven't": "have",
+    "havent": "have",
+    "isn't": "is",
+    "isnt": "is",
+    "shouldn't": "should",
+    "shouldnt": "should",
+    "wasn't": "was",
+    "wasnt": "was",
+    "weren't": "were",
+    "werent": "were",
+    "won't": "will",
+    "wont": "will",
+    "wouldn't": "would",
+    "wouldnt": "would",
+}
+SUBJECT_FORM_TO_OBJECT_FORM = {
+    "he": "him",
+    "i": "me",
+    "she": "her",
+    "they": "them",
+    "we": "us",
+    "who": "whom",
+}
 
 
 class GrammarChecker:
@@ -243,7 +283,9 @@ class GrammarChecker:
             sentence_time_signals=time_signals,
             existing_issues=grammar_issues
         ))
+        grammar_issues.extend(self._check_negative_auxiliary_forms(sentence, grammar_words))
         grammar_issues.extend(self._check_prepositions(sentence, grammar_words))
+        grammar_issues.extend(self._check_object_pronoun_case(sentence, grammar_words))
         grammar_issues.extend(self._check_determiner_noun_agreement(sentence, grammar_words))
         grammar_issues.extend(self._check_relative_clause_agreement(sentence, grammar_words))
         grammar_issues.extend(self._check_linking_words(sentence, tokens))
@@ -456,6 +498,19 @@ class GrammarChecker:
                         knowledge_source="src-grammar-rulepack",
                     )
                 ]
+            if self.verb_engine.is_third_person_form(verb) and verb not in {"is", "has", "does"}:
+                base = self.verb_engine.to_base(verb) or verb.rstrip("s")
+                return [
+                    GrammarIssue(
+                        category="Agreement",
+                        message='The subject "I" should use the base verb form here.',
+                        sentence=sentence,
+                        evidence=words[verb_index],
+                        suggestion=base,
+                        rule_id="RULE-SUBJECT-VERB",
+                        knowledge_source="src-grammar-rulepack",
+                    )
+                ]
             if verb == "has":
                 return [
                     GrammarIssue(
@@ -620,6 +675,40 @@ class GrammarChecker:
 
         return issues
 
+    def _check_negative_auxiliary_forms(self, sentence: str, words: list[str]) -> list[GrammarIssue]:
+        if len(words) < 3:
+            return []
+
+        issues: list[GrammarIssue] = []
+        lowered = [self._normalize_word_token(word) for word in words]
+
+        for index, token in enumerate(lowered[:-1]):
+            canonical_aux = NEGATED_AUXILIARY_MAP.get(token)
+            if canonical_aux not in {"do", "does", "did"}:
+                continue
+
+            next_word = lowered[index + 1]
+            if not self._looks_like_verb(next_word):
+                continue
+
+            base = self.verb_engine.to_base(next_word) or next_word
+            if next_word == base or next_word in self.collocation_lead_verbs:
+                continue
+
+            issues.append(
+                GrammarIssue(
+                    category="Agreement",
+                    message=f'After "{words[index]}", the main verb should stay in the base form.',
+                    sentence=sentence,
+                    evidence=words[index + 1],
+                    suggestion=base,
+                    rule_id="RULE-NEGATIVE-AUXILIARY-BASE",
+                    knowledge_source="src-grammar-rulepack",
+                )
+            )
+
+        return issues
+
     def _check_prepositions(self, sentence: str, words: list[str]) -> list[GrammarIssue]:
         issues: list[GrammarIssue] = []
         lowered = [self._normalize_word_token(word) for word in words]
@@ -662,6 +751,44 @@ class GrammarChecker:
                         knowledge_source="src-grammar-rulepack",
                     )
                 )
+
+        return issues
+
+    def _check_object_pronoun_case(self, sentence: str, words: list[str]) -> list[GrammarIssue]:
+        issues: list[GrammarIssue] = []
+        lowered = [self._normalize_word_token(word) for word in words]
+
+        for index in range(1, len(lowered)):
+            token = lowered[index]
+            replacement = SUBJECT_FORM_TO_OBJECT_FORM.get(token)
+            if replacement is None:
+                continue
+
+            previous = lowered[index - 1]
+            next_word = lowered[index + 1] if index + 1 < len(lowered) else ""
+
+            is_after_preposition = previous in self.preposition_words
+            is_after_verb = self._looks_like_verb(previous)
+            starts_new_clause = bool(next_word) and (
+                next_word in self.auxiliaries or next_word in self.modals or self._looks_like_verb(next_word)
+            )
+
+            if not (is_after_preposition or is_after_verb):
+                continue
+            if starts_new_clause:
+                continue
+
+            issues.append(
+                GrammarIssue(
+                    category="Pronoun",
+                    message=f'After "{words[index - 1]}", use the object pronoun form instead of "{words[index]}".',
+                    sentence=sentence,
+                    evidence=words[index],
+                    suggestion=self._match_token_case(words[index], replacement),
+                    rule_id="RULE-OBJECT-PRONOUN",
+                    knowledge_source="src-grammar-rulepack",
+                )
+            )
 
         return issues
 
@@ -766,7 +893,7 @@ class GrammarChecker:
                     message="The sentence may be missing an explicit subject before the verb.",
                     sentence=sentence,
                     suggestion=f'Add a subject before "{words[leading_index]}".',
-                    severity="warning",
+                    severity="error",
                     rule_id="RULE-SVO-HEURISTIC",
                     knowledge_source="src-grammar-rulepack",
                 )
@@ -778,7 +905,7 @@ class GrammarChecker:
                     category="SVO",
                     message="No clear verb was detected in the sentence.",
                     sentence=sentence,
-                    severity="warning",
+                    severity="error",
                     rule_id="RULE-SVO-HEURISTIC",
                     knowledge_source="src-grammar-rulepack",
                 )
@@ -1388,15 +1515,35 @@ class GrammarChecker:
         if not subject_tokens:
             return None
 
-        lowered = [token.lower() for token in subject_tokens if token]
+        lowered = [self._normalize_word_token(token) for token in subject_tokens if token]
         if not lowered:
             return None
-        if lowered[0] in INVERTED_OPENERS:
+        filtered = [
+            token
+            for token in lowered
+            if token not in NEGATED_AUXILIARY_MAP
+            and token not in self.auxiliaries
+            and token not in self.modals
+            and token != "not"
+        ]
+        if not filtered:
             return None
-        if "and" in lowered:
+        if filtered[0] in INVERTED_OPENERS:
+            return None
+        if "and" in filtered:
             return {"agreement_subject": "they", "number": "plural"}
 
-        head = lowered[-1]
+        for token in filtered:
+            if token in self.subject_words:
+                if token == "i":
+                    return {"agreement_subject": "i", "number": "singular"}
+                if token in PLURAL_REFERENCE_WORDS:
+                    return {"agreement_subject": "they", "number": "plural"}
+                if token in SINGULAR_REFERENCE_WORDS:
+                    return {"agreement_subject": "it", "number": "singular"}
+                return {"agreement_subject": token, "number": "singular"}
+
+        head = filtered[-1]
         if head in self.subject_words:
             if head == "i":
                 return {"agreement_subject": "i", "number": "singular"}
@@ -1406,7 +1553,7 @@ class GrammarChecker:
                 return {"agreement_subject": "it", "number": "singular"}
             return {"agreement_subject": head, "number": "singular"}
 
-        determiner = next((token for token in lowered if token in self.determiners), None)
+        determiner = next((token for token in filtered if token in self.determiners), None)
         if determiner in PLURAL_DETERMINERS:
             return {"agreement_subject": "they", "number": "plural"}
         if determiner in SINGULAR_DETERMINERS:
@@ -1432,6 +1579,8 @@ class GrammarChecker:
                 
             lowered = word.lower()
             if lowered in self.clause_connectors or lowered in self.time_expression_tokens or lowered.endswith("ly"):
+                continue
+            if lowered in NEGATED_AUXILIARY_MAP or lowered == "not":
                 continue
             if lowered in self.subject_words:
                 return lowered

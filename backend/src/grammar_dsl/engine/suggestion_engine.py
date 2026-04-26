@@ -4,9 +4,10 @@ from typing import Iterable
 
 
 class SuggestionEngine:
-    COMMANDS = ["check", "revision", "history", "reset", "spell", "verb", "synonym", "help"]
+    COMMANDS = ["check", "show", "revision", "history", "reset", "spell", "verb", "synonym", "help"]
     STRUCTURED_COMMAND_SPECS = {
         "check": {"suffix": "grammar", "takes_tail": True},
+        "show": {"suffix": "tokens", "takes_tail": True},
         "revision": {"suffix": "plan", "takes_tail": False},
         "reset": {"suffix": "history", "takes_tail": False},
     }

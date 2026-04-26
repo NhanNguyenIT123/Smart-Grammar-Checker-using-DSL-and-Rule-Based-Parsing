@@ -9,6 +9,7 @@ class SpellingSuggestion:
     suggestion: str
     distance: int
     position: int
+    alternatives: list[str] = field(default_factory=list)
 
 
 @dataclass(slots=True)
