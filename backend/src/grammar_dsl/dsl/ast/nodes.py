@@ -9,6 +9,11 @@ class GrammarCheckCommand:
     paragraph: str
 
 
+@dataclass(slots=True)
+class ShowTokensCommand:
+    source_text: str
+
+
 
 
 
@@ -49,6 +54,7 @@ class HelpCommand:
 
 CommandNode = Union[
     GrammarCheckCommand,
+    ShowTokensCommand,
     RevisionPlanCommand,
     HistoryCommand,
     ResetHistoryCommand,

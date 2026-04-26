@@ -19,6 +19,11 @@ class GrammarDSLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by GrammarDSLParser#showTokensCmd.
+    def visitShowTokensCmd(self, ctx:GrammarDSLParser.ShowTokensCmdContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by GrammarDSLParser#revisionPlanCmd.
     def visitRevisionPlanCmd(self, ctx:GrammarDSLParser.RevisionPlanCmdContext):
         return self.visitChildren(ctx)

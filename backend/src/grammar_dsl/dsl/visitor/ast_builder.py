@@ -6,6 +6,7 @@ from grammar_dsl.dsl.ast.nodes import (
     HelpCommand,
     ResetHistoryCommand,
     RevisionPlanCommand,
+    ShowTokensCommand,
     SpellLookupCommand,
     SynonymLookupCommand,
     VerbLookupCommand,
@@ -44,7 +45,8 @@ class ASTBuilder(GrammarDSLVisitor):
     def visitGrammarCheckCmd(self, ctx):  # type: ignore[override]
         return GrammarCheckCommand(paragraph=self.visit(ctx.paragraph()))
 
-
+    def visitShowTokensCmd(self, ctx):  # type: ignore[override]
+        return ShowTokensCommand(source_text=self.visit(ctx.paragraph()))
 
     def visitRevisionPlanCmd(self, ctx):  # type: ignore[override]
         return RevisionPlanCommand()

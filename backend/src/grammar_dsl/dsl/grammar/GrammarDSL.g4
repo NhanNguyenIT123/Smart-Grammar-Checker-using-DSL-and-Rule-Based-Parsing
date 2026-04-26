@@ -2,6 +2,7 @@ grammar GrammarDSL;
 
 command
     : grammarCheckCmd EOF
+    | showTokensCmd EOF
     | revisionPlanCmd EOF
     | historyCmd EOF
     | resetHistoryCmd EOF
@@ -13,6 +14,10 @@ command
 
 grammarCheckCmd
     : CHECK GRAMMAR paragraph
+    ;
+
+showTokensCmd
+    : SHOW TOKENS paragraph
     ;
 
 revisionPlanCmd
@@ -52,6 +57,8 @@ lookupWord
     | PROSE
     | CHECK
     | GRAMMAR
+    | SHOW
+    | TOKENS
     | REVISION
     | PLAN
     | HISTORY
@@ -79,6 +86,8 @@ paragraphToken
     | RIGHT_PAREN
     | CHECK
     | GRAMMAR
+    | SHOW
+    | TOKENS
     | REVISION
     | PLAN
     | HISTORY
@@ -91,6 +100,8 @@ paragraphToken
 
 CHECK       : [cC] [hH] [eE] [cC] [kK] ;
 GRAMMAR     : [gG] [rR] [aA] [mM] [mM] [aA] [rR] ;
+SHOW        : [sS] [hH] [oO] [wW] ;
+TOKENS      : [tT] [oO] [kK] [eE] [nN] [sS] ;
 REVISION    : [rR] [eE] [vV] [iI] [sS] [iI] [oO] [nN] ;
 PLAN        : [pP] [lL] [aA] [nN] ;
 HISTORY     : [hH] [iI] [sS] [tT] [oO] [rR] [yY] ;
@@ -101,8 +112,8 @@ SYNONYM     : [sS] [yY] [nN] [oO] [nN] [yY] [mM] ;
 HELP        : [hH] [eE] [lL] [pP] ;
 
 NUMBER      : [0-9]+ ;
-WORD        : [a-zA-Z]+ ;
-PROSE       : ~[ \t\r\n]+ ;
+WORD        : LETTER+ (WORD_APOSTROPHE LETTER+)* WORD_APOSTROPHE? ;
+PROSE       : ~[ \t\r\n.,?!'"\u2018\u2019\u201C\u201D()\-:;]+ ;
 PERIOD      : '.' ;
 COMMA       : ',' ;
 QUESTION    : '?' ;
@@ -116,3 +127,6 @@ LEFT_PAREN  : '(' ;
 RIGHT_PAREN : ')' ;
 
 WS          : [ \t\r\n]+ -> skip ;
+
+fragment LETTER : [a-zA-Z] ;
+fragment WORD_APOSTROPHE : '\'' | '\u2018' | '\u2019' ;

@@ -26,6 +26,15 @@ class GrammarDSLListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by GrammarDSLParser#showTokensCmd.
+    def enterShowTokensCmd(self, ctx:GrammarDSLParser.ShowTokensCmdContext):
+        pass
+
+    # Exit a parse tree produced by GrammarDSLParser#showTokensCmd.
+    def exitShowTokensCmd(self, ctx:GrammarDSLParser.ShowTokensCmdContext):
+        pass
+
+
     # Enter a parse tree produced by GrammarDSLParser#revisionPlanCmd.
     def enterRevisionPlanCmd(self, ctx:GrammarDSLParser.RevisionPlanCmdContext):
         pass
