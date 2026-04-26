@@ -37,6 +37,8 @@ function toDisplayName(userLike) {
     .join(" ");
 }
 
+const SESSION_TIMEOUT_MS = 15 * 60 * 1000; // 15 minutes
+
 export function normalizeUser(payload) {
   const rawUser =
     payload?.user ??
@@ -58,6 +60,7 @@ export function normalizeUser(payload) {
         rawUser.fullName ??
         toDisplayName(rawUser)
     ),
+    lastActivity: payload.lastActivity || Date.now(),
   };
 }
 
@@ -67,7 +70,16 @@ export function loadStoredUser() {
     if (!raw) {
       return null;
     }
-    return normalizeUser(JSON.parse(raw));
+
+    const data = JSON.parse(raw);
+    const now = Date.now();
+
+    if (data.lastActivity && now - data.lastActivity > SESSION_TIMEOUT_MS) {
+      window.localStorage.removeItem(USER_STORAGE_KEY);
+      return null;
+    }
+
+    return normalizeUser(data);
   } catch (error) {
     return null;
   }
@@ -77,7 +89,15 @@ export function persistUser(user) {
   if (!user) {
     return;
   }
-  window.localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
+  const data = { ...user, lastActivity: Date.now() };
+  window.localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(data));
+}
+
+export function updateActivity() {
+  const user = loadStoredUser();
+  if (user) {
+    persistUser(user);
+  }
 }
 
 export function clearStoredUser() {

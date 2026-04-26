@@ -9,6 +9,7 @@ import {
   fetchCurrentUser,
   loadStoredUser,
   logoutCurrentUser,
+  updateActivity,
 } from "@/lib/api";
 
 const DEFAULT_COMMAND = "help";
@@ -47,6 +48,7 @@ export default function GrammarWorkspace() {
         return;
       }
 
+      updateActivity();
       setCurrentUser(user);
     };
 
@@ -56,8 +58,6 @@ export default function GrammarWorkspace() {
   const quickMetrics = useMemo(() => {
     if (!result?.data) {
       return [
-        { label: "Commands", value: "9" },
-        { label: "Pipeline", value: "ANTLR + Rules" },
         { label: "Start Here", value: "help" },
       ];
     }
@@ -123,6 +123,7 @@ export default function GrammarWorkspace() {
     setSubmittedInput(value);
 
     const response = await executeDslCommand(value, currentUser.id);
+    updateActivity();
 
     if (!response.success && response.command === "auth_required") {
       setBanner(response.message);
