@@ -20,6 +20,10 @@ class DataRepository:
             self.semantic_classes: dict[str, list[str]] = knowledge_base.get("semantic_classes", {})
             self.cefr_vocabulary: dict[str, list[str]] = knowledge_base.get("cefr_vocabulary", {})
             self.phrase_index: list[dict[str, Any]] = knowledge_base.get("phrase_index", [])
+            self.feature_catalog: list[dict[str, Any]] = knowledge_base.get("feature_catalog", [])
+            self.exercise_blueprints: list[dict[str, Any]] = knowledge_base.get("exercise_blueprints", [])
+            self.lexical_pools: dict[str, Any] = knowledge_base.get("lexical_pools", {})
+            self.realization_rules: dict[str, Any] = knowledge_base.get("realization_rules", {})
             self.pipeline_summary: dict[str, Any] = knowledge_base.get("pipeline_summary", {})
             self.source_manifest: list[dict[str, Any]] = knowledge_base.get("source_manifest", [])
             self.metadata: dict[str, Any] = knowledge_base.get("metadata", {})
@@ -31,6 +35,10 @@ class DataRepository:
             self.semantic_classes = {}
             self.cefr_vocabulary = {}
             self.phrase_index = []
+            self.feature_catalog = []
+            self.exercise_blueprints = []
+            self.lexical_pools = {}
+            self.realization_rules = {}
             self.pipeline_summary = {
                 "pipeline_version": "legacy-runtime",
                 "compiled_at": None,
@@ -68,7 +76,41 @@ class DataRepository:
         words.update(self._collect_strings(self.grammar_rules))
         words.update(self._collect_strings(self.semantic_classes))
         words.update(self._collect_strings(self.phrase_index))
-        words.update({"check", "grammar", "explain", "verb", "spell", "synonym", "help"})
+        words.update(self._collect_strings(self.feature_catalog))
+        words.update(self._collect_strings(self.exercise_blueprints))
+        words.update(self._collect_strings(self.lexical_pools))
+        words.update(self._collect_strings(self.realization_rules))
+        words.update(
+            {
+                "check",
+                "grammar",
+                "generate",
+                "exercise",
+                "exercises",
+                "create",
+                "quiz",
+                "submit",
+                "answers",
+                "show",
+                "students",
+                "with",
+                "and",
+                "or",
+                "for",
+                "score",
+                "submitted",
+                "passed",
+                "failed",
+                "revision",
+                "plan",
+                "history",
+                "reset",
+                "verb",
+                "spell",
+                "synonym",
+                "help",
+            }
+        )
         return {word for word in words if word}
 
     def _generate_inflected_verb_forms(self) -> set[str]:

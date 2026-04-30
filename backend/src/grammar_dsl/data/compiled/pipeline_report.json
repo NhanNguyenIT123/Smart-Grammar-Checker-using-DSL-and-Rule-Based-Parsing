@@ -1,12 +1,13 @@
 {
-  "pipeline_version": "2.1.0",
-  "compiled_at": "2026-04-26T04:08:21.640770+00:00",
+  "pipeline_version": "3.0.0",
+  "compiled_at": "2026-04-29T08:51:54.761974+00:00",
   "preprocessing_steps": [
     "load raw lexical packs from preprocessing/raw",
     "normalize rule specs and deduplicate tokens",
     "expand irregular and regular verb paradigms",
     "compile synonym graph and semantic classes",
     "build phrase index for time markers and collocations",
+    "compile exercise blueprints, lexical pools, and realization rules",
     "merge external common-word lexicon into dictionary",
     "emit compiled knowledge base and pipeline report"
   ],
@@ -40,6 +41,12 @@
       "type": "semantic",
       "origin": "project-curated",
       "description": "Semantic noun classes used to validate destinations, objects, and collocations."
+    },
+    {
+      "id": "src-exercise-generator-pack",
+      "type": "generator",
+      "origin": "project-curated",
+      "description": "Exercise blueprints, lexical pools, morphology rules, and feature catalogs for DSL-driven quiz generation."
     },
     {
       "id": "src-common-wordfreq",
@@ -96,18 +103,24 @@
     "knowledge_base.json",
     "phrase_index.json",
     "pipeline_report.json",
-    "source_manifest.json"
+    "source_manifest.json",
+    "exercise_blueprints.json",
+    "lexical_pools.json",
+    "realization_rules.json",
+    "feature_catalog.json"
   ],
   "knowledge_stats": {
     "verb_entries": 290,
     "synonym_entries": 408,
-    "dictionary_entries": 11951,
+    "dictionary_entries": 11955,
     "grammar_rules": 229,
     "semantic_classes": 15,
     "phrase_index_entries": 229,
     "coverage_entries": 10,
     "cefr_entries": 102,
     "imported_sources": 4,
-    "imported_collocation_rules": 166
+    "imported_collocation_rules": 166,
+    "exercise_blueprints": 11,
+    "feature_atoms": 11
   }
 }

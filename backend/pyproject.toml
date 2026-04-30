@@ -8,7 +8,12 @@ version = "0.1.0"
 description = "Rule-based English grammar checker powered by ANTLR."
 requires-python = ">=3.11"
 dependencies = [
-    "antlr4-python3-runtime==4.9.2",
+    "antlr4-python3-runtime==4.13.2",
+    "python-dotenv>=1.0.1",
+    "torch",
+    "transformers",
+    "accelerate",
+    "spacy"
 ]
 
 [tool.setuptools]

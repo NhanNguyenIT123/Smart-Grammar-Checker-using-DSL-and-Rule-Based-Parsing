@@ -30,6 +30,12 @@
     "description": "Semantic noun classes used to validate destinations, objects, and collocations."
   },
   {
+    "id": "src-exercise-generator-pack",
+    "type": "generator",
+    "origin": "project-curated",
+    "description": "Exercise blueprints, lexical pools, morphology rules, and feature catalogs for DSL-driven quiz generation."
+  },
+  {
     "id": "src-common-wordfreq",
     "type": "corpus",
     "origin": "wordfreq-if-available",

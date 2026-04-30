@@ -1,0 +1,72 @@
+{
+  "subjects": {
+    "singular": [
+      { "surface": "He", "subject_key": "he", "number": "singular" },
+      { "surface": "She", "subject_key": "she", "number": "singular" },
+      { "surface": "The student", "subject_key": "it", "number": "singular" },
+      { "surface": "My teacher", "subject_key": "it", "number": "singular" }
+    ],
+    "plural": [
+      { "surface": "They", "subject_key": "they", "number": "plural" },
+      { "surface": "We", "subject_key": "we", "number": "plural" },
+      { "surface": "The students", "subject_key": "they", "number": "plural" }
+    ],
+    "first_person": [
+      { "surface": "I", "subject_key": "i", "number": "singular" }
+    ],
+    "second_person": [
+      { "surface": "You", "subject_key": "you", "number": "plural" }
+    ]
+  },
+  "transitive_verbs": [
+    "call",
+    "like",
+    "play",
+    "read",
+    "visit",
+    "watch",
+    "write"
+  ],
+  "objects": [
+    "English",
+    "her",
+    "homework",
+    "music",
+    "notes",
+    "the article",
+    "the guitar",
+    "the museum"
+  ],
+  "time_markers": {
+    "present simple": ["every day", "every weekend", "on Mondays"],
+    "past simple": ["yesterday", "last night", "last weekend"],
+    "future simple": ["tomorrow", "next week", "this evening"],
+    "present continuous": ["now", "at the moment", "right now"]
+  },
+  "agreement_nouns": {
+    "singular": ["The student", "My brother", "The teacher", "Physics"],
+    "plural": ["The students", "My parents", "The players"]
+  },
+  "pronoun_pairs": [
+    { "subject": "she", "object": "her" },
+    { "subject": "he", "object": "him" },
+    { "subject": "they", "object": "them" },
+    { "subject": "we", "object": "us" }
+  ],
+  "verb_preposition_pairs": [
+    { "subject": "I", "verb": "depend", "preposition": "on", "tail": "my teacher" },
+    { "subject": "They", "verb": "belong", "preposition": "to", "tail": "the music club" },
+    { "subject": "She", "verb": "apologize", "preposition": "for", "tail": "the delay" },
+    { "subject": "We", "verb": "listen", "preposition": "to", "tail": "the teacher" }
+  ],
+  "svo_patterns": {
+    "missing_subject": [
+      { "prompt": "____ goes to school every day.", "answer": "He" },
+      { "prompt": "____ is reading the article now.", "answer": "She" }
+    ],
+    "missing_verb": [
+      { "prompt": "The student ____ homework every evening.", "answer": "does" },
+      { "prompt": "My brother ____ to the museum yesterday.", "answer": "went" }
+    ]
+  }
+}

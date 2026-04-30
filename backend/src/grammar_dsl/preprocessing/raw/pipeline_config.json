@@ -1,11 +1,12 @@
 {
-  "pipeline_version": "2.1.0",
+  "pipeline_version": "3.0.0",
   "preprocessing_steps": [
     "load raw lexical packs from preprocessing/raw",
     "normalize rule specs and deduplicate tokens",
     "expand irregular and regular verb paradigms",
     "compile synonym graph and semantic classes",
     "build phrase index for time markers and collocations",
+    "compile exercise blueprints, lexical pools, and realization rules",
     "merge external common-word lexicon into dictionary",
     "emit compiled knowledge base and pipeline report"
   ]

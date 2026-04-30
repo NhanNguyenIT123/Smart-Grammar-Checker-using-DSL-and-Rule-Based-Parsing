@@ -1,0 +1,79 @@
+[
+  {
+    "id": "present-simple-affirmative-fill",
+    "item_type": "fill_blank",
+    "difficulty": "starter",
+    "required_features": ["present simple", "affirmative"],
+    "family": "tense-fill"
+  },
+  {
+    "id": "present-simple-negative-transform",
+    "item_type": "transform",
+    "difficulty": "starter",
+    "required_features": ["present simple", "negative"],
+    "family": "tense-transform"
+  },
+  {
+    "id": "present-simple-interrogative-transform",
+    "item_type": "transform",
+    "difficulty": "starter",
+    "required_features": ["present simple", "interrogative"],
+    "family": "tense-transform"
+  },
+  {
+    "id": "past-simple-affirmative-fill",
+    "item_type": "fill_blank",
+    "difficulty": "starter",
+    "required_features": ["past simple", "affirmative"],
+    "family": "tense-fill"
+  },
+  {
+    "id": "past-simple-interrogative-transform",
+    "item_type": "transform",
+    "difficulty": "intermediate",
+    "required_features": ["past simple", "interrogative"],
+    "family": "tense-transform"
+  },
+  {
+    "id": "future-simple-negative-transform",
+    "item_type": "transform",
+    "difficulty": "starter",
+    "required_features": ["future simple", "negative"],
+    "family": "tense-transform"
+  },
+  {
+    "id": "present-continuous-affirmative-fill",
+    "item_type": "fill_blank",
+    "difficulty": "starter",
+    "required_features": ["present continuous", "affirmative"],
+    "family": "tense-fill"
+  },
+  {
+    "id": "subject-verb-agreement-correction",
+    "item_type": "correction",
+    "difficulty": "starter",
+    "required_features": ["subject-verb agreement"],
+    "family": "agreement"
+  },
+  {
+    "id": "object-pronoun-correction",
+    "item_type": "correction",
+    "difficulty": "starter",
+    "required_features": ["object pronoun"],
+    "family": "object-pronoun"
+  },
+  {
+    "id": "verb-preposition-fill",
+    "item_type": "fill_blank",
+    "difficulty": "starter",
+    "required_features": ["verb-preposition"],
+    "family": "verb-preposition"
+  },
+  {
+    "id": "svo-fill",
+    "item_type": "fill_blank",
+    "difficulty": "starter",
+    "required_features": ["svo"],
+    "family": "svo"
+  }
+]

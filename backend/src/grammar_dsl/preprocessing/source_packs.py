@@ -89,6 +89,10 @@ IMPORTED_PACKS = [
 
 PIPELINE_CONFIG = _load_raw_json("pipeline_config.json")
 VERBS_SEED = _load_raw_json("verbs_seed.json")
+FEATURE_CATALOG = _load_raw_json("feature_catalog.json")
+EXERCISE_BLUEPRINTS = _load_raw_json("exercise_blueprints.json")
+LEXICAL_POOLS = _load_raw_json("lexical_pools.json")
+REALIZATION_RULES = _load_raw_json("realization_rules.json")
 
 PIPELINE_VERSION = str(PIPELINE_CONFIG["pipeline_version"])
 PIPELINE_STEPS = [str(step) for step in PIPELINE_CONFIG["preprocessing_steps"]]

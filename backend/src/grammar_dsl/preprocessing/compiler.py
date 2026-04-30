@@ -8,13 +8,17 @@ from typing import Any
 from .source_packs import (
     BASE_SOURCE_MANIFEST,
     DOUBLING_EXCEPTIONS,
+    EXERCISE_BLUEPRINTS,
+    FEATURE_CATALOG,
     IMPORTED_CEFR_LEVELS,
     IMPORTED_UNLIKELY_PHRASES,
     IRREGULAR_VERBS,
+    LEXICAL_POOLS,
     PIPELINE_STEPS,
     PIPELINE_VERSION,
     PROJECT_WORDS,
     RAW_SOURCE_MANIFEST,
+    REALIZATION_RULES,
     REGULAR_VERBS,
     SEMANTIC_CLASSES,
     SYNONYM_GROUPS,
@@ -28,6 +32,10 @@ KNOWLEDGE_BASE_PATH = COMPILED_DIR / "knowledge_base.json"
 PHRASE_INDEX_PATH = COMPILED_DIR / "phrase_index.json"
 PIPELINE_REPORT_PATH = COMPILED_DIR / "pipeline_report.json"
 SOURCE_MANIFEST_PATH = COMPILED_DIR / "source_manifest.json"
+EXERCISE_BLUEPRINTS_PATH = COMPILED_DIR / "exercise_blueprints.json"
+LEXICAL_POOLS_PATH = COMPILED_DIR / "lexical_pools.json"
+REALIZATION_RULES_PATH = COMPILED_DIR / "realization_rules.json"
+FEATURE_CATALOG_PATH = COMPILED_DIR / "feature_catalog.json"
 GRAMMAR_RULES_PATH = DATA_DIR / "grammar_rules.json"
 LEGACY_VERBS_PATH = DATA_DIR / "verbs.json"
 LEGACY_SYNONYMS_PATH = DATA_DIR / "synonyms.json"
@@ -62,6 +70,10 @@ def compile_knowledge_base(write_legacy: bool = True) -> dict[str, Any]:
             "phrase_index.json",
             "pipeline_report.json",
             "source_manifest.json",
+            "exercise_blueprints.json",
+            "lexical_pools.json",
+            "realization_rules.json",
+            "feature_catalog.json",
         ],
         "knowledge_stats": {
             "verb_entries": len(verbs),
@@ -74,6 +86,8 @@ def compile_knowledge_base(write_legacy: bool = True) -> dict[str, Any]:
             "cefr_entries": sum(len(words) for words in IMPORTED_CEFR_LEVELS.values()),
             "imported_sources": max(0, len(RAW_SOURCE_MANIFEST) - len(BASE_SOURCE_MANIFEST)),
             "imported_collocation_rules": len(IMPORTED_UNLIKELY_PHRASES),
+            "exercise_blueprints": len(EXERCISE_BLUEPRINTS),
+            "feature_atoms": len(FEATURE_CATALOG),
         },
     }
 
@@ -90,6 +104,10 @@ def compile_knowledge_base(write_legacy: bool = True) -> dict[str, Any]:
         "semantic_classes": SEMANTIC_CLASSES,
         "cefr_vocabulary": IMPORTED_CEFR_LEVELS,
         "phrase_index": phrase_index,
+        "feature_catalog": FEATURE_CATALOG,
+        "exercise_blueprints": EXERCISE_BLUEPRINTS,
+        "lexical_pools": LEXICAL_POOLS,
+        "realization_rules": REALIZATION_RULES,
         "pipeline_summary": pipeline_summary,
         "source_manifest": RAW_SOURCE_MANIFEST,
     }
@@ -99,6 +117,10 @@ def compile_knowledge_base(write_legacy: bool = True) -> dict[str, Any]:
     _write_json(PHRASE_INDEX_PATH, phrase_index)
     _write_json(PIPELINE_REPORT_PATH, pipeline_summary)
     _write_json(SOURCE_MANIFEST_PATH, RAW_SOURCE_MANIFEST)
+    _write_json(EXERCISE_BLUEPRINTS_PATH, EXERCISE_BLUEPRINTS)
+    _write_json(LEXICAL_POOLS_PATH, LEXICAL_POOLS)
+    _write_json(REALIZATION_RULES_PATH, REALIZATION_RULES)
+    _write_json(FEATURE_CATALOG_PATH, FEATURE_CATALOG)
 
     if write_legacy:
         _write_json(LEGACY_VERBS_PATH, verbs)
@@ -225,7 +247,41 @@ def _build_dictionary(
     merged.update(_collect_strings(grammar_rules))
     merged.update(_collect_strings(SEMANTIC_CLASSES))
     merged.update(_collect_strings(phrase_index))
-    merged.update({"check", "grammar", "explain", "verb", "spell", "synonym", "help"})
+    merged.update(_collect_strings(FEATURE_CATALOG))
+    merged.update(_collect_strings(EXERCISE_BLUEPRINTS))
+    merged.update(_collect_strings(LEXICAL_POOLS))
+    merged.update(_collect_strings(REALIZATION_RULES))
+    merged.update(
+        {
+            "check",
+            "grammar",
+            "generate",
+            "exercise",
+            "exercises",
+            "create",
+            "quiz",
+            "submit",
+            "answers",
+            "show",
+            "students",
+            "with",
+            "and",
+            "or",
+            "for",
+            "score",
+            "submitted",
+            "passed",
+            "failed",
+            "history",
+            "revision",
+            "plan",
+            "reset",
+            "verb",
+            "spell",
+            "synonym",
+            "help",
+        }
+    )
     return sorted(word for word in merged if word)
 
 

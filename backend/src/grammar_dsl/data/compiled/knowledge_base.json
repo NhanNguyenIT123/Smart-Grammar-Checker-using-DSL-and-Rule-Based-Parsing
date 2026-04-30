@@ -1,8 +1,8 @@
 {
   "metadata": {
     "name": "GrammarDSL Compiled Knowledge Base",
-    "pipeline_version": "2.1.0",
-    "compiled_at": "2026-04-26T04:08:21.640770+00:00"
+    "pipeline_version": "3.0.0",
+    "compiled_at": "2026-04-29T08:51:54.761974+00:00"
   },
   "verbs": {
     "accept": [
@@ -3983,6 +3983,7 @@
     "affects",
     "affiliate",
     "affiliated",
+    "affirmative",
     "affluent",
     "afford",
     "affordable",
@@ -6521,6 +6522,7 @@
     "decisive",
     "deck",
     "declaration",
+    "declarative",
     "declare",
     "declared",
     "declares",
@@ -9274,6 +9276,7 @@
     "interpretation",
     "interpreted",
     "interpretive",
+    "interrogative",
     "interrupted",
     "intersection",
     "interstate",
@@ -12019,6 +12022,7 @@
     "prompted",
     "promptly",
     "prone",
+    "pronoun",
     "pronounce",
     "pronounced",
     "pronunciation",
@@ -19324,15 +19328,463 @@
       "token_count": 1
     }
   ],
+  "feature_catalog": [
+    {
+      "id": "present simple",
+      "category": "tense",
+      "description": "Exercises that target simple present verb forms."
+    },
+    {
+      "id": "past simple",
+      "category": "tense",
+      "description": "Exercises that target simple past verb forms."
+    },
+    {
+      "id": "future simple",
+      "category": "tense",
+      "description": "Exercises that target simple future verb forms."
+    },
+    {
+      "id": "present continuous",
+      "category": "tense",
+      "description": "Exercises that target present continuous verb forms."
+    },
+    {
+      "id": "subject-verb agreement",
+      "category": "grammar",
+      "description": "Exercises that focus on choosing the correct verb form for a subject."
+    },
+    {
+      "id": "object pronoun",
+      "category": "grammar",
+      "description": "Exercises that focus on object pronoun choice."
+    },
+    {
+      "id": "verb-preposition",
+      "category": "grammar",
+      "description": "Exercises that focus on verb and preposition combinations."
+    },
+    {
+      "id": "svo",
+      "category": "grammar",
+      "description": "Exercises that focus on basic subject-verb-object completeness."
+    },
+    {
+      "id": "affirmative",
+      "category": "sentence-form",
+      "description": "Positive declarative sentences."
+    },
+    {
+      "id": "negative",
+      "category": "sentence-form",
+      "description": "Negative sentence forms."
+    },
+    {
+      "id": "interrogative",
+      "category": "sentence-form",
+      "description": "Question forms."
+    }
+  ],
+  "exercise_blueprints": [
+    {
+      "id": "present-simple-affirmative-fill",
+      "item_type": "fill_blank",
+      "difficulty": "starter",
+      "required_features": [
+        "present simple",
+        "affirmative"
+      ],
+      "family": "tense-fill"
+    },
+    {
+      "id": "present-simple-negative-transform",
+      "item_type": "transform",
+      "difficulty": "starter",
+      "required_features": [
+        "present simple",
+        "negative"
+      ],
+      "family": "tense-transform"
+    },
+    {
+      "id": "present-simple-interrogative-transform",
+      "item_type": "transform",
+      "difficulty": "starter",
+      "required_features": [
+        "present simple",
+        "interrogative"
+      ],
+      "family": "tense-transform"
+    },
+    {
+      "id": "past-simple-affirmative-fill",
+      "item_type": "fill_blank",
+      "difficulty": "starter",
+      "required_features": [
+        "past simple",
+        "affirmative"
+      ],
+      "family": "tense-fill"
+    },
+    {
+      "id": "past-simple-interrogative-transform",
+      "item_type": "transform",
+      "difficulty": "intermediate",
+      "required_features": [
+        "past simple",
+        "interrogative"
+      ],
+      "family": "tense-transform"
+    },
+    {
+      "id": "future-simple-negative-transform",
+      "item_type": "transform",
+      "difficulty": "starter",
+      "required_features": [
+        "future simple",
+        "negative"
+      ],
+      "family": "tense-transform"
+    },
+    {
+      "id": "present-continuous-affirmative-fill",
+      "item_type": "fill_blank",
+      "difficulty": "starter",
+      "required_features": [
+        "present continuous",
+        "affirmative"
+      ],
+      "family": "tense-fill"
+    },
+    {
+      "id": "subject-verb-agreement-correction",
+      "item_type": "correction",
+      "difficulty": "starter",
+      "required_features": [
+        "subject-verb agreement"
+      ],
+      "family": "agreement"
+    },
+    {
+      "id": "object-pronoun-correction",
+      "item_type": "correction",
+      "difficulty": "starter",
+      "required_features": [
+        "object pronoun"
+      ],
+      "family": "object-pronoun"
+    },
+    {
+      "id": "verb-preposition-fill",
+      "item_type": "fill_blank",
+      "difficulty": "starter",
+      "required_features": [
+        "verb-preposition"
+      ],
+      "family": "verb-preposition"
+    },
+    {
+      "id": "svo-fill",
+      "item_type": "fill_blank",
+      "difficulty": "starter",
+      "required_features": [
+        "svo"
+      ],
+      "family": "svo"
+    }
+  ],
+  "lexical_pools": {
+    "subjects": {
+      "singular": [
+        {
+          "surface": "He",
+          "subject_key": "he",
+          "number": "singular"
+        },
+        {
+          "surface": "She",
+          "subject_key": "she",
+          "number": "singular"
+        },
+        {
+          "surface": "The student",
+          "subject_key": "it",
+          "number": "singular"
+        },
+        {
+          "surface": "My teacher",
+          "subject_key": "it",
+          "number": "singular"
+        }
+      ],
+      "plural": [
+        {
+          "surface": "They",
+          "subject_key": "they",
+          "number": "plural"
+        },
+        {
+          "surface": "We",
+          "subject_key": "we",
+          "number": "plural"
+        },
+        {
+          "surface": "The students",
+          "subject_key": "they",
+          "number": "plural"
+        }
+      ],
+      "first_person": [
+        {
+          "surface": "I",
+          "subject_key": "i",
+          "number": "singular"
+        }
+      ],
+      "second_person": [
+        {
+          "surface": "You",
+          "subject_key": "you",
+          "number": "plural"
+        }
+      ]
+    },
+    "transitive_verbs": [
+      "call",
+      "like",
+      "play",
+      "read",
+      "visit",
+      "watch",
+      "write"
+    ],
+    "objects": [
+      "English",
+      "her",
+      "homework",
+      "music",
+      "notes",
+      "the article",
+      "the guitar",
+      "the museum"
+    ],
+    "time_markers": {
+      "present simple": [
+        "every day",
+        "every weekend",
+        "on Mondays"
+      ],
+      "past simple": [
+        "yesterday",
+        "last night",
+        "last weekend"
+      ],
+      "future simple": [
+        "tomorrow",
+        "next week",
+        "this evening"
+      ],
+      "present continuous": [
+        "now",
+        "at the moment",
+        "right now"
+      ]
+    },
+    "agreement_nouns": {
+      "singular": [
+        "The student",
+        "My brother",
+        "The teacher",
+        "Physics"
+      ],
+      "plural": [
+        "The students",
+        "My parents",
+        "The players"
+      ]
+    },
+    "pronoun_pairs": [
+      {
+        "subject": "she",
+        "object": "her"
+      },
+      {
+        "subject": "he",
+        "object": "him"
+      },
+      {
+        "subject": "they",
+        "object": "them"
+      },
+      {
+        "subject": "we",
+        "object": "us"
+      }
+    ],
+    "verb_preposition_pairs": [
+      {
+        "subject": "I",
+        "verb": "depend",
+        "preposition": "on",
+        "tail": "my teacher"
+      },
+      {
+        "subject": "They",
+        "verb": "belong",
+        "preposition": "to",
+        "tail": "the music club"
+      },
+      {
+        "subject": "She",
+        "verb": "apologize",
+        "preposition": "for",
+        "tail": "the delay"
+      },
+      {
+        "subject": "We",
+        "verb": "listen",
+        "preposition": "to",
+        "tail": "the teacher"
+      }
+    ],
+    "svo_patterns": {
+      "missing_subject": [
+        {
+          "prompt": "____ goes to school every day.",
+          "answer": "He"
+        },
+        {
+          "prompt": "____ is reading the article now.",
+          "answer": "She"
+        }
+      ],
+      "missing_verb": [
+        {
+          "prompt": "The student ____ homework every evening.",
+          "answer": "does"
+        },
+        {
+          "prompt": "My brother ____ to the museum yesterday.",
+          "answer": "went"
+        }
+      ]
+    }
+  },
+  "realization_rules": {
+    "tense_to_engine_label": {
+      "present simple": "present_simple",
+      "past simple": "past_simple",
+      "future simple": "future_simple",
+      "present continuous": "present_continuous"
+    },
+    "negative_variants": {
+      "present simple": [
+        "{subject} do not {verb_base} {object} {time_marker}.",
+        "{subject} don't {verb_base} {object} {time_marker}."
+      ],
+      "present simple-third-person": [
+        "{subject} does not {verb_base} {object} {time_marker}.",
+        "{subject} doesn't {verb_base} {object} {time_marker}."
+      ],
+      "past simple": [
+        "{subject} did not {verb_base} {object} {time_marker}.",
+        "{subject} didn't {verb_base} {object} {time_marker}."
+      ],
+      "future simple": [
+        "{subject} will not {verb_base} {object} {time_marker}.",
+        "{subject} won't {verb_base} {object} {time_marker}."
+      ],
+      "present continuous": [
+        "{subject} {be_negative} {verb_gerund} {object} {time_marker}.",
+        "{subject} {be_contracted_negative} {verb_gerund} {object} {time_marker}."
+      ]
+    },
+    "question_variants": {
+      "present simple": "Do {subject_lower} {verb_base} {object} {time_marker}?",
+      "present simple-third-person": "Does {subject_lower} {verb_base} {object} {time_marker}?",
+      "past simple": "Did {subject_lower} {verb_base} {object} {time_marker}?",
+      "future simple": "Will {subject_lower} {verb_base} {object} {time_marker}?",
+      "present continuous": "{be_question} {subject_lower} {verb_gerund} {object} {time_marker}?"
+    },
+    "be_forms": {
+      "i": {
+        "positive": "am",
+        "negative": "am not",
+        "contracted_negative": "am not",
+        "question": "Am"
+      },
+      "he": {
+        "positive": "is",
+        "negative": "is not",
+        "contracted_negative": "isn't",
+        "question": "Is"
+      },
+      "she": {
+        "positive": "is",
+        "negative": "is not",
+        "contracted_negative": "isn't",
+        "question": "Is"
+      },
+      "it": {
+        "positive": "is",
+        "negative": "is not",
+        "contracted_negative": "isn't",
+        "question": "Is"
+      },
+      "you": {
+        "positive": "are",
+        "negative": "are not",
+        "contracted_negative": "aren't",
+        "question": "Are"
+      },
+      "we": {
+        "positive": "are",
+        "negative": "are not",
+        "contracted_negative": "aren't",
+        "question": "Are"
+      },
+      "they": {
+        "positive": "are",
+        "negative": "are not",
+        "contracted_negative": "aren't",
+        "question": "Are"
+      }
+    },
+    "distractor_rules": {
+      "subject-verb agreement": [
+        {
+          "mode": "drop_s",
+          "description": "Use the base verb instead of the third-person singular form."
+        },
+        {
+          "mode": "add_s",
+          "description": "Add an unnecessary -s to a plural subject."
+        }
+      ],
+      "object pronoun": [
+        {
+          "mode": "swap_case",
+          "description": "Use the subject pronoun instead of the object pronoun."
+        }
+      ],
+      "verb-preposition": [
+        {
+          "mode": "wrong_preposition",
+          "description": "Replace the correct preposition with a common learner error."
+        }
+      ]
+    }
+  },
   "pipeline_summary": {
-    "pipeline_version": "2.1.0",
-    "compiled_at": "2026-04-26T04:08:21.640770+00:00",
+    "pipeline_version": "3.0.0",
+    "compiled_at": "2026-04-29T08:51:54.761974+00:00",
     "preprocessing_steps": [
       "load raw lexical packs from preprocessing/raw",
       "normalize rule specs and deduplicate tokens",
       "expand irregular and regular verb paradigms",
       "compile synonym graph and semantic classes",
       "build phrase index for time markers and collocations",
+      "compile exercise blueprints, lexical pools, and realization rules",
       "merge external common-word lexicon into dictionary",
       "emit compiled knowledge base and pipeline report"
     ],
@@ -19366,6 +19818,12 @@
         "type": "semantic",
         "origin": "project-curated",
         "description": "Semantic noun classes used to validate destinations, objects, and collocations."
+      },
+      {
+        "id": "src-exercise-generator-pack",
+        "type": "generator",
+        "origin": "project-curated",
+        "description": "Exercise blueprints, lexical pools, morphology rules, and feature catalogs for DSL-driven quiz generation."
       },
       {
         "id": "src-common-wordfreq",
@@ -19422,19 +19880,25 @@
       "knowledge_base.json",
       "phrase_index.json",
       "pipeline_report.json",
-      "source_manifest.json"
+      "source_manifest.json",
+      "exercise_blueprints.json",
+      "lexical_pools.json",
+      "realization_rules.json",
+      "feature_catalog.json"
     ],
     "knowledge_stats": {
       "verb_entries": 290,
       "synonym_entries": 408,
-      "dictionary_entries": 11951,
+      "dictionary_entries": 11955,
       "grammar_rules": 229,
       "semantic_classes": 15,
       "phrase_index_entries": 229,
       "coverage_entries": 10,
       "cefr_entries": 102,
       "imported_sources": 4,
-      "imported_collocation_rules": 166
+      "imported_collocation_rules": 166,
+      "exercise_blueprints": 11,
+      "feature_atoms": 11
     }
   },
   "source_manifest": [
@@ -19467,6 +19931,12 @@
       "type": "semantic",
       "origin": "project-curated",
       "description": "Semantic noun classes used to validate destinations, objects, and collocations."
+    },
+    {
+      "id": "src-exercise-generator-pack",
+      "type": "generator",
+      "origin": "project-curated",
+      "description": "Exercise blueprints, lexical pools, morphology rules, and feature catalogs for DSL-driven quiz generation."
     },
     {
       "id": "src-common-wordfreq",

@@ -1,0 +1,58 @@
+{
+  "tense_to_engine_label": {
+    "present simple": "present_simple",
+    "past simple": "past_simple",
+    "future simple": "future_simple",
+    "present continuous": "present_continuous"
+  },
+  "negative_variants": {
+    "present simple": [
+      "{subject} do not {verb_base} {object} {time_marker}.",
+      "{subject} don't {verb_base} {object} {time_marker}."
+    ],
+    "present simple-third-person": [
+      "{subject} does not {verb_base} {object} {time_marker}.",
+      "{subject} doesn't {verb_base} {object} {time_marker}."
+    ],
+    "past simple": [
+      "{subject} did not {verb_base} {object} {time_marker}.",
+      "{subject} didn't {verb_base} {object} {time_marker}."
+    ],
+    "future simple": [
+      "{subject} will not {verb_base} {object} {time_marker}.",
+      "{subject} won't {verb_base} {object} {time_marker}."
+    ],
+    "present continuous": [
+      "{subject} {be_negative} {verb_gerund} {object} {time_marker}.",
+      "{subject} {be_contracted_negative} {verb_gerund} {object} {time_marker}."
+    ]
+  },
+  "question_variants": {
+    "present simple": "Do {subject_lower} {verb_base} {object} {time_marker}?",
+    "present simple-third-person": "Does {subject_lower} {verb_base} {object} {time_marker}?",
+    "past simple": "Did {subject_lower} {verb_base} {object} {time_marker}?",
+    "future simple": "Will {subject_lower} {verb_base} {object} {time_marker}?",
+    "present continuous": "{be_question} {subject_lower} {verb_gerund} {object} {time_marker}?"
+  },
+  "be_forms": {
+    "i": { "positive": "am", "negative": "am not", "contracted_negative": "am not", "question": "Am" },
+    "he": { "positive": "is", "negative": "is not", "contracted_negative": "isn't", "question": "Is" },
+    "she": { "positive": "is", "negative": "is not", "contracted_negative": "isn't", "question": "Is" },
+    "it": { "positive": "is", "negative": "is not", "contracted_negative": "isn't", "question": "Is" },
+    "you": { "positive": "are", "negative": "are not", "contracted_negative": "aren't", "question": "Are" },
+    "we": { "positive": "are", "negative": "are not", "contracted_negative": "aren't", "question": "Are" },
+    "they": { "positive": "are", "negative": "are not", "contracted_negative": "aren't", "question": "Are" }
+  },
+  "distractor_rules": {
+    "subject-verb agreement": [
+      { "mode": "drop_s", "description": "Use the base verb instead of the third-person singular form." },
+      { "mode": "add_s", "description": "Add an unnecessary -s to a plural subject." }
+    ],
+    "object pronoun": [
+      { "mode": "swap_case", "description": "Use the subject pronoun instead of the object pronoun." }
+    ],
+    "verb-preposition": [
+      { "mode": "wrong_preposition", "description": "Replace the correct preposition with a common learner error." }
+    ]
+  }
+}

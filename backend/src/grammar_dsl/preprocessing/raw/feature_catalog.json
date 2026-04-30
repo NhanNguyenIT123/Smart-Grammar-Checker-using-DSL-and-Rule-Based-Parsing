@@ -1,0 +1,57 @@
+[
+  {
+    "id": "present simple",
+    "category": "tense",
+    "description": "Exercises that target simple present verb forms."
+  },
+  {
+    "id": "past simple",
+    "category": "tense",
+    "description": "Exercises that target simple past verb forms."
+  },
+  {
+    "id": "future simple",
+    "category": "tense",
+    "description": "Exercises that target simple future verb forms."
+  },
+  {
+    "id": "present continuous",
+    "category": "tense",
+    "description": "Exercises that target present continuous verb forms."
+  },
+  {
+    "id": "subject-verb agreement",
+    "category": "grammar",
+    "description": "Exercises that focus on choosing the correct verb form for a subject."
+  },
+  {
+    "id": "object pronoun",
+    "category": "grammar",
+    "description": "Exercises that focus on object pronoun choice."
+  },
+  {
+    "id": "verb-preposition",
+    "category": "grammar",
+    "description": "Exercises that focus on verb and preposition combinations."
+  },
+  {
+    "id": "svo",
+    "category": "grammar",
+    "description": "Exercises that focus on basic subject-verb-object completeness."
+  },
+  {
+    "id": "affirmative",
+    "category": "sentence-form",
+    "description": "Positive declarative sentences."
+  },
+  {
+    "id": "negative",
+    "category": "sentence-form",
+    "description": "Negative sentence forms."
+  },
+  {
+    "id": "interrogative",
+    "category": "sentence-form",
+    "description": "Question forms."
+  }
+]
