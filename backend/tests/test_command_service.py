@@ -30,7 +30,7 @@ class CommandServiceTests(unittest.TestCase):
         response = self.service.execute("help")
         self.assertTrue(response.success)
         self.assertEqual(response.command, "help")
-        self.assertEqual(len(response.data["commands"]), 9)
+        self.assertEqual(len(response.data["commands"]), 14)
         self.assertGreater(len(response.data["coverage_matrix"]), 0)
         self.assertIn("pipeline_summary", response.data)
         self.assertIn("knowledge_stats", response.data["pipeline_summary"])
@@ -40,6 +40,10 @@ class CommandServiceTests(unittest.TestCase):
         usages = [item["usage"] for item in response.data["commands"]]
         self.assertFalse(any("why" in usage for usage in usages))
         self.assertIn("show tokens <command>", usages)
+        self.assertIn("generate exercise with <feature-expr>", usages)
+        self.assertIn('create quiz "Title" with <N> exercises with <feature-expr>', usages)
+        self.assertIn("show students with <filter-expr>", usages)
+        self.assertIn('submit answers for quiz <quiz-id> { 1 = "..." ; 2 = "..." }', usages)
         self.assertIn("revision plan", usages)
         self.assertIn("history", usages)
         self.assertIn("reset history", usages)
@@ -130,6 +134,21 @@ class CommandServiceTests(unittest.TestCase):
         self.assertTrue(semantic_issues)
         self.assertIn("go to", semantic_issues[0]["message"])
 
+    def test_semantic_rule_go_to_does_not_flag_destination_followed_by_everyday(self) -> None:
+        response = self.service.execute("check grammar We go to school everyday.")
+        self.assertTrue(response.success)
+        self.assertFalse(response.data["semantic_warnings"])
+
+    def test_spacy_detector_flags_article_usage(self) -> None:
+        response = self.service.execute("check grammar An cat sleeps on the sofa.")
+        self.assertTrue(response.success)
+        self.assertTrue(any(item["rule_id"] == "SPACY-ARTICLE-USAGE" for item in response.data["grammar_errors"]))
+
+    def test_spacy_detector_flags_determiner_number(self) -> None:
+        response = self.service.execute("check grammar These book are expensive.")
+        self.assertTrue(response.success)
+        self.assertTrue(any(item["rule_id"] == "SPACY-DETERMINER-NUMBER" for item in response.data["grammar_errors"]))
+
     def test_semantic_collocation_warning_can_apply_safe_rewrite(self) -> None:
         response = self.service.execute("check grammar I make homework every day.")
         self.assertTrue(response.success)
@@ -217,6 +236,98 @@ class CommandServiceTests(unittest.TestCase):
         self.assertEqual(response.data["tokens"][-2]["lexeme"], "narrow")
         self.assertEqual(response.data["tokens"][-1]["type"], "PERIOD")
         self.assertEqual(response.data["tokens"][-1]["lexeme"], ".")
+
+    def test_generate_command_supports_boolean_feature_expression(self) -> None:
+        response = self.service.execute(
+            "generate 5 exercises with (present simple AND affirmative) OR (past simple AND interrogative)"
+        )
+        self.assertTrue(response.success)
+        self.assertEqual(response.command, "generate")
+        self.assertEqual(len(response.data["items"]), 5)
+        features = {feature for item in response.data["items"] for feature in item["features"]}
+        self.assertIn("present simple", features)
+        self.assertIn("past simple", features)
+        self.assertIn("interrogative", features)
+
+    def test_generate_present_simple_excludes_past_continuous_and_future_cues(self) -> None:
+        response = self.service.execute("generate 20 exercises with present simple")
+        self.assertTrue(response.success)
+        self.assertEqual(len(response.data["items"]), 20)
+        prompts = " ".join(item["prompt"].lower() for item in response.data["items"])
+        self.assertNotIn("yesterday", prompts)
+        self.assertNotIn("last year", prompts)
+        self.assertNotIn("two weeks ago", prompts)
+        self.assertNotIn("will ", prompts)
+        self.assertNotIn(" is (", prompts)
+        self.assertNotIn(" are (", prompts)
+
+    def test_generate_object_pronoun_uses_pronoun_blueprint(self) -> None:
+        response = self.service.execute("generate exercise with object pronoun")
+        self.assertTrue(response.success)
+        self.assertEqual(response.command, "generate")
+        self.assertEqual(len(response.data["items"]), 1)
+        item = response.data["items"][0]
+        self.assertEqual(item["blueprint_id"], "object-pronoun-correction")
+        self.assertIn("Correct the pronoun form:", item["prompt"])
+
+    def test_create_quiz_is_tutor_only(self) -> None:
+        service, db_path = self.create_isolated_service()
+        try:
+            class_row = service.profile_store.create_class(name="Grammar Lab", tutor_username="brian")
+            response = service.execute(
+                'create quiz "Starter" with 2 exercises with present simple AND affirmative',
+                user_id="alice",
+                context={"classId": class_row["id"]},
+            )
+            self.assertFalse(response.success)
+            self.assertEqual(response.command, "create quiz")
+            self.assertIn("Only tutors", response.message)
+        finally:
+            if db_path.exists():
+                db_path.unlink()
+
+    def test_quiz_lifecycle_tutor_student_and_scorebook_query(self) -> None:
+        service, db_path = self.create_isolated_service()
+        try:
+            class_row = service.profile_store.create_class(name="Grammar Lab", tutor_username="brian")
+            service.profile_store.join_class(join_code=class_row["join_code"], student_username="alice")
+
+            created = service.execute(
+                'create quiz "Starter" with 2 exercises with present simple AND affirmative',
+                user_id="brian",
+                context={"classId": class_row["id"]},
+            )
+            self.assertTrue(created.success)
+            quiz_id = created.data["quiz_id"]
+
+            quiz_detail = service.profile_store.get_quiz_detail(quiz_id, "alice", "student")
+            self.assertIsNotNone(quiz_detail)
+            items = quiz_detail["exercise_payload"]
+            answers = " ; ".join(
+                f'{index} = "{item["expected_answer"]}"'
+                for index, item in enumerate(items, start=1)
+            )
+
+            submitted = service.execute(
+                f"submit answers for quiz {quiz_id} {{ {answers} }}",
+                user_id="alice",
+                context={"classId": class_row["id"], "quizId": quiz_id},
+            )
+            self.assertTrue(submitted.success)
+            self.assertEqual(submitted.data["score"], submitted.data["max_score"])
+
+            rows = service.execute(
+                "show students with submitted",
+                user_id="brian",
+                context={"quizId": quiz_id},
+            )
+            self.assertTrue(rows.success)
+            self.assertEqual(rows.data["matched_rows"], 1)
+            self.assertEqual(rows.data["rows"][0]["username"], "alice")
+            self.assertEqual(rows.data["rows"][0]["status"], "submitted")
+        finally:
+            if db_path.exists():
+                db_path.unlink()
 
     def test_show_tokens_runs_are_now_saved_in_history(self) -> None:
         service, db_path = self.create_isolated_service()
@@ -350,6 +461,12 @@ class CommandServiceTests(unittest.TestCase):
         self.assertEqual(response.data["spelling_issues"][0]["suggestion"], "like")
         self.assertIn("like", response.data["spelling_issues"][0]["alternatives"])
         self.assertNotEqual(response.data["corrected_text"], "I lake her.")
+
+    def test_missing_space_in_token_is_repaired_before_grammar_rules(self) -> None:
+        response = self.service.execute("check grammar He doesn't understandthe new policy.")
+        self.assertTrue(response.success)
+        self.assertTrue(any(item["suggestion"] == "understand the" for item in response.data["spelling_issues"]))
+        self.assertFalse(any(item["category"] == "SVO" for item in response.data["grammar_errors"]))
 
 
 if __name__ == "__main__":
