@@ -1,252 +1,194 @@
-# Smart Grammar Checker
+# Smart Grammar Checker using DSL and Rule-Based Parsing
 
-A **Python FastAPI** server that interprets a custom **Domain‑Specific Language (DSL)** for grammar checking, spelling suggestions, verb look‑ups, synonym look‑ups, and personalized revision planning. The server parses user commands, runs rule‑based linguistic analyses, maintains per‑user revision history, and returns structured JSON responses ready for any client (React, React‑Native, mobile, etc.).
+GrammarDSL is a **DSL-driven grammar learning platform** built around:
 
----
+- an ANTLR lexer/parser for command input
+- a rule-based grammar checker
+- a local exercise generator
+- tutor/student classroom flows backed by SQLite
 
-## Problem Statement
+It supports grammar checking, token inspection, personalized revision history, exercise generation, quiz creation, quiz submission, and tutor scorebook queries.
 
-Traditional spell‑checkers give only generic feedback. Learners need a **command‑driven** interface that can:
+## What the system does
 
-- Detect and correct spelling mistakes with context‑aware suggestions.
-- Highlight grammatical issues (agreement, tense, verb forms, etc.).
-- Remember recurring mistakes across sessions to suggest a personalized revision plan.
-- Provide quick look‑ups for verb conjugations and synonyms.
-
-Our DSL‑based backend provides an interactive, transparent solution that bridges raw text input and detailed linguistic feedback.
-
----
-
-## Technology Stack
-
-| Layer            | Tech / Library                                   |
-|------------------|--------------------------------------------------|
-| **Server**       | FastAPI, Uvicorn (ASGI)                         |
-| **Parsing**      | ANTLR 4 (GrammarDSL.g4 → lexer + parser)        |
-| **Validation**   | Pydantic (request/response models)               |
-| **Storage**      | SQLite via `UserProfileStore` (editable)         |
-| **Python**       | 3.8+ (type‑annotated, async‑ready)               |
-
----
+- `check grammar <paragraph>` checks spelling, grammar, and semantic collocations, then returns a corrected rewrite.
+- `show tokens <command>` exposes the ANTLR token stream for a DSL snippet.
+- `generate ...` creates local practice exercises from feature expressions such as `present simple AND affirmative`.
+- tutors can create classes and quizzes
+- students can join classes and submit quiz answers
+- tutors can query scorebook rows with DSL filters such as `show students with score > 8 AND submitted`
 
 ## Architecture
 
 ```mermaid
 flowchart LR
-    Client --|POST /command| FastAPI[FastAPI Server]
-    FastAPI --> CmdSvc[CommandService]
-    CmdSvc --> Parser[ParserService]
-    Parser --> AST[AST Builder]
-    CmdSvc --> Engines[Grammar, Spelling, Verb, Synonym]
-    Engines --> Store[UserProfileStore]
-    CmdSvc --> Store
-    CmdSvc --> RespFact[Response Factory]
-    RespFact --> FastAPI
-    FastAPI -->|JSON response| Client
+    Sources["Raw Sources<br/>rules + lexical packs + exercise blueprints"] --> Preprocess["Preprocessing Compiler"]
+    Preprocess --> KB["Compiled Knowledge Base<br/>+ exercise artifacts"]
+
+    User["Tutor / Student"] --> UI["React Workspace"]
+    UI --> API["Python HTTP API"]
+    API --> Parser["ANTLR Lexer + Parser"]
+    Parser --> AST["AST Builder / Visitor"]
+    AST --> Service["CommandService"]
+    KB --> Service
+    Service --> Checker["Grammar / Spelling / Synonym / Verb Engines"]
+    Service --> Generator["Exercise Generator"]
+    Service --> Grader["Quiz Grader"]
+    Service --> Store["SQLite Store"]
+    Store --> UI
+    Checker --> UI
+    Generator --> UI
+    Grader --> UI
 ```
 
-**Key ideas**
+## Technology stack
 
-- **Session‑based**: each `sessionId` gets its own history & revision profile.
-- **DSL‑driven**: commands are parsed with ANTLR, turned into command objects, then dispatched.
-- **Rule‑based engines**: grammar, spelling, verb, synonym are pure functions operating on a compiled knowledge base.
+| Layer | Tech |
+|---|---|
+| Frontend | React + Vite |
+| Backend API | Python `BaseHTTPRequestHandler` / `ThreadingHTTPServer` |
+| Parsing | ANTLR 4 |
+| Persistence | SQLite |
+| Grammar analysis | Rule-based heuristics + compiled knowledge packs |
+| Exercise generation | Local template + lexical-pool + morphology pipeline |
 
----
+## Supported DSL commands
 
-## Key Components
+### Common commands
 
-| Component | Responsibility |
-|-----------|-----------------|
-| `CommandService` | Entry point; parses DSL, routes to appropriate engine, logs history, builds JSON payloads |
-| `ParserService` | ANTLR lexer + parser; produces a concrete syntax tree |
-| `ASTBuilder` | Converts parse tree into high‑level command objects (`CheckGrammarCommand`, `ShowTokensCommand`, …) |
-| `GrammarChecker` | Rule‑based analysis of sentence structure, agreement, tense, etc. |
-| `SpellingChecker` | Levenshtein‑based candidate generation, context‑aware ranking (verb preference) |
-| `VerbEngine` / `SynonymEngine` | Look‑ups in compiled lexical resources |
-| `UserProfileStore` | SQLite store for command history, issue statistics, revision plans |
-| `RevisionPlanner` | Generates a personalized checklist from recurring mistakes |
-| `ResponseFactory` | Uniform JSON response creator (success / error, with `type`, `message`, `data`, `suggestions`) |
+- `help`
+- `show tokens <command>`
+- `check grammar <paragraph>`
+- `generate exercise with <feature-expr>`
+- `generate <N> exercises with <feature-expr>`
+- `revision plan`
+- `history`
+- `reset history`
+- `spell <word>`
+- `verb <word>`
+- `synonym <word>`
 
----
+### Tutor-only commands
 
-## Supported DSL Commands
+- `create quiz "Title" with <N> exercises with <feature-expr>`
+- `show students with <filter-expr>`
 
-| Command | Description | Example |
-|:---|:---|:---|
-| `help` | Show all supported DSL commands and pipeline stats | `help` |
-| `show tokens <command>` | Inspect lexer output for a DSL snippet and verify it parses | `show tokens check grammar I go to school yesterday.` |
-| `check grammar <text>` | Run full grammar, spelling, and semantic heuristics; returns corrected text and issues | `check grammar I go to chracter yesterday.` |
-| `history` | Retrieve recent commands for the current user | `history` |
-| `revision plan` | Build a personalized revision checklist from past mistakes | `revision plan` |
-| `reset history` | Clear the current user's stored command history and revision profile | `reset history` |
-| `spell <word>` | Verify a word against the dictionary and get suggestions | `spell generte` |
-| `verb <word>` | Look up V1/V2/V3 forms for a verb | `verb know` |
-| `synonym <word>` | Retrieve synonyms for a word | `synonym smart` |
+### Student-only commands
 
----
+- `submit answers for quiz <quiz-id> { 1 = "..." ; 2 = "..." }`
 
-## Request / Response Format
+## Feature expressions
 
-### Request (POST `/command`)
-```json
-{
-  "sessionId": "string",   
-  "command": "string"     
-}
+V1 exercise generation supports:
+
+- `present simple`
+- `past simple`
+- `future simple`
+- `present continuous`
+- `subject-verb agreement`
+- `object pronoun`
+- `verb-preposition`
+- `svo`
+- `affirmative`
+- `negative`
+- `interrogative`
+
+Boolean composition is supported with `AND`, `OR`, and parentheses.
+
+Examples:
+
+- `generate exercise with present simple`
+- `generate 5 exercises with present simple AND negative`
+- `generate 5 exercises with (present simple AND affirmative) OR (past simple AND interrogative)`
+
+## Running the project
+
+Run everything from the **project root**:
+
+```powershell
+cd C:\GITHUB\Smart-Grammar-Checker-using-DSL-and-Rule-Based-Parsing
 ```
 
-### Common Responses
+### 1. Install backend and frontend dependencies
 
-#### Help / Menu
-```json
-{
-  "status": "success",
-  "type": "help",
-  "message": "Supported commands: help, show tokens, check grammar, history, revision plan, reset history, spell, verb, synonym",
-  "data": {}
-}
+```powershell
+python -m pip install -e backend
+npm install
 ```
 
-#### Grammar Check
-```json
-{
-  "status": "success",
-  "type": "check grammar",
-  "message": "Analyzed 1 sentence(s) and found 2 issue(s).",
-  "data": {
-    "original_text": "I go to chracter yesterday.",
-    "corrected_text": "I went to the character yesterday.",
-    "sentence_count": 1,
-    "spelling_issues": [{
-      "token": "chracter",
-      "suggestion": "character",
-      "alternatives": ["character", "cheater", "charger"]
-    }],
-    "grammar_issues": []
-  }
-}
+### 2. Generate ANTLR artifacts
+
+Only needed when the grammar changes:
+
+```powershell
+python backend/run.py gen
 ```
 
-#### Error
-```json
-{
-  "status": "error",
-  "message": "Unknown command or invalid syntax. Type 'help' to see available commands."
-}
+### 3. Compile the knowledge base
+
+```powershell
+python backend/run.py compile
 ```
 
----
+### 4. Start the backend
 
-## Running the Project
-
-### Prerequisites
-- **Backend**: Python 3.8+ (3.11 recommended)
-- **Frontend**: Node.js 18+ and npm
-- **Parsing**: Java 8+ (only required if you need to regenerate the ANTLR parser)
-
-### Step 1: Start the Backend
-From the project root:
-```bash
-# Optional: create virtual environment
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-
-# Install dependencies
-pip install -e backend
-pip install -r backend/requirements.txt
-
-# Run the server
+```powershell
 python backend/run.py serve --host 127.0.0.1 --port 8000
 ```
-The server will be available at `http://127.0.0.1:8000`.
 
-### Step 2: Start the Frontend
-Open a new terminal and run:
-```bash
-# Install dependencies
-npm install
+### 5. Start the frontend
 
-# Start development server
+Open a second terminal:
+
+```powershell
+cd C:\GITHUB\Smart-Grammar-Checker-using-DSL-and-Rule-Based-Parsing
 npm run dev
 ```
-The workspace will be available at `http://localhost:5173/grammar`.
 
-### Step 3: Verify Everything Works
-1. Open `http://localhost:5173/grammar` in your browser.
-2. Log in with a demo account (e.g., `alice / alice123`).
-3. Type `help` in the command box and press Enter.
+Then open:
 
----
+- [http://localhost:5173/grammar](http://localhost:5173/grammar)
 
+## Demo accounts
 
-## Client Integration (brief)
+Tutor accounts:
 
-Any client that can POST JSON can talk to the API. Example in JavaScript:
-```js
-async function sendCommand(sessionId, cmd) {
-  const res = await fetch('http://localhost:8000/command', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ sessionId, command: cmd })
-  });
-  return res.json();
-}
+- `brian / brian123`
+- `emma / emma123`
+
+Student accounts:
+
+- `alice / alice123`
+- `clara / clara123`
+- `david / david123`
+
+You can also create a new **demo student** from the register page.
+
+## Suggested demo flow
+
+1. `help`
+2. `show tokens check grammar I dont love she.`
+3. `generate exercise with present simple`
+4. `check grammar I dont love she.`
+5. tutor creates a class and runs `create quiz ...`
+6. student joins the class and submits answers
+7. tutor runs `show students with submitted`
+
+## Useful backend commands
+
+```powershell
+python backend/run.py help
+python backend/run.py gen
+python backend/run.py compile
+python backend/run.py test
+python backend/run.py exec "help"
+python backend/run.py exec "generate exercise with present simple"
+python backend/run.py exec "check grammar I dont love she."
 ```
-Render UI based on `response.type` (`help`, `check grammar`, `spell`, `verb`, …) and display `response.data` accordingly.
 
----
+## Current scope notes
 
-## Example Sessions
-
-### Grammar Check with Spelling Suggestion
-```bash
-curl -X POST http://127.0.0.1:8000/command \
-  -H 'Content-Type: application/json' \
-  -d '{"sessionId":"alice","command":"check grammar I lke her."}'
-```
-*Response* → corrected text `I like her.` and a spelling‑issue object.
-
-### Verb Look‑up
-```bash
-curl -X POST http://127.0.0.1:8000/command \
-  -H 'Content-Type: application/json' \
-  -d '{"sessionId":"bob","command":"verb go"}'
-```
-*Response* → `go – went – gone`.
-
-### View History
-```bash
-curl -X POST http://127.0.0.1:8000/command \
-  -H 'Content-Type: application/json' \
-  -d '{"sessionId":"alice","command":"history"}'
-```
-Shows recent commands with their status and messages.
-
----
-
-## Extending the Server
-
-1. **Add a new linguistic rule** – extend `grammar_checker.py` with a new check function and register it.
-2. **New DSL command** – add a token/rule in `GrammarDSL.g4`, regenerate the parser, and implement a handler in `command_service.py`.
-3. **Persist sessions** – replace the SQLite store with a remote DB (PostgreSQL, Redis) without altering the API.
-
----
-
-## Troubleshooting
-
-| Symptom | Likely Cause | Fix |
-|---------|--------------|-----|
-| `Connection refused` on `localhost:8000` | Server not running or wrong port | Run the server start command above and verify the health‑check endpoint |
-| `DSLParseError` – “unknown token” | Miss‑typed command or missing brackets | Follow the exact DSL syntax; arrays must be surrounded by `[` `]` and comma‑separated |
-| History not appearing | Different `sessionId` used across calls | Keep the same `sessionId` for a user; it keys the `UserProfileStore` |
-| Missing suggestions | `dictionary_words` not loaded | Ensure the preprocessing step (`backend/run.py compile`) has been executed |
-
----
-
-##  License
-
-Distributed under the **MIT License**. See the `LICENSE` file for details.
-
----
-
-
+- The platform is intentionally **rule-based and local-first** for v1.
+- No external LLM or API is required for exercise generation.
+- Quiz grading is **answer-key first**; grammar checking is used as feedback support, not as the grading engine itself.
+- Some older long-form tense regression tests in the repo still reflect pre-existing heuristic limitations in the grammar engine.
