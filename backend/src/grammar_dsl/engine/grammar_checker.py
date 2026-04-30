@@ -185,7 +185,9 @@ class GrammarChecker:
         self.semantic_stop_words = {
             "after",
             "before",
+            "daily",
             "during",
+            "everyday",
             "early",
             "evening",
             "late",
@@ -417,7 +419,19 @@ class GrammarChecker:
             return []
 
         subject = str(subject_profile["agreement_subject"])
-        verb = lowered[verb_index]
+        verb_token = lowered[verb_index]
+        verb = NEGATED_AUXILIARY_MAP.get(verb_token, verb_token)
+        is_negated = verb_token in NEGATED_AUXILIARY_MAP
+
+        def get_suggestion(target_verb: str) -> str:
+            if not is_negated:
+                return target_verb
+            # Find the negated version of the target_verb
+            for negated, canonical in NEGATED_AUXILIARY_MAP.items():
+                if canonical == target_verb:
+                    if ("'" in verb_token) == ("'" in negated):
+                        return negated
+            return f"{target_verb}n't"
 
         if surface_tense and surface_tense.name not in {"present_simple", "present_continuous"} and verb not in {"am", "is", "are", "was", "were", "have", "has", "do", "does"}:
             return []
@@ -466,7 +480,7 @@ class GrammarChecker:
                         'Third-person singular subject should use "does".',
                         sentence,
                         evidence=words[verb_index],
-                        suggestion="does",
+                        suggestion=get_suggestion("does"),
                         rule_id="RULE-SUBJECT-VERB",
                         knowledge_source="src-grammar-rulepack",
                     )
@@ -518,7 +532,7 @@ class GrammarChecker:
                         'The subject "I" should use "have".',
                         sentence,
                         evidence=words[verb_index],
-                        suggestion="have",
+                        suggestion=get_suggestion("have"),
                         rule_id="RULE-SUBJECT-VERB",
                         knowledge_source="src-grammar-rulepack",
                     )
@@ -530,7 +544,7 @@ class GrammarChecker:
                         'The subject "I" should use "do".',
                         sentence,
                         evidence=words[verb_index],
-                        suggestion="do",
+                        suggestion=get_suggestion("do"),
                         rule_id="RULE-SUBJECT-VERB",
                         knowledge_source="src-grammar-rulepack",
                     )
@@ -568,7 +582,7 @@ class GrammarChecker:
                         'Plural subjects should use "have".',
                         sentence,
                         evidence=words[verb_index],
-                        suggestion="have",
+                        suggestion=get_suggestion("have"),
                         rule_id="RULE-SUBJECT-VERB",
                         knowledge_source="src-grammar-rulepack",
                     )
@@ -580,7 +594,7 @@ class GrammarChecker:
                         'Plural subjects should use "do".',
                         sentence,
                         evidence=words[verb_index],
-                        suggestion="do",
+                        suggestion=get_suggestion("do"),
                         rule_id="RULE-SUBJECT-VERB",
                         knowledge_source="src-grammar-rulepack",
                     )
@@ -1134,6 +1148,12 @@ class GrammarChecker:
         if first_token_index == -1:
             return []
             
+        # Fragment detection: if it's very short and has no terminal punctuation, skip capitalization
+        # This prevents annoying "Sentences should start with a capitalized letter" for quiz answers or single words.
+        has_punctuation = any(t in {".", "!", "?"} for t in tokens[-2:])
+        if len(tokens) <= 3 and not has_punctuation:
+            return []
+            
         first_token = tokens[first_token_index]
         # Skip if it's already capitalized or starts with a digit/special case
         if first_token[0].islower():
@@ -1153,9 +1173,17 @@ class GrammarChecker:
 
     def _apply_spelling_to_words(self, words: list[str], spelling_issues: list) -> list[str]:
         corrected_words = list(words)
+        offset = 0
         for issue in spelling_issues:
-            if issue.position < len(corrected_words):
-                corrected_words[issue.position] = issue.suggestion
+            target_position = issue.position + offset
+            if target_position < len(corrected_words):
+                if " " in issue.suggestion:
+                    split_tokens = [token for token in issue.suggestion.split() if token]
+                    if split_tokens:
+                        corrected_words[target_position : target_position + 1] = split_tokens
+                        offset += len(split_tokens) - 1
+                        continue
+                corrected_words[target_position] = issue.suggestion
         return corrected_words
 
     def _build_corrected_sentence(
@@ -1497,9 +1525,7 @@ class GrammarChecker:
 
             if token in {"am", "is", "are", "was", "were", "have", "has", "had"}:
                 return index
-            if token in {"do", "does", "did"}:
-                if next_word and self._looks_like_base_verb(next_word) and next_word not in self.collocation_lead_verbs:
-                    continue
+            if token in {"do", "does", "did"} or token in NEGATED_AUXILIARY_MAP:
                 return index
             if not self._looks_like_verb(token):
                 continue

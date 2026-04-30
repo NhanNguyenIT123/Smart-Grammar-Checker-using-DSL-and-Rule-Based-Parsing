@@ -136,6 +136,19 @@ class SpellingChecker:
             if word.istitle() or word.isupper():
                 continue
 
+            compound = self._split_compound_token(normalized)
+            if compound is not None:
+                suggestions.append(
+                    SpellingSuggestion(
+                        token=word,
+                        suggestion=compound,
+                        distance=1,
+                        position=position,
+                        alternatives=[compound],
+                    )
+                )
+                continue
+
             ranked = self.suggestion_engine.ranked_suggestions(normalized, self.dictionary_words, threshold=2, limit=8)
             ranked = self._rank_suggestions_for_context(
                 token=normalized,
@@ -199,6 +212,17 @@ class SpellingChecker:
 
         ranked.sort(key=sort_key)
         return ranked
+
+    def _split_compound_token(self, token: str) -> str | None:
+        # Detect merged words such as "understandthe" -> "understand the".
+        if len(token) < 6:
+            return None
+        for idx in range(2, len(token) - 1):
+            left = token[:idx]
+            right = token[idx:]
+            if left in self.dictionary_words and right in self.dictionary_words:
+                return f"{left} {right}"
+        return None
 
     def _looks_like_verb_context(self, previous: str, next_word: str) -> bool:
         if previous in SUBJECT_CONTEXT_WORDS or previous in VERB_CONTEXT_AUXILIARIES:

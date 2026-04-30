@@ -1,14 +1,21 @@
 from __future__ import annotations
 
 import json
-from http.cookies import SimpleCookie
+import re
 from dataclasses import asdict
+from http.cookies import SimpleCookie
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 from grammar_dsl.data import clear_repository_cache
 from grammar_dsl.personalization import UserProfileStore
 from grammar_dsl.preprocessing import load_pipeline_report
 from grammar_dsl.services import CommandService
+
+
+CLASS_DETAIL_PATTERN = re.compile(r"^/api/classes/(?P<class_id>\d+)$")
+CLASS_QUIZZES_PATTERN = re.compile(r"^/api/classes/(?P<class_id>\d+)/quizzes$")
+QUIZ_DETAIL_PATTERN = re.compile(r"^/api/quizzes/(?P<quiz_id>\d+)$")
+QUIZ_ATTEMPTS_PATTERN = re.compile(r"^/api/quizzes/(?P<quiz_id>\d+)/attempts$")
 
 
 class GrammarDSLRequestHandler(BaseHTTPRequestHandler):
@@ -29,6 +36,7 @@ class GrammarDSLRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:  # noqa: N802
         store = self._build_store()
         current_user = self._resolve_current_user(store)
+
         if self.path == "/api/health":
             self._write_json(200, {"status": "ok"})
             return
@@ -44,16 +52,74 @@ class GrammarDSLRequestHandler(BaseHTTPRequestHandler):
             )
             return
 
+        if self.path == "/api/pipeline":
+            self._write_json(200, load_pipeline_report())
+            return
+
         if self.path == "/api/help":
             if current_user is None:
                 self._write_json(401, {"message": "Please log in first."})
                 return
             service = self._build_service()
-            self._write_json(200, asdict(service.execute("help", user_id=current_user["username"])))
+            response = service.execute("help", user_id=current_user["username"])
+            self._write_json(200, asdict(response))
             return
 
-        if self.path == "/api/pipeline":
-            self._write_json(200, load_pipeline_report())
+        if self.path == "/api/classes":
+            self._require_user_or_write(current_user)
+            if current_user is None:
+                return
+            classes = store.list_classes_for_user(current_user["username"], current_user["role"])
+            self._write_json(200, {"classes": classes})
+            return
+
+        class_detail_match = CLASS_DETAIL_PATTERN.match(self.path)
+        if class_detail_match:
+            self._require_user_or_write(current_user)
+            if current_user is None:
+                return
+            class_id = int(class_detail_match.group("class_id"))
+            detail = store.get_class_detail(class_id, current_user["username"], current_user["role"])
+            if detail is None:
+                self._write_json(404, {"message": "Class not found for the current user."})
+                return
+            self._write_json(200, detail)
+            return
+
+        class_quizzes_match = CLASS_QUIZZES_PATTERN.match(self.path)
+        if class_quizzes_match:
+            self._require_user_or_write(current_user)
+            if current_user is None:
+                return
+            class_id = int(class_quizzes_match.group("class_id"))
+            quizzes = store.list_quizzes_for_class(class_id, current_user["username"], current_user["role"])
+            self._write_json(200, {"quizzes": quizzes})
+            return
+
+        quiz_detail_match = QUIZ_DETAIL_PATTERN.match(self.path)
+        if quiz_detail_match:
+            self._require_user_or_write(current_user)
+            if current_user is None:
+                return
+            quiz_id = int(quiz_detail_match.group("quiz_id"))
+            detail = store.get_quiz_detail(quiz_id, current_user["username"], current_user["role"])
+            if detail is None:
+                self._write_json(404, {"message": "Quiz not found for the current user."})
+                return
+            self._write_json(200, detail)
+            return
+
+        quiz_attempts_match = QUIZ_ATTEMPTS_PATTERN.match(self.path)
+        if quiz_attempts_match:
+            self._require_user_or_write(current_user)
+            if current_user is None:
+                return
+            quiz_id = int(quiz_attempts_match.group("quiz_id"))
+            if current_user["role"] != "tutor":
+                self._write_json(403, {"message": "Only tutors can access quiz attempts."})
+                return
+            attempts = store.get_quiz_attempts(quiz_id, current_user["username"])
+            self._write_json(200, {"rows": attempts})
             return
 
         self._write_json(404, {"message": "Not found"})
@@ -73,27 +139,59 @@ class GrammarDSLRequestHandler(BaseHTTPRequestHandler):
                 return
 
             if self.path == "/api/auth/register":
-                self._write_json(
-                    200,
-                    {
-                        "success": True,
-                        "message": "Demo registration is disabled. Use one of the sample accounts to log in.",
-                    },
-                )
+                self._handle_register(payload)
+                return
+
+            store = self._build_store()
+            current_user = self._resolve_current_user(store)
+
+            if self.path == "/api/classes":
+                self._require_user_or_write(current_user)
+                if current_user is None:
+                    return
+                if current_user["role"] != "tutor":
+                    self._write_json(403, {"message": "Only tutors can create classes."})
+                    return
+                name = str(payload.get("name", "")).strip()
+                if not name:
+                    self._write_json(400, {"message": "Class name is required."})
+                    return
+                created = store.create_class(name=name, tutor_username=current_user["username"])
+                self._write_json(200, {"class": created})
+                return
+
+            if self.path == "/api/classes/join":
+                self._require_user_or_write(current_user)
+                if current_user is None:
+                    return
+                if current_user["role"] != "student":
+                    self._write_json(403, {"message": "Only students can join classes."})
+                    return
+                join_code = str(payload.get("joinCode", "")).strip()
+                if not join_code:
+                    self._write_json(400, {"message": "Join code is required."})
+                    return
+                joined = store.join_class(join_code=join_code, student_username=current_user["username"])
+                if joined is None:
+                    self._write_json(404, {"message": "Join code not found."})
+                    return
+                self._write_json(200, {"class": joined})
                 return
 
             if self.path != "/api/command":
                 self._write_json(404, {"message": "Not found"})
                 return
 
-            store = self._build_store()
-            current_user = self._resolve_current_user(store)
+            self._require_user_or_write(current_user)
             if current_user is None:
-                self._write_json(401, {"message": "Please log in first."})
                 return
 
             service = self._build_service()
-            response = service.execute(str(payload.get("input", "")), user_id=current_user["username"])
+            response = service.execute(
+                str(payload.get("input", "")),
+                user_id=current_user["username"],
+                context=payload.get("context") or {},
+            )
             self._write_json(200 if response.success else 400, asdict(response))
         except json.JSONDecodeError:
             self._write_json(400, {"message": "Invalid JSON payload."})
@@ -176,6 +274,32 @@ class GrammarDSLRequestHandler(BaseHTTPRequestHandler):
             },
             set_cookie="grammardsl_session=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0",
         )
+
+    def _handle_register(self, payload: dict) -> None:
+        username = str(payload.get("username", "")).strip()
+        password = str(payload.get("password", ""))
+        display_name = str(payload.get("displayName", "")).strip()
+        if not username or not password:
+            self._write_json(400, {"message": "Username and password are required."})
+            return
+        store = self._build_store()
+        try:
+            user = store.create_demo_student(username=username, password=password, display_name=display_name or username)
+        except ValueError as error:
+            self._write_json(400, {"message": str(error)})
+            return
+        self._write_json(
+            200,
+            {
+                "success": True,
+                "message": "Demo student account created. You can log in right away.",
+                "user": user,
+            },
+        )
+
+    def _require_user_or_write(self, current_user: dict[str, str] | None) -> None:
+        if current_user is None:
+            self._write_json(401, {"message": "Please log in first."})
 
 
 def run_server(host: str = "127.0.0.1", port: int = 8000) -> None:

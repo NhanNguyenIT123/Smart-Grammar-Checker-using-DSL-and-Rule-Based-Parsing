@@ -13,7 +13,11 @@ class RevisionPlanner:
     def build_plan(self, user_id: str) -> dict[str, Any]:
         source_data = self.store.get_revision_source_data(user_id)
         runs = source_data["runs"]
-        issues = source_data["issues"]
+        issues = [
+            issue
+            for issue in source_data["issues"]
+            if (issue.get("rule_id") or "").upper() != "SYSTEM_ERROR"
+        ]
 
         if not runs or not issues:
             return {
