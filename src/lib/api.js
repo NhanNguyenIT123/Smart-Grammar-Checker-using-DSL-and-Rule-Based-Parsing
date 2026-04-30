@@ -1,19 +1,17 @@
 const API_BASE = "/api";
 const USER_STORAGE_KEY = "grammardsl-demo-user";
+const SESSION_TIMEOUT_MS = 15 * 60 * 1000;
 
 function buildHeaders(userId, extraHeaders = {}) {
   const headers = { ...extraHeaders };
-
   if (userId) {
     headers["X-GrammarDSL-User-Id"] = String(userId);
   }
-
   return headers;
 }
 
 async function parseJsonResponse(response) {
   const raw = await response.text();
-
   try {
     return raw ? JSON.parse(raw) : {};
   } catch (error) {
@@ -29,15 +27,12 @@ function toDisplayName(userLike) {
   if (!username) {
     return "GrammarDSL User";
   }
-
   return username
     .split(/[\s._-]+/)
     .filter(Boolean)
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
 }
-
-const SESSION_TIMEOUT_MS = 15 * 60 * 1000; // 15 minutes
 
 export function normalizeUser(payload) {
   const rawUser =
@@ -60,6 +55,7 @@ export function normalizeUser(payload) {
         rawUser.fullName ??
         toDisplayName(rawUser)
     ),
+    role: String(rawUser.role || "student"),
     lastActivity: payload.lastActivity || Date.now(),
   };
 }
@@ -72,9 +68,7 @@ export function loadStoredUser() {
     }
 
     const data = JSON.parse(raw);
-    const now = Date.now();
-
-    if (data.lastActivity && now - data.lastActivity > SESSION_TIMEOUT_MS) {
+    if (data.lastActivity && Date.now() - data.lastActivity > SESSION_TIMEOUT_MS) {
       window.localStorage.removeItem(USER_STORAGE_KEY);
       return null;
     }
@@ -109,13 +103,10 @@ export async function fetchCurrentUser(userId) {
     credentials: "include",
     headers: buildHeaders(userId),
   });
-
   const payload = await parseJsonResponse(response);
-
   if (!response.ok || payload?.authenticated === false) {
     return null;
   }
-
   return normalizeUser(payload);
 }
 
@@ -128,27 +119,21 @@ export async function loginWithDemoAccount(username, password) {
     }),
     body: JSON.stringify({ username, password }),
   });
-
   const payload = await parseJsonResponse(response);
-
   if (!response.ok) {
     return {
       success: false,
       message: payload?.message || "Login failed.",
     };
   }
-
   const user = normalizeUser(payload);
-
   if (!user) {
     return {
       success: false,
       message: "Login succeeded, but the user profile could not be resolved.",
     };
   }
-
   persistUser(user);
-
   return {
     success: true,
     user,
@@ -175,20 +160,21 @@ export async function submitFakeRegistration(formData) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(formData),
+    body: JSON.stringify({
+      username: formData.username,
+      password: formData.password,
+      displayName: formData.fullName,
+    }),
   });
 
   const payload = await parseJsonResponse(response);
-
   return {
     success: response.ok,
-    message:
-      payload?.message ||
-      "Registration is in demo mode. Please use one of the sample SQLite accounts.",
+    message: payload?.message || "Could not create the demo student account.",
   };
 }
 
-export async function executeDslCommand(input, userId) {
+export async function executeDslCommand(input, userId, context = {}) {
   let response;
   let payload;
   try {
@@ -198,7 +184,7 @@ export async function executeDslCommand(input, userId) {
       headers: buildHeaders(userId, {
         "Content-Type": "application/json",
       }),
-      body: JSON.stringify({ input }),
+      body: JSON.stringify({ input, context }),
     });
     payload = await parseJsonResponse(response);
   } catch (error) {
@@ -240,8 +226,71 @@ export async function executeDslCommand(input, userId) {
   };
 }
 
+async function getJson(path, userId) {
+  const response = await fetch(`${API_BASE}${path}`, {
+    credentials: "include",
+    headers: buildHeaders(userId),
+  });
+  const payload = await parseJsonResponse(response);
+  if (!response.ok) {
+    throw new Error(payload?.message || "Request failed.");
+  }
+  return payload;
+}
+
+async function postJson(path, body, userId) {
+  const response = await fetch(`${API_BASE}${path}`, {
+    method: "POST",
+    credentials: "include",
+    headers: buildHeaders(userId, {
+      "Content-Type": "application/json",
+    }),
+    body: JSON.stringify(body),
+  });
+  const payload = await parseJsonResponse(response);
+  if (!response.ok) {
+    throw new Error(payload?.message || "Request failed.");
+  }
+  return payload;
+}
+
+export async function listClasses(userId) {
+  const payload = await getJson("/classes", userId);
+  return payload.classes || [];
+}
+
+export async function createClass(name, userId) {
+  const payload = await postJson("/classes", { name }, userId);
+  return payload.class;
+}
+
+export async function joinClass(joinCode, userId) {
+  const payload = await postJson("/classes/join", { joinCode }, userId);
+  return payload.class;
+}
+
+export async function getClassDetail(classId, userId) {
+  return getJson(`/classes/${classId}`, userId);
+}
+
+export async function listClassQuizzes(classId, userId) {
+  const payload = await getJson(`/classes/${classId}/quizzes`, userId);
+  return payload.quizzes || [];
+}
+
+export async function getQuizDetail(quizId, userId) {
+  return getJson(`/quizzes/${quizId}`, userId);
+}
+
+export async function getQuizAttempts(quizId, userId) {
+  const payload = await getJson(`/quizzes/${quizId}/attempts`, userId);
+  return payload.rows || [];
+}
+
 export const DEMO_ACCOUNTS = [
-  { username: "alice", password: "alice123", displayName: "Alice Nguyen" },
-  { username: "brian", password: "brian123", displayName: "Brian Tran" },
-  { username: "clara", password: "clara123", displayName: "Clara Le" },
+  { username: "alice", password: "alice123", displayName: "Alice Nguyen", role: "student" },
+  { username: "brian", password: "brian123", displayName: "Brian Tran", role: "tutor" },
+  { username: "clara", password: "clara123", displayName: "Clara Le", role: "student" },
+  { username: "david", password: "david123", displayName: "David Vo", role: "student" },
+  { username: "emma", password: "emma123", displayName: "Emma Pham", role: "tutor" },
 ];

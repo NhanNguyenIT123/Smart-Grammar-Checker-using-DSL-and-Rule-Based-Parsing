@@ -145,13 +145,13 @@ export default function AuthPortal() {
                 setPassword(account.password);
               }}
             >
-              {account.username}
+              {account.username} ({account.role})
             </button>
           ))}
         </div>
       </div>
       <p>
-        Don&apos;t have an account? <Link to="/register">Use the fake register flow</Link>.
+        Don&apos;t have an account? <Link to="/register">Create a demo student account</Link>.
       </p>
     </>
   );
@@ -160,7 +160,7 @@ export default function AuthPortal() {
     return (
       <AuthShell
         title="Create a demo-facing account"
-        description="The UI behaves like a register page, but the backend stays in demo mode and points users to sample SQLite accounts."
+        description="This register flow creates a demo student account in SQLite so you can join classes, generate exercises, and submit quizzes right away."
         footer={
           <p>
             Already have access? <Link to="/login">Go back to log in</Link>.
@@ -220,7 +220,7 @@ export default function AuthPortal() {
 
           <button type="submit" className="auth-submit" disabled={loading}>
             <UserPlus size={16} />
-            {loading ? "Preparing..." : "Sign Up (Demo)"}
+            {loading ? "Preparing..." : "Sign Up"}
           </button>
         </form>
       </AuthShell>
@@ -276,7 +276,7 @@ export default function AuthPortal() {
   return (
     <AuthShell
       title="Log in to GrammarDSL"
-      description="Use one of the seeded SQLite accounts so history and revision plans stay tied to the correct learner profile."
+      description="Use a tutor or student SQLite account so grammar history, revision plans, classes, quizzes, and scorebook data stay tied to the right profile."
       footer={loginFooter}
     >
       <form className="auth-form" onSubmit={handleLogin}>

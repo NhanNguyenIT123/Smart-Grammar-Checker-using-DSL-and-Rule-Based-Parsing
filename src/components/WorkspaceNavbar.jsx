@@ -14,13 +14,23 @@ export default function WorkspaceNavbar({ currentUser, onLogout }) {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "0px 100px 0px 100px", 
+        padding: "0 2rem", 
         backgroundColor: "#B9FF66",
-        height: "50px",
+        height: "64px",
         boxShadow: "inset 0 0 0 2px black, 0 4px 4px rgba(0, 0, 0, 0.25)",
+        position: "relative",
+        zIndex: 50
       }}
     >
-      <Link to="/" style={{ textDecoration: "none" }}>
+      <Link 
+        to="/" 
+        style={{ 
+          textDecoration: "none", 
+          display: "inline-block", 
+          width: "max-content",
+          flexShrink: 0
+        }}
+      >
         <div
           style={{
             fontSize: "1rem",
@@ -29,7 +39,7 @@ export default function WorkspaceNavbar({ currentUser, onLogout }) {
             border: "2px solid black",
             backgroundColor: "#FFFFFF",
             boxShadow: "inset 0 0 0 2px white, 0 4px 4px rgba(0, 0, 0, 0.25)",
-            padding: "2px 8px",
+            padding: "4px 12px",
           }}
         >
           Grammar Checker
@@ -41,9 +51,10 @@ export default function WorkspaceNavbar({ currentUser, onLogout }) {
           to="/"
           style={{
             fontSize: "1rem",
-            color: "#000000",
+            color: "#111827",
             textDecoration: "none",
-            fontWeight: "200", 
+            fontWeight: "700",
+            letterSpacing: "0.01em",
           }}
           onMouseEnter={(e) => (e.target.style.textDecoration = "underline")}
           onMouseLeave={(e) => (e.target.style.textDecoration = "none")}
@@ -51,23 +62,25 @@ export default function WorkspaceNavbar({ currentUser, onLogout }) {
           Getting started
         </Link>
 
-        <DropdownMenu>
+        <DropdownMenu modal={false}>
           <DropdownMenuTrigger asChild>
             <div
               className="outline-none border-none ring-0 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 data-[state=open]:!bg-transparent data-[state=open]:!outline-none bg-transparent"
               style={{
                 appearance: "none", 
                 WebkitAppearance: "none",
-                color: "#000000",
+                color: "#111827",
                 fontSize: "1rem",
-                fontWeight: "200",
+                fontWeight: "600",
                 cursor: "pointer",
                 display: "flex",
                 gap: "8px",
                 alignItems: "center",
-                border: "0px solid transparent",
-                boxShadow: "none",
-                padding: "8px 16px",
+                border: "2px solid #191A23",
+                boxShadow: "2px 2px 0px 0px #191A23",
+                borderRadius: "10px",
+                backgroundColor: "#F8FFEE",
+                padding: "6px 12px",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = "#000000";
@@ -78,7 +91,25 @@ export default function WorkspaceNavbar({ currentUser, onLogout }) {
                 e.currentTarget.style.color = "#000000";
               }}
             >
-              {currentUser?.displayName || "Account"} <ChevronDown size={20} strokeWidth={1.5} />
+              <span style={{ display: "flex", flexDirection: "column", lineHeight: 1.1 }}>
+                <span style={{ fontWeight: 700 }}>{currentUser?.displayName || "Account"}</span>
+                <small
+                  style={{
+                    fontSize: "0.72rem",
+                    opacity: 0.95,
+                    textTransform: "capitalize",
+                    backgroundColor: "rgba(25, 26, 35, 0.1)",
+                    borderRadius: "999px",
+                    padding: "2px 8px",
+                    width: "fit-content",
+                    marginTop: "4px",
+                    fontWeight: 600,
+                  }}
+                >
+                  {currentUser?.role || "guest"}
+                </small>
+              </span>
+              <ChevronDown size={20} strokeWidth={1.5} />
             </div>
           </DropdownMenuTrigger>
 
