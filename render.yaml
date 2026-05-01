@@ -16,6 +16,9 @@ services:
     runtime: static
     buildCommand: "npm install && npm run build"
     staticPublishPath: "./dist"
+    envVars:
+      - key: NODE_VERSION
+        value: 20.0.0
     headers:
       - path: "/*"
         name: Cache-Control
