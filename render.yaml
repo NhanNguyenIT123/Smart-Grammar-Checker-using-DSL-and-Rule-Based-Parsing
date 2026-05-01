@@ -17,6 +17,5 @@ services:
     staticPublishPath: "./dist"
     headers:
       - path: "/*"
-        headers:
-          - key: Cache-Control
-            value: no-cache
+        name: Cache-Control
+        value: no-cache
