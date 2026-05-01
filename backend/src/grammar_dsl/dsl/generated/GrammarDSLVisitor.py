@@ -159,6 +159,11 @@ class GrammarDSLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by GrammarDSLParser#featureAtom.
+    def visitFeatureAtom(self, ctx:GrammarDSLParser.FeatureAtomContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by GrammarDSLParser#tense.
     def visitTense(self, ctx:GrammarDSLParser.TenseContext):
         return self.visitChildren(ctx)

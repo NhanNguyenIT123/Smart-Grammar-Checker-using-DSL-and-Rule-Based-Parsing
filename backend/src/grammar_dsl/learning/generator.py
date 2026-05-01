@@ -16,6 +16,14 @@ class ExerciseGenerator:
         "past simple",
         "future simple",
         "present continuous",
+        "past continuous",
+        "future continuous",
+        "present perfect",
+        "past perfect",
+        "future perfect",
+        "present perfect continuous",
+        "past perfect continuous",
+        "future perfect continuous",
     }
 
     def __init__(self, repository, verb_engine: VerbEngine) -> None:
@@ -39,28 +47,14 @@ class ExerciseGenerator:
         feature_labels = sorted({feature for bundle in bundles for feature in bundle})
         feature_strings = [" AND ".join(sorted(bundle)) for bundle in bundles]
 
-        if self._should_use_corpus_generator(bundles):
-            from grammar_dsl.services.corpus_nlp import generate_exercises_with_corpus
+        feature_text = "|".join(feature_strings)
+        base_seed = int(hashlib.sha1(feature_text.encode("utf-8")).hexdigest(), 16) % 1000000
 
-            llm_items = generate_exercises_with_corpus(requested_total, feature_strings)
-            items: list[dict[str, Any]] = []
-            for idx, item in enumerate(llm_items, start=1):
-                items.append(
-                    {
-                        "id": f"llm-{idx}",
-                        "blueprint_id": "llm_generated",
-                        "type": item.get("type", "fill blank"),
-                        "difficulty": item.get("difficulty", "intermediate"),
-                        "features": feature_labels,
-                        "prompt": item.get("prompt", ""),
-                        "expected_answer": item.get("expected_answer", ""),
-                        "accepted_variants": item.get("accepted_variants", [item.get("expected_answer", "")]),
-                        "answer_preview": item.get("expected_answer", ""),
-                    }
-                )
+        if False: # Disabling corpus generator
+            pass
         else:
             selected = self._select_blueprints(bundles, requested_total)
-            items = [self._realize_item(blueprint, index) for index, blueprint in enumerate(selected, start=1)]
+            items = [self._realize_item(blueprint, base_seed + index) for index, blueprint in enumerate(selected)]
 
         seed_text = "|".join(item["id"] for item in items)
         exercise_set_id = f"set-{hashlib.sha1(seed_text.encode('utf-8')).hexdigest()[:10]}"
@@ -102,13 +96,7 @@ class ExerciseGenerator:
         return unique
 
     def _should_use_corpus_generator(self, bundles: list[set[str]]) -> bool:
-        for bundle in bundles:
-            if not (bundle & self.TENSE_FEATURES):
-                return False
-            unsupported = bundle - self.TENSE_FEATURES - self.SENTENCE_FORMS
-            if unsupported:
-                return False
-        return True
+        return False
 
     def _select_blueprints(self, bundles: list[set[str]], requested_total: int) -> list[dict[str, Any]]:
         bundle_matches: list[list[dict[str, Any]]] = []
@@ -130,31 +118,32 @@ class ExerciseGenerator:
         pointer = 0
         while len(selected) < requested_total:
             matches = bundle_matches[pointer % len(bundle_matches)]
-            blueprint = matches[(len(selected) // len(bundle_matches)) % len(matches)]
+            # Use pointer to ensure we cycle through blueprints even if they match multiple bundles
+            blueprint = matches[(pointer // len(bundle_matches)) % len(matches)]
             selected.append(blueprint)
             pointer += 1
         return selected
 
-    def _realize_item(self, blueprint: dict[str, Any], item_number: int) -> dict[str, Any]:
+    def _realize_item(self, blueprint: dict[str, Any], seed_val: int) -> dict[str, Any]:
         family = blueprint.get("family")
         if family == "tense-fill":
-            payload = self._build_tense_fill(blueprint)
+            payload = self._build_tense_fill(blueprint, seed_val)
         elif family == "tense-transform":
-            payload = self._build_tense_transform(blueprint)
+            payload = self._build_tense_transform(blueprint, seed_val)
         elif family == "agreement":
-            payload = self._build_agreement_correction(blueprint)
+            payload = self._build_agreement_correction(blueprint, seed_val)
         elif family == "object-pronoun":
-            payload = self._build_object_pronoun_correction(blueprint)
+            payload = self._build_object_pronoun_correction(blueprint, seed_val)
         elif family == "verb-preposition":
-            payload = self._build_verb_preposition_fill(blueprint)
+            payload = self._build_verb_preposition_fill(blueprint, seed_val)
         elif family == "svo":
-            payload = self._build_svo_fill(blueprint)
+            payload = self._build_svo_fill(blueprint, seed_val)
         else:
             raise ValueError(f"Unsupported exercise family: {family}")
 
         payload.update(
             {
-                "id": f"{blueprint['id']}-{item_number}",
+                "id": f"{blueprint['id']}-{seed_val}",
                 "blueprint_id": blueprint["id"],
                 "type": blueprint.get("item_type", "prompt"),
                 "difficulty": blueprint.get("difficulty", "starter"),
@@ -163,15 +152,15 @@ class ExerciseGenerator:
         )
         return payload
 
-    def _build_tense_fill(self, blueprint: dict[str, Any]) -> dict[str, Any]:
+    def _build_tense_fill(self, blueprint: dict[str, Any], seed_val: int) -> dict[str, Any]:
         tense = self._pick_feature(blueprint, self.TENSE_FEATURES)
-        subject = self._pick_subject(tense, blueprint)
-        verb_base = self._pick_from_pool("transitive_verbs", blueprint)
-        obj = self._pick_from_pool("objects", blueprint)
-        time_marker = self._pick_time_marker(tense, blueprint)
+        subject = self._pick_subject(tense, blueprint, seed_val)
+        verb_base = self._pick_from_pool("transitive_verbs", blueprint, seed_val)
+        obj = self._pick_from_pool("objects", blueprint, seed_val)
+        time_marker = self._pick_time_marker(tense, blueprint, seed_val)
         answer = self._affirmative_sentence(tense, subject, verb_base, obj, time_marker)
         expected = self._affirmative_verb_phrase(tense, subject, verb_base)
-        prompt = self._fill_sentence_template(subject["surface"], "____", obj, time_marker)
+        prompt = self._fill_sentence_template(subject["surface"], f"({verb_base}) ____", obj, time_marker)
         return {
             "prompt": f"Fill in the missing verb form: {prompt}",
             "expected_answer": expected,
@@ -179,13 +168,13 @@ class ExerciseGenerator:
             "answer_preview": answer,
         }
 
-    def _build_tense_transform(self, blueprint: dict[str, Any]) -> dict[str, Any]:
+    def _build_tense_transform(self, blueprint: dict[str, Any], seed_val: int) -> dict[str, Any]:
         features = set(blueprint.get("required_features", []))
         tense = self._pick_feature(blueprint, self.TENSE_FEATURES)
-        subject = self._pick_subject(tense, blueprint)
-        verb_base = self._pick_from_pool("transitive_verbs", blueprint)
-        obj = self._pick_from_pool("objects", blueprint)
-        time_marker = self._pick_time_marker(tense, blueprint)
+        subject = self._pick_subject(tense, blueprint, seed_val)
+        verb_base = self._pick_from_pool("transitive_verbs", blueprint, seed_val)
+        obj = self._pick_from_pool("objects", blueprint, seed_val)
+        time_marker = self._pick_time_marker(tense, blueprint, seed_val)
         affirmative = self._affirmative_sentence(tense, subject, verb_base, obj, time_marker)
 
         if "negative" in features:
@@ -202,19 +191,19 @@ class ExerciseGenerator:
             "answer_preview": accepted[0],
         }
 
-    def _build_agreement_correction(self, blueprint: dict[str, Any]) -> dict[str, Any]:
+    def _build_agreement_correction(self, blueprint: dict[str, Any], seed_val: int) -> dict[str, Any]:
         agreement_nouns = self.lexical_pools.get("agreement_nouns", {})
         singular_subjects = agreement_nouns.get("singular", [])
         plural_subjects = agreement_nouns.get("plural", [])
-        verb_base = self._pick_from_pool("transitive_verbs", blueprint)
-        obj = self._pick_from_pool("objects", blueprint)
+        verb_base = self._pick_from_pool("transitive_verbs", blueprint, seed_val)
+        obj = self._pick_from_pool("objects", blueprint, seed_val)
 
-        if item_number_seed(blueprint["id"]) % 2 == 0 and plural_subjects:
-            subject = plural_subjects[0]
+        if seed_val % 2 == 0 and plural_subjects:
+            subject = plural_subjects[seed_val % len(plural_subjects)]
             wrong = f"{subject} {self.verb_engine.third_person_singular(verb_base)} {obj} every day."
             correct = f"{subject} {verb_base} {obj} every day."
         else:
-            subject = singular_subjects[0] if singular_subjects else "The student"
+            subject = singular_subjects[seed_val % len(singular_subjects)] if singular_subjects else "The student"
             wrong = f"{subject} {verb_base} {obj} every day."
             correct = f"{subject} {self.verb_engine.third_person_singular(verb_base)} {obj} every day."
 
@@ -225,8 +214,8 @@ class ExerciseGenerator:
             "answer_preview": correct,
         }
 
-    def _build_object_pronoun_correction(self, blueprint: dict[str, Any]) -> dict[str, Any]:
-        pair = self._pick_from_pool("pronoun_pairs", blueprint)
+    def _build_object_pronoun_correction(self, blueprint: dict[str, Any], seed_val: int) -> dict[str, Any]:
+        pair = self._pick_from_pool("pronoun_pairs", blueprint, seed_val)
         subject = "I"
         verb = "like"
         wrong = f"{subject} {verb} {pair['subject']}."
@@ -238,8 +227,8 @@ class ExerciseGenerator:
             "answer_preview": correct,
         }
 
-    def _build_verb_preposition_fill(self, blueprint: dict[str, Any]) -> dict[str, Any]:
-        pair = self._pick_from_pool("verb_preposition_pairs", blueprint)
+    def _build_verb_preposition_fill(self, blueprint: dict[str, Any], seed_val: int) -> dict[str, Any]:
+        pair = self._pick_from_pool("verb_preposition_pairs", blueprint, seed_val)
         prompt = f"Fill in the missing preposition: {pair['subject']} {pair['verb']} ____ {pair['tail']}."
         expected = pair["preposition"]
         return {
@@ -249,29 +238,30 @@ class ExerciseGenerator:
             "answer_preview": f"{pair['subject']} {pair['verb']} {expected} {pair['tail']}.",
         }
 
-    def _build_svo_fill(self, blueprint: dict[str, Any]) -> dict[str, Any]:
+    def _build_svo_fill(self, blueprint: dict[str, Any], seed_val: int) -> dict[str, Any]:
         svo_patterns = self.lexical_pools.get("svo_patterns", {})
-        bucket = "missing_subject" if item_number_seed(blueprint["id"]) % 2 == 0 else "missing_verb"
-        pattern = svo_patterns.get(bucket, [{}])[0]
+        bucket = "missing_subject" if seed_val % 2 == 0 else "missing_verb"
+        patterns = svo_patterns.get(bucket, [{}])
+        pattern = patterns[seed_val % len(patterns)]
         return {
             "prompt": f"Fill in the missing word to complete the sentence: {pattern.get('prompt', '____')}",
             "expected_answer": pattern.get("answer", ""),
             "accepted_variants": [pattern.get("answer", "")],
-            "answer_preview": pattern.get("prompt", "").replace("____", pattern.get("answer", "")),
+            "answer_preview": pattern.get('prompt', "").replace("____", pattern.get("answer", "")),
         }
 
     def _pick_feature(self, blueprint: dict[str, Any], allowed: set[str]) -> str:
         for feature in blueprint.get("required_features", []):
             if feature in allowed:
                 return feature
-        raise ValueError("No supported tense feature found.")
+        raise ValueError(f"No supported tense feature found in blueprint '{blueprint.get('id')}' with features {blueprint.get('required_features')}. Allowed: {allowed}")
 
-    def _pick_subject(self, tense: str, blueprint: dict[str, Any]) -> dict[str, Any]:
+    def _pick_subject(self, tense: str, blueprint: dict[str, Any], seed_val: int) -> dict[str, Any]:
         subjects = self.lexical_pools.get("subjects", {})
-        seed = item_number_seed(blueprint["id"])
-        if tense == "present continuous":
+        seed = seed_val
+        if tense in {"present continuous", "past continuous", "future continuous"}:
             ordered_groups = ["first_person", "singular", "plural", "second_person"]
-        elif tense == "present simple":
+        elif tense in {"present simple", "present perfect", "present perfect continuous"}:
             ordered_groups = ["singular", "plural", "first_person", "second_person"]
         else:
             ordered_groups = ["first_person", "singular", "plural", "second_person"]
@@ -283,17 +273,17 @@ class ExerciseGenerator:
             return {"surface": "I", "subject_key": "i", "number": "singular"}
         return candidates[seed % len(candidates)]
 
-    def _pick_from_pool(self, name: str, blueprint: dict[str, Any]):
+    def _pick_from_pool(self, name: str, blueprint: dict[str, Any], seed_val: int):
         pool = self.lexical_pools.get(name, [])
         if not pool:
             raise ValueError(f"Missing lexical pool: {name}")
-        return pool[item_number_seed(blueprint["id"] + name) % len(pool)]
+        return pool[seed_val % len(pool)]
 
-    def _pick_time_marker(self, tense: str, blueprint: dict[str, Any]) -> str:
+    def _pick_time_marker(self, tense: str, blueprint: dict[str, Any], seed_val: int) -> str:
         markers = self.lexical_pools.get("time_markers", {}).get(tense, [])
         if not markers:
             return ""
-        return markers[item_number_seed(blueprint["id"] + tense) % len(markers)]
+        return markers[seed_val % len(markers)]
 
     def _affirmative_sentence(
         self,
@@ -310,21 +300,16 @@ class ExerciseGenerator:
 
     def _affirmative_verb_phrase(self, tense: str, subject: dict[str, Any], verb_base: str) -> str:
         subject_key = subject["subject_key"]
-        if tense == "present continuous":
-            return self.verb_engine.suggest_for_tense(verb_base, "present_continuous", subject_key)
-        if tense == "future simple":
-            return self.verb_engine.suggest_for_tense(verb_base, "future_simple", subject_key)
-        if tense == "past simple":
-            return self.verb_engine.suggest_for_tense(verb_base, "past_simple", subject_key)
-        return self.verb_engine.suggest_for_tense(verb_base, "present_simple", subject_key)
+        tense_key = tense.replace(" ", "_")
+        return self.verb_engine.suggest_for_tense(verb_base, tense_key, subject_key)
 
     def _negative_variants(self, tense: str, subject: dict[str, Any], verb_base: str, obj: str, time_marker: str) -> list[str]:
         subject_key = subject["subject_key"]
         subject_surface = subject["surface"]
         templates = self.realization_rules.get("negative_variants", {})
         template_key = tense
-        if tense == "present simple" and subject_key in {"he", "she", "it"}:
-            template_key = "present simple-third-person"
+        if tense in {"present simple", "present perfect", "present perfect continuous"} and subject_key in {"he", "she", "it"}:
+            template_key = f"{tense}-third-person"
         selected = templates.get(template_key, [])
         return [
             self._fill_template(
@@ -343,8 +328,8 @@ class ExerciseGenerator:
         subject_surface = subject["surface"]
         rules = self.realization_rules.get("question_variants", {})
         template_key = tense
-        if tense == "present simple" and subject_key in {"he", "she", "it"}:
-            template_key = "present simple-third-person"
+        if tense in {"present simple", "present perfect", "present perfect continuous"} and subject_key in {"he", "she", "it"}:
+            template_key = f"{tense}-third-person"
         template = rules.get(template_key)
         if not template:
             return []
@@ -374,6 +359,8 @@ class ExerciseGenerator:
             "subject": subject_surface,
             "subject_lower": subject_surface.lower(),
             "verb_base": verb_base,
+            "verb_past": self.verb_engine.past_form(verb_base, subject_key),
+            "verb_participle": self.verb_engine.participle_form(verb_base),
             "verb_gerund": self.verb_engine.gerund(verb_base),
             "object": obj,
             "time_marker": time_marker,
@@ -387,7 +374,7 @@ class ExerciseGenerator:
 
     @staticmethod
     def _fill_sentence_template(subject_surface: str, verb_phrase: str, obj: str, time_marker: str) -> str:
-        core = f"{subject_surface} {verb_phrase} {obj}"
+        core = f"{subject_surface.capitalize()} {verb_phrase} {obj}"
         if time_marker:
             core = f"{core} {time_marker}"
         return f"{core}."

@@ -278,6 +278,15 @@ class GrammarDSLListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by GrammarDSLParser#featureAtom.
+    def enterFeatureAtom(self, ctx:GrammarDSLParser.FeatureAtomContext):
+        pass
+
+    # Exit a parse tree produced by GrammarDSLParser#featureAtom.
+    def exitFeatureAtom(self, ctx:GrammarDSLParser.FeatureAtomContext):
+        pass
+
+
     # Enter a parse tree produced by GrammarDSLParser#tense.
     def enterTense(self, ctx:GrammarDSLParser.TenseContext):
         pass

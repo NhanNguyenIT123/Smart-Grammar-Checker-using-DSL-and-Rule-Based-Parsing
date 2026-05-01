@@ -3,6 +3,9 @@ from __future__ import annotations
 from typing import Iterable
 
 
+import re
+
+
 class SuggestionEngine:
     COMMANDS = [
         "check",
@@ -24,6 +27,9 @@ class SuggestionEngine:
             {"suffix": "students", "takes_tail": True},
             {"suffix": "class", "takes_tail": True},
             {"suffix": "results", "takes_tail": True},
+            {"suffix": "quiz", "takes_tail": True},
+            {"suffix": "history", "takes_tail": True},
+            {"suffix": "revision plan", "takes_tail": False},
         ],
         "revision": [{"suffix": "plan", "takes_tail": False}],
         "reset": [{"suffix": "history", "takes_tail": False}],
@@ -35,18 +41,24 @@ class SuggestionEngine:
         "grammar",
         "class",
         "students",
-        "plan",
-        "history",
+        "results",
         "quiz",
-        "answers",
-        "exercise",
-        "exercises",
-        "with",
         "for",
-        "submitted",
-        "passed",
-        "failed",
+        "student",
+        "plan",
         "score",
+        "status",
+        "with",
+        "exercises",
+        "present",
+        "simple",
+        "continuous",
+        "perfect",
+        "past",
+        "future",
+        "affirmative",
+        "negative",
+        "interrogative",
         "and",
         "or",
         "not",
@@ -56,7 +68,6 @@ class SuggestionEngine:
         "<=",
         "=",
         "!=",
-        "==",
     }
 
     def levenshtein(self, left: str, right: str) -> int:
@@ -113,7 +124,8 @@ class SuggestionEngine:
         return ranked[:limit]
 
     def suggest_command_inputs(self, text: str) -> list[str]:
-        parts = text.strip().split()
+        # Split by whitespace but keep quoted strings together
+        parts = re.findall(r'"[^"]*"|\'[^\']*\'|\S+', text)
         if not parts:
             return []
 
@@ -126,6 +138,10 @@ class SuggestionEngine:
         )
 
         for first_token, _ in first_candidates:
+            if first_token == "create":
+                suggestions.extend(self._suggest_create(parts))
+                continue
+
             if first_token == "generate":
                 suggestions.extend(self._suggest_generate(parts))
                 continue
@@ -190,6 +206,76 @@ class SuggestionEngine:
         ranked.sort(key=lambda item: (item[0], str(item[1]["suffix"])))
         return ranked[0][1]
 
+    def _suggest_create(self, parts: list[str]) -> list[str]:
+        if len(parts) == 1:
+            return ["create quiz"]
+        
+        second = parts[1].lower()
+        if second != "quiz":
+            second_match = self.suggest(second, ["quiz"], threshold=2)
+            if second_match:
+                second = "quiz"
+            else:
+                return ["create quiz"]
+
+        # If it's just 'create quiz'
+        if len(parts) == 2:
+            return ['create quiz "My New Quiz" generate 5 exercises with present simple']
+
+        # Look for the title and the count
+        # Typical: create quiz "title" generate 5 exercises with ...
+        # Or: create quiz "title" with 5 exercises with ...
+        
+        title = None
+        for i, part in enumerate(parts):
+            if part.startswith('"'):
+                title = part
+                break
+        
+        if title is None and len(parts) >= 3:
+            candidate = parts[2]
+            if candidate.lower() not in {"generate", "with"} and not candidate.isdigit():
+                title = f'"{candidate}"'
+        
+        if title is None:
+            title = '"My New Quiz"'
+        
+        # Look for the count
+        count = "5"
+        count_idx = -1
+        for i, part in enumerate(parts):
+            if part.isdigit():
+                count = part
+                count_idx = i
+                break
+        
+        # Look for 'exercises' keyword
+        exercises_kw = "exercises"
+        if count_idx != -1 and count_idx + 1 < len(parts):
+            ex_token = parts[count_idx + 1].lower()
+            if ex_token != "exercises":
+                ex_match = self.suggest(ex_token, ["exercises"], threshold=2)
+                if ex_match:
+                    exercises_kw = "exercises"
+        
+        # Reconstruct with tail
+        # We find where 'with' or features start. Usually after 'exercises'
+        tail_start = 3
+        if count_idx != -1:
+            tail_start = count_idx + 2
+        
+        tail = self._correct_tail_keywords(parts[tail_start:])
+        if "with" not in [t.lower() for t in tail] and tail:
+            # Check if the first tail part is close to 'with'
+            if self.levenshtein(tail[0].lower(), "with") <= 1:
+                tail[0] = "with"
+            else:
+                tail.insert(0, "with")
+        elif not tail:
+            tail = ["with", "present", "simple"]
+
+        return [f'create quiz {title} generate {count} {exercises_kw} {" ".join(tail)}']
+
     def _suggest_generate(self, parts: list[str]) -> list[str]:
         if len(parts) == 1:
             return ["generate exercise"]
@@ -198,42 +284,66 @@ class SuggestionEngine:
         if second.isdigit():
             if len(parts) == 2:
                 return [f"generate {second} exercises"]
-            third = parts[2].lower()
-            third_matches = self.ranked_suggestions(third, ["exercises"], threshold=2, limit=1)
-            tail = self._correct_tail_keywords(parts[3:])
-            if third == "exercises" or third_matches:
-                return [" ".join(["generate", parts[1], "exercises", *tail])]
-            return [" ".join(["generate", parts[1], "exercises", *self._correct_tail_keywords(parts[2:])])]
+            
+            tail = self._correct_tail_keywords(parts[2:])
+            # If the user already provided 'exercises' (or a typo of it), don't duplicate it
+            if tail and tail[0].lower() == "exercises":
+                return [f'generate {second} {" ".join(tail)}']
+            
+            if "with" not in [t.lower() for t in tail] and tail:
+                # Check if the first tail part is close to 'with'
+                if self.levenshtein(tail[0].lower(), "with") <= 1:
+                    tail[0] = "with"
+                else:
+                    tail.insert(0, "with")
+            elif not tail:
+                tail = ["with", "present", "simple"]
 
-        second_matches = self.ranked_suggestions(second, ["exercise"], threshold=2, limit=1)
-        if second == "exercise" or second_matches:
-            return [" ".join(["generate", "exercise", *self._correct_tail_keywords(parts[2:])])]
-        return [" ".join(["generate", "exercise", *self._correct_tail_keywords(parts[1:])])]
+            return [f'generate {second} exercises {" ".join(tail)}']
+        
+        if second != "exercise":
+            second_match = self.suggest(second, ["exercise"], threshold=2)
+            if second_match:
+                second = "exercise"
+            else:
+                return ["generate exercise"]
+        
+        tail = self._correct_tail_keywords(parts[2:])
+        if tail and tail[0].lower() == "exercise":
+            return [f'generate {" ".join(tail)}']
+            
+        if "with" not in [t.lower() for t in tail] and tail:
+            # Check if the first tail part is close to 'with'
+            if self.levenshtein(tail[0].lower(), "with") <= 1:
+                tail[0] = "with"
+            else:
+                tail.insert(0, "with")
+        elif not tail:
+            tail = ["with", "present", "simple"]
 
-    def _correct_tail_keywords(self, tail_parts: list[str]) -> list[str]:
-        corrected = []
-        for part in tail_parts:
+        return [f'generate exercise {" ".join(tail)}']
+
+    def _correct_tail_keywords(self, parts: list[str]) -> list[str]:
+        corrected: list[str] = []
+        for part in parts:
             lowered = part.lower()
-            # 1. If it's quoted text, don't touch it
-            if (part.startswith('"') and part.endswith('"')) or (
-                part.startswith("'") and part.endswith("'")
-            ):
+            
+            # 1. Skip if it's already a quoted string
+            if part.startswith('"') or part.startswith("'"):
                 corrected.append(part)
                 continue
-
-            # 2. If it's already a keyword, keep it
+            
+            # 2. Skip if it's already in CORE_KEYWORDS (case insensitive check)
             if lowered in self.CORE_KEYWORDS:
-                corrected.append(part)
+                corrected.append(lowered)
                 continue
 
             # 3. If it's a number, don't touch it.
-            # Operators ARE now in CORE_KEYWORDS so they can be corrected if mistyped (like '>:')
             if lowered.isdigit():
                 corrected.append(part)
                 continue
 
             # 4. Try to suggest a keyword if it's close
-            # For very short words, use a stricter threshold (1) to avoid junk matches like ">" -> "or"
             dynamic_threshold = 1 if len(lowered) <= 2 else 2
             match = self.suggest(lowered, self.CORE_KEYWORDS, threshold=dynamic_threshold)
             

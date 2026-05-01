@@ -96,6 +96,18 @@ class CommandService:
                     return response
 
             suggestions = self.suggestion_engine.suggest_command_inputs(text)
+            submit_format_suggestions = self._build_submit_answers_format_suggestions(text, safe_context)
+            if submit_format_suggestions:
+                submit_like = [
+                    suggestion
+                    for suggestion in suggestions
+                    if suggestion.lower().startswith("submit answers for quiz")
+                    and "{" in suggestion
+                    and "}" in suggestion
+                    and "=" in suggestion
+                ]
+                suggestions = [*submit_like, *submit_format_suggestions]
+            suggestions = list(dict.fromkeys(suggestions))
             message = (
                 f"Command not recognized. Did you mean: {' | '.join(suggestions)}?"
                 if suggestions
@@ -313,22 +325,30 @@ class CommandService:
                 data={},
             )
         generated = self.exercise_generator.generate(command.feature_expr, requested_count=command.requested_count)
-        quiz = self.profile_store.create_quiz(
-            class_id=class_id,
-            created_by=user["username"],
-            title=command.title,
-            feature_expr_text=command.raw_feature_text,
-            exercise_count=len(generated["items"]),
-            exercise_payload=generated["items"],
-            answer_key_payload=[
-                {
-                    "question_id": index,
-                    "expected_answer": item["expected_answer"],
-                    "accepted_variants": item.get("accepted_variants", []),
-                }
-                for index, item in enumerate(generated["items"], start=1)
-            ],
-        )
+        try:
+            quiz = self.profile_store.create_quiz(
+                class_id=class_id,
+                created_by=user["username"],
+                title=command.title,
+                feature_expr_text=command.raw_feature_text,
+                exercise_count=len(generated["items"]),
+                exercise_payload=generated["items"],
+                answer_key_payload=[
+                    {
+                        "question_id": index,
+                        "expected_answer": item["expected_answer"],
+                        "accepted_variants": item.get("accepted_variants", []),
+                    }
+                    for index, item in enumerate(generated["items"], start=1)
+                ],
+            )
+        except ValueError as e:
+            return CommandResponse(
+                success=False,
+                command="create quiz",
+                message=str(e),
+                data={},
+            )
         return CommandResponse(
             success=True,
             command="create quiz",
@@ -671,11 +691,6 @@ class CommandService:
                 "audience": "everyone",
             },
             {
-                "usage": "show tokens <command>",
-                "description": "Inspect the ANTLR lexer output for a DSL command and confirm whether the snippet parses successfully.",
-                "audience": "everyone",
-            },
-            {
                 "usage": "check grammar <paragraph>",
                 "description": "Run grammar, spelling, and semantic heuristics, then return a corrected version of the paragraph.",
                 "audience": "everyone",
@@ -991,6 +1006,22 @@ class CommandService:
             if cleaned:
                 return cleaned
         return text.strip()
+
+    def _build_submit_answers_format_suggestions(self, text: str, context: dict[str, Any]) -> list[str]:
+        lowered = text.lower()
+        if "submit" not in lowered and "answers" not in lowered:
+            return []
+
+        quiz_id = self._context_int(context, "quizId")
+        if quiz_id is None:
+            quiz_match = re.search(r"\bquiz\s+(\d+)\b", text, flags=re.IGNORECASE)
+            if quiz_match:
+                quiz_id = int(quiz_match.group(1))
+
+        if quiz_id is None:
+            return ['submit answers for quiz <quiz-id> { 1 = "..." ; 2 = "..." }']
+
+        return [f'submit answers for quiz {quiz_id} {{ 1 = "..." ; 2 = "..." }}']
 
     def _record_response(self, user_id: str, raw_input: str, response: CommandResponse) -> None:
         if response.command in {"history", "help", "reset history", "unknown"}:

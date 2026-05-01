@@ -10,122 +10,125 @@ else:
 
 def serializedATN():
     return [
-        4,1,77,338,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,77,345,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,
         7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,
         2,27,7,27,2,28,7,28,2,29,7,29,2,30,7,30,2,31,7,31,2,32,7,32,2,33,
         7,33,2,34,7,34,2,35,7,35,2,36,7,36,2,37,7,37,2,38,7,38,2,39,7,39,
-        1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,
-        1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,
-        1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,3,0,126,8,0,
-        1,1,1,1,1,1,1,1,1,2,1,2,3,2,134,8,2,1,2,1,2,1,2,1,3,1,3,1,3,3,3,
-        142,8,3,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,5,1,5,1,5,1,5,1,5,
-        1,5,1,5,1,5,1,5,1,5,5,5,163,8,5,10,5,12,5,166,9,5,1,5,3,5,169,8,
-        5,1,5,1,5,1,6,1,6,1,6,1,6,1,7,1,7,1,8,1,8,1,9,1,9,1,9,1,9,1,9,3,
-        9,186,8,9,1,9,1,9,3,9,190,8,9,1,10,1,10,1,10,1,10,1,10,1,10,1,10,
-        1,10,3,10,200,8,10,1,11,1,11,1,11,1,11,1,12,1,12,1,12,1,12,1,12,
-        1,12,3,12,212,8,12,1,12,1,12,1,13,1,13,1,14,1,14,1,14,5,14,221,8,
-        14,10,14,12,14,224,9,14,1,15,1,15,1,15,5,15,229,8,15,10,15,12,15,
-        232,9,15,1,16,1,16,1,16,1,16,1,16,1,16,3,16,240,8,16,1,17,1,17,1,
-        17,1,17,1,17,1,17,3,17,248,8,17,1,18,1,18,1,19,3,19,253,8,19,1,19,
-        1,19,1,19,1,20,3,20,259,8,20,1,20,1,20,3,20,263,8,20,1,21,1,21,1,
-        21,1,22,1,22,1,22,1,23,1,23,1,23,1,24,1,24,1,24,1,25,1,25,1,26,1,
-        26,1,27,1,27,1,27,5,27,284,8,27,10,27,12,27,287,9,27,1,28,1,28,1,
-        28,5,28,292,8,28,10,28,12,28,295,9,28,1,29,1,29,1,29,1,29,1,29,1,
-        29,1,29,1,29,1,29,1,29,3,29,307,8,29,1,30,1,30,1,31,1,31,1,32,1,
-        32,1,33,1,33,1,34,1,34,1,35,1,35,1,36,4,36,322,8,36,11,36,12,36,
-        323,1,37,4,37,327,8,37,11,37,12,37,328,1,37,3,37,332,8,37,1,38,1,
-        38,1,39,1,39,1,39,0,0,40,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,
-        30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,
-        74,76,78,0,12,1,0,67,68,1,0,74,76,1,0,58,62,1,0,42,45,1,0,1,3,1,
-        0,4,7,1,0,8,9,2,0,10,12,34,36,2,0,29,30,37,41,1,0,31,33,2,0,67,69,
-        74,76,1,0,70,72,338,0,125,1,0,0,0,2,127,1,0,0,0,4,131,1,0,0,0,6,
-        141,1,0,0,0,8,143,1,0,0,0,10,152,1,0,0,0,12,172,1,0,0,0,14,176,1,
-        0,0,0,16,178,1,0,0,0,18,180,1,0,0,0,20,191,1,0,0,0,22,201,1,0,0,
-        0,24,211,1,0,0,0,26,215,1,0,0,0,28,217,1,0,0,0,30,225,1,0,0,0,32,
-        239,1,0,0,0,34,247,1,0,0,0,36,249,1,0,0,0,38,252,1,0,0,0,40,258,
-        1,0,0,0,42,264,1,0,0,0,44,267,1,0,0,0,46,270,1,0,0,0,48,273,1,0,
-        0,0,50,276,1,0,0,0,52,278,1,0,0,0,54,280,1,0,0,0,56,288,1,0,0,0,
-        58,306,1,0,0,0,60,308,1,0,0,0,62,310,1,0,0,0,64,312,1,0,0,0,66,314,
-        1,0,0,0,68,316,1,0,0,0,70,318,1,0,0,0,72,321,1,0,0,0,74,326,1,0,
-        0,0,76,333,1,0,0,0,78,335,1,0,0,0,80,81,3,2,1,0,81,82,5,0,0,1,82,
-        126,1,0,0,0,83,84,3,4,2,0,84,85,5,0,0,1,85,126,1,0,0,0,86,87,3,8,
-        4,0,87,88,5,0,0,1,88,126,1,0,0,0,89,90,3,10,5,0,90,91,5,0,0,1,91,
-        126,1,0,0,0,92,93,3,20,10,0,93,94,5,0,0,1,94,126,1,0,0,0,95,96,3,
-        24,12,0,96,97,5,0,0,1,97,126,1,0,0,0,98,99,3,18,9,0,99,100,5,0,0,
-        1,100,126,1,0,0,0,101,102,3,22,11,0,102,103,5,0,0,1,103,126,1,0,
-        0,0,104,105,3,38,19,0,105,106,5,0,0,1,106,126,1,0,0,0,107,108,3,
-        40,20,0,108,109,5,0,0,1,109,126,1,0,0,0,110,111,3,42,21,0,111,112,
-        5,0,0,1,112,126,1,0,0,0,113,114,3,44,22,0,114,115,5,0,0,1,115,126,
-        1,0,0,0,116,117,3,46,23,0,117,118,5,0,0,1,118,126,1,0,0,0,119,120,
-        3,48,24,0,120,121,5,0,0,1,121,126,1,0,0,0,122,123,3,50,25,0,123,
-        124,5,0,0,1,124,126,1,0,0,0,125,80,1,0,0,0,125,83,1,0,0,0,125,86,
-        1,0,0,0,125,89,1,0,0,0,125,92,1,0,0,0,125,95,1,0,0,0,125,98,1,0,
-        0,0,125,101,1,0,0,0,125,104,1,0,0,0,125,107,1,0,0,0,125,110,1,0,
-        0,0,125,113,1,0,0,0,125,116,1,0,0,0,125,119,1,0,0,0,125,122,1,0,
-        0,0,126,1,1,0,0,0,127,128,5,13,0,0,128,129,5,14,0,0,129,130,3,72,
-        36,0,130,3,1,0,0,0,131,133,5,17,0,0,132,134,3,6,3,0,133,132,1,0,
-        0,0,133,134,1,0,0,0,134,135,1,0,0,0,135,136,5,22,0,0,136,137,3,52,
-        26,0,137,5,1,0,0,0,138,142,5,27,0,0,139,140,5,74,0,0,140,142,5,28,
-        0,0,141,138,1,0,0,0,141,139,1,0,0,0,142,7,1,0,0,0,143,144,5,18,0,
-        0,144,145,5,19,0,0,145,146,5,76,0,0,146,147,5,22,0,0,147,148,5,74,
-        0,0,148,149,5,28,0,0,149,150,5,22,0,0,150,151,3,52,26,0,151,9,1,
-        0,0,0,152,153,5,20,0,0,153,154,5,21,0,0,154,155,5,23,0,0,155,156,
-        5,19,0,0,156,157,5,74,0,0,157,158,5,65,0,0,158,164,3,12,6,0,159,
-        160,3,14,7,0,160,161,3,12,6,0,161,163,1,0,0,0,162,159,1,0,0,0,163,
-        166,1,0,0,0,164,162,1,0,0,0,164,165,1,0,0,0,165,168,1,0,0,0,166,
-        164,1,0,0,0,167,169,3,14,7,0,168,167,1,0,0,0,168,169,1,0,0,0,169,
-        170,1,0,0,0,170,171,5,66,0,0,171,11,1,0,0,0,172,173,5,74,0,0,173,
-        174,5,62,0,0,174,175,3,16,8,0,175,13,1,0,0,0,176,177,7,0,0,0,177,
-        15,1,0,0,0,178,179,7,1,0,0,179,17,1,0,0,0,180,181,5,15,0,0,181,185,
-        5,55,0,0,182,183,5,23,0,0,183,184,5,19,0,0,184,186,5,74,0,0,185,
-        182,1,0,0,0,185,186,1,0,0,0,186,189,1,0,0,0,187,188,5,22,0,0,188,
-        190,3,26,13,0,189,187,1,0,0,0,189,190,1,0,0,0,190,19,1,0,0,0,191,
-        192,5,15,0,0,192,193,5,53,0,0,193,194,5,23,0,0,194,195,5,54,0,0,
-        195,199,5,75,0,0,196,197,5,23,0,0,197,198,5,19,0,0,198,200,5,74,
-        0,0,199,196,1,0,0,0,199,200,1,0,0,0,200,21,1,0,0,0,201,202,5,15,
-        0,0,202,203,5,19,0,0,203,204,5,74,0,0,204,23,1,0,0,0,205,206,5,15,
-        0,0,206,207,5,55,0,0,207,208,5,23,0,0,208,212,5,56,0,0,209,210,5,
-        15,0,0,210,212,5,56,0,0,211,205,1,0,0,0,211,209,1,0,0,0,212,213,
-        1,0,0,0,213,214,5,74,0,0,214,25,1,0,0,0,215,216,3,28,14,0,216,27,
-        1,0,0,0,217,222,3,30,15,0,218,219,5,25,0,0,219,221,3,30,15,0,220,
-        218,1,0,0,0,221,224,1,0,0,0,222,220,1,0,0,0,222,223,1,0,0,0,223,
-        29,1,0,0,0,224,222,1,0,0,0,225,230,3,32,16,0,226,227,5,24,0,0,227,
-        229,3,32,16,0,228,226,1,0,0,0,229,232,1,0,0,0,230,228,1,0,0,0,230,
-        231,1,0,0,0,231,31,1,0,0,0,232,230,1,0,0,0,233,234,5,63,0,0,234,
-        235,3,26,13,0,235,236,5,64,0,0,236,240,1,0,0,0,237,240,3,34,17,0,
-        238,240,3,36,18,0,239,233,1,0,0,0,239,237,1,0,0,0,239,238,1,0,0,
-        0,240,33,1,0,0,0,241,242,5,26,0,0,242,243,7,2,0,0,243,248,5,74,0,
-        0,244,245,5,26,0,0,245,246,7,2,0,0,246,248,5,73,0,0,247,241,1,0,
-        0,0,247,244,1,0,0,0,248,35,1,0,0,0,249,250,7,3,0,0,250,37,1,0,0,
-        0,251,253,5,15,0,0,252,251,1,0,0,0,252,253,1,0,0,0,253,254,1,0,0,
-        0,254,255,5,46,0,0,255,256,5,47,0,0,256,39,1,0,0,0,257,259,5,15,
-        0,0,258,257,1,0,0,0,258,259,1,0,0,0,259,260,1,0,0,0,260,262,5,48,
-        0,0,261,263,5,74,0,0,262,261,1,0,0,0,262,263,1,0,0,0,263,41,1,0,
-        0,0,264,265,5,49,0,0,265,266,5,48,0,0,266,43,1,0,0,0,267,268,5,51,
-        0,0,268,269,5,75,0,0,269,45,1,0,0,0,270,271,5,50,0,0,271,272,5,75,
-        0,0,272,47,1,0,0,0,273,274,5,52,0,0,274,275,5,75,0,0,275,49,1,0,
-        0,0,276,277,5,57,0,0,277,51,1,0,0,0,278,279,3,54,27,0,279,53,1,0,
-        0,0,280,285,3,56,28,0,281,282,5,25,0,0,282,284,3,56,28,0,283,281,
-        1,0,0,0,284,287,1,0,0,0,285,283,1,0,0,0,285,286,1,0,0,0,286,55,1,
-        0,0,0,287,285,1,0,0,0,288,293,3,58,29,0,289,290,5,24,0,0,290,292,
-        3,58,29,0,291,289,1,0,0,0,292,295,1,0,0,0,293,291,1,0,0,0,293,294,
-        1,0,0,0,294,57,1,0,0,0,295,293,1,0,0,0,296,297,5,63,0,0,297,298,
-        3,52,26,0,298,299,5,64,0,0,299,307,1,0,0,0,300,307,3,60,30,0,301,
-        307,3,62,31,0,302,307,3,64,32,0,303,307,3,66,33,0,304,307,3,68,34,
-        0,305,307,3,70,35,0,306,296,1,0,0,0,306,300,1,0,0,0,306,301,1,0,
-        0,0,306,302,1,0,0,0,306,303,1,0,0,0,306,304,1,0,0,0,306,305,1,0,
-        0,0,307,59,1,0,0,0,308,309,7,4,0,0,309,61,1,0,0,0,310,311,7,5,0,
-        0,311,63,1,0,0,0,312,313,7,6,0,0,313,65,1,0,0,0,314,315,7,7,0,0,
-        315,67,1,0,0,0,316,317,7,8,0,0,317,69,1,0,0,0,318,319,7,9,0,0,319,
-        71,1,0,0,0,320,322,3,74,37,0,321,320,1,0,0,0,322,323,1,0,0,0,323,
-        321,1,0,0,0,323,324,1,0,0,0,324,73,1,0,0,0,325,327,3,76,38,0,326,
-        325,1,0,0,0,327,328,1,0,0,0,328,326,1,0,0,0,328,329,1,0,0,0,329,
-        331,1,0,0,0,330,332,3,78,39,0,331,330,1,0,0,0,331,332,1,0,0,0,332,
-        75,1,0,0,0,333,334,7,10,0,0,334,77,1,0,0,0,335,336,7,11,0,0,336,
-        79,1,0,0,0,22,125,133,141,164,168,185,189,199,211,222,230,239,247,
-        252,258,262,285,293,306,323,328,331
+        2,40,7,40,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,
+        0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,
+        0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,3,
+        0,128,8,0,1,1,1,1,1,1,1,1,1,2,1,2,3,2,136,8,2,1,2,1,2,1,2,1,3,1,
+        3,1,3,3,3,144,8,3,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,5,1,5,1,
+        5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,5,5,165,8,5,10,5,12,5,168,9,5,1,5,
+        3,5,171,8,5,1,5,1,5,1,6,1,6,1,6,1,6,1,7,1,7,1,8,1,8,1,9,1,9,1,9,
+        1,9,1,9,3,9,188,8,9,1,9,1,9,3,9,192,8,9,1,10,1,10,1,10,1,10,1,10,
+        1,10,1,10,1,10,3,10,202,8,10,1,11,1,11,1,11,1,11,1,12,1,12,1,12,
+        1,12,1,12,1,12,3,12,214,8,12,1,12,1,12,1,13,1,13,1,14,1,14,1,14,
+        5,14,223,8,14,10,14,12,14,226,9,14,1,15,1,15,1,15,5,15,231,8,15,
+        10,15,12,15,234,9,15,1,16,1,16,1,16,1,16,1,16,1,16,3,16,242,8,16,
+        1,17,1,17,1,17,1,17,1,17,1,17,3,17,250,8,17,1,18,1,18,1,19,3,19,
+        255,8,19,1,19,1,19,1,19,1,20,3,20,261,8,20,1,20,1,20,3,20,265,8,
+        20,1,21,1,21,1,21,1,22,1,22,1,22,1,23,1,23,1,23,1,24,1,24,1,24,1,
+        25,1,25,1,26,1,26,1,27,1,27,1,27,5,27,286,8,27,10,27,12,27,289,9,
+        27,1,28,1,28,1,28,5,28,294,8,28,10,28,12,28,297,9,28,1,29,1,29,1,
+        29,1,29,1,29,3,29,304,8,29,1,30,1,30,1,30,1,30,1,30,1,30,4,30,312,
+        8,30,11,30,12,30,313,1,31,1,31,1,32,1,32,1,33,1,33,1,34,1,34,1,35,
+        1,35,1,36,1,36,1,37,4,37,329,8,37,11,37,12,37,330,1,38,4,38,334,
+        8,38,11,38,12,38,335,1,38,3,38,339,8,38,1,39,1,39,1,40,1,40,1,40,
+        0,0,41,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,
+        42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,0,13,
+        2,0,17,17,22,22,1,0,67,68,1,0,74,76,1,0,58,62,1,0,42,45,1,0,1,3,
+        1,0,4,7,1,0,8,9,2,0,10,12,34,36,2,0,29,30,37,41,1,0,31,33,2,0,67,
+        69,74,76,1,0,70,72,345,0,127,1,0,0,0,2,129,1,0,0,0,4,133,1,0,0,0,
+        6,143,1,0,0,0,8,145,1,0,0,0,10,154,1,0,0,0,12,174,1,0,0,0,14,178,
+        1,0,0,0,16,180,1,0,0,0,18,182,1,0,0,0,20,193,1,0,0,0,22,203,1,0,
+        0,0,24,213,1,0,0,0,26,217,1,0,0,0,28,219,1,0,0,0,30,227,1,0,0,0,
+        32,241,1,0,0,0,34,249,1,0,0,0,36,251,1,0,0,0,38,254,1,0,0,0,40,260,
+        1,0,0,0,42,266,1,0,0,0,44,269,1,0,0,0,46,272,1,0,0,0,48,275,1,0,
+        0,0,50,278,1,0,0,0,52,280,1,0,0,0,54,282,1,0,0,0,56,290,1,0,0,0,
+        58,303,1,0,0,0,60,311,1,0,0,0,62,315,1,0,0,0,64,317,1,0,0,0,66,319,
+        1,0,0,0,68,321,1,0,0,0,70,323,1,0,0,0,72,325,1,0,0,0,74,328,1,0,
+        0,0,76,333,1,0,0,0,78,340,1,0,0,0,80,342,1,0,0,0,82,83,3,2,1,0,83,
+        84,5,0,0,1,84,128,1,0,0,0,85,86,3,4,2,0,86,87,5,0,0,1,87,128,1,0,
+        0,0,88,89,3,8,4,0,89,90,5,0,0,1,90,128,1,0,0,0,91,92,3,10,5,0,92,
+        93,5,0,0,1,93,128,1,0,0,0,94,95,3,20,10,0,95,96,5,0,0,1,96,128,1,
+        0,0,0,97,98,3,24,12,0,98,99,5,0,0,1,99,128,1,0,0,0,100,101,3,18,
+        9,0,101,102,5,0,0,1,102,128,1,0,0,0,103,104,3,22,11,0,104,105,5,
+        0,0,1,105,128,1,0,0,0,106,107,3,38,19,0,107,108,5,0,0,1,108,128,
+        1,0,0,0,109,110,3,40,20,0,110,111,5,0,0,1,111,128,1,0,0,0,112,113,
+        3,42,21,0,113,114,5,0,0,1,114,128,1,0,0,0,115,116,3,44,22,0,116,
+        117,5,0,0,1,117,128,1,0,0,0,118,119,3,46,23,0,119,120,5,0,0,1,120,
+        128,1,0,0,0,121,122,3,48,24,0,122,123,5,0,0,1,123,128,1,0,0,0,124,
+        125,3,50,25,0,125,126,5,0,0,1,126,128,1,0,0,0,127,82,1,0,0,0,127,
+        85,1,0,0,0,127,88,1,0,0,0,127,91,1,0,0,0,127,94,1,0,0,0,127,97,1,
+        0,0,0,127,100,1,0,0,0,127,103,1,0,0,0,127,106,1,0,0,0,127,109,1,
+        0,0,0,127,112,1,0,0,0,127,115,1,0,0,0,127,118,1,0,0,0,127,121,1,
+        0,0,0,127,124,1,0,0,0,128,1,1,0,0,0,129,130,5,13,0,0,130,131,5,14,
+        0,0,131,132,3,74,37,0,132,3,1,0,0,0,133,135,5,17,0,0,134,136,3,6,
+        3,0,135,134,1,0,0,0,135,136,1,0,0,0,136,137,1,0,0,0,137,138,5,22,
+        0,0,138,139,3,52,26,0,139,5,1,0,0,0,140,144,5,27,0,0,141,142,5,74,
+        0,0,142,144,5,28,0,0,143,140,1,0,0,0,143,141,1,0,0,0,144,7,1,0,0,
+        0,145,146,5,18,0,0,146,147,5,19,0,0,147,148,5,76,0,0,148,149,7,0,
+        0,0,149,150,5,74,0,0,150,151,5,28,0,0,151,152,5,22,0,0,152,153,3,
+        52,26,0,153,9,1,0,0,0,154,155,5,20,0,0,155,156,5,21,0,0,156,157,
+        5,23,0,0,157,158,5,19,0,0,158,159,5,74,0,0,159,160,5,65,0,0,160,
+        166,3,12,6,0,161,162,3,14,7,0,162,163,3,12,6,0,163,165,1,0,0,0,164,
+        161,1,0,0,0,165,168,1,0,0,0,166,164,1,0,0,0,166,167,1,0,0,0,167,
+        170,1,0,0,0,168,166,1,0,0,0,169,171,3,14,7,0,170,169,1,0,0,0,170,
+        171,1,0,0,0,171,172,1,0,0,0,172,173,5,66,0,0,173,11,1,0,0,0,174,
+        175,5,74,0,0,175,176,5,62,0,0,176,177,3,16,8,0,177,13,1,0,0,0,178,
+        179,7,1,0,0,179,15,1,0,0,0,180,181,7,2,0,0,181,17,1,0,0,0,182,183,
+        5,15,0,0,183,187,5,55,0,0,184,185,5,23,0,0,185,186,5,19,0,0,186,
+        188,5,74,0,0,187,184,1,0,0,0,187,188,1,0,0,0,188,191,1,0,0,0,189,
+        190,5,22,0,0,190,192,3,26,13,0,191,189,1,0,0,0,191,192,1,0,0,0,192,
+        19,1,0,0,0,193,194,5,15,0,0,194,195,5,53,0,0,195,196,5,23,0,0,196,
+        197,5,54,0,0,197,201,5,75,0,0,198,199,5,23,0,0,199,200,5,19,0,0,
+        200,202,5,74,0,0,201,198,1,0,0,0,201,202,1,0,0,0,202,21,1,0,0,0,
+        203,204,5,15,0,0,204,205,5,19,0,0,205,206,5,74,0,0,206,23,1,0,0,
+        0,207,208,5,15,0,0,208,209,5,55,0,0,209,210,5,23,0,0,210,214,5,56,
+        0,0,211,212,5,15,0,0,212,214,5,56,0,0,213,207,1,0,0,0,213,211,1,
+        0,0,0,214,215,1,0,0,0,215,216,5,74,0,0,216,25,1,0,0,0,217,218,3,
+        28,14,0,218,27,1,0,0,0,219,224,3,30,15,0,220,221,5,25,0,0,221,223,
+        3,30,15,0,222,220,1,0,0,0,223,226,1,0,0,0,224,222,1,0,0,0,224,225,
+        1,0,0,0,225,29,1,0,0,0,226,224,1,0,0,0,227,232,3,32,16,0,228,229,
+        5,24,0,0,229,231,3,32,16,0,230,228,1,0,0,0,231,234,1,0,0,0,232,230,
+        1,0,0,0,232,233,1,0,0,0,233,31,1,0,0,0,234,232,1,0,0,0,235,236,5,
+        63,0,0,236,237,3,26,13,0,237,238,5,64,0,0,238,242,1,0,0,0,239,242,
+        3,34,17,0,240,242,3,36,18,0,241,235,1,0,0,0,241,239,1,0,0,0,241,
+        240,1,0,0,0,242,33,1,0,0,0,243,244,5,26,0,0,244,245,7,3,0,0,245,
+        250,5,74,0,0,246,247,5,26,0,0,247,248,7,3,0,0,248,250,5,73,0,0,249,
+        243,1,0,0,0,249,246,1,0,0,0,250,35,1,0,0,0,251,252,7,4,0,0,252,37,
+        1,0,0,0,253,255,5,15,0,0,254,253,1,0,0,0,254,255,1,0,0,0,255,256,
+        1,0,0,0,256,257,5,46,0,0,257,258,5,47,0,0,258,39,1,0,0,0,259,261,
+        5,15,0,0,260,259,1,0,0,0,260,261,1,0,0,0,261,262,1,0,0,0,262,264,
+        5,48,0,0,263,265,5,74,0,0,264,263,1,0,0,0,264,265,1,0,0,0,265,41,
+        1,0,0,0,266,267,5,49,0,0,267,268,5,48,0,0,268,43,1,0,0,0,269,270,
+        5,51,0,0,270,271,5,75,0,0,271,45,1,0,0,0,272,273,5,50,0,0,273,274,
+        5,75,0,0,274,47,1,0,0,0,275,276,5,52,0,0,276,277,5,75,0,0,277,49,
+        1,0,0,0,278,279,5,57,0,0,279,51,1,0,0,0,280,281,3,54,27,0,281,53,
+        1,0,0,0,282,287,3,56,28,0,283,284,5,25,0,0,284,286,3,56,28,0,285,
+        283,1,0,0,0,286,289,1,0,0,0,287,285,1,0,0,0,287,288,1,0,0,0,288,
+        55,1,0,0,0,289,287,1,0,0,0,290,295,3,58,29,0,291,292,5,24,0,0,292,
+        294,3,58,29,0,293,291,1,0,0,0,294,297,1,0,0,0,295,293,1,0,0,0,295,
+        296,1,0,0,0,296,57,1,0,0,0,297,295,1,0,0,0,298,299,5,63,0,0,299,
+        300,3,52,26,0,300,301,5,64,0,0,301,304,1,0,0,0,302,304,3,60,30,0,
+        303,298,1,0,0,0,303,302,1,0,0,0,304,59,1,0,0,0,305,312,3,62,31,0,
+        306,312,3,64,32,0,307,312,3,66,33,0,308,312,3,68,34,0,309,312,3,
+        70,35,0,310,312,3,72,36,0,311,305,1,0,0,0,311,306,1,0,0,0,311,307,
+        1,0,0,0,311,308,1,0,0,0,311,309,1,0,0,0,311,310,1,0,0,0,312,313,
+        1,0,0,0,313,311,1,0,0,0,313,314,1,0,0,0,314,61,1,0,0,0,315,316,7,
+        5,0,0,316,63,1,0,0,0,317,318,7,6,0,0,318,65,1,0,0,0,319,320,7,7,
+        0,0,320,67,1,0,0,0,321,322,7,8,0,0,322,69,1,0,0,0,323,324,7,9,0,
+        0,324,71,1,0,0,0,325,326,7,10,0,0,326,73,1,0,0,0,327,329,3,76,38,
+        0,328,327,1,0,0,0,329,330,1,0,0,0,330,328,1,0,0,0,330,331,1,0,0,
+        0,331,75,1,0,0,0,332,334,3,78,39,0,333,332,1,0,0,0,334,335,1,0,0,
+        0,335,333,1,0,0,0,335,336,1,0,0,0,336,338,1,0,0,0,337,339,3,80,40,
+        0,338,337,1,0,0,0,338,339,1,0,0,0,339,77,1,0,0,0,340,341,7,11,0,
+        0,341,79,1,0,0,0,342,343,7,12,0,0,343,81,1,0,0,0,24,127,135,143,
+        166,170,187,191,201,213,224,232,241,249,254,260,264,287,295,303,
+        311,313,330,335,338
     ]
 
 class GrammarDSLParser ( Parser ):
@@ -203,16 +206,17 @@ class GrammarDSLParser ( Parser ):
     RULE_featureOrExpr = 27
     RULE_featureAndExpr = 28
     RULE_featurePrimary = 29
-    RULE_tense = 30
-    RULE_aspect = 31
-    RULE_voice = 32
-    RULE_sentenceType = 33
-    RULE_clauseStructure = 34
-    RULE_grammaticalFeature = 35
-    RULE_paragraph = 36
-    RULE_sentence = 37
-    RULE_sentencePart = 38
-    RULE_sentenceTerminator = 39
+    RULE_featureAtom = 30
+    RULE_tense = 31
+    RULE_aspect = 32
+    RULE_voice = 33
+    RULE_sentenceType = 34
+    RULE_clauseStructure = 35
+    RULE_grammaticalFeature = 36
+    RULE_paragraph = 37
+    RULE_sentence = 38
+    RULE_sentencePart = 39
+    RULE_sentenceTerminator = 40
 
     ruleNames =  [ "command", "grammarCheckCmd", "generateExerciseCmd", 
                    "quantitySpec", "createQuizCmd", "submitAnswersCmd", 
@@ -222,9 +226,9 @@ class GrammarDSLParser ( Parser ):
                    "comparisonExpr", "statusExpr", "revisionPlanCmd", "historyCmd", 
                    "resetHistoryCmd", "spellCmd", "verbCmd", "synonymCmd", 
                    "helpCmd", "featureExpr", "featureOrExpr", "featureAndExpr", 
-                   "featurePrimary", "tense", "aspect", "voice", "sentenceType", 
-                   "clauseStructure", "grammaticalFeature", "paragraph", 
-                   "sentence", "sentencePart", "sentenceTerminator" ]
+                   "featurePrimary", "featureAtom", "tense", "aspect", "voice", 
+                   "sentenceType", "clauseStructure", "grammaticalFeature", 
+                   "paragraph", "sentence", "sentencePart", "sentenceTerminator" ]
 
     EOF = Token.EOF
     PRESENT=1
@@ -409,126 +413,126 @@ class GrammarDSLParser ( Parser ):
         localctx = GrammarDSLParser.CommandContext(self, self._ctx, self.state)
         self.enterRule(localctx, 0, self.RULE_command)
         try:
-            self.state = 125
+            self.state = 127
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,0,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 80
+                self.state = 82
                 self.grammarCheckCmd()
-                self.state = 81
+                self.state = 83
                 self.match(GrammarDSLParser.EOF)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 83
+                self.state = 85
                 self.generateExerciseCmd()
-                self.state = 84
+                self.state = 86
                 self.match(GrammarDSLParser.EOF)
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 86
+                self.state = 88
                 self.createQuizCmd()
-                self.state = 87
+                self.state = 89
                 self.match(GrammarDSLParser.EOF)
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 89
+                self.state = 91
                 self.submitAnswersCmd()
-                self.state = 90
+                self.state = 92
                 self.match(GrammarDSLParser.EOF)
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 92
+                self.state = 94
                 self.showResultsCmd()
-                self.state = 93
+                self.state = 95
                 self.match(GrammarDSLParser.EOF)
                 pass
 
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 95
+                self.state = 97
                 self.showClassCmd()
-                self.state = 96
+                self.state = 98
                 self.match(GrammarDSLParser.EOF)
                 pass
 
             elif la_ == 7:
                 self.enterOuterAlt(localctx, 7)
-                self.state = 98
+                self.state = 100
                 self.showStudentsCmd()
-                self.state = 99
+                self.state = 101
                 self.match(GrammarDSLParser.EOF)
                 pass
 
             elif la_ == 8:
                 self.enterOuterAlt(localctx, 8)
-                self.state = 101
+                self.state = 103
                 self.showQuizCmd()
-                self.state = 102
+                self.state = 104
                 self.match(GrammarDSLParser.EOF)
                 pass
 
             elif la_ == 9:
                 self.enterOuterAlt(localctx, 9)
-                self.state = 104
+                self.state = 106
                 self.revisionPlanCmd()
-                self.state = 105
+                self.state = 107
                 self.match(GrammarDSLParser.EOF)
                 pass
 
             elif la_ == 10:
                 self.enterOuterAlt(localctx, 10)
-                self.state = 107
+                self.state = 109
                 self.historyCmd()
-                self.state = 108
+                self.state = 110
                 self.match(GrammarDSLParser.EOF)
                 pass
 
             elif la_ == 11:
                 self.enterOuterAlt(localctx, 11)
-                self.state = 110
+                self.state = 112
                 self.resetHistoryCmd()
-                self.state = 111
+                self.state = 113
                 self.match(GrammarDSLParser.EOF)
                 pass
 
             elif la_ == 12:
                 self.enterOuterAlt(localctx, 12)
-                self.state = 113
+                self.state = 115
                 self.spellCmd()
-                self.state = 114
+                self.state = 116
                 self.match(GrammarDSLParser.EOF)
                 pass
 
             elif la_ == 13:
                 self.enterOuterAlt(localctx, 13)
-                self.state = 116
+                self.state = 118
                 self.verbCmd()
-                self.state = 117
+                self.state = 119
                 self.match(GrammarDSLParser.EOF)
                 pass
 
             elif la_ == 14:
                 self.enterOuterAlt(localctx, 14)
-                self.state = 119
+                self.state = 121
                 self.synonymCmd()
-                self.state = 120
+                self.state = 122
                 self.match(GrammarDSLParser.EOF)
                 pass
 
             elif la_ == 15:
                 self.enterOuterAlt(localctx, 15)
-                self.state = 122
+                self.state = 124
                 self.helpCmd()
-                self.state = 123
+                self.state = 125
                 self.match(GrammarDSLParser.EOF)
                 pass
 
@@ -585,11 +589,11 @@ class GrammarDSLParser ( Parser ):
         self.enterRule(localctx, 2, self.RULE_grammarCheckCmd)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 127
-            self.match(GrammarDSLParser.CHECK)
-            self.state = 128
-            self.match(GrammarDSLParser.GRAMMAR)
             self.state = 129
+            self.match(GrammarDSLParser.CHECK)
+            self.state = 130
+            self.match(GrammarDSLParser.GRAMMAR)
+            self.state = 131
             self.paragraph()
         except RecognitionException as re:
             localctx.exception = re
@@ -648,19 +652,19 @@ class GrammarDSLParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 131
-            self.match(GrammarDSLParser.GENERATE)
             self.state = 133
+            self.match(GrammarDSLParser.GENERATE)
+            self.state = 135
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==27 or _la==74:
-                self.state = 132
+                self.state = 134
                 self.quantitySpec()
 
 
-            self.state = 135
+            self.state = 137
             self.match(GrammarDSLParser.WITH)
-            self.state = 136
+            self.state = 138
             self.featureExpr()
         except RecognitionException as re:
             localctx.exception = re
@@ -713,19 +717,19 @@ class GrammarDSLParser ( Parser ):
         localctx = GrammarDSLParser.QuantitySpecContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_quantitySpec)
         try:
-            self.state = 141
+            self.state = 143
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [27]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 138
+                self.state = 140
                 self.match(GrammarDSLParser.EXERCISE)
                 pass
             elif token in [74]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 139
+                self.state = 141
                 localctx.count = self.match(GrammarDSLParser.NUMBER)
-                self.state = 140
+                self.state = 142
                 self.match(GrammarDSLParser.EXERCISES)
                 pass
             else:
@@ -755,14 +759,14 @@ class GrammarDSLParser ( Parser ):
         def QUIZ(self):
             return self.getToken(GrammarDSLParser.QUIZ, 0)
 
+        def EXERCISES(self):
+            return self.getToken(GrammarDSLParser.EXERCISES, 0)
+
         def WITH(self, i:int=None):
             if i is None:
                 return self.getTokens(GrammarDSLParser.WITH)
             else:
                 return self.getToken(GrammarDSLParser.WITH, i)
-
-        def EXERCISES(self):
-            return self.getToken(GrammarDSLParser.EXERCISES, 0)
 
         def featureExpr(self):
             return self.getTypedRuleContext(GrammarDSLParser.FeatureExprContext,0)
@@ -770,6 +774,9 @@ class GrammarDSLParser ( Parser ):
 
         def QUOTED_TEXT(self):
             return self.getToken(GrammarDSLParser.QUOTED_TEXT, 0)
+
+        def GENERATE(self):
+            return self.getToken(GrammarDSLParser.GENERATE, 0)
 
         def NUMBER(self):
             return self.getToken(GrammarDSLParser.NUMBER, 0)
@@ -798,23 +805,29 @@ class GrammarDSLParser ( Parser ):
 
         localctx = GrammarDSLParser.CreateQuizCmdContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_createQuizCmd)
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 143
-            self.match(GrammarDSLParser.CREATE)
-            self.state = 144
-            self.match(GrammarDSLParser.QUIZ)
             self.state = 145
-            localctx.title = self.match(GrammarDSLParser.QUOTED_TEXT)
+            self.match(GrammarDSLParser.CREATE)
             self.state = 146
-            self.match(GrammarDSLParser.WITH)
+            self.match(GrammarDSLParser.QUIZ)
             self.state = 147
-            localctx.count = self.match(GrammarDSLParser.NUMBER)
+            localctx.title = self.match(GrammarDSLParser.QUOTED_TEXT)
             self.state = 148
-            self.match(GrammarDSLParser.EXERCISES)
+            _la = self._input.LA(1)
+            if not(_la==17 or _la==22):
+                self._errHandler.recoverInline(self)
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
             self.state = 149
-            self.match(GrammarDSLParser.WITH)
+            localctx.count = self.match(GrammarDSLParser.NUMBER)
             self.state = 150
+            self.match(GrammarDSLParser.EXERCISES)
+            self.state = 151
+            self.match(GrammarDSLParser.WITH)
+            self.state = 152
             self.featureExpr()
         except RecognitionException as re:
             localctx.exception = re
@@ -895,42 +908,42 @@ class GrammarDSLParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 152
-            self.match(GrammarDSLParser.SUBMIT)
-            self.state = 153
-            self.match(GrammarDSLParser.ANSWERS)
             self.state = 154
-            self.match(GrammarDSLParser.FOR)
+            self.match(GrammarDSLParser.SUBMIT)
             self.state = 155
-            self.match(GrammarDSLParser.QUIZ)
+            self.match(GrammarDSLParser.ANSWERS)
             self.state = 156
-            localctx.quizId = self.match(GrammarDSLParser.NUMBER)
+            self.match(GrammarDSLParser.FOR)
             self.state = 157
-            self.match(GrammarDSLParser.LEFT_BRACE)
+            self.match(GrammarDSLParser.QUIZ)
             self.state = 158
+            localctx.quizId = self.match(GrammarDSLParser.NUMBER)
+            self.state = 159
+            self.match(GrammarDSLParser.LEFT_BRACE)
+            self.state = 160
             self.answerEntry()
-            self.state = 164
+            self.state = 166
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,3,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 159
+                    self.state = 161
                     self.answerSeparator()
-                    self.state = 160
+                    self.state = 162
                     self.answerEntry() 
-                self.state = 166
+                self.state = 168
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,3,self._ctx)
 
-            self.state = 168
+            self.state = 170
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==67 or _la==68:
-                self.state = 167
+                self.state = 169
                 self.answerSeparator()
 
 
-            self.state = 170
+            self.state = 172
             self.match(GrammarDSLParser.RIGHT_BRACE)
         except RecognitionException as re:
             localctx.exception = re
@@ -985,11 +998,11 @@ class GrammarDSLParser ( Parser ):
         self.enterRule(localctx, 12, self.RULE_answerEntry)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 172
-            localctx.questionId = self.match(GrammarDSLParser.NUMBER)
-            self.state = 173
-            self.match(GrammarDSLParser.EQUALS)
             self.state = 174
+            localctx.questionId = self.match(GrammarDSLParser.NUMBER)
+            self.state = 175
+            self.match(GrammarDSLParser.EQUALS)
+            self.state = 176
             self.answerValue()
         except RecognitionException as re:
             localctx.exception = re
@@ -1040,7 +1053,7 @@ class GrammarDSLParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 176
+            self.state = 178
             _la = self._input.LA(1)
             if not(_la==67 or _la==68):
                 self._errHandler.recoverInline(self)
@@ -1099,7 +1112,7 @@ class GrammarDSLParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 178
+            self.state = 180
             _la = self._input.LA(1)
             if not(((((_la - 74)) & ~0x3f) == 0 and ((1 << (_la - 74)) & 7) != 0)):
                 self._errHandler.recoverInline(self)
@@ -1172,29 +1185,29 @@ class GrammarDSLParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 180
+            self.state = 182
             self.match(GrammarDSLParser.SHOW)
-            self.state = 181
+            self.state = 183
             self.match(GrammarDSLParser.STUDENTS)
-            self.state = 185
+            self.state = 187
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==23:
-                self.state = 182
-                self.match(GrammarDSLParser.FOR)
-                self.state = 183
-                self.match(GrammarDSLParser.QUIZ)
                 self.state = 184
+                self.match(GrammarDSLParser.FOR)
+                self.state = 185
+                self.match(GrammarDSLParser.QUIZ)
+                self.state = 186
                 localctx.quizId = self.match(GrammarDSLParser.NUMBER)
 
 
-            self.state = 189
+            self.state = 191
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==22:
-                self.state = 187
+                self.state = 189
                 self.match(GrammarDSLParser.WITH)
-                self.state = 188
+                self.state = 190
                 self.studentFilterExpr()
 
 
@@ -1267,25 +1280,25 @@ class GrammarDSLParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 191
-            self.match(GrammarDSLParser.SHOW)
-            self.state = 192
-            self.match(GrammarDSLParser.RESULTS)
             self.state = 193
-            self.match(GrammarDSLParser.FOR)
+            self.match(GrammarDSLParser.SHOW)
             self.state = 194
-            self.match(GrammarDSLParser.STUDENT)
+            self.match(GrammarDSLParser.RESULTS)
             self.state = 195
+            self.match(GrammarDSLParser.FOR)
+            self.state = 196
+            self.match(GrammarDSLParser.STUDENT)
+            self.state = 197
             localctx.studentUsername = self.match(GrammarDSLParser.WORD)
-            self.state = 199
+            self.state = 201
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==23:
-                self.state = 196
-                self.match(GrammarDSLParser.FOR)
-                self.state = 197
-                self.match(GrammarDSLParser.QUIZ)
                 self.state = 198
+                self.match(GrammarDSLParser.FOR)
+                self.state = 199
+                self.match(GrammarDSLParser.QUIZ)
+                self.state = 200
                 localctx.quizId = self.match(GrammarDSLParser.NUMBER)
 
 
@@ -1341,11 +1354,11 @@ class GrammarDSLParser ( Parser ):
         self.enterRule(localctx, 22, self.RULE_showQuizCmd)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 201
-            self.match(GrammarDSLParser.SHOW)
-            self.state = 202
-            self.match(GrammarDSLParser.QUIZ)
             self.state = 203
+            self.match(GrammarDSLParser.SHOW)
+            self.state = 204
+            self.match(GrammarDSLParser.QUIZ)
+            self.state = 205
             localctx.quizId = self.match(GrammarDSLParser.NUMBER)
         except RecognitionException as re:
             localctx.exception = re
@@ -1405,29 +1418,29 @@ class GrammarDSLParser ( Parser ):
         self.enterRule(localctx, 24, self.RULE_showClassCmd)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 211
+            self.state = 213
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,8,self._ctx)
             if la_ == 1:
-                self.state = 205
-                self.match(GrammarDSLParser.SHOW)
-                self.state = 206
-                self.match(GrammarDSLParser.STUDENTS)
                 self.state = 207
-                self.match(GrammarDSLParser.FOR)
-                self.state = 208
-                self.match(GrammarDSLParser.CLASS)
-                pass
-
-            elif la_ == 2:
-                self.state = 209
                 self.match(GrammarDSLParser.SHOW)
+                self.state = 208
+                self.match(GrammarDSLParser.STUDENTS)
+                self.state = 209
+                self.match(GrammarDSLParser.FOR)
                 self.state = 210
                 self.match(GrammarDSLParser.CLASS)
                 pass
 
+            elif la_ == 2:
+                self.state = 211
+                self.match(GrammarDSLParser.SHOW)
+                self.state = 212
+                self.match(GrammarDSLParser.CLASS)
+                pass
 
-            self.state = 213
+
+            self.state = 215
             localctx.classId = self.match(GrammarDSLParser.NUMBER)
         except RecognitionException as re:
             localctx.exception = re
@@ -1475,7 +1488,7 @@ class GrammarDSLParser ( Parser ):
         self.enterRule(localctx, 26, self.RULE_studentFilterExpr)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 215
+            self.state = 217
             self.studentFilterOrExpr()
         except RecognitionException as re:
             localctx.exception = re
@@ -1533,17 +1546,17 @@ class GrammarDSLParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 217
+            self.state = 219
             self.studentFilterAndExpr()
-            self.state = 222
+            self.state = 224
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==25:
-                self.state = 218
+                self.state = 220
                 self.match(GrammarDSLParser.OR)
-                self.state = 219
+                self.state = 221
                 self.studentFilterAndExpr()
-                self.state = 224
+                self.state = 226
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -1603,17 +1616,17 @@ class GrammarDSLParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 225
+            self.state = 227
             self.studentFilterPrimary()
-            self.state = 230
+            self.state = 232
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==24:
-                self.state = 226
+                self.state = 228
                 self.match(GrammarDSLParser.AND)
-                self.state = 227
+                self.state = 229
                 self.studentFilterPrimary()
-                self.state = 232
+                self.state = 234
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -1676,26 +1689,26 @@ class GrammarDSLParser ( Parser ):
         localctx = GrammarDSLParser.StudentFilterPrimaryContext(self, self._ctx, self.state)
         self.enterRule(localctx, 32, self.RULE_studentFilterPrimary)
         try:
-            self.state = 239
+            self.state = 241
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [63]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 233
-                self.match(GrammarDSLParser.LEFT_PAREN)
-                self.state = 234
-                self.studentFilterExpr()
                 self.state = 235
+                self.match(GrammarDSLParser.LEFT_PAREN)
+                self.state = 236
+                self.studentFilterExpr()
+                self.state = 237
                 self.match(GrammarDSLParser.RIGHT_PAREN)
                 pass
             elif token in [26]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 237
+                self.state = 239
                 self.comparisonExpr()
                 pass
             elif token in [42, 43, 44, 45]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 238
+                self.state = 240
                 self.statusExpr()
                 pass
             else:
@@ -1769,14 +1782,14 @@ class GrammarDSLParser ( Parser ):
         self.enterRule(localctx, 34, self.RULE_comparisonExpr)
         self._la = 0 # Token type
         try:
-            self.state = 247
+            self.state = 249
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,12,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 241
+                self.state = 243
                 self.match(GrammarDSLParser.SCORE)
-                self.state = 242
+                self.state = 244
                 localctx.op = self._input.LT(1)
                 _la = self._input.LA(1)
                 if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 8935141660703064064) != 0)):
@@ -1784,15 +1797,15 @@ class GrammarDSLParser ( Parser ):
                 else:
                     self._errHandler.reportMatch(self)
                     self.consume()
-                self.state = 243
+                self.state = 245
                 localctx.value = self.match(GrammarDSLParser.NUMBER)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 244
+                self.state = 246
                 self.match(GrammarDSLParser.SCORE)
-                self.state = 245
+                self.state = 247
                 localctx.op = self._input.LT(1)
                 _la = self._input.LA(1)
                 if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 8935141660703064064) != 0)):
@@ -1800,7 +1813,7 @@ class GrammarDSLParser ( Parser ):
                 else:
                     self._errHandler.reportMatch(self)
                     self.consume()
-                self.state = 246
+                self.state = 248
                 localctx.value = self.match(GrammarDSLParser.PERCENTAGE)
                 pass
 
@@ -1861,7 +1874,7 @@ class GrammarDSLParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 249
+            self.state = 251
             localctx.status = self._input.LT(1)
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 65970697666560) != 0)):
@@ -1921,17 +1934,17 @@ class GrammarDSLParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 252
+            self.state = 254
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==15:
-                self.state = 251
+                self.state = 253
                 self.match(GrammarDSLParser.SHOW)
 
 
-            self.state = 254
+            self.state = 256
             self.match(GrammarDSLParser.REVISION)
-            self.state = 255
+            self.state = 257
             self.match(GrammarDSLParser.PLAN)
         except RecognitionException as re:
             localctx.exception = re
@@ -1986,21 +1999,21 @@ class GrammarDSLParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 258
+            self.state = 260
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==15:
-                self.state = 257
+                self.state = 259
                 self.match(GrammarDSLParser.SHOW)
 
 
-            self.state = 260
-            self.match(GrammarDSLParser.HISTORY)
             self.state = 262
+            self.match(GrammarDSLParser.HISTORY)
+            self.state = 264
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==74:
-                self.state = 261
+                self.state = 263
                 localctx.limit = self.match(GrammarDSLParser.NUMBER)
 
 
@@ -2052,9 +2065,9 @@ class GrammarDSLParser ( Parser ):
         self.enterRule(localctx, 42, self.RULE_resetHistoryCmd)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 264
+            self.state = 266
             self.match(GrammarDSLParser.RESET)
-            self.state = 265
+            self.state = 267
             self.match(GrammarDSLParser.HISTORY)
         except RecognitionException as re:
             localctx.exception = re
@@ -2105,9 +2118,9 @@ class GrammarDSLParser ( Parser ):
         self.enterRule(localctx, 44, self.RULE_spellCmd)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 267
+            self.state = 269
             self.match(GrammarDSLParser.SPELL)
-            self.state = 268
+            self.state = 270
             localctx.word = self.match(GrammarDSLParser.WORD)
         except RecognitionException as re:
             localctx.exception = re
@@ -2158,9 +2171,9 @@ class GrammarDSLParser ( Parser ):
         self.enterRule(localctx, 46, self.RULE_verbCmd)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 270
+            self.state = 272
             self.match(GrammarDSLParser.VERB)
-            self.state = 271
+            self.state = 273
             localctx.word = self.match(GrammarDSLParser.WORD)
         except RecognitionException as re:
             localctx.exception = re
@@ -2211,9 +2224,9 @@ class GrammarDSLParser ( Parser ):
         self.enterRule(localctx, 48, self.RULE_synonymCmd)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 273
+            self.state = 275
             self.match(GrammarDSLParser.SYNONYM)
-            self.state = 274
+            self.state = 276
             localctx.word = self.match(GrammarDSLParser.WORD)
         except RecognitionException as re:
             localctx.exception = re
@@ -2260,7 +2273,7 @@ class GrammarDSLParser ( Parser ):
         self.enterRule(localctx, 50, self.RULE_helpCmd)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 276
+            self.state = 278
             self.match(GrammarDSLParser.HELP)
         except RecognitionException as re:
             localctx.exception = re
@@ -2308,7 +2321,7 @@ class GrammarDSLParser ( Parser ):
         self.enterRule(localctx, 52, self.RULE_featureExpr)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 278
+            self.state = 280
             self.featureOrExpr()
         except RecognitionException as re:
             localctx.exception = re
@@ -2366,17 +2379,17 @@ class GrammarDSLParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 280
+            self.state = 282
             self.featureAndExpr()
-            self.state = 285
+            self.state = 287
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==25:
-                self.state = 281
+                self.state = 283
                 self.match(GrammarDSLParser.OR)
-                self.state = 282
+                self.state = 284
                 self.featureAndExpr()
-                self.state = 287
+                self.state = 289
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -2436,17 +2449,17 @@ class GrammarDSLParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 288
+            self.state = 290
             self.featurePrimary()
-            self.state = 293
+            self.state = 295
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==24:
-                self.state = 289
+                self.state = 291
                 self.match(GrammarDSLParser.AND)
-                self.state = 290
+                self.state = 292
                 self.featurePrimary()
-                self.state = 295
+                self.state = 297
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -2476,28 +2489,8 @@ class GrammarDSLParser ( Parser ):
         def RIGHT_PAREN(self):
             return self.getToken(GrammarDSLParser.RIGHT_PAREN, 0)
 
-        def tense(self):
-            return self.getTypedRuleContext(GrammarDSLParser.TenseContext,0)
-
-
-        def aspect(self):
-            return self.getTypedRuleContext(GrammarDSLParser.AspectContext,0)
-
-
-        def voice(self):
-            return self.getTypedRuleContext(GrammarDSLParser.VoiceContext,0)
-
-
-        def sentenceType(self):
-            return self.getTypedRuleContext(GrammarDSLParser.SentenceTypeContext,0)
-
-
-        def clauseStructure(self):
-            return self.getTypedRuleContext(GrammarDSLParser.ClauseStructureContext,0)
-
-
-        def grammaticalFeature(self):
-            return self.getTypedRuleContext(GrammarDSLParser.GrammaticalFeatureContext,0)
+        def featureAtom(self):
+            return self.getTypedRuleContext(GrammarDSLParser.FeatureAtomContext,0)
 
 
         def getRuleIndex(self):
@@ -2525,50 +2518,150 @@ class GrammarDSLParser ( Parser ):
         localctx = GrammarDSLParser.FeaturePrimaryContext(self, self._ctx, self.state)
         self.enterRule(localctx, 58, self.RULE_featurePrimary)
         try:
-            self.state = 306
+            self.state = 303
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [63]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 296
-                self.match(GrammarDSLParser.LEFT_PAREN)
-                self.state = 297
-                self.featureExpr()
                 self.state = 298
+                self.match(GrammarDSLParser.LEFT_PAREN)
+                self.state = 299
+                self.featureExpr()
+                self.state = 300
                 self.match(GrammarDSLParser.RIGHT_PAREN)
                 pass
-            elif token in [1, 2, 3]:
+            elif token in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 300
-                self.tense()
-                pass
-            elif token in [4, 5, 6, 7]:
-                self.enterOuterAlt(localctx, 3)
-                self.state = 301
-                self.aspect()
-                pass
-            elif token in [8, 9]:
-                self.enterOuterAlt(localctx, 4)
                 self.state = 302
-                self.voice()
-                pass
-            elif token in [10, 11, 12, 34, 35, 36]:
-                self.enterOuterAlt(localctx, 5)
-                self.state = 303
-                self.sentenceType()
-                pass
-            elif token in [29, 30, 37, 38, 39, 40, 41]:
-                self.enterOuterAlt(localctx, 6)
-                self.state = 304
-                self.clauseStructure()
-                pass
-            elif token in [31, 32, 33]:
-                self.enterOuterAlt(localctx, 7)
-                self.state = 305
-                self.grammaticalFeature()
+                self.featureAtom()
                 pass
             else:
                 raise NoViableAltException(self)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class FeatureAtomContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def tense(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(GrammarDSLParser.TenseContext)
+            else:
+                return self.getTypedRuleContext(GrammarDSLParser.TenseContext,i)
+
+
+        def aspect(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(GrammarDSLParser.AspectContext)
+            else:
+                return self.getTypedRuleContext(GrammarDSLParser.AspectContext,i)
+
+
+        def voice(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(GrammarDSLParser.VoiceContext)
+            else:
+                return self.getTypedRuleContext(GrammarDSLParser.VoiceContext,i)
+
+
+        def sentenceType(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(GrammarDSLParser.SentenceTypeContext)
+            else:
+                return self.getTypedRuleContext(GrammarDSLParser.SentenceTypeContext,i)
+
+
+        def clauseStructure(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(GrammarDSLParser.ClauseStructureContext)
+            else:
+                return self.getTypedRuleContext(GrammarDSLParser.ClauseStructureContext,i)
+
+
+        def grammaticalFeature(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(GrammarDSLParser.GrammaticalFeatureContext)
+            else:
+                return self.getTypedRuleContext(GrammarDSLParser.GrammaticalFeatureContext,i)
+
+
+        def getRuleIndex(self):
+            return GrammarDSLParser.RULE_featureAtom
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFeatureAtom" ):
+                listener.enterFeatureAtom(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFeatureAtom" ):
+                listener.exitFeatureAtom(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFeatureAtom" ):
+                return visitor.visitFeatureAtom(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def featureAtom(self):
+
+        localctx = GrammarDSLParser.FeatureAtomContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 60, self.RULE_featureAtom)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 311 
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while True:
+                self.state = 311
+                self._errHandler.sync(self)
+                token = self._input.LA(1)
+                if token in [1, 2, 3]:
+                    self.state = 305
+                    self.tense()
+                    pass
+                elif token in [4, 5, 6, 7]:
+                    self.state = 306
+                    self.aspect()
+                    pass
+                elif token in [8, 9]:
+                    self.state = 307
+                    self.voice()
+                    pass
+                elif token in [10, 11, 12, 34, 35, 36]:
+                    self.state = 308
+                    self.sentenceType()
+                    pass
+                elif token in [29, 30, 37, 38, 39, 40, 41]:
+                    self.state = 309
+                    self.clauseStructure()
+                    pass
+                elif token in [31, 32, 33]:
+                    self.state = 310
+                    self.grammaticalFeature()
+                    pass
+                else:
+                    raise NoViableAltException(self)
+
+                self.state = 313 
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 4397509648382) != 0)):
+                    break
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2618,11 +2711,11 @@ class GrammarDSLParser ( Parser ):
     def tense(self):
 
         localctx = GrammarDSLParser.TenseContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 60, self.RULE_tense)
+        self.enterRule(localctx, 62, self.RULE_tense)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 308
+            self.state = 315
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 14) != 0)):
                 self._errHandler.recoverInline(self)
@@ -2680,11 +2773,11 @@ class GrammarDSLParser ( Parser ):
     def aspect(self):
 
         localctx = GrammarDSLParser.AspectContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 62, self.RULE_aspect)
+        self.enterRule(localctx, 64, self.RULE_aspect)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 310
+            self.state = 317
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 240) != 0)):
                 self._errHandler.recoverInline(self)
@@ -2736,11 +2829,11 @@ class GrammarDSLParser ( Parser ):
     def voice(self):
 
         localctx = GrammarDSLParser.VoiceContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 64, self.RULE_voice)
+        self.enterRule(localctx, 66, self.RULE_voice)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 312
+            self.state = 319
             _la = self._input.LA(1)
             if not(_la==8 or _la==9):
                 self._errHandler.recoverInline(self)
@@ -2804,11 +2897,11 @@ class GrammarDSLParser ( Parser ):
     def sentenceType(self):
 
         localctx = GrammarDSLParser.SentenceTypeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 66, self.RULE_sentenceType)
+        self.enterRule(localctx, 68, self.RULE_sentenceType)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 314
+            self.state = 321
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 120259091456) != 0)):
                 self._errHandler.recoverInline(self)
@@ -2875,11 +2968,11 @@ class GrammarDSLParser ( Parser ):
     def clauseStructure(self):
 
         localctx = GrammarDSLParser.ClauseStructureContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 68, self.RULE_clauseStructure)
+        self.enterRule(localctx, 70, self.RULE_clauseStructure)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 316
+            self.state = 323
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 4262218170368) != 0)):
                 self._errHandler.recoverInline(self)
@@ -2934,11 +3027,11 @@ class GrammarDSLParser ( Parser ):
     def grammaticalFeature(self):
 
         localctx = GrammarDSLParser.GrammaticalFeatureContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 70, self.RULE_grammaticalFeature)
+        self.enterRule(localctx, 72, self.RULE_grammaticalFeature)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 318
+            self.state = 325
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 15032385536) != 0)):
                 self._errHandler.recoverInline(self)
@@ -2991,17 +3084,17 @@ class GrammarDSLParser ( Parser ):
     def paragraph(self):
 
         localctx = GrammarDSLParser.ParagraphContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 72, self.RULE_paragraph)
+        self.enterRule(localctx, 74, self.RULE_paragraph)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 321 
+            self.state = 328 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 320
+                self.state = 327
                 self.sentence()
-                self.state = 323 
+                self.state = 330 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (((((_la - 67)) & ~0x3f) == 0 and ((1 << (_la - 67)) & 903) != 0)):
@@ -3057,29 +3150,29 @@ class GrammarDSLParser ( Parser ):
     def sentence(self):
 
         localctx = GrammarDSLParser.SentenceContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 74, self.RULE_sentence)
+        self.enterRule(localctx, 76, self.RULE_sentence)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 326 
+            self.state = 333 
             self._errHandler.sync(self)
             _alt = 1
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt == 1:
-                    self.state = 325
+                    self.state = 332
                     self.sentencePart()
 
                 else:
                     raise NoViableAltException(self)
-                self.state = 328 
+                self.state = 335 
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,20,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,22,self._ctx)
 
-            self.state = 331
+            self.state = 338
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if ((((_la - 70)) & ~0x3f) == 0 and ((1 << (_la - 70)) & 7) != 0):
-                self.state = 330
+                self.state = 337
                 self.sentenceTerminator()
 
 
@@ -3140,11 +3233,11 @@ class GrammarDSLParser ( Parser ):
     def sentencePart(self):
 
         localctx = GrammarDSLParser.SentencePartContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 76, self.RULE_sentencePart)
+        self.enterRule(localctx, 78, self.RULE_sentencePart)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 333
+            self.state = 340
             _la = self._input.LA(1)
             if not(((((_la - 67)) & ~0x3f) == 0 and ((1 << (_la - 67)) & 903) != 0)):
                 self._errHandler.recoverInline(self)
@@ -3199,11 +3292,11 @@ class GrammarDSLParser ( Parser ):
     def sentenceTerminator(self):
 
         localctx = GrammarDSLParser.SentenceTerminatorContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 78, self.RULE_sentenceTerminator)
+        self.enterRule(localctx, 80, self.RULE_sentenceTerminator)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 335
+            self.state = 342
             _la = self._input.LA(1)
             if not(((((_la - 70)) & ~0x3f) == 0 and ((1 << (_la - 70)) & 7) != 0)):
                 self._errHandler.recoverInline(self)

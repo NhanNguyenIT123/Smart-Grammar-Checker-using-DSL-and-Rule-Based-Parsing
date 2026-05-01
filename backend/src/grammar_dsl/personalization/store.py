@@ -707,6 +707,14 @@ class UserProfileStore:
     ) -> dict[str, Any]:
         connection = self._connect()
         try:
+            # Check for duplicate title within the same class (case-insensitive)
+            existing = connection.execute(
+                "SELECT 1 FROM quizzes WHERE class_id = ? AND LOWER(title) = LOWER(?)",
+                (class_id, title.strip()),
+            ).fetchone()
+            if existing is not None:
+                raise ValueError(f"A quiz with the title \"{title.strip()}\" already exists in this class.")
+
             cursor = connection.execute(
                 """
                 INSERT INTO quizzes (
@@ -1081,7 +1089,7 @@ class UserProfileStore:
                 CREATE TABLE IF NOT EXISTS quizzes (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     class_id INTEGER NOT NULL,
-                    title TEXT NOT NULL,
+                    title TEXT NOT NULL COLLATE NOCASE,
                     feature_expr_text TEXT NOT NULL,
                     exercise_count INTEGER NOT NULL,
                     exercise_payload TEXT NOT NULL,
@@ -1128,6 +1136,9 @@ class UserProfileStore:
 
                 CREATE UNIQUE INDEX IF NOT EXISTS idx_quiz_attempts_quiz_student
                 ON quiz_attempts(quiz_id, student_username);
+
+                CREATE UNIQUE INDEX IF NOT EXISTS idx_quizzes_class_title
+                ON quizzes(class_id, title COLLATE NOCASE);
                 """
             )
 

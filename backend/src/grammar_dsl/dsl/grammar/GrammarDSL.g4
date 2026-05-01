@@ -32,7 +32,7 @@ quantitySpec
     ;
 
 createQuizCmd
-    : CREATE QUIZ title=QUOTED_TEXT WITH count=NUMBER EXERCISES WITH featureExpr
+    : CREATE QUIZ title=QUOTED_TEXT (WITH | GENERATE) count=NUMBER EXERCISES WITH featureExpr
     ;
 
 submitAnswersCmd
@@ -139,12 +139,11 @@ featureAndExpr
 
 featurePrimary
     : LEFT_PAREN featureExpr RIGHT_PAREN
-    | tense
-    | aspect
-    | voice
-    | sentenceType
-    | clauseStructure
-    | grammaticalFeature
+    | featureAtom
+    ;
+
+featureAtom
+    : (tense | aspect | voice | sentenceType | clauseStructure | grammaticalFeature)+
     ;
 
 tense
