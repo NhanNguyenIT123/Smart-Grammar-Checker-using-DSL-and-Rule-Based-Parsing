@@ -4,15 +4,14 @@ GrammarDSL is a **DSL-driven grammar learning platform** built around:
 
 - an ANTLR lexer/parser for command input
 - a rule-based grammar checker
-- a local exercise generator
+- a local exercise generator with a vast bank of millions of permutations
 - tutor/student classroom flows backed by SQLite
 
-It supports grammar checking, token inspection, personalized revision history, exercise generation, quiz creation, quiz submission, and tutor scorebook queries.
+It supports grammar checking, personalized revision history, exercise generation, quiz creation, quiz submission, and tutor scorebook queries.
 
 ## What the system does
 
 - `check grammar <paragraph>` checks spelling, grammar, and semantic collocations, then returns a corrected rewrite.
-- `show tokens <command>` exposes the ANTLR token stream for a DSL snippet.
 - `generate ...` creates local practice exercises from feature expressions such as `present simple AND affirmative`.
 - tutors can create classes and quizzes
 - students can join classes and submit quiz answers
@@ -57,7 +56,6 @@ flowchart LR
 ### Common commands
 
 - `help`
-- `show tokens <command>`
 - `check grammar <paragraph>`
 - `generate exercise with <feature-expr>`
 - `generate <N> exercises with <feature-expr>`
@@ -70,8 +68,11 @@ flowchart LR
 
 ### Tutor-only commands
 
-- `create quiz "Title" with <N> exercises with <feature-expr>`
+- `create quiz "Title" generate <N> exercises with <feature-expr>`
 - `show students with <filter-expr>`
+- `show class <class-id>`
+- `show quiz <quiz-id>`
+- `show results for student <username>`
 
 ### Student-only commands
 
@@ -79,27 +80,19 @@ flowchart LR
 
 ## Feature expressions
 
-V1 exercise generation supports:
+V2 exercise generation supports **all 12 English tenses** and advanced grammatical conditions:
 
-- `present simple`
-- `past simple`
-- `future simple`
-- `present continuous`
-- `subject-verb agreement`
-- `object pronoun`
-- `verb-preposition`
-- `svo`
-- `affirmative`
-- `negative`
-- `interrogative`
+- **Tenses**: `present simple`, `past simple`, `future simple`, `present continuous`, `past continuous`, `future continuous`, `present perfect`, `past perfect`, `future perfect`, `present perfect continuous`, `past perfect continuous`, `future perfect continuous`
+- **Grammar**: `subject-verb agreement`, `object pronoun`, `verb-preposition`, `svo`
+- **Sentence Forms**: `affirmative`, `negative`, `interrogative`
 
 Boolean composition is supported with `AND`, `OR`, and parentheses.
 
 Examples:
 
 - `generate exercise with present simple`
-- `generate 5 exercises with present simple AND negative`
-- `generate 5 exercises with (present simple AND affirmative) OR (past simple AND interrogative)`
+- `generate 10 exercises with present perfect AND negative`
+- `generate 10 exercises with (past simple AND interrogative) OR (present perfect continuous AND affirmative)`
 
 ## Running the project
 
@@ -125,6 +118,8 @@ python backend/run.py gen
 ```
 
 ### 3. Compile the knowledge base
+
+**CRITICAL**: Run this to refresh the exercise bank and grammar rules.
 
 ```powershell
 python backend/run.py compile
@@ -167,28 +162,15 @@ You can also create a new **demo student** from the register page.
 ## Suggested demo flow
 
 1. `help`
-2. `show tokens check grammar I dont love she.`
-3. `generate exercise with present simple`
-4. `check grammar I dont love she.`
-5. tutor creates a class and runs `create quiz ...`
-6. student joins the class and submits answers
-7. tutor runs `show students with submitted`
-
-## Useful backend commands
-
-```powershell
-python backend/run.py help
-python backend/run.py gen
-python backend/run.py compile
-python backend/run.py test
-python backend/run.py exec "help"
-python backend/run.py exec "generate exercise with present simple"
-python backend/run.py exec "check grammar I dont love she."
-```
+2. `check grammar The teacher have some book.`
+3. `generate 10 exercises with (present simple AND affirmative) OR (past simple AND negative)`
+4. tutor creates a class and runs `create quiz "Final Exam" generate 20 exercises with present perfect`
+5. student joins the class and submits answers
+6. tutor runs `show students with score > 80% AND submitted`
 
 ## Current scope notes
 
-- The platform is intentionally **rule-based and local-first** for v1.
+- The platform is intentionally **rule-based and local-first**.
 - No external LLM or API is required for exercise generation.
-- Quiz grading is **answer-key first**; grammar checking is used as feedback support, not as the grading engine itself.
-- Some older long-form tense regression tests in the repo still reflect pre-existing heuristic limitations in the grammar engine.
+- The exercise generator uses a **lexical pool of 280+ verbs and 120+ objects** creating millions of unique sentence permutations to prevent repetition.
+- Quiz grading is **answer-key first**; grammar checking is used as feedback support.
