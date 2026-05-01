@@ -49,8 +49,8 @@ export function normalizeUser(payload) {
   }
 
   // Ensure we have at least an ID or username
-  const id = String(rawUser.id ?? rawUser.user_id ?? rawUser.userId ?? rawUser.username || "");
-  const username = String(rawUser.username ?? rawUser.user_name ?? rawUser.name ?? id || "guest");
+  const id = String(rawUser.id ?? rawUser.user_id ?? rawUser.userId ?? (rawUser.username || ""));
+  const username = String(rawUser.username ?? rawUser.user_name ?? rawUser.name ?? (id || "guest"));
 
   if (!id && !username) return null;
 
