@@ -35,19 +35,28 @@ function toDisplayName(userLike) {
 }
 
 export function normalizeUser(payload) {
+  if (!payload) return null;
+
+  // Handle various nested structures
   const rawUser =
     payload?.user ??
     payload?.data?.user ??
     payload?.data ??
-    payload;
+    (payload?.username || payload?.id || payload?.user_id ? payload : null);
 
-  if (!rawUser || (!rawUser.id && !rawUser.username && !rawUser.user_id)) {
+  if (!rawUser) {
     return null;
   }
 
+  // Ensure we have at least an ID or username
+  const id = String(rawUser.id ?? rawUser.user_id ?? rawUser.userId ?? rawUser.username || "");
+  const username = String(rawUser.username ?? rawUser.user_name ?? rawUser.name ?? id || "guest");
+
+  if (!id && !username) return null;
+
   return {
-    id: String(rawUser.id ?? rawUser.user_id ?? rawUser.userId ?? rawUser.username),
-    username: String(rawUser.username ?? rawUser.user_name ?? rawUser.name ?? "guest"),
+    id: id || username,
+    username: username,
     displayName: String(
       rawUser.display_name ??
         rawUser.displayName ??
