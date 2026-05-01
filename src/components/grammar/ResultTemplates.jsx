@@ -398,47 +398,6 @@ function UtilityLookupBox({ result, submittedInput, onApplySuggestion }) {
   );
 }
 
-function TokenInspectorBox({ result, submittedInput }) {
-  const data = result?.data || {};
-  const tokens = data.tokens || [];
-
-  return (
-    <MasterBox
-      title="Lexer / Parser Inspector"
-      subtitle="ANTLR token stream for the DSL snippet you asked to inspect."
-    >
-      <div className="dashboard-list">
-        <article className="dashboard-list__item">
-          <div className="dashboard-list__heading">
-            <h3>Inspected snippet</h3>
-            <span>{data.parsable ? "Parses successfully" : "Lexer-only preview"}</span>
-          </div>
-          <div className="bad-input-box" style={{ marginTop: "0.5rem", padding: "0.5rem 0.8rem" }}>
-            <code>{data.source_text || submittedInput.replace(/^show\s+tokens\s+/i, "")}</code>
-          </div>
-          {data.command_type ? <p style={{ marginTop: "0.75rem" }}>Parsed node: {data.command_type}</p> : null}
-          {data.parse_error ? <p style={{ marginTop: "0.75rem" }}>Parse note: {data.parse_error}</p> : null}
-        </article>
-
-        {tokens.map((token) => (
-          <article key={`${token.index}-${token.type}-${token.column}`} className="dashboard-list__item">
-            <div className="dashboard-list__heading">
-              <h3>
-                {token.index}. {token.type}
-              </h3>
-              <span>
-                line {token.line}, col {token.column}
-              </span>
-            </div>
-            <div className="bad-input-box" style={{ marginTop: "0.5rem", padding: "0.5rem 0.8rem" }}>
-              <code>{token.lexeme}</code>
-            </div>
-          </article>
-        ))}
-      </div>
-    </MasterBox>
-  );
-}
 
 function GenerateExerciseBox({ result, onApplySuggestion }) {
   const data = result?.data || {};
@@ -769,16 +728,22 @@ function DashboardBox({ result, submittedInput, onApplySuggestion }) {
 
   const visibleItems = listItems.slice(0, visibleCount);
 
+  const isSyntaxError = !result.command || result.command === "unknown" || result.command === "invalid" || result.command === "request_failed";
+
   return (
-    <MasterBox title={isError ? "Unknown Command" : "Dashboard / Analytics"}>
+    <MasterBox title={isError ? (isSyntaxError ? "Unknown Command" : "Execution Error") : "Dashboard / Analytics"}>
       {isError ? (
         <div className="suggestion-card">
           <div className="suggestion-card__icon">
             <AlertCircle size={20} />
           </div>
           <div className="suggestion-card__copy">
-            <h3>Did you mean this command?</h3>
-            <p>The command prefix does not match a supported GrammarDSL form.</p>
+            <h3>{isSyntaxError ? "Did you mean this command?" : "Command Execution Failed"}</h3>
+            <p>
+              {isSyntaxError 
+                ? "The command prefix does not match a supported GrammarDSL form." 
+                : "The command syntax is correct, but it could not be completed."}
+            </p>
             {submittedInput ? (
               <div className="bad-input-box">
                 <span className="bad-input-box__label">Your Input</span>
@@ -1270,19 +1235,16 @@ function ResultTemplates({ result, submittedInput, onApplySuggestion, onRunComma
     return <ReviewWorkflowBox result={result} submittedInput={submittedInput} onApplySuggestion={onApplySuggestion} />;
   }
 
-  if (command === "show tokens") {
-    return <TokenInspectorBox result={result} submittedInput={submittedInput} />;
-  }
 
   if (command === "generate") {
     return <GenerateExerciseBox result={result} onApplySuggestion={onApplySuggestion} />;
   }
 
-  if (command === "create quiz") {
+  if (command === "create quiz" && result.success) {
     return <CreateQuizBox result={result} />;
   }
 
-  if (command === "submit answers") {
+  if (command === "submit answers" && result.success) {
     return <SubmitAnswersBox result={result} />;
   }
 

@@ -207,7 +207,7 @@ export async function executeDslCommand(input, userId, context = {}) {
     };
   }
 
-  if (!response.ok && typeof payload?.success !== "boolean") {
+  if (!response.ok && payload?.success === undefined) {
     return {
       success: false,
       command: "request_failed",

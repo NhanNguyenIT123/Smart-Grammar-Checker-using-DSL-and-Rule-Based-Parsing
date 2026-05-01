@@ -271,13 +271,6 @@ export default function GrammarWorkspace() {
       ];
     }
 
-    if (result.command === "show tokens") {
-      return [
-        { label: "Tokens", value: data.token_count || 0 },
-        { label: "Parsable", value: data.parsable ? "Yes" : "No" },
-        { label: "Command", value: data.command_type || "Lexer only" },
-      ];
-    }
 
     if (result.command === "generate") {
       return [
@@ -496,8 +489,11 @@ export default function GrammarWorkspace() {
       ];
 
   const isPlaygroundView = activeView === "playground";
-  const panelResult = isPlaygroundView ? result : null;
-  const panelSubmittedInput = isPlaygroundView ? submittedInput : "";
+  const canUseDslInput =
+    isPlaygroundView ||
+    (activeView === "classes" && (isTutor || (Boolean(selectedQuizId) && Boolean(quizDetail) && !quizDetail.attempt)));
+  const panelResult = result;
+  const panelSubmittedInput = submittedInput;
 
   useEffect(() => {
     const previousView = previousViewRef.current;
@@ -509,6 +505,9 @@ export default function GrammarWorkspace() {
         result,
         playgroundExercises,
       };
+      setResult(null);
+      setSubmittedInput("");
+      setInput("");
     }
 
     if (previousView !== "playground" && activeView === "playground") {
@@ -521,6 +520,32 @@ export default function GrammarWorkspace() {
 
     previousViewRef.current = activeView;
   }, [activeView, input, submittedInput, result, playgroundExercises]);
+
+  useEffect(() => {
+    if (
+      activeView === "classes" &&
+      !isTutor &&
+      selectedQuizId &&
+      quizDetail &&
+      !quizDetail.attempt &&
+      submitQuizCommand
+    ) {
+      const isNew = submitQuizCommand !== input;
+      setInput(submitQuizCommand);
+      
+      if (isNew && submitQuizCommand.includes('="')) {
+        const el = document.querySelector('.dsl-textarea');
+        if (el) {
+          el.style.transition = 'none';
+          el.style.backgroundColor = 'rgba(255, 51, 102, 0.1)';
+          setTimeout(() => {
+            el.style.transition = 'background-color 0.8s ease-out';
+            el.style.backgroundColor = '';
+          }, 50);
+        }
+      }
+    }
+  }, [activeView, isTutor, selectedQuizId, quizDetail, submitQuizCommand]);
 
   return (
     <div className="workspace-page">
@@ -558,11 +583,11 @@ export default function GrammarWorkspace() {
                   )}
                 </div>
 
-                {isPlaygroundView ? (
+                {canUseDslInput ? (
                   <button
                     type="button"
                     onClick={() => runCommand(input)}
-                    disabled={loading || (!isTutor && activeView === "classes" && !!quizDetail?.attempt)}
+                    disabled={loading}
                     className="hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_0px_#191A23]"
                     style={{
                       backgroundColor: "#B9FF66",
@@ -582,7 +607,7 @@ export default function GrammarWorkspace() {
                     }}
                   >
                     <SendHorizontal size={16} />
-                    {loading ? "Running..." : "Run Command"}
+                    {loading ? "Running..." : (input.trim().toLowerCase().startsWith("submit answers") ? "Submit Quiz" : "Run Command")}
                   </button>
                 ) : null}
               </div>
@@ -769,25 +794,44 @@ export default function GrammarWorkspace() {
                               />
                             </div>
                           ))}
-                          <div className="bad-input-box" style={{ marginTop: "1.25rem", padding: "0.5rem 0.8rem" }}>
-                            <code>{submitQuizCommand || "Complete the quiz to build the submit command."}</code>
-                          </div>
-                          <p style={{ fontSize: "0.85rem", color: "#6B7280", marginTop: "0.5rem" }}>
-                            Note: You can only submit this quiz <strong>once</strong>.
-                          </p>
-                          <button
-                            type="button"
-                            className="suggestion-cta"
-                            style={{ marginTop: "0.8rem" }}
-                            disabled={!submitQuizCommand || loading}
-                            onClick={() => {
-                              setInput(submitQuizCommand);
-                              runCommand(submitQuizCommand, { mode: "quiz", classId: selectedClassId, quizId: selectedQuizId });
+                          <div 
+                            className="bad-input-box" 
+                            style={{ 
+                              marginTop: "1.25rem", 
+                              padding: "0.8rem 1rem", 
+                              backgroundColor: "#FFF5F7",
+                              border: "2px dashed #FF3366",
+                              position: "relative",
+                              overflow: "hidden"
                             }}
                           >
-                            <SendHorizontal size={16} />
-                            Submit Quiz With DSL
-                          </button>
+                            <div style={{ 
+                              position: "absolute", 
+                              top: "6px", 
+                              right: "8px", 
+                              display: "flex", 
+                              alignItems: "center", 
+                              gap: "4px",
+                              fontSize: "0.65rem",
+                              fontWeight: "bold",
+                              color: "#FF3366",
+                              textTransform: "uppercase",
+                              letterSpacing: "0.05em"
+                            }}>
+                              <Sparkles size={10} />
+                              Live DSL Sync
+                            </div>
+                            <code style={{ color: "#FF3366", wordBreak: "break-all" }}>
+                              {submitQuizCommand || "Complete the quiz to build the submit command."}
+                            </code>
+                          </div>
+                          
+                          <div style={{ marginTop: "1rem", display: "flex", alignItems: "center", gap: "10px" }}>
+                            <div className="animate-pulse" style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#FF3366" }}></div>
+                            <p style={{ fontSize: "0.85rem", color: "#6B7280", margin: 0 }}>
+                              The command above is synced to your <strong>DSL Input</strong> workspace. Click <strong>Submit Quiz</strong> at the top to finish.
+                            </p>
+                          </div>
                         </>
                       )}
                     </article>
@@ -862,13 +906,16 @@ export default function GrammarWorkspace() {
                 </div>
               ) : null}
 
-              {isPlaygroundView ? (
+                {canUseDslInput ? (
                 <textarea
                   value={input}
                   onChange={(event) => setInput(event.target.value)}
                   className="dsl-textarea"
-                  placeholder="Type your DSL command here..."
-                  disabled={!isTutor && activeView === "classes" && !!quizDetail?.attempt}
+                  placeholder={
+                    activeView === "classes" && !isTutor
+                      ? 'submit answers for quiz ... { 1 = "..." ; 2 = "..." }'
+                      : "Type your DSL command here..."
+                  }
                 />
               ) : null}
 

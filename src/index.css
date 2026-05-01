@@ -387,7 +387,7 @@ textarea {
   width: min(1480px, 100%);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
+  grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   align-items: stretch;
 }
@@ -860,7 +860,8 @@ textarea {
 }
 
 .metric-card {
-  min-width: 170px;
+  flex: 1;
+  min-width: 140px;
   text-align: left;
   background: rgba(255, 255, 255, 0.76);
   border: 1px solid rgba(25, 26, 35, 0.08);
