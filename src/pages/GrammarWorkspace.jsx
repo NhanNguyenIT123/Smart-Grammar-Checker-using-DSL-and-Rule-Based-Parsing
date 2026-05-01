@@ -135,6 +135,10 @@ export default function GrammarWorkspace() {
 
   useEffect(() => {
     const restore = async () => {
+      // Force clear any hanging overlays or body styles from previous pages
+      document.body.style.overflow = "auto";
+      document.body.style.pointerEvents = "auto";
+      
       const stored = loadStoredUser();
       if (!stored) {
         navigate("/login", { replace: true });
