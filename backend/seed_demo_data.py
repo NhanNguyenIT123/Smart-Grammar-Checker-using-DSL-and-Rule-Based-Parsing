@@ -17,13 +17,28 @@ def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
 def seed():
-    if not os.path.exists(DB_PATH):
-        print(f"Error: {DB_PATH} not found. Ensure the server has initialized the database.")
-        return
-
+    # Ensure directory exists
+    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Connect and initialize schema if empty
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
+
+    # Simple check for users table, if not exists, we can't seed
+    try:
+        cursor.execute("SELECT 1 FROM users LIMIT 1")
+    except sqlite3.OperationalError:
+        print("Database schema not found. Initializing via UserProfileStore...")
+        # We need to import the store to get the initialization logic
+        import sys
+        sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
+        from grammar_dsl.personalization.store import UserProfileStore
+        UserProfileStore(DB_PATH) # This creates tables
+        # Re-connect after initialization
+        conn = sqlite3.connect(DB_PATH)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
 
     print("Cleaning up old data...")
     cursor.execute("DELETE FROM attempt_items")

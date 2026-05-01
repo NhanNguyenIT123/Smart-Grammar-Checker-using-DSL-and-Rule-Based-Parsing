@@ -5,7 +5,7 @@ services:
     runtime: python
     plan: free
     buildCommand: "cd backend && pip install -r requirements.txt"
-    startCommand: "mkdir -p /tmp/grammardsl && cd backend && python seed_demo_data.py && python run.py serve --host 0.0.0.0 --port $PORT"
+    startCommand: "cd backend && python seed_demo_data.py && python run.py serve --host 0.0.0.0 --port $PORT"
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
