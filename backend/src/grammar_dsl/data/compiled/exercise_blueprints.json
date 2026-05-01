@@ -40,6 +40,16 @@
     "family": "tense-fill"
   },
   {
+    "id": "past-simple-negative-transform",
+    "item_type": "transform",
+    "difficulty": "starter",
+    "required_features": [
+      "past simple",
+      "negative"
+    ],
+    "family": "tense-transform"
+  },
+  {
     "id": "past-simple-interrogative-transform",
     "item_type": "transform",
     "difficulty": "intermediate",
@@ -48,6 +58,16 @@
       "interrogative"
     ],
     "family": "tense-transform"
+  },
+  {
+    "id": "future-simple-affirmative-fill",
+    "item_type": "fill_blank",
+    "difficulty": "starter",
+    "required_features": [
+      "future simple",
+      "affirmative"
+    ],
+    "family": "tense-fill"
   },
   {
     "id": "future-simple-negative-transform",
@@ -60,11 +80,161 @@
     "family": "tense-transform"
   },
   {
+    "id": "future-simple-interrogative-transform",
+    "item_type": "transform",
+    "difficulty": "starter",
+    "required_features": [
+      "future simple",
+      "interrogative"
+    ],
+    "family": "tense-transform"
+  },
+  {
     "id": "present-continuous-affirmative-fill",
     "item_type": "fill_blank",
     "difficulty": "starter",
     "required_features": [
       "present continuous",
+      "affirmative"
+    ],
+    "family": "tense-fill"
+  },
+  {
+    "id": "present-continuous-negative-transform",
+    "item_type": "transform",
+    "difficulty": "starter",
+    "required_features": [
+      "present continuous",
+      "negative"
+    ],
+    "family": "tense-transform"
+  },
+  {
+    "id": "present-continuous-interrogative-transform",
+    "item_type": "transform",
+    "difficulty": "starter",
+    "required_features": [
+      "present continuous",
+      "interrogative"
+    ],
+    "family": "tense-transform"
+  },
+  {
+    "id": "past-continuous-affirmative-fill",
+    "item_type": "fill_blank",
+    "difficulty": "intermediate",
+    "required_features": [
+      "past continuous",
+      "affirmative"
+    ],
+    "family": "tense-fill"
+  },
+  {
+    "id": "past-continuous-negative-transform",
+    "item_type": "transform",
+    "difficulty": "intermediate",
+    "required_features": [
+      "past continuous",
+      "negative"
+    ],
+    "family": "tense-transform"
+  },
+  {
+    "id": "past-continuous-interrogative-transform",
+    "item_type": "transform",
+    "difficulty": "intermediate",
+    "required_features": [
+      "past continuous",
+      "interrogative"
+    ],
+    "family": "tense-transform"
+  },
+  {
+    "id": "future-continuous-affirmative-fill",
+    "item_type": "fill_blank",
+    "difficulty": "advanced",
+    "required_features": [
+      "future continuous",
+      "affirmative"
+    ],
+    "family": "tense-fill"
+  },
+  {
+    "id": "present-perfect-affirmative-fill",
+    "item_type": "fill_blank",
+    "difficulty": "intermediate",
+    "required_features": [
+      "present perfect",
+      "affirmative"
+    ],
+    "family": "tense-fill"
+  },
+  {
+    "id": "present-perfect-negative-transform",
+    "item_type": "transform",
+    "difficulty": "intermediate",
+    "required_features": [
+      "present perfect",
+      "negative"
+    ],
+    "family": "tense-transform"
+  },
+  {
+    "id": "present-perfect-interrogative-transform",
+    "item_type": "transform",
+    "difficulty": "intermediate",
+    "required_features": [
+      "present perfect",
+      "interrogative"
+    ],
+    "family": "tense-transform"
+  },
+  {
+    "id": "past-perfect-affirmative-fill",
+    "item_type": "fill_blank",
+    "difficulty": "advanced",
+    "required_features": [
+      "past perfect",
+      "affirmative"
+    ],
+    "family": "tense-fill"
+  },
+  {
+    "id": "future-perfect-affirmative-fill",
+    "item_type": "fill_blank",
+    "difficulty": "advanced",
+    "required_features": [
+      "future perfect",
+      "affirmative"
+    ],
+    "family": "tense-fill"
+  },
+  {
+    "id": "present-perfect-continuous-affirmative-fill",
+    "item_type": "fill_blank",
+    "difficulty": "advanced",
+    "required_features": [
+      "present perfect continuous",
+      "affirmative"
+    ],
+    "family": "tense-fill"
+  },
+  {
+    "id": "past-perfect-continuous-affirmative-fill",
+    "item_type": "fill_blank",
+    "difficulty": "advanced",
+    "required_features": [
+      "past perfect continuous",
+      "affirmative"
+    ],
+    "family": "tense-fill"
+  },
+  {
+    "id": "future-perfect-continuous-affirmative-fill",
+    "item_type": "fill_blank",
+    "difficulty": "advanced",
+    "required_features": [
+      "future perfect continuous",
       "affirmative"
     ],
     "family": "tense-fill"

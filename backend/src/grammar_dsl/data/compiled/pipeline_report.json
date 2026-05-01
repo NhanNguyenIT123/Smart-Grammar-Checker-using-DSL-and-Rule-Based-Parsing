@@ -1,6 +1,6 @@
 {
   "pipeline_version": "3.0.0",
-  "compiled_at": "2026-04-29T08:51:54.761974+00:00",
+  "compiled_at": "2026-05-01T07:15:20.367533+00:00",
   "preprocessing_steps": [
     "load raw lexical packs from preprocessing/raw",
     "normalize rule specs and deduplicate tokens",
@@ -110,9 +110,9 @@
     "feature_catalog.json"
   ],
   "knowledge_stats": {
-    "verb_entries": 290,
+    "verb_entries": 296,
     "synonym_entries": 408,
-    "dictionary_entries": 11955,
+    "dictionary_entries": 12334,
     "grammar_rules": 229,
     "semantic_classes": 15,
     "phrase_index_entries": 229,
@@ -120,7 +120,7 @@
     "cefr_entries": 102,
     "imported_sources": 4,
     "imported_collocation_rules": 166,
-    "exercise_blueprints": 11,
+    "exercise_blueprints": 28,
     "feature_atoms": 11
   }
 }

@@ -197,12 +197,27 @@ class SpellingChecker:
             if adj_candidates:
                 ranked = adj_candidates
 
-        def sort_key(item: tuple[str, int]) -> tuple[int, int, int, int, int, int, str]:
+        # Heuristics for subject-verb agreement and tense context
+        has_present_marker = any(w in {"always", "often", "usually", "sometimes", "never", "every", "on"} for w in words)
+        
+        def sort_key(item: tuple[str, int]) -> tuple[int, int, int, int, int, int, int, int, str]:
             candidate, distance = item
             lowered = candidate.lower()
+            
+            # Check if this candidate matches third-person singular if the subject is singular
+            is_singular_subject = previous.endswith("s") == False and previous not in {"i", "you", "we", "they"}
+            matches_agreement = False
+            if self.verb_engine and self._candidate_is_verb(lowered):
+                if is_singular_subject:
+                    matches_agreement = self.verb_engine.is_third_person_form(lowered)
+                else:
+                    matches_agreement = not self.verb_engine.is_third_person_form(lowered)
+
             return (
                 distance,
                 0 if prefers_verb and self._candidate_is_verb(lowered) else 1,
+                0 if matches_agreement else 1,
+                0 if has_present_marker and self.verb_engine and not self.verb_engine.is_past_form(lowered) else 1,
                 0 if prefers_adjective and self._is_likely_adjective(lowered) else 1,
                 0 if self._is_subsequence(token, lowered) else 1,
                 abs(len(lowered) - len(token)),

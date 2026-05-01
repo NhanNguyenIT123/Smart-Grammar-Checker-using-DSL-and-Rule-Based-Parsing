@@ -290,6 +290,11 @@
       "sang",
       "sung"
     ],
+    "slide": [
+      "slide",
+      "slid",
+      "slid"
+    ],
     "sit": [
       "sit",
       "sat",
@@ -528,10 +533,15 @@
     "place",
     "plan",
     "play",
+    "point",
+    "possess",
+    "postpone",
     "practice",
     "prefer",
     "prepare",
     "present",
+    "press",
+    "prevent",
     "print",
     "produce",
     "promise",

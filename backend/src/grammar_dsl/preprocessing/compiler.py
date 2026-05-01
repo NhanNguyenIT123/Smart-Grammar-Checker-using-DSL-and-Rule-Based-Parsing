@@ -243,6 +243,21 @@ def _build_dictionary(
     merged = set(base_words)
     merged.update(PROJECT_WORDS)
     merged.update(_collect_strings(verbs))
+    # Add third-person and gerund forms for all verbs to ensure correct spelling and prevent split suggestions
+    for base in verbs:
+        merged.add(_third_person_singular_local(base))
+        merged.add(_gerund_local(base))
+
+    # Also inflect transitive verbs from lexical pools since they are used in exercises
+    for base in LEXICAL_POOLS.get("transitive_verbs", []):
+        merged.add(_third_person_singular_local(base))
+        merged.add(_gerund_local(base))
+        if base == "be":
+            merged.update({"am", "is", "are", "was", "were", "been", "being"})
+        if base == "have":
+            merged.add("has")
+        if base == "do":
+            merged.add("does")
     merged.update(_collect_strings(synonyms))
     merged.update(_collect_strings(grammar_rules))
     merged.update(_collect_strings(SEMANTIC_CLASSES))
@@ -369,6 +384,28 @@ def _ensure_compiled_dir() -> None:
 
 def _load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _third_person_singular_local(base: str) -> str:
+    if base == "be": return "is"
+    if base == "have": return "has"
+    if base == "do": return "does"
+    if base.endswith("y") and len(base) > 1 and base[-2] not in "aeiou":
+        return f"{base[:-1]}ies"
+    if base.endswith(("s", "sh", "ch", "x", "z", "o")):
+        return f"{base}es"
+    return f"{base}s"
+
+
+def _gerund_local(base: str) -> str:
+    if base == "be": return "being"
+    if base.endswith("ie"):
+        return f"{base[:-2]}ying"
+    if base.endswith("e") and base not in {"be", "see"}:
+        return f"{base[:-1]}ing"
+    if _is_short_cvc(base):
+        return f"{base}{base[-1]}ing"
+    return f"{base}ing"
 
 
 def _write_json(path: Path, payload: Any) -> None:

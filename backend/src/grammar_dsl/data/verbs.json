@@ -964,6 +964,21 @@
     "played",
     "played"
   ],
+  "point": [
+    "point",
+    "pointed",
+    "pointed"
+  ],
+  "possess": [
+    "possess",
+    "possessed",
+    "possessed"
+  ],
+  "postpone": [
+    "postpone",
+    "postponed",
+    "postponed"
+  ],
   "practice": [
     "practice",
     "practiced",
@@ -983,6 +998,16 @@
     "present",
     "presented",
     "presented"
+  ],
+  "press": [
+    "press",
+    "pressed",
+    "pressed"
+  ],
+  "prevent": [
+    "prevent",
+    "prevented",
+    "prevented"
   ],
   "print": [
     "print",
@@ -1233,6 +1258,11 @@
     "sleep",
     "slept",
     "slept"
+  ],
+  "slide": [
+    "slide",
+    "slid",
+    "slid"
   ],
   "smile": [
     "smile",

@@ -3,7 +3,15 @@
     "present simple": "present_simple",
     "past simple": "past_simple",
     "future simple": "future_simple",
-    "present continuous": "present_continuous"
+    "present continuous": "present_continuous",
+    "past continuous": "past_continuous",
+    "future continuous": "future_continuous",
+    "present perfect": "present_perfect",
+    "past perfect": "past_perfect",
+    "future perfect": "future_perfect",
+    "present perfect continuous": "present_perfect_continuous",
+    "past perfect continuous": "past_perfect_continuous",
+    "future perfect continuous": "future_perfect_continuous"
   },
   "negative_variants": {
     "present simple": [
@@ -25,6 +33,46 @@
     "present continuous": [
       "{subject} {be_negative} {verb_gerund} {object} {time_marker}.",
       "{subject} {be_contracted_negative} {verb_gerund} {object} {time_marker}."
+    ],
+    "past continuous": [
+      "{subject} was not {verb_gerund} {object} {time_marker}.",
+      "{subject} wasn't {verb_gerund} {object} {time_marker}."
+    ],
+    "future continuous": [
+      "{subject} will not be {verb_gerund} {object} {time_marker}.",
+      "{subject} won't be {verb_gerund} {object} {time_marker}."
+    ],
+    "present perfect": [
+      "{subject} have not {verb_participle} {object} {time_marker}.",
+      "{subject} haven't {verb_participle} {object} {time_marker}."
+    ],
+    "present perfect-third-person": [
+      "{subject} has not {verb_participle} {object} {time_marker}.",
+      "{subject} hasn't {verb_participle} {object} {time_marker}."
+    ],
+    "past perfect": [
+      "{subject} had not {verb_participle} {object} {time_marker}.",
+      "{subject} hadn't {verb_participle} {object} {time_marker}."
+    ],
+    "future perfect": [
+      "{subject} will not have {verb_participle} {object} {time_marker}.",
+      "{subject} won't have {verb_participle} {object} {time_marker}."
+    ],
+    "present perfect continuous": [
+      "{subject} have not been {verb_gerund} {object} {time_marker}.",
+      "{subject} haven't been {verb_gerund} {object} {time_marker}."
+    ],
+    "present perfect continuous-third-person": [
+      "{subject} has not been {verb_gerund} {object} {time_marker}.",
+      "{subject} hasn't been {verb_gerund} {object} {time_marker}."
+    ],
+    "past perfect continuous": [
+      "{subject} had not been {verb_gerund} {object} {time_marker}.",
+      "{subject} hadn't been {verb_gerund} {object} {time_marker}."
+    ],
+    "future perfect continuous": [
+      "{subject} will not have been {verb_gerund} {object} {time_marker}.",
+      "{subject} won't have been {verb_gerund} {object} {time_marker}."
     ]
   },
   "question_variants": {
@@ -32,7 +80,17 @@
     "present simple-third-person": "Does {subject_lower} {verb_base} {object} {time_marker}?",
     "past simple": "Did {subject_lower} {verb_base} {object} {time_marker}?",
     "future simple": "Will {subject_lower} {verb_base} {object} {time_marker}?",
-    "present continuous": "{be_question} {subject_lower} {verb_gerund} {object} {time_marker}?"
+    "present continuous": "{be_question} {subject_lower} {verb_gerund} {object} {time_marker}?",
+    "past continuous": "Was {subject_lower} {verb_gerund} {object} {time_marker}?",
+    "future continuous": "Will {subject_lower} be {verb_gerund} {object} {time_marker}?",
+    "present perfect": "Have {subject_lower} {verb_participle} {object} {time_marker}?",
+    "present perfect-third-person": "Has {subject_lower} {verb_participle} {object} {time_marker}?",
+    "past perfect": "Had {subject_lower} {verb_participle} {object} {time_marker}?",
+    "future perfect": "Will {subject_lower} have {verb_participle} {object} {time_marker}?",
+    "present perfect continuous": "Have {subject_lower} been {verb_gerund} {object} {time_marker}?",
+    "present perfect continuous-third-person": "Has {subject_lower} been {verb_gerund} {object} {time_marker}?",
+    "past perfect continuous": "Had {subject_lower} been {verb_gerund} {object} {time_marker}?",
+    "future perfect continuous": "Will {subject_lower} have been {verb_gerund} {object} {time_marker}?"
   },
   "be_forms": {
     "i": {
