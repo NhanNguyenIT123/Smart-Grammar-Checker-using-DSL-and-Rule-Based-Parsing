@@ -213,7 +213,11 @@ class GrammarDSLRequestHandler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def _send_cors_headers(self) -> None:
-        self.send_header("Access-Control-Allow-Origin", "*")
+        origin = self.headers.get("Origin")
+        if origin:
+            self.send_header("Access-Control-Allow-Origin", origin)
+        else:
+            self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type, X-GrammarDSL-User-Id")
         self.send_header("Access-Control-Allow-Credentials", "true")
