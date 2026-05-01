@@ -1,4 +1,4 @@
-const API_BASE = "/api";
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "/api";
 const USER_STORAGE_KEY = "grammardsl-demo-user";
 const SESSION_TIMEOUT_MS = 15 * 60 * 1000;
 

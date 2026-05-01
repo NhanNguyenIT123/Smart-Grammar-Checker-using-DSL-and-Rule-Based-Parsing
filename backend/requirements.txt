@@ -1,0 +1,6 @@
+antlr4-python3-runtime==4.13.2
+python-dotenv>=1.0.1
+torch
+transformers
+accelerate
+spacy
