@@ -10,11 +10,11 @@ services:
         value: 3.11.0
 
   # Frontend Service
-  - type: static
+  - type: web
     name: grammar-dsl-frontend
-    env: static
+    runtime: static
     buildCommand: "npm install && npm run build"
-    publishPath: "./dist"
+    staticPublishPath: "./dist"
     headers:
       - path: "/*"
         headers:
